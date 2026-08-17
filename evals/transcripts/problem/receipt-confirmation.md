@@ -9,6 +9,13 @@
 | Tester | Project owner |
 | Outcome | Four defects found; module revised in `b5fcae9` |
 
+> **Editorial note, added during the skills implementation pass.** The
+> capability tested was then called `01-problem`. It is now `problem`, and the
+> numeric prefixes have been dropped across the repository. The header and
+> commit references below are left as they were recorded. Nothing else in this
+> transcript has been altered: it is behavioural evidence, and the version it
+> tested no longer exists.
+
 **Anonymised.** The real case came from a public body handling paper
 applications. Organisation, document types and the regulated activity have
 been replaced with an equivalent that preserves the analytical structure:

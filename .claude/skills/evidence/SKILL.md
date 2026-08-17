@@ -1,0 +1,317 @@
+---
+name: evidence
+description: >
+  Use when the question is what is actually known: assessing an evidence base,
+  testing whether a claim is supported, separating fact from inference and
+  assumption, judging whether a study or a result from elsewhere applies here,
+  deciding what is worth finding out next, or working out which uncertainty
+  matters most to the decision. Also use when a number is being trusted more
+  than it deserves, when only supporting evidence is being gathered for a
+  decision already taken, or when someone is proposing research or a pilot
+  without saying what it would settle.
+metadata:
+  status: written, not behaviourally tested
+---
+
+<!--
+Canonical method:
+  reference/methods/capabilities/evidence-guidance.md
+  - the data/information/evidence distinction, the evidence position, framing
+    effects, uncomfortable knowledge, policy-based evidence, source fit and
+    transfer, responsible quantification, value of information and stopping
+    rules. Provenance: Bardach Step Two and Part II; Saltelli and Giampietro
+    on evidence-based policy.
+
+Distilled shared behaviour carried here:
+  reference/methods/shared/uncertainty-and-learning-guidance.md - the
+    uncertainty typology, competing explanations with expected signals, the
+    lightest-credible-move rule, hypothesis form, decision rules before
+    testing, exploratory versus verificatory. This is the shared method's
+    primary home, so more of it is carried here than in any other skill. The
+    full experimentation and interpretation method stays in the file.
+  reference/methods/shared/risk-opportunity-appraisal-guidance.md - the outside
+    view, forecast bias, the precision/accuracy/pedigree distinction. Called
+    only where a claim is a forecast.
+
+Not grounded:
+  - Nothing beyond the two files above. Where this skill is silent, the
+    canonical method has the answer.
+-->
+
+# Evidence
+
+Assume `house-rules` is in play. If it is not, its two hardest rules still hold:
+invent nothing, and the user decides.
+
+## What this owns
+
+What is known, how strongly, on what basis, and what is worth finding out next.
+
+The goal is not a large evidence base. It is a better-founded decision. More
+evidence is not the default answer, and it can deepen a bad framing as easily as
+a good one.
+
+This owns the evidentiary basis under other people's work: the confidence beneath
+a stakeholder claim, the assumptions beneath a projection, the support beneath a
+causal story. It does not own the problem statement, the option set, what counts
+as better, or the recommendation.
+
+## Start with the claim, not the research
+
+Never open with "what research should we do?". Open with **what decision, belief,
+projection or claim is this meant to inform?**
+
+If an evidence request has no analytical purpose, clarify that before gathering
+anything. A report does not become evidence because it contains statistics.
+Evidence is information that bears on a specific belief, so ask what belief this
+should strengthen, weaken or change.
+
+## Separate the kinds of statement
+
+For important claims, label what you actually have.
+
+- **Evidence.** An observation, source, measurement or documented fact bearing
+  directly on the claim.
+- **Inference.** A conclusion drawn from that evidence. *Repeat contact is
+  concentrated in the first 14 days* is evidence. *Uncertainty after application
+  is causing it* is an inference.
+- **Assumption.** Something the analysis relies on without enough direct
+  evidence. *Applicants will read the confirmation message.*
+- **Value judgement.** A judgement about what is desirable, fair or worth
+  prioritising. No amount of evidence converts one of these into an empirical
+  question.
+- **Unknown.** Something important not yet established.
+
+Doing this labelling out loud is usually the fastest way to change what the user
+believes about their own case. Never let an inference or assumption become a fact
+because it has survived several drafts.
+
+## Check the frame before deepening the base
+
+Evidence work is shaped by a prior framing. Once one frame is chosen, certain
+variables become important, certain sources become relevant, certain indicators
+get picked, and other readings quietly disappear.
+
+Before anyone invests in one evidence programme, ask what framing it assumes, and
+what would become relevant if the problem were framed differently. High repeat
+contact might be poor understanding, poor communication, poor visibility,
+excessive processing time, rational reassurance-seeking under uncertainty, or a
+mismatch between the process and what users expect. Each sends the evidence
+gathering somewhere different.
+
+This is not a requirement to keep every frame alive forever. It is a check
+against mistaking one lens for the problem.
+
+**Look for uncomfortable knowledge.** What evidence would be inconvenient for the
+current explanation? What do people outside the analytical group know? Which
+affected group sees this differently? What result would weaken the preferred
+intervention? Uncomfortable evidence is not automatically right, but its exclusion
+needs a reason.
+
+**Watch for policy-based evidence.** The warning sign is that no plausible
+finding would change the proposed course of action. Ask what would weaken the
+current view, what would cause redesign, what would cause the team to stop, and
+whether disconfirming sources are being sought as seriously as supporting ones.
+If nothing could change the recommendation, say so and name the exercise
+accurately: advocacy, documentation or implementation support, not open evidence
+gathering.
+
+## Judge evidence against the claim it is being used for
+
+Never grade evidence abstractly as strong or weak. The same study can be
+excellent for one claim and useless for another. For each important item: what
+claim is it supporting? Does it observe that claim directly, or is there an
+inferential step, and how large is it? What other explanation fits the same
+observation?
+
+**Relevance is not authority.** A prestigious or technically sophisticated source
+can be badly matched to the question. Same outcome? Same population? Same
+intervention? Same mechanism? Similar enough institutional setting? Relevant
+period? Decision-relevant scale?
+
+**Transfer is a claim that needs its own evidence.** Evidence that something
+happened elsewhere establishes what happened there. Using it here asserts that
+the conditions producing the result are similar enough for the lesson to travel.
+Check population, place, institutions, incentives, delivery model, scale,
+capability, prior exposure, political context and timing. Never call something
+best practice as though context were irrelevant.
+
+**Seek disagreement deliberately.** Sources arrive bundled with their preferred
+problem definition and causal story. Where time is short, the most efficient move
+is to ask a knowledgeable person who would disagree most strongly with their
+account, and why. Do not manufacture balance where the evidence is genuinely
+one-sided.
+
+**Calibrate adjectives.** Difficult, strong, common, serious, likely, rare mean
+different things to different people. What does that mean in observable terms?
+Compared with what? How often? For whom? Over what period? Never turn an
+informant's adjective into a precise finding.
+
+**Use each source for what it can answer.** Front-line staff, affected people and
+practitioners give strong evidence about experience, workflow, informal practice,
+constraints, incentives and mechanism. They are weaker on prevalence across a
+population, causal effect and counterfactuals. Do not dismiss experiential
+evidence for not being experimental; do not turn one interview into a population
+estimate.
+
+## Use numbers responsibly
+
+A quantitative result is not self-explanatory. What was measured, what was
+excluded, which assumptions were required, which categories were chosen, what
+model produced it, and what happens if a key assumption changes?
+
+For any model central to the decision, be able to say in plain language what goes
+in, what relationship is assumed, what comes out and what conditions must hold.
+If that cannot be stated intelligibly, mathematical complexity is not a substitute
+for scrutiny. Ask whether the model was used to explore competing possibilities
+or calibrated around one preferred story.
+
+**Match precision to knowledge.** Warning signs: decimal places on uncertain
+inputs, one central estimate where the plausible range crosses materially
+different decisions, precise probabilities for poorly understood events, narrow
+intervals around weak assumptions. A statistical range describes variation inside
+a model; it says nothing about whether the model is right. State which kind of
+uncertainty a range represents.
+
+**Do not force deep uncertainty into a probability.** Risk is where outcomes and
+odds are reasonably knowable. Uncertainty is where important odds are not known.
+Ignorance is where the relevant unknowns are not yet recognised. Indeterminacy is
+where outcomes depend on open causal chains, behaviour or institutional response.
+An analytical template expecting a probability is not a reason to invent one.
+
+## Decide what is worth finding out
+
+**The test before collecting anything:** if the result came out differently from
+what we expect, what decision would change? If no realistic result would change
+the analysis, the evidence has low decision value however interesting it is.
+
+The value of more evidence rises with the chance it changes the decision, the
+chance the changed decision is better, and the size of the difference between
+those outcomes. The cost includes time, money, access, delay, staff effort,
+opportunity cost and political cost. An educated guess is the right move when
+stakes are low, the decision is reversible, the current range would not change
+the choice, or better evidence is disproportionately expensive. Keep the guess
+labelled as a guess.
+
+**Identify the critical uncertainty.** Where several gaps exist, ask which
+unresolved question is most capable of changing what we should do next. Do not
+produce a shopping list of everything unknown. A useful critical uncertainty is
+specific enough that resolving it changes a decision: not *we need to understand
+the service better* but *we do not know whether most repeat contact is driven by
+uncertainty about receipt or uncertainty about eligibility to continue, and those
+imply different interventions*.
+
+**Name what kind of uncertainty it is,** because it determines the method:
+
+| Uncertainty | Question | Usually answered by |
+|---|---|---|
+| Problem | What is actually happening? | existing data, descriptive analysis, better measurement |
+| Experience | What are affected people encountering? | observation, walkthrough, interviews, front-line inquiry |
+| Mechanism | Why is this happening? | competing explanations, targeted evidence, natural variation |
+| Constraint | What is actually preventing improvement? | diagnostic inquiry into what would change if it were removed |
+| Option | What form of intervention might work? | scouting, co-design, prototype |
+| Implementation | Can this work in ordinary practice? | live prototype, operational test, observation |
+| Effect | Does a specified intervention cause the outcome? | A/B test, quasi-experiment, RCT |
+| Transfer | Will a result from elsewhere hold here? | comparison of the conditions that produced it |
+
+**State competing explanations where mechanism or constraint is unclear.** Two or
+more, each with what we would expect to observe if it were true. *If people are
+not using the service because they do not know it exists, we would expect low
+awareness and uptake rising after targeted information. If they know but the
+process is too hard, we would expect reasonable awareness, high abandonment, and
+little movement after awareness activity.* The point is to find evidence capable
+of telling them apart.
+
+**Choose the lightest credible move.** Inspect existing data before commissioning
+research. Observe 10 real cases before building a prototype. Prototype before
+piloting. Use a natural comparison before designing a trial. Do not run a large
+study to answer what 5 interviews could settle, and do not use 5 interviews to
+claim a causal effect they cannot support. Experimentation is one option among
+many, not the default.
+
+**Say in advance what different results would mean.** What is being investigated,
+what would strengthen the current view, what would weaken it, what would remain
+ambiguous, and what each result would cause the team to do. This is what stops an
+interpretation being found after the result is seen. If no plausible result
+changes what anyone will do, the proposed work is weak.
+
+**Know when to stop.** Stop when the decision-sensitive uncertainty is
+sufficiently reduced, another result is unlikely to change the choice, the
+remaining uncertainty is unavoidable, acting now is proportionate and reversible,
+or the cost and delay of more evidence exceed its decision value. Completeness is
+not quality.
+
+## Where evidence is a forecast
+
+Only when the claim concerns a future cost, duration, uptake, benefit, demand or
+delivery performance.
+
+Take the outside view: what actually happened in comparable cases, and why should
+this case differ? Never invent a reference class, and say why the chosen cases
+are comparable. Ask whether similar forecasts have historically been too
+optimistic, whether the process rewards lower costs or higher benefits, and
+whether the forecaster is invested in approval. Challenge the forecasting
+environment without accusing anyone of misrepresentation. A detailed plan is not
+evidence that this team is exceptional.
+
+## Boundaries and handoffs
+
+Continue the work; do not announce a handoff.
+
+- The evidence undermines the frame itself, so go back to `problem`. Evidence may
+  challenge a frame; it should not silently redefine the problem.
+- The gap is about actors' motives, power or relationships, so go to
+  `stakeholders`. That skill owns the claims; this one owns their confidence.
+- The unresolved issue turns out to be about what matters rather than what is
+  true, so go to `criteria`. Never send a value conflict back for more research.
+- Testing an intervention is the point, so the question becomes what to test and
+  what would count, which is the learning design above, and the option set in
+  `options`.
+- The claim is a projection of what an option would cause, so go to `outcomes`.
+  This skill owns the basis; that one owns the forecast.
+
+## Self-check
+
+**Must pass:**
+
+- tied to a specific decision, claim or projection
+- inferences, assumptions and value judgements visible and distinguished from
+  evidence
+- the current framing checked for plausible alternatives where framing could
+  change what evidence matters
+- contrary evidence or uncomfortable knowledge not silently excluded
+- evidence judged against the claim it is being used to support
+- external evidence not assumed to transfer
+- numerical precision within the quality of the underlying evidence and model
+- the most decision-sensitive gap identifiable
+- further gathering justified by likely decision value
+- active testing not prescribed automatically
+- a stopping point exists
+
+**Should pass:**
+
+- serious disagreement sought where the issue is genuinely contested
+- qualitative claims calibrated
+- affected and front-line perspectives used where they can expose mechanism or
+  implementation
+- important quantitative results translated into their assumptions
+- outside view used where a credible reference class exists
+- the user can say what evidence would change their current view
+
+## Failure modes
+
+- **Data accumulation.** Many reports and statistics with no claim they bear on.
+- **Assumption becomes fact** through repetition across drafts.
+- **One frame defines all relevant evidence.** Going deep on one causal story
+  without testing whether another framing changes the question.
+- **Policy-based evidence.** Only supporting evidence, for a decision already
+  made.
+- **Prestige substituting for relevance.**
+- **"Worked elsewhere" becoming "will work here".**
+- **Quantification treated as objectivity**, or false precision on weak inputs.
+- **Every uncertainty turned into a risk** with an invented probability.
+- **Researching everything uncertain** instead of the gap that could change the
+  decision.
+- **More research after the answer is stable.**
+- **A pilot or RCT as the reflex** for every gap.
+- **Sending a value conflict for more evidence.**

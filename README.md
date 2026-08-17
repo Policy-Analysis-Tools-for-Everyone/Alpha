@@ -3,15 +3,14 @@
 A set of [Claude Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills)
 for rigorous public problem solving.
 
-Most tools help you write policy analysis faster. These are built to make
-it harder to write bad analysis: the agent challenges weak framing,
-refuses to invent figures, separates evidence from assumption, keeps
-competing framings visible instead of quietly picking one, and asks one
-substantive question at a time rather than producing a plausible document
-on request.
+Most tools help you write policy analysis faster. These are built to make it
+harder to write bad analysis. The agent challenges weak framing, refuses to invent
+figures, separates evidence from assumption, keeps competing framings visible
+instead of quietly picking one, and asks one substantive question at a time rather
+than producing a plausible document on request.
 
-**Public beta.** Two of eleven modules are written. See
-[Status](#status) before relying on this for real work.
+**Alpha.** All 11 skills are written. One has been tested on real work, once. See
+[Status](#status) before relying on this.
 
 ---
 
@@ -19,148 +18,210 @@ on request.
 
 ### Claude Code
 
-Clone the repository and open it:
-
 ```bash
 git clone <this-repo-url> mdee-agent
 cd mdee-agent
 claude
 ```
 
-The skills live in `.claude/skills/`, so Claude Code picks them up for
-this project with no build step. Ask it something like *"help me frame
-this problem"* and it will load the matching module.
-
-To use the skills across **all** your projects rather than just this one,
-copy them into your personal skills directory:
+The skills live in `.claude/skills/`, so Claude Code picks them up for this
+project with no build step. Describe your actual problem and the matching skill
+loads. To use them across all your projects:
 
 ```bash
 cp -r .claude/skills/* ~/.claude/skills/
 ```
 
-### Claude.ai and Claude Desktop
+### claude.ai and Claude Desktop
 
-Skills are uploaded as folders under **Settings → Capabilities → Skills**.
-Upload each `.claude/skills/<module>/` directory as its own skill.
-
-Start with `00-house-rules` and `01-problem` — the others aren't written
-yet.
+Upload each `.claude/skills/<name>/` directory as its own skill under
+**Settings → Capabilities → Skills**. Upload `house-rules` and then whichever
+capabilities you want; `house-rules` is the one that should always be present.
 
 ### Anthropic API
 
-The skills are plain `SKILL.md` files with YAML frontmatter, so they work
-with the Skills API or as system-prompt content. If you assemble several
-into one prompt, concatenate them in directory order and put
-`00-house-rules` first.
+Each skill is a `SKILL.md` with spec-compliant frontmatter, so they work through
+the Skills API. If you assemble several into one system prompt, put `house-rules`
+first.
 
 ---
 
 ## How it works
 
-**`00-house-rules` always applies.** It holds what's true in every
-conversation regardless of which method is in play: tone, question
-discipline, evidence rules, how competing framings are handled, and the
-three lenses below. Load it first, always.
+**`house-rules` always applies.** Tone, question discipline, evidence rules, how
+competing framings are handled, how the agent writes, and the three standing
+considerations below. Everything else assumes it is in play.
 
-**Everything else is a step**, in order — though the agent is meant to
-recognise which one you actually need rather than march through them.
+**Ten capabilities, each owning one analytical job.** You do not have to work
+through them in order, and you should not have to name one. Describe the problem
+you actually have and the right one should load.
 
-**Three lenses cut across every step**, rather than being steps of their
-own:
+| Skill | The question it owns |
+|---|---|
+| `problem` | What is the problem? |
+| `stakeholders` | Who matters, why, with what power, and how are they connected? |
+| `evidence` | What do we know, how strong is it, and what is worth finding out? |
+| `options` | What could we do? |
+| `criteria` | What counts as better? |
+| `outcomes` | What would probably happen? |
+| `trade-offs` | What do we gain and give up? |
+| `decide` | What should we choose? |
+| `story` | How should this be communicated? |
+| `evaluation` | How is this agent performing, and how should it change? |
 
-- **Public value** — does this promise a benefit worth having, to
-  someone other than the people proposing it?
-- **Operational capacity** — can it realistically be delivered?
-- **Political support** — do the people whose backing it needs actually
-  endorse it?
+**Entry is not linear.** There is a logical spine, and most of it is Bardach's,
+but the work moves both ways. Evidence sends you back to the problem. Trade-offs
+expose a missing criterion. Deciding reveals the option set was poor. Each skill
+knows which gaps belong to its neighbours and continues into them rather than
+announcing a handoff.
 
-They're explained once in `00-house-rules` and applied by each module at
-its own step. The point isn't to score three corners; it's to name what
-your current choice *costs* — sharpening public value often narrows what's
-deliverable, and the reverse.
+**Stakeholder analysis is a deliberate addition,** not one of Bardach's steps. It
+is separate because folding it into the political-support question loses the
+people who are badly affected and hold no power.
 
-**One deliberate omission.** The agent never names a framework to you. It
-applies the method; it doesn't tour it.
+**Three considerations cut across the capabilities** rather than being stages of
+their own:
+
+- **Public value.** Does this promise a benefit worth having, to someone other
+  than the people proposing it?
+- **Operational capacity.** Can it realistically be delivered?
+- **Political support.** Do the people whose backing it needs actually endorse
+  it, and believe it can be delivered?
+
+They are explained once in `house-rules` and applied by each capability at its own
+point. The aim is never to score three corners. It is to name what the current
+choice *costs*, because sharpening public value routinely narrows what can be
+delivered, and the reverse.
+
+**One deliberate omission.** The agent never names a framework to you. It applies
+the method rather than touring it. The working vocabulary, public value,
+operational capacity, mechanism, constraint, evidence, assumption, is used
+directly.
+
+---
+
+## What sits behind the skills
+
+Three layers, deliberately separate.
+
+**The method layer**, `reference/methods/`, is canonical. Ten capability methods
+and 3 shared methods, written in enough depth for maintainers: provenance,
+distinctions, worked examples, anti-patterns, scaffolds and self-check rubrics.
+Every skill names the method file it is grounded in. See
+[`reference/methods/README.md`](reference/methods/README.md).
+
+**Shared methods are not extra steps.** Strategic alignment, uncertainty and
+learning, and risk-opportunity appraisal cut across several capabilities. A skill
+carries the distilled part it actually needs and calls nothing at runtime.
+`outcomes` needs the outside view and a rule for turning an ungrounded forecast
+into a learning question; it does not need the rest of the appraisal method.
+
+**The writing layer**, `reference/writing/anti-ai-writing-style.md`, is the shared
+output-quality specification for substantial prose. `house-rules` carries the
+universal subset; `story` applies it hardest. It shapes writing without changing
+evidence, analysis or necessary technical terms.
+
+**The archive**, `reference/sources/`, `reference/domain/` and
+`reference/copilot-json/`, holds original source documents, domain-specific
+material and the original Copilot exports. Provenance, not current method. No
+skill reads it.
 
 ---
 
 ## Status
 
-Honest state of each module. "No source" means the underlying method text
-isn't in this repository yet, and writing the module without it would mean
-inventing plausible policy-textbook content — the specific failure this
-project exists to avoid.
+Written is not tested. Four states worth keeping apart:
 
-| Module | What it does | Status |
-|---|---|---|
-| `00-house-rules` | Shared rules and the three lenses | **Written.** Not yet tested as a whole |
-| `01-problem` | Define the problem: condition not fix, who's affected, scale, hidden solutions, causal claims | **Written**, tested once — see `evals/transcripts/` |
-| `02-stakeholders` | Who holds the problem, who must back a response, who is affected differently | Not written |
-| `03-evidence` | Assemble and judge evidence; separate fact from assumption | Not written — no source |
-| `04-options` | Construct genuine alternatives, not a preferred one plus decoys | Not written — no source |
-| `05-criteria` | Choose the criteria the options will be judged against | Not written — no source |
-| `06-outcomes` | Project what each option would actually produce | Not written — no source |
-| `07-trade-offs` | Confront what each choice costs | Not written — no source |
-| `08-decide` | Decide — including "not yet, and here's what would settle it" | Not written — no source |
-| `09-story` | Tell the story so it survives contact with a reader | Not written — source present, not yet used |
-| `10-evaluation` | Gather feedback on the agent's own use | Not written |
+- **Written.** The skill exists and says what it should do.
+- **Structurally checked.** Frontmatter validates, links resolve, no
+  contradictions found by reading.
+- **Behaviourally tested.** Run on real work in a session that was saved.
+- **Regression-tested.** A saved case re-runs and still passes after changes.
 
-Modules 03–08 are blocked on the method text for Bardach's steps 2–7.
-Module 09 has its source (`reference/methods/ucl-ppc-one-pager-instructions.pdf`)
-and is unblocked.
+| Skill | Written | Structurally checked | Behaviourally tested |
+|---|---|---|---|
+| `house-rules` | yes | yes | **no** |
+| `problem` | yes | yes | once, warm, on the previous version |
+| `stakeholders` | yes | yes | **no** |
+| `evidence` | yes | yes | **no** |
+| `options` | yes | yes | **no** |
+| `criteria` | yes | yes | **no** |
+| `outcomes` | yes | yes | **no** |
+| `trade-offs` | yes | yes | **no** |
+| `decide` | yes | yes | **no** |
+| `story` | yes | yes | **no** |
+| `evaluation` | yes | yes | **no** |
+
+**Nothing here has been tested cold**, by someone who did not write it. The single
+real session, `evals/transcripts/problem/receipt-confirmation.md`, was run warm by
+the author against an earlier version of `problem`, and without `house-rules`,
+which did not exist yet. It found 4 defects, which were fixed. Two of them had not
+been predicted, and 4 of 5 predictions made beforehand were wrong.
+
+The method layer is settled. The runtime is not validated.
+
+Every capability method has a source. That was not true earlier in this project
+and the older documentation said so; it is out of date, not the current state.
 
 ---
 
-## Feedback
+## Evaluation and feedback
 
-This is a beta and the most useful thing you can send is a conversation
-where the agent was **confidently wrong** — those are worth more than the
-ones where it worked, and they're the easier ones to lose.
+`evals/` holds the improvement loop: real transcripts, a synthetic capability pack
+and regression cases traceable to real fixes. `evals/README.md` explains what each
+directory is for and how to save a session.
 
-Open an issue with the exchange, what you expected, and what you got.
-Redact anything sensitive; the analytical shape is what matters, not your
-actual figures.
+The most useful thing you can send is a conversation where the agent was
+**confidently wrong.** Those are worth more than the ones where it worked, and
+they are the easier ones to lose. Open an issue with the exchange, what you
+expected and what you got. Redact anything sensitive; the analytical shape is what
+matters, not your real figures.
 
-`evals/transcripts/01-problem/receipt-confirmation.md` is a worked example
-of the format, including how it was anonymised.
+`evals/transcripts/problem/receipt-confirmation.md` is the worked example of the
+format, including how far the anonymisation goes.
 
 ---
 
 ## Provenance
 
-Every module carries a sourcing header naming what it's grounded in and —
-more importantly — what it isn't. A module with an empty "not grounded"
-line is either very well sourced or not being honest.
+Every skill carries a sourcing header naming its canonical method and what it is
+**not** grounded in. A skill with an empty "not grounded" line is either very well
+sourced or not being honest.
 
 | Key | Source |
 |---|---|
-| `[B]` | Bardach, *A Practical Guide for Policy Analysis*, problem-definition guidance |
+| `[B]` | Bardach, *A Practical Guide for Policy Analysis*, the main analytical spine |
 | `[T]` | Donahue, "Strategic Alignment for Policy Analysis and Design", HKS Case 2090.0 |
-| `[J]` | The original Microsoft 365 Copilot agent this work recovers — raw export, kept as an archive |
+| `[J]` | The original Microsoft 365 Copilot agent this work recovers, kept as a raw archive |
 | `[O]` | Material the project owner authored directly |
-| `[E]` | Behavioural evidence from saved test sessions |
+| `[E]` | Behavioural evidence from saved sessions |
 
-Source documents are in `reference/`. `docs/BEHAVIOUR_SPEC.md` records
-what the original Copilot agent observably did, and which behaviour here
-is recovered from it versus newly added.
+The capability methods carry their own fuller citations, including Weimer and
+Vining, Fisher and Ury, May, Saltelli and Giampietro, Rodrik, McGuinness and
+Slaughter, Flyvbjerg, Funtowicz and Ravetz, Kattel and colleagues, and Sharpe and
+colleagues.
 
-Also in `reference/methods/`: a synthesis of two UCL IIPP papers on
-digital public infrastructure and public value, which informs the
-public-value stance in `00-house-rules`. That module records a live
-disagreement it deliberately does not settle — whether market failure is
-the right primary test for public action, or whether the better question
-is what direction is embedded in a framing and who chose it.
+[`docs/BEHAVIOUR_SPEC.md`](docs/BEHAVIOUR_SPEC.md) records what the original
+Copilot agent observably did, and which behaviour here is recovered from it rather
+than added later. That separation is maintained deliberately: the original stopped
+at the problem statement, so nothing downstream of it can claim recovered
+provenance.
+
+`reference/domain/dpi/` holds a synthesis of 2 UCL IIPP papers on digital public
+infrastructure. It is domain material rather than generic method, and only one
+thing from it reaches the runtime: `house-rules` records a live disagreement it
+deliberately does not settle, whether market failure is the right primary test for
+public action, or whether the better question is what direction is embedded in a
+framing and who chose it.
 
 ---
 
-## Authoring a new module
+## Building on this
 
-`docs/AUTHORING.md` is the contract: frontmatter shape, the sourcing
-convention, the five-part body template, and the constraints that hold
-the library together. Read it before writing a module — the two rules
-most often broken are *no document-shaped replies* and *don't restate
-the house rules*.
+[`docs/AUTHORING.md`](docs/AUTHORING.md) is the contract: how the method layer and
+the skill layer differ, how to compress one into the other, frontmatter that works
+on every surface, why descriptions matter more than anything else in the file, and
+the loop that turns real use into a revision.
 
-The loop that produced module 01, which is the only one with evidence
-behind it: draft it, use it on a real problem you actually have, save the
-conversation, revise. Most of the value is in the revision.
+The two rules most often broken are *no document-shaped replies* and *do not
+restate the house rules*.

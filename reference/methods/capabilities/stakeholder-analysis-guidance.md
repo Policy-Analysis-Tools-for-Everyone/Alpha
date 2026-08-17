@@ -567,6 +567,34 @@ Potential power is not the same as deployed power.
 
 ---
 
+## Required-support check: the authorising environment [B][W][T]
+
+The full stakeholder map answers "who matters and why". This check answers a narrower question:
+
+> **Whose agreement is the proposition actually dependent on?**
+
+Run it whenever the work has moved from understanding a problem to proposing, funding or delivering something.
+
+From the wider ecosystem, pull out the subset whose **authorisation, funding, legal permission, operational cooperation, legitimacy or non-opposition** is required for the proposition to proceed. For each, record:
+
+> `[actor]` supplies `[authorisation / funding / legal permission / operational cooperation / legitimacy / non-opposition]`. Without it, `[what fails]`. Current position: `[supportive / conditional / uncommitted / opposed / unknown]`. Basis: `[evidence / inference / unknown]`.
+
+3 rules keep this honest.
+
+**Required is not the same as interested.** A group can be deeply affected and have no ability to stop the proposition, and an obscure control function can hold a decisive veto. Both belong in the analysis, for different reasons. Do not let this check quietly become the whole stakeholder map, and do not let a small required-support list justify dropping affected groups who lack power.
+
+**Non-opposition counts.** Some actors never have to say yes. They only have to not say no, not brief against it, or not withdraw a service the proposition depends on. Record what they would have to refrain from doing.
+
+**Support for the purpose is not support for the delivery model.** An actor may endorse the aim and still refuse the cost, the timetable, the reporting burden or the risk once it becomes concrete. Where current support rests on a cheaper, faster or easier version of the proposition than the one being proposed, mark the support as fragile and say what would expose it.
+
+Keep this to the consequential few. If the list runs past about 6 actors, either the proposition is genuinely dependent on an unusual number of consents, which is itself a finding worth stating, or the list has drifted back into general stakeholder mapping.
+
+Use `../shared/strategic-triangle-guidance.md` for the narrower political-feasibility judgment: whether the required support is sufficient, why it is absent where it is absent, and what would have to change. This method identifies who is required and what they hold. The shared method assesses whether the proposition is supported enough to proceed.
+
+Do not add these columns to the 4-column actor table. Keep the required-support list as a separate short view.
+
+---
+
 ## Network layer: how do the actors relate? [R]
 
 Do not automatically create a formal network diagram. A lightweight relationship map is usually enough.
@@ -620,6 +648,11 @@ Do not recommend a network intervention simply because the map makes one visible
 
 After the actor and relationship analysis, summarise the political system.
 
+### Required support
+- Whose authorisation, funding, legal permission, operational cooperation, legitimacy or non-opposition is the proposition dependent on?
+- What does each of them hold, and what fails without it?
+- Is any of that support conditional on a version of the proposition that is no longer being proposed?
+
 ### Support
 - Who currently supports the proposition?
 - Which supporters are **active allies**?
@@ -667,9 +700,10 @@ Work through these in order where useful; skip steps the user has already answer
 11. **Map the relationships that actually matter: communication, trust, influence, dependency, brokerage, coalition, or support.**
 12. **Identify boundary spanners, brokers, clusters, bottlenecks, missing links, and informal influencers where relevant.**
 13. **Classify the dynamic political position: supporter, ally, opponent, uncommitted, conditional, or unclear.**
-14. **Identify what is evidence, inference, hypothesis, or unknown.**
-15. **Ask what could change the map and in what sequence.**
-16. **Identify the most valuable next learning or engagement move.**
+14. **Run the required-support check where something is being proposed: whose authorisation, funding, permission, cooperation, legitimacy or non-opposition is the proposition dependent on?**
+15. **Identify what is evidence, inference, hypothesis, or unknown.**
+16. **Ask what could change the map and in what sequence.**
+17. **Identify the most valuable next learning or engagement move.**
 
 → **Stakeholder position:** `[actor] + [motivation] + [belief] + [resources/power] + [current position] + [arena] + [key relationships] + [evidence/confidence] + [change condition]`.
 
@@ -811,6 +845,7 @@ Before returning a stakeholder analysis, confirm:
 - The analysis includes **implementation actors** where their behaviour affects success.
 - It distinguishes **supporters from active allies**.
 - Important **relationships or routes of influence** have been considered rather than relying only on formal structure.
+- Where something is being proposed, the actors whose **authorisation, funding, permission, cooperation, legitimacy or non-opposition is required** have been identified separately from the wider ecosystem.
 
 ### Should pass — note the gap if missing
 
@@ -823,6 +858,8 @@ Before returning a stakeholder analysis, confirm:
 - The map includes **uncommitted or conditional actors**, not only supporters and opponents.
 - Sequencing, timing, and changing political conditions have been considered.
 - Concessions are assessed for both their policy cost and their effect on existing allies.
+- Required support has been tested for whether actors endorse the delivery model as well as the purpose.
+- Affected groups without power have not disappeared because they are not required for approval.
 - A clear evidence gap or next learning move has been identified where uncertainty matters.
 
 ### Process reminder
@@ -830,6 +867,35 @@ Before returning a stakeholder analysis, confirm:
 - Stakeholder analysis is **iterative**. The map should change when the problem framing, proposal, evidence, political arena, coalition, or implementation context changes.
 - The purpose is not to categorise people permanently. It is to understand **how an actor system is currently working, why, and what that means for the policy analysis**.
 - Keep the method proportional. A simple case may need 5 actors and 3 relationships; a complex case may need a much richer map.
+
+---
+
+## Shared method calls
+
+This file owns the **actor system**: who is involved, what they want and believe, what they can bring to bear, how they relate, and how that picture could change.
+
+It should call other methods rather than absorb them.
+
+### Call `../shared/strategic-triangle-guidance.md` when:
+
+- the question has narrowed to whether the required support is sufficient for the proposition to proceed
+- support is absent and the reason needs diagnosing rather than labelling as a lack of political will
+- required supporters may endorse the purpose while rejecting the delivery model
+- improving political support would cost public value or operational feasibility
+
+### Call `evidence-guidance.md` when:
+
+- an important claim about a motivation, belief, relationship or power resource is inference presented as fact
+- the analysis needs to know how strong the basis for a stakeholder judgment actually is
+
+### Call `../shared/uncertainty-and-learning-guidance.md` when:
+
+- a decision-relevant stakeholder claim could be tested through direct contact, observed behaviour, documents or previous decisions
+- engagement is being proposed and needs a stated learning question rather than a general round of consultation
+
+### Call `decision-guidance.md` when:
+
+- the question is who has the incentive and ability to carry a proposal, or who resists because they lose authority, resources or discretion
 
 ---
 
@@ -845,16 +911,18 @@ It can identify:
 - possible coalition dynamics
 - likely engagement needs
 - political constraints and opportunities
+- which actors the proposition is dependent on
 
 It does **not** by itself decide:
 
 - which policy option is best
 - what decision criteria should dominate
 - what constitutes public value
+- whether the required support is sufficient to proceed
 - whether a negotiation tactic is ethically or strategically appropriate
 - how to design a full negotiation strategy
 
-Those belong in the relevant later methods or cross-cutting guidance.
+Those belong to the methods that own them, named above. This is not a stage in a sequence: stakeholder analysis can be the first thing a user needs or the last, and the map should be revisited whenever the problem, proposal, evidence or arena changes.
 
 ---
 
