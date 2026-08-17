@@ -1,6 +1,6 @@
 # Evidence - Method Guidance
 
-> **Sources and provenance:** This method keeps Eugene Bardach as the main policy-analysis spine and adds only the complementary material that changes how the agent should behave. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Two and Part II - used for the distinction between data, information and evidence; the purposes of evidence gathering; value-of-information reasoning; educated guesses; research strategy; interviews; disagreement; access; timing and credibility. **[S]** Andrea Saltelli and Mario Giampietro, *What is wrong with evidence based policy, and how can it be improved?* (2017) - used for the risk that evidence work deepens one framing while excluding alternatives, the idea of "uncomfortable knowledge", scrutiny of models and quantification, and the distinction between evidence informing a decision and evidence being recruited to justify a settled position. **[U]** `uncertainty-and-learning-guidance.md` - the canonical shared method for critical uncertainty, competing explanations, choosing a learning move, experimentation and decisions about what to learn next. **[R]** `risk-opportunity-appraisal-guidance.md` - called selectively for the outside view, reference-class forecasting, forecast bias, model uncertainty and false precision. **Purpose:** Operating instructions for an agent that helps a user work out *what evidence bears on the decision, what is known versus inferred or assumed, how strong and applicable that evidence is, what important perspectives or frames may be missing, and whether any further evidence gathering is worth doing*. This method does not assume that more evidence is always better.
+> **Sources and provenance:** This method keeps Eugene Bardach as the main policy-analysis spine and adds only the complementary material that changes how the agent should behave. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Two and Part II - used for the distinction between data, information and evidence; the purposes of evidence gathering; value-of-information reasoning; educated guesses; research strategy; interviews; disagreement; access; timing and credibility. **[S]** Andrea Saltelli and Mario Giampietro, *What is wrong with evidence based policy, and how can it be improved?* (2017) - used for the risk that evidence work deepens one framing while excluding alternatives, the idea of "uncomfortable knowledge", scrutiny of models and quantification, and the distinction between evidence informing a decision and evidence being recruited to justify a settled position. **[U]** `../shared/uncertainty-and-learning-guidance.md` - the canonical shared method for critical uncertainty, competing explanations, choosing a learning move, experimentation and decisions about what to learn next. **[R]** `../shared/risk-opportunity-appraisal-guidance.md` - called selectively for the outside view, reference-class forecasting, forecast bias, model uncertainty and false precision. **Purpose:** Operating instructions for an agent that helps a user work out *what evidence bears on the decision, what is known versus inferred or assumed, how strong and applicable that evidence is, what important perspectives or frames may be missing, and whether any further evidence gathering is worth doing*. This method does not assume that more evidence is always better.
 
 ## How to use this document
 
@@ -13,8 +13,8 @@ When asked to assess an evidence base, challenge a claim, plan research, or deci
 5. **Look for disagreement, missing perspectives and uncomfortable knowledge.**
 6. **Identify the decision-sensitive uncertainty.**
 7. **Ask whether resolving it is worth the cost.**
-8. **Choose the next evidence move proportionately.** If active learning or experimentation is needed, call `uncertainty-and-learning-guidance.md`.
-9. **Use forecast-specific checks where relevant.** If an important claim concerns future costs, benefits or uptake, call the relevant parts of `risk-opportunity-appraisal-guidance.md`.
+8. **Choose the next evidence move proportionately.** If active learning or experimentation is needed, call `../shared/uncertainty-and-learning-guidance.md`.
+9. **Use forecast-specific checks where relevant.** If an important claim concerns future costs, benefits or uptake, call the relevant parts of `../shared/risk-opportunity-appraisal-guidance.md`.
 10. **Stop when more evidence is unlikely to improve the decision enough to justify its cost.**
 
 The goal is not a large evidence base. It is a **better-founded decision**.
@@ -301,7 +301,7 @@ Check differences in:
 - political context
 - timing
 
-Use `uncertainty-and-learning-guidance.md` where transfer uncertainty is decision-sensitive.
+Use `../shared/uncertainty-and-learning-guidance.md` where transfer uncertainty is decision-sensitive.
 
 Do not call something "best practice" as though context were irrelevant.
 
@@ -454,7 +454,7 @@ Warning signs include:
 
 If a range or qualitative description better represents the state of knowledge, use it.
 
-For deeper model uncertainty and false-precision checks, call `risk-opportunity-appraisal-guidance.md`.
+For deeper model uncertainty and false-precision checks, call `../shared/risk-opportunity-appraisal-guidance.md`.
 
 ## 19. Distinguish risk from deeper uncertainty where it affects evidence strategy [S][U]
 
@@ -467,7 +467,7 @@ A useful high-level distinction is:
 
 Do not force deeper uncertainty into a risk calculation simply because the analytical template expects a probability.
 
-Use `uncertainty-and-learning-guidance.md` for the full learning response.
+Use `../shared/uncertainty-and-learning-guidance.md` for the full learning response.
 
 ---
 
@@ -537,7 +537,7 @@ Prioritise the gap that affects:
 - transfer
 - the final choice
 
-The full diagnostic belongs in `uncertainty-and-learning-guidance.md`.
+The full diagnostic belongs in `../shared/uncertainty-and-learning-guidance.md`.
 
 ## 23. Choose the lightest credible evidence move [B][U]
 
@@ -574,7 +574,7 @@ For decision-sensitive evidence, state in advance:
 
 This guards against finding an interpretation after seeing the result.
 
-If active learning or experiment design is needed, call `uncertainty-and-learning-guidance.md`.
+If active learning or experiment design is needed, call `../shared/uncertainty-and-learning-guidance.md`.
 
 ## 25. Know when to stop [B][U]
 
@@ -708,7 +708,7 @@ Use these only where evidence is being used to estimate a future:
 - implementation performance
 - another projected outcome
 
-The full method lives in `risk-opportunity-appraisal-guidance.md`.
+The full method lives in `../shared/risk-opportunity-appraisal-guidance.md`.
 
 ## 31. Take the outside view where possible [R]
 
@@ -953,7 +953,7 @@ This file owns the **evidence position**.
 
 It should call shared methods rather than reproduce them.
 
-## Call `uncertainty-and-learning-guidance.md` when:
+## Call `../shared/uncertainty-and-learning-guidance.md` when:
 
 - several competing explanations remain live
 - the key evidence gap concerns problem, mechanism, constraint, option, implementation, effect or transfer uncertainty
@@ -964,7 +964,7 @@ It should call shared methods rather than reproduce them.
 
 Do not reproduce the full experimentation method here.
 
-## Call `risk-opportunity-appraisal-guidance.md` when:
+## Call `../shared/risk-opportunity-appraisal-guidance.md` when:
 
 - an important claim is a forecast of cost, duration, uptake or benefit
 - reference-class forecasting could challenge an inside-view estimate
@@ -974,7 +974,7 @@ Do not reproduce the full experimentation method here.
 
 Do not reproduce the full appraisal method here.
 
-## Call `strategic-triangle-guidance.md` when:
+## Call `../shared/strategic-triangle-guidance.md` when:
 
 - an evidence gap concerns whether a proposition creates public value
 - an operational-capacity claim is assumption-heavy

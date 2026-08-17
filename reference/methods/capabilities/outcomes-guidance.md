@@ -1,6 +1,6 @@
 # Outcomes - Method Guidance
 
-> **Sources and provenance:** This method keeps Eugene Bardach as the main policy-analysis spine and adds only the shared material that improves forecasting under uncertainty and system change. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Five - used for doing the projection, causal models, initial conditions, base cases, magnitude, ranges, break-even analysis, sensitivity, adverse scenarios, foreseeable side effects and outcomes matrices. **[A]** `risk-opportunity-appraisal-guidance.md` - called for outside-view and reference-class forecasting, direction and pace of change, feedbacks, path dependence, option interaction, systemic effects, model uncertainty and false precision. **[U]** `uncertainty-and-learning-guidance.md` - called when a decision-sensitive projection cannot responsibly be made without further learning. **Purpose:** Operating instructions for an agent that helps a user state *what each serious option is expected to cause, compared with what, through which mechanism, at what scale and pace, and with what uncertainty*.
+> **Sources and provenance:** This method keeps Eugene Bardach as the main policy-analysis spine and adds only the shared material that improves forecasting under uncertainty and system change. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Five - used for doing the projection, causal models, initial conditions, base cases, magnitude, ranges, break-even analysis, sensitivity, adverse scenarios, foreseeable side effects and outcomes matrices. **[A]** `../shared/risk-opportunity-appraisal-guidance.md` - called for outside-view and reference-class forecasting, direction and pace of change, feedbacks, path dependence, option interaction, systemic effects, model uncertainty and false precision. **[U]** `../shared/uncertainty-and-learning-guidance.md` - called when a decision-sensitive projection cannot responsibly be made without further learning. **Purpose:** Operating instructions for an agent that helps a user state *what each serious option is expected to cause, compared with what, through which mechanism, at what scale and pace, and with what uncertainty*.
 
 ## How to use this document
 
@@ -433,7 +433,7 @@ Examples:
 - untested mechanism
 - transfer from a very different context
 
-Call `uncertainty-and-learning-guidance.md`.
+Call `../shared/uncertainty-and-learning-guidance.md`.
 
 ## 26. Distinguish forecastable uncertainty from learnable uncertainty [U]
 
@@ -643,7 +643,7 @@ It is not the analysis itself.
 
 # Shared method calls
 
-## Call `risk-opportunity-appraisal-guidance.md` when:
+## Call `../shared/risk-opportunity-appraisal-guidance.md` when:
 
 - reference-class forecasting matters
 - system feedbacks or path dependence matter
@@ -651,7 +651,7 @@ It is not the analysis itself.
 - pace, accumulation or systemic effects matter
 - model uncertainty exceeds the statistical range
 
-## Call `uncertainty-and-learning-guidance.md` when:
+## Call `../shared/uncertainty-and-learning-guidance.md` when:
 
 - a decision-sensitive assumption could be reduced through evidence or testing
 - transfer is too uncertain to support a responsible forecast

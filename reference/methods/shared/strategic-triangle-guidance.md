@@ -1,6 +1,6 @@
 # Strategic Alignment - Shared Method Guidance
 
-> **Primary source:** John D. Donahue, *Strategic Alignment for Policy Analysis and Design*, Harvard Kennedy School Case Program, Case 2090.0 (2017). The framework has roots in Mark H. Moore's public-management work and is presented by Donahue as a way to keep attention on the fit between **public value**, **operational feasibility** and **political feasibility**. **Project role:** This note is the canonical shared method for that 3-part check across MDEE.MD. It should be called by other methods when value, capacity or support materially affects the work. It should not be copied in full into every skill. **Purpose:** Help an agent ask whether a policy proposition is worthwhile, realistically deliverable, and sufficiently supported by the people and institutions whose backing is required, then diagnose where the fit is weak and what further analysis is needed.
+> **Primary source:** John D. Donahue, *Strategic Alignment for Policy Analysis and Design*, Harvard Kennedy School Case Program, Case 2090.0 (2017). The framework has roots in Mark H. Moore's public-management work and is presented by Donahue as a way to keep attention on the fit between **public value**, **operational feasibility** and **political feasibility**. **Canonical status:** This file is the canonical method. It was compared line by line against the full source PDF during the skills implementation pass and preserves the 3 dimensions, the 3 caveats, the 3 misalignment types, "good enough" rather than perfect alignment, alignment as constructed and unstable, the separation of public support from public value, operational feasibility as financial, legal, technical, personnel and managerial capacity, and the closing point that the framework is a cue to use other methods rather than a stand-alone one. The source PDF is retained as archive at `../../sources/strategic-triangle-case-2090.pdf`; the fidelity check is recorded in `../../sources/README.md`. Skills cite this file, not the PDF. **Project role:** This note is the canonical shared method for that 3-part check across MDEE.MD. It should be called by other methods when value, capacity or support materially affects the work. It should not be copied in full into every skill. **Purpose:** Help an agent ask whether a policy proposition is worthwhile, realistically deliverable, and sufficiently supported by the people and institutions whose backing is required, then diagnose where the fit is weak and what further analysis is needed.
 
 ## How to use this document
 
@@ -891,7 +891,7 @@ Do not produce a long framework explainer unless the user asks for one.
 
 This is a **shared method**, not another step in the Bardach sequence.
 
-## `01-problem`
+## Problem — `../capabilities/problem-definition-guidance.md`
 
 Use a **compact readout** to test whether a problem frame is stronger or weaker depending on public value, capacity and support.
 
@@ -904,7 +904,7 @@ Canonical questions:
 - Would another framing change whose support is required?
 - Where is the central tension?
 
-## `02-stakeholders`
+## Stakeholders — `../capabilities/stakeholder-analysis-guidance.md`
 
 The stakeholder method owns:
 
@@ -921,7 +921,7 @@ This shared method owns the narrower question:
 
 Do not recreate the whole stakeholder map here.
 
-## `03-evidence`
+## Evidence — `../capabilities/evidence-guidance.md`
 
 Use this method to expose unsupported claims in any of the 3 dimensions.
 
@@ -933,7 +933,7 @@ Examples:
 - Is the capacity assessment assumption-heavy?
 - Is the political-feasibility judgment based on actual stakeholder evidence?
 
-## `04-options`
+## Options — `../capabilities/alternatives-guidance.md`
 
 Use misalignment as a source of redesign.
 
@@ -947,7 +947,7 @@ Examples:
 
 The options skill owns generation of the alternatives.
 
-## `05-criteria`
+## Criteria — `../capabilities/criteria-guidance.md`
 
 The criteria skill owns detailed specification of:
 
@@ -960,13 +960,13 @@ The criteria skill owns detailed specification of:
 
 Public value in this shared method is a **high-level challenge**, not a substitute for that work.
 
-## `06-outcomes`
+## Outcomes — `../capabilities/outcomes-guidance.md`
 
 The outcomes skill owns projection of what the proposition is expected to cause.
 
 This shared method can ask whether the value claim depends on a projection that is too uncertain to sustain it.
 
-## `07-trade-offs`
+## Trade-offs — `../capabilities/trade-offs-guidance.md`
 
 The trade-offs skill owns choices between competing outcomes and values.
 
@@ -976,7 +976,7 @@ This shared method contributes a different tension:
 
 Do not duplicate the full trade-off analysis.
 
-## `08-decide`
+## Decision — `../capabilities/decision-guidance.md`
 
 Use the triangle as a final strategic check:
 
@@ -988,13 +988,13 @@ Use the triangle as a final strategic check:
 
 The decision skill remains responsible for the recommendation.
 
-## `09-story`
+## Story — `../capabilities/storytelling-guidance.md`
 
 Use a compact value / capacity / support readout only where it helps explain the decision.
 
 Do not teach the framework in the final policy story unless the audience needs it.
 
-## `10-evaluation`
+## Agent evaluation — `../capabilities/agent-evaluation-guidance.md`
 
 Use this method only when evaluating whether another skill applied strategic alignment correctly.
 

@@ -69,7 +69,7 @@ What does the session reveal about what people are actually trying to do with MD
 Examples:
 
 - a use case appears repeatedly that was not anticipated
-- people use `01-problem` to critique documents rather than write statements
+- people use `problem` to critique documents rather than write statements
 - people want to move directly from evidence to an experiment
 - users repeatedly ask for an artefact the current skill does not produce
 - users struggle to know which module to invoke
@@ -249,7 +249,7 @@ Do not assume perfect rule-following proves usefulness.
 Start with the strongest evidence:
 
 1. explicit must-pass rules in the relevant skill
-2. explicit shared rules in `00-house-rules`
+2. explicit shared rules in `house-rules`
 3. the method source the skill is grounded in
 4. documented product behaviour
 5. observed user outcome and feedback
@@ -314,7 +314,7 @@ Weak finding:
 
 Better:
 
-> When the user asks for a direct revision after providing sufficient context, `01-problem` produces several long prose paragraphs rather than the required labelled output, making the 4 required components hard to locate.
+> When the user asks for a direct revision after providing sufficient context, `problem` produces several long prose paragraphs rather than the required labelled output, making the 4 required components hard to locate.
 
 The better finding specifies:
 
@@ -739,7 +739,7 @@ Suggested header:
 
 | | |
 |---|---|
-| Module(s) | `01-problem` |
+| Module(s) | `problem` |
 | Version tested | commit `abc1234` |
 | Model | Claude [model/version] |
 | Date | YYYY-MM-DD |
@@ -1215,7 +1215,7 @@ It is not the method for evaluating whether a public policy itself worked after 
 
 That is a different analytical task and may later require its own policy-evaluation or experimentation method.
 
-The `10-evaluation` skill should therefore be understood as the **agent improvement loop** for the alpha.
+The `evaluation` skill should therefore be understood as the **agent improvement loop** for the alpha.
 
 Its primary objects are:
 

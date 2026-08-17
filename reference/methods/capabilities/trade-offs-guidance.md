@@ -1,6 +1,6 @@
 # Trade-Offs - Method Guidance
 
-> **Sources and provenance:** This method keeps Eugene Bardach as the main policy-analysis spine and adds only the shared appraisal material that changes how competing outcomes should be compared. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Six - used for dominance, outcome rather than intervention comparisons, magnitude, base cases, commensurability, implied valuation, marginal reasoning, lumpy choices, weighting and narrowing. **[A]** `risk-opportunity-appraisal-guidance.md` - called for multi-dimensional risk and opportunity, systemic upside and downside, asymmetric uncertainty, option interaction, path dependence and the limits of forcing open-ended futures into one expected-value calculation. **[T]** `strategic-triangle-guidance.md` - called where improving value, capacity or support creates a material sacrifice elsewhere in the proposition. **Purpose:** Operating instructions for an agent that helps a user make explicit *what is gained, what is sacrificed, how large the exchange is, which uncertainty could change it, and which value judgment ultimately decides whether the exchange is acceptable*.
+> **Sources and provenance:** This method keeps Eugene Bardach as the main policy-analysis spine and adds only the shared appraisal material that changes how competing outcomes should be compared. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Six - used for dominance, outcome rather than intervention comparisons, magnitude, base cases, commensurability, implied valuation, marginal reasoning, lumpy choices, weighting and narrowing. **[A]** `../shared/risk-opportunity-appraisal-guidance.md` - called for multi-dimensional risk and opportunity, systemic upside and downside, asymmetric uncertainty, option interaction, path dependence and the limits of forcing open-ended futures into one expected-value calculation. **[T]** `../shared/strategic-triangle-guidance.md` - called where improving value, capacity or support creates a material sacrifice elsewhere in the proposition. **Purpose:** Operating instructions for an agent that helps a user make explicit *what is gained, what is sacrificed, how large the exchange is, which uncertainty could change it, and which value judgment ultimately decides whether the exchange is acceptable*.
 
 ## How to use this document
 
@@ -319,7 +319,7 @@ Examples:
 - a stronger value proposition loses essential political support
 - broader support requires concessions that weaken the policy
 
-Use `strategic-triangle-guidance.md` to diagnose that tension.
+Use `../shared/strategic-triangle-guidance.md` to diagnose that tension.
 
 Then return here to state the sacrifice clearly.
 
@@ -579,7 +579,7 @@ Step Seven decides.
 
 # Shared method calls
 
-## Call `risk-opportunity-appraisal-guidance.md` when:
+## Call `../shared/risk-opportunity-appraisal-guidance.md` when:
 
 - risk and opportunity are asymmetric
 - system effects matter
@@ -587,13 +587,13 @@ Step Seven decides.
 - options interact
 - several important dimensions should not be collapsed into one expected value
 
-## Call `strategic-triangle-guidance.md` when:
+## Call `../shared/strategic-triangle-guidance.md` when:
 
 - the trade-off is materially between public value, capacity and required support
 - concessions to gain support reduce public value
 - a more valuable option depends on unrealistic capacity
 
-## Call `uncertainty-and-learning-guidance.md` when:
+## Call `../shared/uncertainty-and-learning-guidance.md` when:
 
 - the central trade-off is unstable because one learnable uncertainty dominates it
 
