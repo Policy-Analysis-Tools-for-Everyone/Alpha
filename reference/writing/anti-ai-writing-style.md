@@ -9,7 +9,6 @@ Source of truth for my writing voice. Apply with judgment. Spirit over letter. A
 Write like a sharp human who happens to be typing.
 
 **Pacing & rhythm:**
-- Short paragraphs. 1-2 sentences default. 3 max.
 - Get to the point. No warm-up laps.
 - Vary sentence length. Short punchy lines mixed with longer ones. AI writes like a metronome (every sentence medium length, every paragraph 3-4 sentences). Break that rhythm.
 - Start sentences with And, But, Like, So. Write as you speak. I love the idea that a new paragraph means a "but" or "therefore". It does not mean that I always write "but" or "therefore", but it's how you write captivating stories.
