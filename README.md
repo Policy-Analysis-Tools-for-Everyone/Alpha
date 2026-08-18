@@ -247,14 +247,31 @@ The method layer is settled. The runtime is not validated.
 
 ## Telling us when it goes wrong
 
-The most useful thing you can send is a conversation where it was **confidently
-wrong.** Those are worth more than the ones where it worked, and they're the easier
-ones to lose.
+This is alpha, and the most useful thing you can send is a conversation where it
+was **confidently wrong.** Those are worth more than the ones where it worked, and
+they're the easier ones to lose.
 
-Open an issue with the exchange, what you expected, and what you got. Redact
-anything sensitive. The analytical shape is what matters, rather than your real
-figures. `evals/transcripts/problem/receipt-confirmation.md` shows the format,
-including how far the anonymisation goes.
+[**Send a session report**](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/issues/new?template=session-report.yml).
+It asks 5 questions and takes about 3 minutes:
+
+1. What were you trying to do?
+2. Where did you get to?
+3. What surprised or frustrated you?
+4. What did you expect instead?
+5. Was there anything it told you that you think was wrong?
+
+**Read this before you paste a conversation.** Reports are public. Take out names,
+organisations, figures, and anything pre-decision or commercially or politically
+sensitive. Replace them with equivalents that keep the shape of the reasoning, and
+say which parts you changed. The analytical shape is what matters, rather than
+your real numbers. If a conversation can't be made safe that way, answer the
+questions and leave the conversation out. A described problem is still useful.
+
+`evals/transcripts/problem/receipt-confirmation.md` shows how far the
+anonymisation can go while the case still works.
+
+You don't have to write anything up. Answering the questions is enough, and we do
+the analysis.
 
 ---
 
@@ -340,6 +357,13 @@ directory is for and how to save a session.
 
 Run the pack in the configuration you ship, which is an ordinary Claude chat with
 the plugin installed. Running it in Claude Code measures a runtime no user has.
+
+`evals/testers.md` is a pseudonymous register of who ran which session, so that
+*how many independent people* is answerable and one person's repeated objection
+never gets counted as several users. Nothing about a tester ever reaches MDEE
+during a session: the register is evaluation evidence, and loading any of it into
+the agent would measure a personalised build rather than the product a new person
+installs. `evals/README.md` carries that rule and the privacy rules with it.
 
 ### Provenance
 

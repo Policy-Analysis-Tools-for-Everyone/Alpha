@@ -6,7 +6,7 @@
 | Version tested | commit `bdd8640` (first draft) |
 | Model | Claude Opus 5 (`claude-opus-5`) |
 | Date | 2026-08-17 |
-| Tester | Project owner |
+| Tester | T001 |
 | Outcome | Four defects found; module revised in `b5fcae9` |
 
 > **Editorial note, added during the skills implementation pass.** The
@@ -15,6 +15,12 @@
 > commit references below are left as they were recorded. Nothing else in this
 > transcript has been altered: it is behavioural evidence, and the version it
 > tested no longer exists.
+
+> **Editorial note, added when the tester register was introduced.** The `Tester`
+> row read "Project owner" and now reads `T001`, the pseudonymous identifier in
+> [`../../testers.md`](../../testers.md). The identifier was assigned
+> retrospectively to the person who already ran this session. Nothing about the
+> session changed.
 
 **Anonymised.** The real case came from a public body handling paper
 applications. Organisation, document types and the regulated activity have
