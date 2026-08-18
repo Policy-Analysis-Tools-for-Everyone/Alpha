@@ -65,8 +65,15 @@ This is one installation. You do it once.
 and MDEE.MD is listed under Personal plugins. That's it. Nothing appears in your
 chat window, and nothing is supposed to.
 
-You may also see a second item called **MDEE.MD evaluation**. Leave it alone. It's
-a tool for people who work on MDEE.MD itself.
+You may also see a second item called **MDEE.MD evaluation**. You don't need it,
+whether you're using MDEE.MD or helping test it.
+
+If you're testing, the useful thing is the conversation itself: what you were
+trying to do, and what felt useful, confusing, wrong or missing. See [Telling us
+when it goes wrong](#telling-us-when-it-goes-wrong) for how to send it. MDEE.MD
+evaluation is what happens afterward, on our side: reviewing conversations like
+yours, finding patterns, and deciding what's worth changing. It has no part in
+actual policy work.
 
 ### If the marketplace install fails with "Failed to fetch content: 403"
 
