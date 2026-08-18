@@ -68,6 +68,33 @@ chat window, and nothing is supposed to.
 You may also see a second item called **MDEE.MD evaluation**. Leave it alone. It's
 a tool for people who work on MDEE.MD itself.
 
+### If the marketplace install fails with "Failed to fetch content: 403"
+
+This has been seen on a paid plan, specifically in the **desktop app**, on an
+account where the exact same install works without trouble at claude.ai in a
+browser. If that's your situation, try a browser first. It may just work, and
+it's the fastest way to find out.
+
+If the browser hits the same error, or the desktop app is what you actually
+need working, install the plugin from a file instead of the marketplace. This
+uses a different route in Claude that doesn't depend on the fetch that's
+failing.
+
+1. Download [`mdee.zip`](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/plugin/mdee.zip).
+   Don't unzip it.
+2. Open Claude, click **Customize**, then **Plugins**.
+3. Click **Add**, then **Upload local plugin**.
+4. Drag the file in, or browse to it, then click **Upload**.
+
+This installs the same plugin as the marketplace route: one entry, all 10
+skills grouped under it. The only thing that changes is where the file comes
+from. It doesn't update itself the way a marketplace install does; see
+[Updating MDEE.MD](#updating-mdeemd) below.
+
+If that dialog doesn't work either, fall back to installing the skills one at
+a time, below. It behaves the same, at the cost of the grouping and 10
+uploads instead of 1.
+
 ### If you're on the Claude Free plan
 
 Add-ons of the plugin kind need a paid plan. You can still have all of MDEE.MD, by
@@ -186,9 +213,9 @@ MDEE.MD will change, especially while it's in alpha.
 pull them in by hand, go to **Customize**, then **Plugins**, find MDEE.MD, and use
 the update or re-sync option. You don't reinstall and you don't download anything.
 
-**If you uploaded the files individually**, you'll need to download the changed
-ones again and re-upload them. There's no automatic route. Watching this repository
-on GitHub will tell you when something changes.
+**If you uploaded `mdee.zip` or the files individually**, you'll need to download
+the changed ones again and re-upload them. There's no automatic route. Watching
+this repository on GitHub will tell you when something changes.
 
 ---
 
