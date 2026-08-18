@@ -1,0 +1,281 @@
+---
+name: trade-offs
+description: >
+  Use when the question is what a choice costs: comparing serious options once
+  their likely outcomes are known, working out what is gained and what is given
+  up and how large each is, finding what the choice actually turns on, or
+  establishing whether one option simply dominates. Also use when a comparison
+  is being made between intervention labels rather than expected consequences,
+  when incompatible values are being converted into one score, when a positive
+  aggregate is hiding who loses, when a weighted table is producing the answer,
+  or when a disagreement about what matters is being treated as an evidence gap.
+metadata:
+  status: written, not behaviourally tested
+---
+
+<!--
+Canonical method:
+  reference/methods/capabilities/trade-offs-guidance.md
+  - dominance, outcome comparison, magnitude, base cases, commensurability,
+    marginal reasoning, lumpy choices, distribution, constraints, switchpoints,
+    implied valuation and the central exchange. Provenance: Bardach Step Six.
+
+Distilled shared behaviour carried here:
+  reference/methods/shared/risk-opportunity-appraisal-guidance.md - asymmetric
+    upside and downside, systemic risk and opportunity, path dependence, package
+    comparison, and the rule against hiding judgement inside weights. The
+    appraisal gate belongs to `criteria`.
+  reference/methods/shared/strategic-triangle-guidance.md - only the case where
+    the exchange is between public value, capacity and required support rather
+    than between outcome criteria.
+  reference/methods/shared/uncertainty-and-learning-guidance.md - only the case
+    where one learnable uncertainty destabilises the central exchange.
+
+Not grounded:
+  - Nothing beyond the files above.
+-->
+
+# Trade-offs
+
+Load `house-rules` before anything else here, and treat it as binding on
+everything below. If it cannot be loaded, its two hardest rules still hold:
+invent nothing, and the user decides.
+
+## What this owns
+
+What is gained, what is sacrificed, how large the exchange is, which uncertainty
+could reverse it, and which value judgement decides whether it is acceptable.
+
+The aim is to expose the **real choice**, not to manufacture one. And then to
+stop: this capability hands a clarified choice to `decide`. It does not make the
+recommendation.
+
+## Check dominance first
+
+If one option is better on every material evaluative criterion and satisfies the
+relevant constraints, it may dominate. Before saying so, check for missing
+criteria, unequal assumptions between options, weak forecasts, distribution,
+uncertainty and binding constraints, since any of those can manufacture false
+dominance.
+
+If dominance survives that, say so plainly. Inventing a balanced comparison where
+the evidence is one-sided wastes the user's time and misrepresents the choice.
+
+## Compare outcomes, not interventions
+
+Weak:
+
+> More inspectors versus a new digital system.
+
+Useful:
+
+> 15 to 20% more cases detected at £2m extra annual cost, versus 5 to 10% more
+> cases detected at £700k.
+
+The intervention names are not the trade-off. The expected consequences are.
+
+**Carry magnitude forward.** *200 to 300 additional cases resolved each year for
+£4m more annual expenditure* beats *better outcomes but higher cost*. Use point
+estimates, ranges, thresholds or ordinal descriptions according to the quality of
+the evidence. Never hide a weak projection behind `+` and `-`.
+
+**State the base case.** Trade-offs are relative: business-as-usual, another
+option, or a future baseline after an external change. Say which, and ask whether
+a plausible change in the base case alters the comparison.
+
+**Find the few conflicts that could change the choice.** Which 2 or 3 outcome
+differences actually matter: access against cost, safety against liberty, speed
+against consultation, targeting against coverage, resilience against short-run
+efficiency? Do not drag every criterion into the headline exchange.
+
+## Keep incompatible values apart
+
+A common measure is genuinely useful where outcomes are comparable: cost per
+additional case, cost per life-year, time saved, emissions avoided, incidents
+prevented. Use it there.
+
+Do not force rights, dignity, trust, legitimacy or irreversible harm into one
+metric to create a ranking. Where one metric would hide a contested judgement,
+state the exchange directly and then ask the question it raises:
+
+> Option A produces a larger reduction in serious harm but requires substantially
+> more intrusive data use. How much intrusion is acceptable for that additional
+> reduction in harm?
+
+That is a value judgement. Making it visible is the analysis. Answering it
+silently through a conversion factor is not.
+
+**Watch for double counting.** Waiting time, burden and satisfaction may partly
+represent the same consequence. The apparent trade-off distorts if one benefit is
+counted three times.
+
+## Bring risk and opportunity in
+
+Expected outcomes hide asymmetry. For each serious option: what is the plausible
+upside, what is the plausible downside, are the tails meaningfully different, is
+one option more likely to create irreversible harm, and is one more likely to open
+valuable future possibilities? Use outcomes with a plausible mechanism; do not
+invent dramatic scenarios.
+
+**Systemic effects, where they can change the choice.** On the downside: lock-in,
+capacity crowd-out, dependency, market concentration, cascading failure, political
+erosion. On the upside: new capability, learning, spillovers, cost decline,
+stronger complementary investment, new policy options. Not another list of
+speculative pros and cons.
+
+**Path dependence.** What does choosing this make easier later, and what does it
+make harder? Does it close off another path? Does it preserve options while
+uncertainty resolves? A slightly weaker short-term option can preserve a much
+better future choice, and for long-lived decisions present net benefit is not the
+whole exchange.
+
+**Compare the real unit of choice.** If A and B reinforce one another, the actual
+options may be A, B, A+B, or staged A then B. Do not compare components in
+isolation when the mechanism is collective.
+
+## Reason at the margin
+
+Where the decision concerns scale, the question is what the extra unit of
+sacrifice buys in extra outcome. *An extra £1m is expected to reduce the waiting
+list by another 600 to 900 cases.* Marginal reasoning is usually more useful than
+programme averages.
+
+**Average is not marginal.** The first increment often produces much more than the
+next, so average cost per outcome is not the cost of expanding further.
+
+**Handle lumpy choices honestly.** Infrastructure, legislation, a procured
+platform, a national scheme: these do not divide smoothly. Define the smallest
+feasible increment rather than modelling fictional fractions of an indivisible
+policy.
+
+## Preserve distribution and constraints
+
+**Keep who gains and loses visible:** who gains, who loses, who pays, who bears
+risk, who receives long-run benefits, who bears transition cost. Are they the same
+people? A positive aggregate does not erase a serious distributional choice.
+
+**Constraints are not tradable objectives.** Law, a fixed budget, a minimum safety
+standard, a non-negotiable right. If an option fails one, another benefit may not
+compensate. Clarify whether the requirement is genuinely binding, then make sure
+no weighted score trades it away by accident.
+
+**Sometimes the exchange is not between outcome criteria at all.** Higher public
+value requiring capacity that cannot be built quickly. A more deliverable option
+creating less public value. A stronger value proposition losing essential support.
+Broader support requiring concessions that weaken the policy. Diagnose that
+tension, then state the sacrifice as plainly as any other.
+
+## Keep uncertainty in the comparison
+
+If Option A prevents 30 to 80 cases, do not convert that into one exact
+cost-per-case figure without showing the range. Could plausible uncertainty reverse
+the trade-off? Does one option carry much more uncertainty than another? Is the
+downside asymmetric? Comparison must not create more certainty than projection
+provided.
+
+**Find the switchpoint.** At what value does the choice change? If uptake falls
+below X, if unit cost exceeds Y, if benefit is less than Z, if implementation takes
+longer than N months. A switchpoint often makes a contested trade-off suddenly
+tractable.
+
+**Test sensitivity to the weights.** Vary them, see whether the ranking changes,
+and identify which value judgement is driving the result. If a small change
+reverses the winner, say so. Never present a fragile weighted ranking as settled.
+
+**Distinguish uncertainty from disagreement about values.** If both parties accept
+the outcome estimates and disagree about which outcome matters more, no amount of
+further forecasting will resolve it. If they agree on values and disagree on effect
+size, more evidence may help. Sending a value conflict back for research is a
+category error, and a common one.
+
+## Make the implied valuation visible
+
+Every choice implies a valuation. If Option A costs £2m more for 100 additional
+cases resolved, choosing A implies those cases are worth at least that sacrifice.
+Choosing B implies they are not.
+
+Ask whether that implied judgement makes sense against the priorities already
+stated, and whether it is consistent with comparable decisions the organisation
+has made. This exposes hidden weighting, and it is a coherence check rather than a
+rhetorical move.
+
+## Narrow, then stop
+
+**Find the exchange that actually decides the choice.** What would have to be
+valued, forecast or understood differently for another option to win? That is the
+trade-off to explain most carefully.
+
+By this point the analysis may contain many alternatives, criteria, cells, weights
+and scenarios. Keep the few that bear on the choice. The apparatus is not the
+product.
+
+**If every serious option is poor, go back.** Revise the option set, revisit the
+problem, improve the evidence, change the criteria or improve the projections. Do
+not choose the least bad simply because comparison has arrived.
+
+**Then stop before the recommendation.** A good trade-off statement ends like
+this:
+
+> Option A is expected to resolve 200 to 300 more cases per year than Option B,
+> but costs roughly £4m more and carries greater implementation risk. The choice
+> turns mainly on whether that additional outcome is worth the cost, and whether
+> the organisation accepts the delivery risk.
+
+That is enough. `decide` chooses.
+
+## Boundaries and handoffs
+
+Continue the work; do not announce a handoff.
+
+- The real disagreement is a missing or hidden value, so go back to `criteria`.
+- The exchange is unstable because one learnable uncertainty dominates it, so go
+  to `evidence` for the learning question. Never send a pure value conflict there.
+- A projection turns out to be too weak to carry the comparison, so go back to
+  `outcomes`.
+- No serious option is good enough, so go back to `options`.
+- The exchange is explicit and someone has to choose, so go to `decide`.
+
+## Self-check
+
+**Must pass:**
+
+- the comparison concerns projected outcomes, not option labels
+- dominance has been checked
+- the base case is explicit
+- main gains and sacrifices carry magnitude, or the best calibrated description
+  available
+- material uncertainty remains visible
+- distinct values are not forced into one metric without justification
+- distribution remains visible where it was selected as a criterion
+- binding constraints are not traded away silently
+- the value judgement deciding the exchange is explicit
+- the small number of comparisons capable of changing the decision is identified
+- the analysis stops before the recommendation
+
+**Should pass:**
+
+- risk and opportunity considered where expected values hide asymmetry
+- systemic effects or path dependence considered where material
+- marginal reasoning used for incremental choices
+- lumpy decisions use real feasible increments
+- switchpoints used where useful
+- weights tested for sensitivity where used
+- implied valuations checked for consistency
+- weak options and irrelevant criteria removed
+
+## Failure modes
+
+- **Comparing interventions rather than outcomes.**
+- **Inventing balance** where one option dominates.
+- **No magnitude.** Better outcomes, higher cost, no numbers.
+- **False commensurability.** Conversion hiding the judgement.
+- **The spreadsheet making the normative choice.**
+- **Hidden base case.**
+- **Average instead of marginal reasoning.**
+- **Aggregate hiding distribution.**
+- **A constraint compensated away** by benefit elsewhere.
+- **Risk reduced to expected value**, losing asymmetric or systemic downside.
+- **Uncertainty disappearing** in the comparison.
+- **Analysis expanding after the choice is clear.**
+- **Trade-offs quietly becoming the recommendation.**
+- **Sending a value conflict for more evidence.**

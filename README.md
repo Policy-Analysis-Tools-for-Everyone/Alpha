@@ -1,130 +1,213 @@
 # MDEE.MD
 
-A set of [Claude Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills)
-for rigorous public problem solving.
+MDEE.MD helps you work through a public policy problem properly: working out what
+the problem actually is, testing what you know, building and weighing options,
+deciding, and writing it up for someone else to read.
 
-Most tools help you write policy analysis faster. These are built to make it
-harder to write bad analysis. The agent challenges weak framing, refuses to invent
-figures, separates evidence from assumption, keeps competing framings visible
-instead of quietly picking one, and asks one substantive question at a time rather
-than producing a plausible document on request.
+It's built to make bad analysis harder to write. It challenges weak framing,
+refuses to invent figures, keeps competing framings visible instead of quietly
+picking one, and asks you one real question at a time rather than handing you a
+plausible-looking document on request.
 
-**Alpha.** All 11 skills are written. One has been tested on real work, once. See
-[Status](#status) before relying on this.
+Inside it are 10 analytical capabilities that work together as one toolkit. You
+don't pick between them. Claude does.
 
----
-
-## Install
-
-### Claude Code
-
-```bash
-git clone <this-repo-url> mdee-agent
-cd mdee-agent
-claude
-```
-
-The skills live in `.claude/skills/`, so Claude Code picks them up for this
-project with no build step. Describe your actual problem and the matching skill
-loads. To use them across all your projects:
-
-```bash
-cp -r .claude/skills/* ~/.claude/skills/
-```
-
-### claude.ai and Claude Desktop
-
-Upload each `.claude/skills/<name>/` directory as its own skill under
-**Settings → Capabilities → Skills**. Upload `house-rules` and then whichever
-capabilities you want; `house-rules` is the one that should always be present.
-
-### Anthropic API
-
-Each skill is a `SKILL.md` with spec-compliant frontmatter, so they work through
-the Skills API. If you assemble several into one system prompt, put `house-rules`
-first.
+> **Alpha.** All 11 files are written. One has been tested on real work, once, by
+> the person who wrote it. Read [Status](#status) before you rely on this for
+> anything that matters.
 
 ---
 
-## How it works
+## Install MDEE.MD in Claude
 
-**`house-rules` always applies.** Tone, question discipline, evidence rules, how
-competing framings are handled, how the agent writes, and the three standing
-considerations below. Everything else assumes it is in play.
+You'll need about 2 minutes. There's nothing to download if you're on a paid plan,
+and no technical setup either way.
 
-**Ten capabilities, each owning one analytical job.** You do not have to work
-through them in order, and you should not have to name one. Describe the problem
-you actually have and the right one should load.
+### Step 0: turn on code execution
 
-| Skill | The question it owns |
+Claude needs this switched on before any add-on like MDEE.MD will work. It's on by
+default for most people.
+
+1. Open Claude, in your browser at [claude.ai](https://claude.ai) or in the Claude
+   desktop app.
+2. Open **Settings**.
+3. Go to **Capabilities**.
+4. Make sure code execution is switched on.
+
+If you skip this, MDEE.MD installs and then appears to do nothing, which is
+confusing enough that it's worth the 20 seconds now.
+
+### If you're on Claude Pro, Max, Team or Enterprise
+
+This is one installation. You do it once.
+
+1. Open Claude.
+2. Click **Customize** in the sidebar on the left.
+3. Click the **Plugins** tab.
+4. Find **Personal plugins**, and click the **+** button next to it.
+5. Click **Add marketplace**.
+6. Paste this into the box:
+
+   ```
+   Policy-Analysis-Tools-for-Everyone/Alpha
+   ```
+
+7. Click **Sync**.
+8. You'll see **MDEE.MD** appear in the list. Click **Install** next to it.
+9. Claude will warn you that it can't verify what's inside add-ons made by other
+   people. That warning is correct and it appears for everything of this kind. If
+   you want to check first, everything MDEE.MD contains is readable in the
+   `skills` folder of [this
+   repository](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/tree/main/skills).
+10. Start a new chat.
+
+**What you should see afterwards.** The **Install** button changes to **Manage**,
+and MDEE.MD is listed under Personal plugins. That's it. Nothing appears in your
+chat window, and nothing is supposed to.
+
+You may also see a second item called **MDEE.MD evaluation**. Leave it alone. It's
+a tool for people who work on MDEE.MD itself.
+
+### If you're on the Claude Free plan
+
+Add-ons of the plugin kind need a paid plan. You can still have all of MDEE.MD, by
+adding the pieces one at a time. It takes about 10 minutes and it behaves
+identically once it's done.
+
+1. Open Claude.
+2. Click **Customize** in the sidebar, then the **Skills** tab.
+3. Click the **+** button, then **Create skill**.
+4. Download the first file below by clicking it, then upload it here. Don't unzip
+   it. Claude wants the zip file exactly as it downloads.
+5. Make sure the skill is switched on in your skills list.
+6. Repeat for each file in the list.
+
+**Start with this one. It's the one that makes the others behave.**
+
+- [house-rules.zip](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/house-rules.zip)
+
+Then these 9, in any order:
+
+- [problem.zip](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/problem.zip)
+- [stakeholders.zip](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/stakeholders.zip)
+- [evidence.zip](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/evidence.zip)
+- [options.zip](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/options.zip)
+- [criteria.zip](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/criteria.zip)
+- [outcomes.zip](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/outcomes.zip)
+- [trade-offs.zip](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/trade-offs.zip)
+- [decide.zip](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/decide.zip)
+- [story.zip](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/story.zip)
+
+**What you should see afterwards.** All 10 listed under Skills, switched on.
+
+If you only ever do 2 of these, do `house-rules` and `problem`.
+
+---
+
+## What happens after installation
+
+You don't choose a workflow, and you don't work through 10 steps in order.
+
+Start an ordinary chat and describe the policy problem you're actually working on,
+in your own words, the way you'd describe it to a colleague. MDEE.MD makes several
+analytical capabilities available to Claude, and Claude reaches for the relevant
+one as the work develops. When the conversation moves on, so does it.
+
+Three openings that work:
+
+> "I think we've already jumped to a solution. Help me work out what the actual
+> problem is."
+
+> "We've got evidence from another country that this worked. How much weight
+> should we put on it?"
+
+> "I've got 3 options and I'm struggling to decide what should count as better."
+
+**You never need to type `/problem` or `/evidence` or anything like it.** In a
+normal Claude chat there's no menu to pick from and no command to remember. Describe
+the situation and the right capability loads on its own. If you'd rather be
+explicit you can say "help me think about who's affected here", and that works too,
+because it's a description of the problem rather than a command.
+
+One thing worth knowing: it asks questions back. That's deliberate. If you want a
+document produced without being asked anything, this is the wrong tool.
+
+---
+
+## What has actually been installed
+
+A set of specialist instructions for different parts of policy analysis. They sit
+quietly until they're relevant, and they work together as one toolkit.
+
+It's one Claude with more to draw on, working from the same conversation.
+
+| Capability | The question it handles |
 |---|---|
+| `house-rules` | How the whole thing behaves. Always in play |
 | `problem` | What is the problem? |
-| `stakeholders` | Who matters, why, with what power, and how are they connected? |
-| `evidence` | What do we know, how strong is it, and what is worth finding out? |
+| `stakeholders` | Who matters, why, and with what power? |
+| `evidence` | What do we know, and how strong is it? |
 | `options` | What could we do? |
 | `criteria` | What counts as better? |
 | `outcomes` | What would probably happen? |
 | `trade-offs` | What do we gain and give up? |
 | `decide` | What should we choose? |
 | `story` | How should this be communicated? |
-| `evaluation` | How is this agent performing, and how should it change? |
 
-**Entry is not linear.** There is a logical spine, and most of it is Bardach's,
-but the work moves both ways. Evidence sends you back to the problem. Trade-offs
-expose a missing criterion. Deciding reveals the option set was poor. Each skill
-knows which gaps belong to its neighbours and continues into them rather than
-announcing a handoff.
-
-**Stakeholder analysis is a deliberate addition,** not one of Bardach's steps. It
-is separate because folding it into the political-support question loses the
-people who are badly affected and hold no power.
-
-**Three considerations cut across the capabilities** rather than being stages of
-their own:
-
-- **Public value.** Does this promise a benefit worth having, to someone other
-  than the people proposing it?
-- **Operational capacity.** Can it realistically be delivered?
-- **Political support.** Do the people whose backing it needs actually endorse
-  it, and believe it can be delivered?
-
-They are explained once in `house-rules` and applied by each capability at its own
-point. The aim is never to score three corners. It is to name what the current
-choice *costs*, because sharpening public value routinely narrows what can be
-delivered, and the reverse.
-
-**One deliberate omission.** The agent never names a framework to you. It applies
-the method rather than touring it. The working vocabulary, public value,
-operational capacity, mechanism, constraint, evidence, assumption, is used
-directly.
+There's no order you have to follow. Real work moves backwards as often as
+forwards. Evidence sends you back to the problem, trade-offs expose a criterion
+nobody stated, deciding reveals the options were poor. Each capability knows which
+gaps belong to its neighbours and carries on into them.
 
 ---
 
-## What sits behind the skills
+## Which Claude plans can use it
 
-Three layers, deliberately separate.
+| Plan | What you can use | How |
+|---|---|---|
+| Free | All of MDEE.MD | Upload the 10 files, above |
+| Pro | All of MDEE.MD | One installation, above |
+| Max | All of MDEE.MD | One installation |
+| Team | All of MDEE.MD | One installation |
+| Enterprise | All of MDEE.MD | One installation |
 
-**The method layer**, `reference/methods/`, is canonical. Ten capability methods
-and 3 shared methods, written in enough depth for maintainers: provenance,
-distinctions, worked examples, anti-patterns, scaffolds and self-check rubrics.
-Every skill names the method file it is grounded in. See
-[`reference/methods/README.md`](reference/methods/README.md).
+The one-click route needs a paid plan, because that's how Claude handles add-ons of
+this kind. Free users get the same capabilities by uploading them individually.
 
-**Shared methods are not extra steps.** Strategic alignment, uncertainty and
-learning, and risk-opportunity appraisal cut across several capabilities. A skill
-carries the distilled part it actually needs and calls nothing at runtime.
-`outcomes` needs the outside view and a rule for turning an ungrounded forecast
-into a learning question; it does not need the rest of the appraisal method.
+Everyone needs code execution switched on. See [Step 0](#step-0-turn-on-code-execution).
 
-**The writing layer**, `reference/writing/anti-ai-writing-style.md`, is the shared
-output-quality specification for substantial prose. `house-rules` carries the
-universal subset; `story` applies it hardest. It shapes writing without changing
-evidence, analysis or necessary technical terms.
+---
 
-**The archive**, `reference/sources/`, `reference/domain/` and
-`reference/copilot-json/`, holds original source documents, domain-specific
-material and the original Copilot exports. Provenance, not current method. No
-skill reads it.
+## Updating MDEE.MD
+
+MDEE.MD will change, especially while it's in alpha.
+
+**If you installed it in one go**, updates arrive on their own in most cases. To
+pull them in by hand, go to **Customize**, then **Plugins**, find MDEE.MD, and use
+the update or re-sync option. You don't reinstall and you don't download anything.
+
+**If you uploaded the files individually**, you'll need to download the changed
+ones again and re-upload them. There's no automatic route. Watching this repository
+on GitHub will tell you when something changes.
+
+---
+
+## Getting more out of it
+
+Worth doing if you're on one policy problem for weeks rather than one afternoon.
+
+Create a Project in Claude for that piece of work, and put your draft, your
+evidence and your notes into it. Then paste the contents of
+[`skills/house-rules/SKILL.md`](skills/house-rules/SKILL.md) into the project
+instructions.
+
+That gives you 2 things the plugin alone doesn't. Your actual material stays in
+context across every conversation, and the house rules apply on every single turn
+rather than loading when they're needed. It's the closest this gets to a dedicated
+policy analyst who already knows your case.
+
+Full project sharing works only on Team and Enterprise plans. On Free, Pro and Max
+a project is yours alone.
 
 ---
 
@@ -132,9 +215,9 @@ skill reads it.
 
 Written is not tested. Four states worth keeping apart:
 
-- **Written.** The skill exists and says what it should do.
-- **Structurally checked.** Frontmatter validates, links resolve, no
-  contradictions found by reading.
+- **Written.** The file exists and says what it should do.
+- **Structurally checked.** Frontmatter validates, links resolve, no contradictions
+  found by reading.
 - **Behaviourally tested.** Run on real work in a session that was saved.
 - **Regression-tested.** A saved case re-runs and still passes after changes.
 
@@ -160,29 +243,105 @@ been predicted, and 4 of 5 predictions made beforehand were wrong.
 
 The method layer is settled. The runtime is not validated.
 
-Every capability method has a source. That was not true earlier in this project
-and the older documentation said so; it is out of date, not the current state.
+---
+
+## Telling us when it goes wrong
+
+The most useful thing you can send is a conversation where it was **confidently
+wrong.** Those are worth more than the ones where it worked, and they're the easier
+ones to lose.
+
+Open an issue with the exchange, what you expected, and what you got. Redact
+anything sensitive. The analytical shape is what matters, rather than your real
+figures. `evals/transcripts/problem/receipt-confirmation.md` shows the format,
+including how far the anonymisation goes.
 
 ---
 
-## Evaluation and feedback
+## For developers and contributors
+
+Everything below here is for people working on MDEE.MD rather than using it.
+
+### Working on the skills
+
+```bash
+git clone https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha mdee
+cd mdee
+claude --plugin-dir .
+```
+
+That loads all 11 skills from `skills/` without installing anything. The canonical
+files live in `skills/<name>/SKILL.md` and that is the only copy. Everything else
+is generated from them or points at them.
+
+After changing a skill, rebuild the downloadable zips and commit the result:
+
+```bash
+python3 tools/build-skill-zips.py
+```
+
+A new skill also has to be added to the relevant plugin entry in
+`.claude-plugin/marketplace.json`, or it won't ship. There's no default scan to
+fall back on.
+
+### How it's packaged
+
+`.claude-plugin/marketplace.json` lists 2 plugin entries, both drawing from the
+same `skills/` folder. `mdee` carries `house-rules` and the 10 policy capabilities.
+`mdee-evaluation` carries `house-rules` and `evaluation`, and exists so that people
+doing policy work don't carry a capability aimed at people maintaining the agent.
+
+`docs/AUTHORING.md` section 12 has the full detail, including what to do if the
+2-entry layout ever fails to install.
+
+### What sits behind the skills
+
+Three layers, deliberately separate.
+
+**The method layer**, `reference/methods/`, is canonical. Ten capability methods
+and 3 shared methods, written in enough depth for maintainers: provenance,
+distinctions, worked examples, anti-patterns, scaffolds and self-check rubrics.
+Every skill names the method file it is grounded in. See
+[`reference/methods/README.md`](reference/methods/README.md).
+
+**Shared methods are not extra steps.** Strategic alignment, uncertainty and
+learning, and risk-opportunity appraisal cut across several capabilities. A skill
+carries the distilled part it actually needs and calls nothing at runtime.
+`outcomes` needs the outside view and a rule for turning an ungrounded forecast
+into a learning question; it does not need the rest of the appraisal method.
+
+**The writing layer**, `reference/writing/anti-ai-writing-style.md`, is the shared
+output-quality specification for substantial prose. `house-rules` carries the
+universal subset; `story` applies it hardest. It shapes writing without changing
+evidence, analysis or necessary technical terms. It is a maintainer reference and
+is not loaded at runtime.
+
+**The archive**, `reference/sources/`, `reference/domain/` and
+`reference/copilot-json/`, holds original source documents, domain-specific
+material and the original Copilot exports. Provenance, not current method. No skill
+reads it.
+
+### How house-rules reaches the other capabilities
+
+Claude chat has no always-on instruction layer that ships with an add-on. So each
+capability skill opens by instructing Claude to load `house-rules` first and treat
+it as binding, and carries the 2 rules that would be catastrophic if it were
+absent: invent nothing, and the user decides.
+
+That line is load-bearing. Copy it verbatim into any new skill. Part 0 of
+`evals/capability/alpha-pack.md` is the test for whether it's actually working, and
+it should be run before anything else in the pack.
+
+### Evaluation
 
 `evals/` holds the improvement loop: real transcripts, a synthetic capability pack
 and regression cases traceable to real fixes. `evals/README.md` explains what each
 directory is for and how to save a session.
 
-The most useful thing you can send is a conversation where the agent was
-**confidently wrong.** Those are worth more than the ones where it worked, and
-they are the easier ones to lose. Open an issue with the exchange, what you
-expected and what you got. Redact anything sensitive; the analytical shape is what
-matters, not your real figures.
+Run the pack in the configuration you ship, which is an ordinary Claude chat with
+the plugin installed. Running it in Claude Code measures a runtime no user has.
 
-`evals/transcripts/problem/receipt-confirmation.md` is the worked example of the
-format, including how far the anonymisation goes.
-
----
-
-## Provenance
+### Provenance
 
 Every skill carries a sourcing header naming its canonical method and what it is
 **not** grounded in. A skill with an empty "not grounded" line is either very well
@@ -214,14 +373,18 @@ deliberately does not settle, whether market failure is the right primary test f
 public action, or whether the better question is what direction is embedded in a
 framing and who chose it.
 
----
-
-## Building on this
+### Building on this
 
 [`docs/AUTHORING.md`](docs/AUTHORING.md) is the contract: how the method layer and
 the skill layer differ, how to compress one into the other, frontmatter that works
 on every surface, why descriptions matter more than anything else in the file, and
 the loop that turns real use into a revision.
 
-The two rules most often broken are *no document-shaped replies* and *do not
-restate the house rules*.
+The 2 rules most often broken are *no document-shaped replies* and *do not restate
+the house rules*.
+
+### Other surfaces
+
+Each skill is a `SKILL.md` with spec-compliant frontmatter, so they also work
+through the Skills API. If you assemble several into one system prompt, put
+`house-rules` first.
