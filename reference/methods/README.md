@@ -1,6 +1,6 @@
 # The method layer
 
-The canonical methods. Everything in `.claude/skills/` is written against these
+The canonical methods. Everything in `skills/` is written against these
 files, and every runtime skill names the one it is grounded in.
 
 These are **not runtime prompts.** They are deliberately rich: provenance,
