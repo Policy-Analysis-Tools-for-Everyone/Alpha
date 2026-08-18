@@ -1,0 +1,370 @@
+---
+name: decide
+description: >
+  Use when a choice has to be made: reaching a reasoned recommendation, saying
+  what the current analysis supports and why, testing whether the preferred
+  option is actually viable, or judging whether the case is decision-ready at
+  all. Also use when someone cannot decide and the reason needs diagnosing, when
+  the choice is between acting now and learning first, when the question is how
+  reversible a commitment is or whether it could be staged, and when a
+  recommendation needs its strongest contrary case, its accepted trade-off and
+  the conditions that should reopen it made explicit.
+metadata:
+  status: written, not behaviourally tested
+---
+
+<!--
+Canonical method:
+  reference/methods/capabilities/decision-guidance.md
+  - naming the decision and the decision maker, choosing on the current
+    analysis, the decisive reason, decision difficulty as a diagnostic,
+    reversibility and staged commitment, the compact value/capacity/support
+    check, the twenty-dollar-bill test, status-quo resistance, ownership, the
+    strongest contrary case, dissent, decision readiness and the record.
+    Provenance: Bardach Step Seven and the close of Step Six, plus the project's
+    own requirements that accountable choices stay with people and that records
+    preserve unresolved uncertainty and dissent.
+
+Distilled shared behaviour carried here:
+  reference/methods/shared/strategic-triangle-guidance.md - the compact final
+    check on public value, operational feasibility and required support, the
+    binding-weakness diagnosis, and "good enough" as a disciplined judgement
+    rather than hand-waving. The full method stays in the file.
+  reference/methods/shared/uncertainty-and-learning-guidance.md - only the
+    learn-now-versus-act-now judgement and the requirement that "learn more"
+    carries a question and a decision rule.
+  reference/methods/shared/risk-opportunity-appraisal-guidance.md - lock-in,
+    preserving future choices, review conditions and the decision record.
+
+Not grounded:
+  - Nothing beyond the files above.
+-->
+
+# Decide
+
+Load `house-rules` before anything else here, and treat it as binding on
+everything below. If it cannot be loaded, its two hardest rules still hold:
+invent nothing, and the user decides.
+
+## What this owns
+
+The actual choice: what the current analysis supports, why, what it accepts in
+exchange, whether the case is ready, and what should reopen it.
+
+**In live use this should be short.** Most of the work should already have been
+done. If this capability is doing a lot of heavy lifting, something upstream is
+unfinished, and saying which is more useful than another page of caveats.
+
+## You may recommend. You are not the decision maker.
+
+Identify who can formally choose, who is accountable for the consequences, and
+whether specialist approval is required: legal, financial, operational,
+scientific, technical, equality, ethics, safety, or the expertise of affected
+communities.
+
+For high-impact or contested decisions, name the human and specialist review the
+decision needs. You can identify that need. Never present yourself as a substitute
+for judgement you do not have, and never write as though an AI-generated
+recommendation settles a public decision.
+
+The record should be able to distinguish analysis you produced, evidence the user
+supplied, specialist advice, the proposed recommendation, and the person or
+institution that accepted it.
+
+## Name the decision, then choose
+
+Not "which option is best" but **what decision is being made, by whom, at what
+level of commitment?** Approve full adoption, fund the next stage, choose between
+two packages, continue current policy, stop an intervention, run a bounded test,
+legislate, procure, or recommend one option to an authorised decision maker.
+
+Level of commitment matters, because the same evidence can justify a reversible
+trial and fail to justify a permanent national decision.
+
+**Narrow to the serious alternatives.** Which still have a credible claim? Why
+were the others removed? Is the preferred option being compared with the strongest
+realistic competitor, or with a weak one? Is business-as-usual still serious enough
+to retain? Do not carry a large menu here because the option stage started broad.
+
+**Then choose.** Take the position of the decision maker and say what to do based
+on the analysis.
+
+Do not retreat into "there are advantages and disadvantages", "it depends", "there
+is no perfect answer" or "the final choice is political". All of those may be true
+and none of them says what the current analysis supports. A conditional or
+provisional decision is still a decision.
+
+**State the decisive reason:** *prefer `[option]` because `[reason]`.* The reason
+has to come from work already done: a stronger expected outcome, an acceptable
+trade-off, a binding constraint, better feasibility, a lower serious downside,
+preservation of future options, a stronger public-value case. Never invent a new
+criterion at the finish line, particularly one that happens to favour the option
+you prefer.
+
+**State what the choice accepts:** *this accepts `[sacrifice, risk or cost]` in
+exchange for `[gain]`.* If the choice depends on giving one value priority over
+another, say so. Do not hide the judgement inside a score.
+
+## Use difficulty deciding as a diagnostic
+
+If choosing remains unusually hard, the useful question is **what exactly is
+stopping the choice?** The answer is almost always a specific unfinished piece of
+work:
+
+| What is stopping it | Where it belongs |
+|---|---|
+| the central trade-off is still unclear | `trade-offs` |
+| a key outcome forecast is too weak | `outcomes` |
+| a criterion is contested, or one is missing | `criteria` |
+| implementation is not credible | `options`, and the capacity check below |
+| required support is uncertain | `stakeholders`, and the support check below |
+| a serious option is missing | `options` |
+| one uncertainty could reverse the choice | `evidence` |
+| the value judgement has not been made | the user, now |
+
+Go there. Do not add another page of caveats when the real problem is unfinished
+analysis.
+
+**Distinguish uncertainty from indecision.** Uncertainty is normal. Could the
+remaining uncertainty realistically change the preferred option? Is it already
+reflected in the ranges? Can we act responsibly while preserving room to change?
+Would another learning exercise produce enough decision value to justify the
+delay? Do not demand certainty, and do not use uncertainty as cover for avoiding
+judgement.
+
+**Learn now or act now.** Where a material unknown remains: what is the critical
+uncertainty, would resolving it change the decision, what is the lightest credible
+way to resolve it, what does that cost in money, time and delay, and what happens
+if we act now and learn during delivery? "Learn more" needs a stated question and
+a decision rule, or it is procrastination with a plan attached.
+
+The available answers are wider than yes or no: choose now, choose conditionally,
+stage the commitment, run a bounded test, gather one missing piece of evidence, or
+defer because the evidence is not decision-ready.
+
+## Reversibility and staging
+
+Before demanding more evidence, ask what happens if the choice proves wrong. A
+more reversible choice can justify action under greater uncertainty. A
+hard-to-reverse choice deserves more scrutiny.
+
+What is actually hard to undo: sunk financial cost, legal commitment,
+infrastructure, contracts, organisational restructuring, technology lock-in,
+effects on rights or safety, public expectations, political commitment, dependency
+on a supplier, closure of future options. Do not reduce this to a yes/no label:
+say what is difficult to undo and why. "Reversible" used casually over a £40m
+platform procurement is a serious error.
+
+**Preserving future choices has value under uncertainty, and it has costs.** Does
+this option close off another path? Does it create lock-in before important
+uncertainty resolves? Could a staged choice preserve more useful options? Does
+delay itself create lock-in or lost opportunity? Flexibility is not automatically
+preferable.
+
+**Staging has to correspond to something real:** a genuine uncertainty or a
+delivery dependency. An initial cohort then expansion, limited funding then
+release of later funds, a prototype then rollout, temporary regulation then review,
+one component first and another after evidence arrives. Say what condition governs
+the next stage. Staging with no such condition is indecision in instalments.
+
+## The compact viability check
+
+A final coherence check, not a reopening of the criteria work. Three questions and
+a diagnosis.
+
+**Worthwhile enough?** What public result is expected, who benefits, who bears
+cost, harm or risk, does the recommendation still address the original problem,
+and compared with the strongest alternative is the value case good enough?
+
+**Deliverable enough?** Is the funding realistically obtainable? Is there legal
+authority? Does the technical capability exist? Are the people and skills
+available? Can the organisations involved manage the work? Does the evidence of
+feasibility match the intended scale and pace? Never assume capacity will appear
+after approval: say who builds it, with what, over what period.
+
+**Supported enough?** Which actors' backing, consent, funding, cooperation or
+non-opposition is needed? Do they support the purpose? Do they believe the
+delivery model? Could they block, delay or withdraw something essential? Is
+support conditional on assumptions the analysis no longer believes? General
+popularity is not political feasibility, and a single approval is not a stable
+environment.
+
+**Then name the binding weakness.** Viable enough across all three; valuable and
+supported but weak on capacity; valuable and deliverable but weak on support;
+deliverable and supported but weak on public value; or weak on several. Do not
+force it into one category.
+
+The question that follows is the one that matters: **is that weakness acceptable
+for this stage, repairable before action, or serious enough to change the
+choice?** Perfect fit is not required. "Good enough" means the remaining
+weaknesses are understood well enough that proceeding is a defensible judgement.
+It does not mean two of three look fine, or that problems can be dealt with later.
+Name the weakness, say why proceeding remains defensible, and say what would
+trigger review.
+
+## Ask why it is not already happening
+
+If this is such a good idea, why is nobody doing it? The point is to find an
+assumption the analysis has missed.
+
+Possible answers: actor resistance, institutional fragmentation, weak incentives,
+missing authority, funding, implementation difficulty, lack of ownership, a hidden
+downside, a poor previous attempt, or genuinely insufficient evidence until now.
+Find the actual reason or mark it unknown. Generic language here is worthless.
+
+**Look for status-quo resistance.** Who loses authority, resources or discretion?
+Who carries new work or risk? Which routine has to change? Who has the means to
+resist? A recommendation that assumes powerful actors will simply cooperate is
+incomplete.
+
+**Look for the missing owner.** Who has reason to carry this? Enough authority or
+access? The ability to coordinate the actors required? Willingness to spend
+organisational or political capital? Responsibility after initial approval? A
+policy can create public value and go nowhere because no actor has enough incentive
+to make it happen.
+
+**Failing this test is a redesign prompt, not a verdict.** Change the scale, the
+sequencing, the delivery body, who bears cost; add a capability-building stage;
+change the institutional arrangement; address the blocking interest; or go back to
+`options`. Do not protect the original option because it reached this stage.
+
+## Test the strongest case against yourself
+
+Not a long generic list of risks. **What is the strongest evidence-based case that
+the preferred option is wrong?** That the causal mechanism is weak, the forecast
+optimistic, a value underweighted, implementation likely to fail, a distributional
+harm unacceptable, another option better at preserving future choice, or the legal
+or political assumptions thin.
+
+State it fairly. Constructing an easy objection in order to dismiss it is worse
+than not asking.
+
+**Say what kind of disagreement remains,** because the kinds have different
+remedies: facts, forecasts, values, risk tolerance, feasibility, or authority.
+Never call a value disagreement an evidence gap.
+
+**Record material dissent.** Where a serious reviewer, stakeholder or analyst
+reaches a different conclusion: their view, its main reason, what evidence
+supports it, why the recommendation differs, and what future evidence would
+strengthen their case. Consensus is not a condition for deciding, and dissent does
+not disappear because a choice was made.
+
+## Is the case decision-ready?
+
+Ready when the serious alternatives are clear, the evidence is good enough for
+this level of commitment, the criteria are visible, decision-relevant outcomes have
+been projected as far as reasonably possible, the main trade-off is explicit,
+material uncertainty is understood, value and capacity and support are good enough
+for the proposed commitment, the strongest contrary case has been heard, and the
+accountable decision maker can understand what they are accepting.
+
+Decision-ready does not mean certain.
+
+**Where it is not ready, be specific.** Not "more work is needed" but:
+
+> The choice between A and B turns on whether the service can absorb 15,000
+> additional cases a month. Current evidence does not establish that. Test
+> operational capacity before recommending national adoption.
+
+**But do not reject every imperfect option.** All serious options have weaknesses.
+Ask whether this one is understood, tolerable, repairable, monitorable, or capable
+of reversing the choice. Use the standard appropriate to the level of commitment,
+not perfection.
+
+## What good output looks like
+
+> `[Decision maker]` should `[decision]` because `[decisive reason]`. This accepts
+> `[trade-off or value judgement]`. The case is `[ready / conditional / staged /
+> not ready]` because `[reason]`. It depends most on `[assumption or uncertainty]`.
+> It should be reconsidered if `[review condition]`. The strongest serious case
+> against is `[challenge]`.
+
+Use the form that matches the evidence: a recommendation, a conditional
+recommendation (*proceed if implementation cost stays below £X and the legal route
+is confirmed*), a staged one (*approve stage 1 for 6 months, wider rollout
+conditional on uptake and delivery thresholds*), or an explicit not-ready
+judgement.
+
+**Record the switchpoint where one is known,** and **review conditions tied to
+something that could actually change the case**: cost exceeding a threshold,
+uptake below a milestone, a legal change, a required actor withdrawing, an expected
+feedback failing to appear, a serious harm emerging, a better option becoming
+feasible, delivery evidence undermining the causal theory. Not a generic "review in
+12 months" unless timing itself matters. A review condition asks whether something
+changed enough to reconsider the choice; monitoring asks whether the policy is
+operating. Keep them separate.
+
+Keep any decision record short enough to be used later. It is not a second copy of
+the analysis.
+
+## Boundaries and handoffs
+
+Continue the work; do not announce a handoff.
+
+- The case is not decision-ready, so name the specific gap and go to the
+  capability that owns it, using the diagnostic table above.
+- The preferred option fails the viability check, so go back to `options` with the
+  binding weakness as the design brief.
+- The recommendation is clear and now has to be communicated, so go to `story`.
+- Support or resistance is the binding issue and the actors are not understood, so
+  go to `stakeholders` rather than guessing motives here.
+
+## Self-check
+
+**Must pass:**
+
+- the decision and the accountable decision maker are clear
+- serious alternatives have been narrowed and the comparison is against the
+  strongest competitor
+- the method reaches a choice, a conditional choice, a staged choice or an
+  explicit not-ready judgement
+- the decisive reason follows from the preceding analysis, with no new criterion
+  invented at the finish line
+- the accepted trade-off and the material value judgement are visible
+- decision difficulty has been diagnosed rather than hidden in caveats
+- material uncertainty has been tested for whether it could reverse the choice
+- reversibility or lock-in considered where commitment is significant
+- public value, operational feasibility and required support have had a compact
+  final check, with the binding weakness named
+- the twenty-dollar-bill question has been asked and answered, or marked unknown
+- the proposal has an identifiable actor capable of carrying it
+- the strongest serious contrary case has been stated fairly
+- material dissent remains visible
+- high-impact or contested decisions retain appropriate human and specialist
+  review
+- the agent does not present itself as the accountable authority
+
+**Should pass:**
+
+- staged commitment considered where it could reduce costly uncertainty
+- a known switchpoint recorded
+- review conditions tied to evidence or events capable of changing the
+  recommendation
+- the recommendation reconnects to the original problem and primary criterion
+- weak options removed rather than retained for symmetry
+
+## Failure modes
+
+- **Refusing to choose.** Ending with pros and cons.
+- **Recommendation by instinct**, not following from criteria, outcomes and
+  trade-offs.
+- **A new criterion at the finish line**, appearing because it favours the
+  preferred option.
+- **Uncertainty used to avoid judgement**, where any unknown blocks action.
+- **False confidence.** A small analytical advantage becoming a categorical
+  recommendation.
+- **Learning for its own sake.** More research with no decision it could change.
+- **"Reversible" used casually** despite sunk cost, legal commitment, lock-in or
+  harm.
+- **Staging as indecision**, with no condition governing the next stage.
+- **Political feasibility read as capitulation.** A worthwhile option abandoned
+  because someone currently objects.
+- **Capacity assumed after approval.**
+- **Skipping the twenty-dollar-bill question** on an apparently obvious
+  improvement.
+- **No owner.** "Government" or "the organisation" expected to carry it.
+- **A straw contrary case.**
+- **Dissent erased** once the choice is made.
+- **The agent as decision maker**, presenting its recommendation as authorised
+  judgement.
+- **A generic review date** with no condition attached.
