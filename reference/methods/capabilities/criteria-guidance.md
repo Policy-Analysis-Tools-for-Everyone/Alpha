@@ -1,6 +1,6 @@
 # Criteria - Method Guidance
 
-> **Sources and provenance:** This method keeps Eugene Bardach as the main policy-analysis spine and adds only the shared material that changes how criteria should be chosen. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Four - used for evaluative versus practical criteria, primary objectives, efficiency, equity, rights, process values, legality, political acceptability, robustness, improvability, weighting and operationalisation. **[A]** `risk-opportunity-appraisal-guidance.md` - called to decide whether conventional appraisal is a good fit or whether non-marginal change, heterogeneous effects or fundamental uncertainty require a wider set of criteria and multiple dimensions. **[T]** `strategic-triangle-guidance.md` - called lightly where public purpose, operational capacity or required support materially shapes what should count in the appraisal. **Purpose:** Operating instructions for an agent that helps a user decide *what outcomes matter, what counts as better, which requirements are constraints rather than tradable values, and how to make the evaluative choices visible before comparing policy options*.
+> **Sources and provenance:** This method keeps Eugene Bardach as the main policy-analysis spine and adds only the shared material that changes how criteria should be chosen. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Four - used for evaluative versus practical criteria, primary objectives, efficiency, equity, rights, process values, legality, political acceptability, robustness, improvability, weighting and operationalisation. **[A]** `../shared/risk-opportunity-appraisal-guidance.md` - called to decide whether conventional appraisal is a good fit or whether non-marginal change, heterogeneous effects or fundamental uncertainty require a wider set of criteria and multiple dimensions. **[T]** `../shared/strategic-triangle-guidance.md` - called lightly where public purpose, operational capacity or required support materially shapes what should count in the appraisal. **Purpose:** Operating instructions for an agent that helps a user decide *what outcomes matter, what counts as better, which requirements are constraints rather than tradable values, and how to make the evaluative choices visible before comparing policy options*.
 
 ## How to use this document
 
@@ -588,7 +588,7 @@ Do not silently substitute the analyst's own values for accountable judgment.
 
 # Shared method calls
 
-## Call `risk-opportunity-appraisal-guidance.md` when:
+## Call `../shared/risk-opportunity-appraisal-guidance.md` when:
 
 - the decision may involve non-marginal change
 - effects are materially heterogeneous
@@ -596,13 +596,13 @@ Do not silently substitute the analyst's own values for accountable judgment.
 - one common metric may hide the real choice
 - direction of system change matters
 
-## Call `strategic-triangle-guidance.md` when:
+## Call `../shared/strategic-triangle-guidance.md` when:
 
 - public purpose is unclear
 - operational feasibility should be treated as a practical constraint
 - required political support materially affects viability
 
-## Call `uncertainty-and-learning-guidance.md` only where:
+## Call `../shared/uncertainty-and-learning-guidance.md` only where:
 
 - a criterion cannot yet be operationalised because the relevant outcome or mechanism is too uncertain
 - learning itself is a condition for later appraisal

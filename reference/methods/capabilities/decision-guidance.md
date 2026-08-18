@@ -1,6 +1,6 @@
 # Decision - Method Guidance
 
-> **Sources and provenance:** This method keeps Eugene Bardach as the policy-analysis spine and adds only the existing shared and product material that changes how the final choice should be made. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Seven and the closing guidance from Step Six - used for actually choosing, using difficulty deciding as a diagnostic, narrowing to serious alternatives, testing adoption and implementation, the twenty-dollar-bill test, status-quo resistance and the need for an actor with enough incentive and ability to carry the proposal. **[T]** `strategic-triangle-guidance.md` - called as a final check on public value, operational feasibility and required political support. **[U]** `uncertainty-and-learning-guidance.md` - called when the remaining uncertainty may justify learning before full commitment, especially where the choice can be staged or reversed. **[A]** `risk-opportunity-appraisal-guidance.md` - called for lock-in, path dependence, review conditions, multi-dimensional judgment and the decision record. **[P]** MDEE.MD product roadmap - used for the project-level requirements that accountable choices stay with people, high-impact or contested decisions receive human review and specialist input, and decision records preserve unresolved uncertainty, dissent and conditions for review. **Purpose:** Operating instructions for an agent that helps a user *reach a reasoned policy choice, state why that choice follows from the preceding analysis, test whether it is viable enough to act on, identify what could overturn it, and preserve the reasoning for later review*. The agent supports the decision. It does not take accountable public authority from the person or institution responsible for it.
+> **Sources and provenance:** This method keeps Eugene Bardach as the policy-analysis spine and adds only the existing shared and product material that changes how the final choice should be made. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Seven and the closing guidance from Step Six - used for actually choosing, using difficulty deciding as a diagnostic, narrowing to serious alternatives, testing adoption and implementation, the twenty-dollar-bill test, status-quo resistance and the need for an actor with enough incentive and ability to carry the proposal. **[T]** `../shared/strategic-triangle-guidance.md` - called as a final check on public value, operational feasibility and required political support. **[U]** `../shared/uncertainty-and-learning-guidance.md` - called when the remaining uncertainty may justify learning before full commitment, especially where the choice can be staged or reversed. **[A]** `../shared/risk-opportunity-appraisal-guidance.md` - called for lock-in, path dependence, review conditions, multi-dimensional judgment and the decision record. **[P]** MDEE.MD product roadmap - used for the project-level requirements that accountable choices stay with people, high-impact or contested decisions receive human review and specialist input, and decision records preserve unresolved uncertainty, dissent and conditions for review. **Purpose:** Operating instructions for an agent that helps a user *reach a reasoned policy choice, state why that choice follows from the preceding analysis, test whether it is viable enough to act on, identify what could overturn it, and preserve the reasoning for later review*. The agent supports the decision. It does not take accountable public authority from the person or institution responsible for it.
 
 ## How to use this document
 
@@ -174,7 +174,7 @@ Do not use uncertainty as an excuse to avoid judgment.
 
 ## 9. Decide whether to learn more or act [U]
 
-Call `uncertainty-and-learning-guidance.md` when a material unknown remains.
+Call `../shared/uncertainty-and-learning-guidance.md` when a material unknown remains.
 
 Ask:
 
@@ -850,7 +850,7 @@ Keep this record concise enough to use later.
 
 This file owns the **final analytical choice**.
 
-## Call `strategic-triangle-guidance.md` when:
+## Call `../shared/strategic-triangle-guidance.md` when:
 
 - public value, delivery capacity or required support could defeat the preferred option
 - one of those dimensions is the binding weakness
@@ -860,7 +860,7 @@ Use a compact readout.
 
 Do not reproduce the whole triangle.
 
-## Call `uncertainty-and-learning-guidance.md` when:
+## Call `../shared/uncertainty-and-learning-guidance.md` when:
 
 - a decision-sensitive uncertainty remains
 - the choice may be staged
@@ -868,7 +868,7 @@ Do not reproduce the whole triangle.
 - the question is whether to learn more or act now
 - a review condition needs to connect to a real learning question
 
-## Call `risk-opportunity-appraisal-guidance.md` when:
+## Call `../shared/risk-opportunity-appraisal-guidance.md` when:
 
 - lock-in or path dependence matters
 - preserving future choices matters

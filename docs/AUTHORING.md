@@ -1,343 +1,386 @@
-# Authoring a method skill
+# Authoring a skill
 
-**Status: draft.** Revised as modules get written, which is the point.
-Anything here that turns out to be wrong in practice should be changed,
-not worked around.
+How to write or revise one skill, so that 11 separately-authored files read as one
+agent rather than 11 documents.
 
-This guide covers how to write one method module, so that eleven
-separately-authored modules read as one agent rather than eleven
-documents.
+**Status: alpha.** Revised as skills are tested, which is the point. Anything here
+that turns out to be wrong in practice should be changed, not worked around.
 
 ---
 
-## 1. The library
+## 1. Two layers, and the difference between them
 
-Ten sequential modules plus a separate evaluation skill. Modules `01`–`09`
-are the method itself, in order; `00` holds everything shared.
+**The method layer** is `reference/methods/`. Ten capability methods and 3 shared
+methods, canonical, deliberately rich: provenance, distinctions, source synthesis,
+worked examples, anti-patterns, scaffolds, boundaries and self-check rubrics. They
+are written for maintainers and for future revisions.
 
-| Module | Method | Status |
-|---|---|---|
-| `00-house-rules` | Shared rules — tone, evidence discipline, entry, the three lenses | Written, untested as a whole |
-| `01-problem` | Bardach 1 | Written, tested once (see `evals/transcripts/`) |
-| `02-stakeholders` | Not a Bardach step — separated out deliberately | Not written |
-| `03-evidence` | Bardach 2 | Not written — no source (§6) |
-| `04-options` | Bardach 3 | Not written — no source (§6) |
-| `05-criteria` | Bardach 4 | Not written — no source (§6) |
-| `06-outcomes` | Bardach 5 | Not written — no source (§6) |
-| `07-trade-offs` | Bardach 6 | Not written — no source (§6) |
-| `08-decide` | Bardach 7 | Not written — no source (§6) |
-| `09-story` | Bardach 8 | Not written — source present (§6) |
-| `10-evaluation` | Not a method step — gathers feedback on the agent's own use | Not written |
+**The skill layer** is `.claude/skills/`. Eleven runtime files containing only the
+behaviour that changes what the agent does in a live conversation.
 
-They live in `.claude/skills/<nn>-<name>/SKILL.md`, so cloning the
-repository gives a working agent with no build step.
+**Method completeness is not skill completeness.** The most common way to write a
+bad skill in this repository is to compress the method faithfully. A method file
+of 5,000 words does not become a good 5,000-word skill; it becomes a document the
+agent reads instead of acting.
 
-**Three things cut across every module rather than being modules of
-their own:** Bardach's method (which *is* the `01`–`09` spine, not a
-separate thing to load), the three lenses of public value / operational
-capacity / political support, and the public-value material derived from
-the IIPP papers in `reference/methods/`.
+### The extraction test
 
-Cross-cutting has a specific mechanical meaning here. Claude Code loads
-**one** skill by description match, so a separate cross-cutting skill
-would not reliably load alongside a method module. Therefore:
-`00-house-rules` explains each lens **once**, and every method module
-**applies** them at its own step without re-teaching them. Module 01's
-move 6 is the worked example.
+A source insight belongs in a skill only if it changes what the agent:
 
-The cost of that arrangement, worth watching: `00-house-rules` grows, and
-every module carries lens-application moves. If house rules starts
-reading as a dumping ground, that is the signal to revisit.
+- recognises
+- asks
+- challenges
+- distinguishes
+- produces
+- refuses to invent
+- hands off
+- or uses to decide that enough work has been done
 
-**A skill name may begin with a digit.** Verified in practice — modules
-prefixed `01`, `09` and `10` all registered and were invoked correctly by
-name in Claude Code. Ordering by directory name works.
+Everything else stays in the method layer. When revising, the useful question is
+not "is this in the method?" but "what would the agent do differently if this line
+were deleted?" If the answer is nothing, delete it.
 
-**Suggested order to write the rest:** `09-story` is unblocked (its
-source is present). `02-stakeholders` and `10-evaluation` need scoping
-before they need sources. `03`–`08` wait on the method text for
-Bardach's steps 2–7.
+### What to extract, per capability
+
+1. **Trigger.** When should the agent recognise this capability is needed?
+2. **Ownership.** What job does it own, and what does it explicitly not own?
+3. **Attention.** What should it notice, challenge or distinguish?
+4. **Questions.** What might it need to ask?
+5. **Question discipline.** When should it stop asking?
+6. **Moves.** The smallest useful reasoning sequence.
+7. **Transitions.** What must be true before moving on.
+8. **Output behaviour.** What a useful conversational result looks like.
+9. **Handoffs.** What kind of gap belongs to a neighbour.
+10. **Failure modes.** What should never happen.
+11. **Self-check.** What must be true before the turn is returned.
 
 ---
 
-## 2. The loop, per skill
+## 2. The library
 
-1. **Gather the source.** If there is none, stop and get some — see §6.
-2. **Draft `SKILL.md`** using the prompt in §5.
-3. **Use it on real work.** Not a test case; an actual problem you have.
-4. **Save the conversation.** This is the project's only behavioural
-   evidence — see §7.
-5. **Revise.** Most of the value is here, not in the first draft.
-6. **Re-test cold**, with `00-house-rules` loaded and ideally by someone
-   who did not write the module. Authoring and testing in the same
-   session catches structural faults but not much else — the module's
-   author already knows what the file says.
-7. **Mark it done** against §8.
+Method paths below are relative to `reference/methods/`.
+
+| Skill | Canonical method |
+|---|---|
+| `house-rules` | no single method; see its sourcing header |
+| `problem` | `capabilities/problem-definition-guidance.md` |
+| `stakeholders` | `capabilities/stakeholder-analysis-guidance.md` |
+| `evidence` | `capabilities/evidence-guidance.md` |
+| `options` | `capabilities/alternatives-guidance.md` |
+| `criteria` | `capabilities/criteria-guidance.md` |
+| `outcomes` | `capabilities/outcomes-guidance.md` |
+| `trade-offs` | `capabilities/trade-offs-guidance.md` |
+| `decide` | `capabilities/decision-guidance.md` |
+| `story` | `capabilities/storytelling-guidance.md` |
+| `evaluation` | `capabilities/agent-evaluation-guidance.md` |
+
+Three runtime names differ from their method filenames: `options`, `decide` and
+`story`. Product language and source language differ, and forcing either to match
+the other would lose something.
+
+**No numeric prefixes.** They encoded a sequence the product does not have. A
+skill name may begin with a digit, so this is a product decision rather than a
+platform constraint, and reintroducing numbering would reintroduce the claim that
+the capabilities are stages.
+
+**Directory name is the identity.** In Claude Code the command comes from the
+directory; frontmatter `name` is the display label. Keep them identical.
 
 ---
 
-## 3. The module template
+## 3. Frontmatter
 
-### Frontmatter
+Restrict frontmatter to the 6 fields the Agent Skills spec allows, because
+anything else fails validation when the skill is uploaded to claude.ai or through
+the Skills API:
 
 ```yaml
 ---
-name: 01-problem
+name: problem
 description: >
-  Defining and testing a policy problem — what the condition is, who is
-  affected, at what scale, and whether a solution has been smuggled in.
-status: draft
+  Use when the user brings a public problem that is not yet defined: messy
+  notes, a concern, a complaint, an inherited proposal, a draft problem
+  statement, or a solution presented as if it were a problem. ...
+metadata:
+  status: written, not behaviourally tested
 ---
 ```
 
-`description` is what Claude Code matches on to decide the skill is
-relevant, so write it as *when this method applies*, not as a title. It
-is the single most important line in the file: a module that never
-triggers is a module that does not exist.
+Allowed: `name`, `description`, `license`, `compatibility`, `metadata`,
+`allowed-tools`. Claude Code accepts more (`when_to_use`, `model`, `paths`,
+`argument-hint` and others), and those work in Claude Code only. Anything outside
+the 6 produces `Unexpected key(s) in SKILL.md frontmatter` on the other surfaces,
+so keep per-skill status inside `metadata`, which is a free-form map, rather than
+as a top-level `status:` key.
 
-### Sourcing header
+Constraints worth checking mechanically: `name` is at most 64 characters and only
+lowercase letters, digits and hyphens; `description` is non-empty and at most
+1,024 characters; neither may contain XML tags or the words "claude" or
+"anthropic".
 
-Immediately after the frontmatter, an HTML comment recording what this
-module is grounded in, using the source keys from
-[BEHAVIOUR_SPEC.md](./BEHAVIOUR_SPEC.md):
+### The description is the most important line in the file
+
+It is what the agent matches against to decide the skill is relevant. Write it as
+a **recognition rule**, not a course title.
+
+The user will not say "use criteria". They will say the options are hard to
+compare and they do not know what they are supposed to be measuring. The
+description has to catch that.
+
+What works: start with "Use when", then the situations in the user's own terms,
+then the symptoms that should also trigger it, then any adjacent case it should
+**not** take. `criteria` and `trade-offs` overlap enough that both need the
+boundary stated, or one will swallow the other.
+
+A skill that never triggers is a skill that does not exist. Test descriptions with
+the routing pairs in `evals/capability/alpha-pack.md`.
+
+---
+
+## 4. Sourcing header
+
+Immediately after the frontmatter, an HTML comment naming the canonical method
+first:
 
 ```html
 <!--
-Grounded in:
-  [B] reference/methods/bardach-problem-definition-guidance.docx
-  [J] reference/copilot-json/declarativeAgent_0.json (instructions)
+Canonical method:
+  reference/methods/capabilities/problem-definition-guidance.md
+  - what it supplies. That file carries the underlying provenance.
+
+Distilled shared behaviour carried here:
+  reference/methods/shared/uncertainty-and-learning-guidance.md - which part,
+    and what deliberately stays in the file.
+
 Not grounded: <anything asserted without a source, and why>
 -->
 ```
 
-The "not grounded" line matters more than the rest. A module with an
-empty one is either very well sourced or not being honest.
+**Point at the canonical method, not the original sources.** The method file
+already carries its own citations. A skill re-listing every paper and PDF is
+maintaining a second copy of provenance that will drift. List an original source
+only where a claim bypasses the method layer entirely.
 
-### Body
+Keep 4 kinds of grounding distinguishable, using the keys in
+[BEHAVIOUR_SPEC.md](./BEHAVIOUR_SPEC.md): canonical method, recovered
+original-agent behaviour, project-owner product decisions, and behavioural
+evidence from testing.
 
-Five parts, in this order:
+**The "not grounded" line matters more than the rest.** A skill with an empty one
+is either very well sourced or not being honest. Where a skill genuinely adds
+nothing beyond its method file, say that explicitly rather than leaving the line
+off.
 
-1. **What this method is for, and when it applies.** Short. Written as
-   recognition, not permission — the user does not announce which method
-   they want.
-2. **The moves.** Numbered, each with an explicit *move on when…*
-   condition. These conditions are what stop the sequence becoming a
-   march, and their absence is a named failure mode (BEHAVIOUR_SPEC A4,
-   A14).
-3. **What a strong output looks like.** Concrete enough to test against.
-4. **Self-check.** Must-pass and should-pass, in the shape of A7.
-5. **Failure modes.** What going wrong looks like, so it is recognisable.
+Record revisions in the header too, with what the evidence was. A skill whose
+instructions cannot be traced to a reason becomes impossible to safely remove
+anything from.
 
 ---
 
-## 4. Constraints every module must satisfy
+## 5. Body
 
-Non-negotiable, because they hold the library together:
+The 5-part shape still works and most skills use it:
 
-1. **No document-shaped replies.** Never `## Headings` and a report as a
-   routine answer. The four-part output — candidate, critique, revision,
-   readout — is the right *content*; a Markdown document is the wrong
-   *shape*. Markdown formats a message; it does not turn one into a
-   filed document. (CLAUDE.md; BEHAVIOUR_SPEC B1.)
+1. **What this owns, and when it applies.** Written as recognition, not
+   permission. Include what it does **not** own.
+2. **The moves**, each with an explicit transition condition.
+3. **What strong output looks like.** Concrete enough to test against.
+4. **Self-check.** Must-pass and should-pass.
+5. **Failure modes.** Recognisable descriptions of going wrong.
 
-   **This bans a report, not structure.** The original instructions
-   label and bold the four output parts, so labelled parts, short lists
-   and bold labels are faithful and often necessary. Burying the four
-   parts in continuous prose to avoid looking like a document is the
-   same failure from the other side, and it is the one module 01 hit
-   first (see its revision note). Structure the reply; do not file it.
-2. **Do not restate the house rules.** Tone, evidence discipline,
-   competing framings, the vague-term challenge and the three lenses
-   live in `00` only. Eleven copies drift; one does not. Modules
-   *apply* the lenses at their own step; they do not re-explain what
-   the lenses are.
-3. **Never name the method or framework in output — but use its
-   vocabulary freely.** No "using Bardach's third step", no explaining
-   the method instead of applying it: one coherent way of working, not a
-   tour of named frameworks. The ban is on the names and the tour.
-   *Public value*, *operational capacity*, *political support*,
-   *deficit*, *excess*, *mechanism*, *symptom* and *constraint* are the
-   working vocabulary and plain English besides — use them directly and
-   without hedging. Reading this constraint as a ban on the terms
-   produces evasive answers, which is what happened on module 01's first
-   test.
+Do not preserve the shape mechanically. `house-rules` has no moves. `stakeholders`
+is organised around an artefact rather than a sequence. Behavioural completeness
+beats format symmetry.
+
+**Write standing instructions, not one-time steps.** An invoked skill's content
+enters the conversation once and stays for the session; the file is not re-read on
+later turns. Anything that should apply throughout has to read as a standing
+habit. This is not theoretical: the first real test failed on exactly this, twice,
+because two instructions were buried inside a numbered move and never fired.
+
+**Every multi-move skill needs stopping or transition conditions.** They are what
+stop a sequence becoming a march, and their absence is a named failure mode in the
+behaviour specification.
+
+**Size.** Roughly 1,000 to 2,500 words is useful pressure, not a limit. Keep the
+file under 500 lines. A skill materially longer than its neighbours should have a
+reason.
+
+---
+
+## 6. Constraints every skill must satisfy
+
+1. **No document-shaped replies.** Never a title, an executive summary or a filed
+   report as a routine answer. This bans a report, not structure: labelled parts,
+   short lists and bold labels are often exactly right. Burying a 4-part answer in
+   continuous prose to avoid looking like a document is the same failure from the
+   other side, and it is the one the first real test actually hit.
+2. **Do not restate the house rules.** Tone, question discipline, evidence
+   discipline, competing framings, the vague-term challenge, the three standing
+   considerations and the writing rules live in `house-rules` only. Eleven copies
+   drift; one does not.
+3. **Never name the method or framework in output, but use its vocabulary
+   freely.** No "using the third step", no explaining the method instead of
+   applying it. *Public value*, *operational capacity*, *political support*,
+   *deficit*, *excess*, *mechanism*, *symptom*, *constraint* are plain English and
+   should be used directly. Reading this as a ban on the terms produces evasive
+   answers, which is what happened on the first test.
 4. **Every move carries a transition condition.**
-5. **`SKILL.md` must be self-sufficient.** Assume nothing else in the
-   repository is loaded alongside it except `00-house-rules`. A
-   `references/` subdirectory is not a place to put content the module
-   needs.
+5. **Assume `house-rules` is available but do not depend on it for safety.** Each
+   skill carries one short line pointing to it, plus the two rules that would be
+   catastrophic if it were absent: invent nothing, and the user decides.
 6. **UK spelling**, concise, critical rather than affirming.
-7. **Never invent facts, figures, dates or sources.** Marked placeholders
-   and a statement of what would close the gap.
+7. **Never invent facts, figures, dates or sources.** Marked placeholders and a
+   statement of what would close the gap.
+8. **No mandatory sequence.** No skill may require the user to have completed
+   another one first.
 
 ---
 
-## 5. The authoring prompt
+## 7. How shared methods reach the runtime
 
-Reusable per module. Fill in the angle brackets.
+The conceptual design is settled: strategic alignment, uncertainty and learning,
+and risk-opportunity appraisal are shared, and they are not stages.
 
-```text
-I am authoring one method module for MDEE.MD, an agent for
-rigorous public problem solving. I want the module written to a contract,
-not written freely.
+**The mechanical rule: a capability skill carries the minimum distilled shared
+behaviour it needs, and names in its sourcing header what it deliberately left
+behind.**
 
-Read first, in this order:
-- docs/AUTHORING.md — the contract this module must satisfy
-- docs/BEHAVIOUR_SPEC.md — recovered behaviour vs added behaviour, and
-  the sourcing convention
-- .claude/skills/00-house-rules/SKILL.md — the shared rules this module
-  must NOT restate, and the three lenses it must apply without
-  re-explaining
-- <source material for this method>
+Worked examples of the size of "minimum":
 
-Write .claude/skills/<nn>-<name>/SKILL.md for: <method>.
+- `outcomes` needs the outside view, feedback and path-dependence triggers, and a
+  rule turning an ungrounded decision-sensitive forecast into a learning question.
+  It does not need the rest of the appraisal method.
+- `criteria` needs the appraisal gate: marginality, heterogeneity, quantifiable
+  versus fundamental uncertainty. Not the full dynamic appraisal method.
+- `stakeholders` needs the required-support check. Not a strategic alignment
+  tutorial.
+- `decide` needs a compact value, capacity and support check plus reversibility,
+  lock-in and review conditions. Not a restatement of every shared source.
 
-Rules:
-- Ground every instruction in the attached source material. Where you
-  cannot ground something, do not invent method guidance — leave a
-  marked TODO naming the source needed. Plausible policy-textbook
-  content written from general model knowledge is the specific failure
-  this project exists to avoid, and it is hard to spot afterwards
-  because it reads well.
-- Follow the module template in the authoring guide exactly: frontmatter,
-  sourcing header, what the method is for, the moves each with a
-  "move on when" condition, what a strong output looks like, the
-  self-check, the failure modes.
-- Satisfy every constraint in §4 of the authoring guide. The
-  no-documents rule and the do-not-restate-the-house-rules rule are the
-  two most often broken.
-- Write the module as instructions to an agent, not as an essay about a
-  method.
+**Four things this rule exists to prevent:** 3 new mandatory sequential skills;
+the full shared methods pasted into every capability; all shared theory dumped
+into `house-rules`; and relying on a file being loaded automatically at runtime.
 
-Ask me one question at a time about anything the sources leave genuinely
-ambiguous. Do not resolve ambiguity by choosing silently — tell me the
-choice and let me make it.
-```
+### Why not runtime file loading
 
-The last instruction is deliberate. Silently collapsing a genuine choice
-is the behaviour the agent itself is built to avoid; it should not be how
-the agent is built.
+Skills compose. Multiple skills can be active in one conversation, and an invoked
+skill's content stays in context for the session, so `house-rules` and a
+capability coexist without difficulty. A skill can also bundle supporting files in
+its own directory that the agent reads on demand.
+
+Neither is a reliable substitute for distillation here. Nothing guarantees
+`house-rules` was loaded, and a skill uploaded on its own to claude.ai has no
+`reference/` directory at all, so a path into the repository resolves to nothing.
+Hence: distil what is needed, and point at the canonical path for the full
+version, so both environments work.
+
+`story` is the exception worth noting. It carries the operative writing rules
+inline and points at `reference/writing/anti-ai-writing-style.md` for the full
+catalogue, because that file is long, it is genuinely worth reading before
+drafting substantial prose, and the inline subset has to work when it is
+unavailable.
 
 ---
 
-## 6. What to attach, per module
+## 8. Routing and handoffs
 
-The honest position: **two modules are written, and six of the nine
-remaining have no method source in this repository at all.**
+Skills should recognise adjacent gaps without turning the conversation into
+framework navigation.
 
-| Module | Attach | State |
-|---|---|---|
-| `00-house-rules` | `declarativeAgent_0.json`, `BEHAVIOUR_SPEC.md` (A3, A5, A10–A13, B1, B8), `strategic-triangle-case-2090.pdf` (A12), `dpi-public-value-framework.md` | Grounded — written |
-| `01-problem` | `bardach-problem-definition-guidance.docx`, `declarativeAgent_0.json`, `BEHAVIOUR_SPEC.md` (A4–A11, A14) | Best evidenced in the project — written and tested once |
-| `02-stakeholders` | *scope it first* | **No source, and no agreed scope.** Overlaps "who is affected" in `01` and the political-support lens in `00`. Settle what it uniquely owns before looking for a source |
-| `03-evidence` | *you supply* | **No source** — needs Bardach step 2 |
-| `04-options` | *you supply* | **No source** — needs Bardach step 3 |
-| `05-criteria` | *you supply* | **No source** — needs Bardach step 4 |
-| `06-outcomes` | *you supply* | **No source** — needs Bardach step 5 |
-| `07-trade-offs` | *you supply* | **No source** — needs Bardach step 6. Note the overlap with `00`'s "name the trade-off" instruction; this module is the dedicated step, `00` is the standing habit |
-| `08-decide` | *you supply* | **No source** — needs Bardach step 7. Should carry "not yet, and here's what would settle it" as a legitimate outcome |
-| `09-story` | `ucl-ppc-one-pager-instructions.pdf` | **Unblocked** — source present, not yet used. See below |
-| `10-evaluation` | *no method source needed* | Gathers feedback on the agent's own use. Its source is this project's own practice — `evals/transcripts/` and §7 below |
+Never say:
 
-### On the Copilot exports specifically
+> Now invoke the evidence skill.
 
-`declarativeAgent_0.json` is primary evidence, and worth attaching for
-`00` and `01`. Two cautions:
+Say what the analysis turns on, and continue:
 
-- **Do not attach it for modules 03–09.** The original agent stopped at
-  the problem statement and the three-lens readout (BEHAVIOUR_SPEC A15).
-  It has nothing to say about alternatives, criteria or outcomes, and
-  attaching it there invites a module that *sounds* grounded in the
-  original when it is not.
-- **`BEHAVIOUR_SPEC.md` is usually the better working document.** It has
-  already done the analysis — what is evidenced, what is inferred, what
-  is product extension, and where the sources pull against each other.
-  Use the raw JSON for the original's *voice and exact phrasing*; use the
-  spec for what the behaviour actually was. And note the `instructions`
-  field is truncated mid-sentence; do not complete it.
+> The choice currently turns on whether uptake would actually change, and we do
+> not have enough evidence for that yet.
 
-`manifest.json` is packaging metadata. Little authoring value.
+Useful adjacent boundaries, none of them compulsory:
 
-### On module 09
+- `problem` to `evidence` when the frame depends on an untested factual or causal
+  claim
+- `stakeholders` to the support question when a proposal depends on a specific
+  authoriser, funder or enabler
+- `evidence` to a learning question when a critical unknown can be reduced
+- `options` to `criteria` when the serious choice set is ready
+- `criteria` to `outcomes` when the standards are clear enough to project against
+- `outcomes` to `evidence` when a decision-sensitive projection is ungrounded
+- `outcomes` to `trade-offs` when the projections are good enough
+- `trade-offs` to `criteria` when the real disagreement is a missing or hidden
+  value
+- `trade-offs` to `decide` when the exchange is explicit
+- `decide` back to `options` or `evidence` when the case is not decision-ready
+- `story` to any upstream capability when the narrative exposes unfinished
+  reasoning
 
-The UCL one-pager instructions ground *memo structure*. Module 09 shapes
-and outlines the story; decide deliberately whether it also drafts the
-finished memo, because that is a real scope question and the source
-alone does not settle it.
-
-### Practical note
-
-The Bardach guidance and the PDFs are binary. Uploading them in claude.ai
-works directly. In Claude Code, convert to text first, or work from the
-extracted passages — do **not** edit anything under `reference/`, which
-is preserved unchanged.
+Do not force this sequence when the user entered somewhere else.
 
 ---
 
-## 7. Saving conversations
+## 9. The loop, per skill
 
-Every usable session is evidence, and the project started with none: the
-Copilot exports preserve the original agent's *configuration*, not one
-line of its behaviour. These transcripts are the first record of what
-this agent actually says.
+1. **Read the canonical method.** If a behaviour has no method behind it, do not
+   invent one. Plausible policy-textbook content written from general model
+   knowledge is the specific failure this project exists to avoid, and it is hard
+   to spot afterwards because it reads well.
+2. **Draft `SKILL.md`** against the extraction test in section 1.
+3. **Use it on real work.** Not a test case; an actual problem you have.
+4. **Save the conversation** into `evals/transcripts/<skill>/`.
+5. **Revise.** Most of the value is here, not in the first draft.
+6. **Re-test cold**, with `house-rules` loaded, ideally by someone who did not
+   write it. Authoring and testing in the same session catches structural faults
+   and not much else, because the author already knows what the file says.
+7. **Write the regression case** from anything you fixed.
+8. **Mark it done** against section 11.
 
-Save into `evals/transcripts/<module>/<name>.md`, with a header naming
-the module, the version tested and the model used. The same format
-carries beta-tester submissions, so keep it plain — and anonymise before
-committing, as `01-problem/receipt-confirmation.md` does. Substituted
-figures must be labelled as substituted, or they get cited as real
-eighteen months later.
-
-Worth saving deliberately: the conversation that made you change the
-module, and the one where it was confidently wrong. The second is more
-useful and easier to lose.
+Skill changes go through `evaluation`, which produces a change proposal with a
+failure replay and a counter-case rather than editing another skill directly. The
+counter-case is not optional: a fix for under-triggering reliably produces
+over-triggering.
 
 ---
 
-## 8. Definition of done, per module
+## 10. Choosing a model
 
-- [ ] Grounded, with the sourcing header filled in — including the
-      *not grounded* line
-- [ ] Every move has a transition condition
-- [ ] All seven constraints in §4 satisfied
+Three different jobs that do not want the same model.
+
+**Authoring: the strongest available.** Reading dense sources, separating what
+they support from what they do not, and resisting the pull towards plausible
+filler is the work that most rewards capability.
+
+**Testing: whatever the product will actually run on.** This is the one people get
+wrong. The agent's value is challenge quality, which is exactly the judgement that
+varies most between models. A method validated only on the strongest model has a
+floor you have not measured.
+
+**Mechanical checking: the cheapest thing that works.** Counting questions per
+reply, spotting framework name-drops, flagging digits that did not come from the
+user. Regex, no model at all.
+
+**These skills pin no model.** Anyone installing them runs whatever they already
+use, which is correct for a skills library with no API key and no bill of its own.
+The consequence is that challenge quality varies with the reader's model and this
+repository cannot control that, so testing across models matters more here than it
+would for a hosted product. Transcripts must always record the model.
+
+---
+
+## 11. Definition of done, per skill
+
+- [ ] Grounded in its canonical method, with the sourcing header filled in
+      including the *not grounded* line
+- [ ] Description written as a recognition rule, with the adjacent non-trigger
+      stated
+- [ ] Frontmatter restricted to the 6 spec fields and validating
+- [ ] Every multi-move section has a transition or stopping condition
+- [ ] Distilled shared behaviour only, with what was left behind named
+- [ ] All 8 constraints in section 6 satisfied
+- [ ] Nothing restated that belongs to `house-rules`
 - [ ] Used on a real problem, not a test case
 - [ ] At least one conversation saved
 - [ ] Tested cold, by someone who did not author it
-- [ ] Nothing restated that belongs to the house rules
-- [ ] The three lenses applied at this module's own step, not
-      re-explained
+- [ ] Regression cases written for anything fixed
 
----
-
-## 9. Choosing a model
-
-Three different jobs, and they do not want the same model.
-
-**Authoring — the strongest model available.** Writing a module means
-reading dense source material, separating what it supports from what it
-does not, and resisting the pull toward plausible filler. That is the
-work that most rewards capability. Use Opus.
-
-**Testing — whatever the product will actually run on.** This is the one
-people get wrong. The agent's value is challenge quality: noticing a
-hidden solution, refusing a vague claim, keeping two framings open. That
-is exactly the judgement that varies most between models. A method
-validated only on the strongest model has a cost floor you have not
-measured. So test on the model you intend to ship, and if that is
-undecided, test the same saved conversation on more than one and see
-whether the challenge survives.
-
-**Mechanical checking — the cheapest thing that works.** Counting
-questions per reply, spotting framework name-drops, flagging digits that
-did not come from the user: regex, no model at all. If transcript
-screening later needs judgement, Haiku is the right size for it.
-
-**These skills pin no model.** Anyone installing them runs whatever model
-they already use, which is the correct default for a skills library — it
-has no API key and no bill of its own. The consequence is that challenge
-quality varies with the reader's model and this repository cannot control
-that. Testing across models matters more here than it would for a hosted
-product, and transcripts should always record the model used.
-
-Pricing, limits and available models change. Check current details rather
-than trusting this page.
+Only the first 7 are true of any skill in this repository today.

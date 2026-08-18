@@ -1,6 +1,6 @@
 # Writing Policy Problem Statements — Agent Guidance (Bardach)
 
-> **Source:** Distilled from Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, “Step One: Define the Problem.” **Provenance note:** Derived from the edition supplied (“Version 4”, not the latest 6th edition). The problem-definition guidance is stable across editions, but if you have access to the 6th edition, reconcile any wording differences before treating this as canonical. **Purpose:** Operating instructions for an agent that helps a user *draft, critique, and sharpen policy problem statements*. This is not a summary of the book — it is a checklist + rubric + examples for producing good problem statements.
+> **Source:** Distilled from Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, “Step One: Define the Problem.” **Provenance note:** Derived from the edition supplied (“Version 4”, not the latest 6th edition). The problem-definition guidance is stable across editions, but if you have access to the 6th edition, reconcile any wording differences before treating this as canonical. **Canonical status:** This file is the current canonical method for problem definition and supersedes the original knowledge file, which is retained as archive at `../../sources/bardach-problem-definition-guidance.docx`. Skills cite this file, not the DOCX. **Purpose:** Operating instructions for an agent that helps a user *draft, critique, and sharpen policy problem statements*. This is not a summary of the book — it is a checklist + rubric + examples for producing good problem statements.
 
 ## How to use this document
 
@@ -119,6 +119,47 @@ Before returning a problem statement, confirm:
 **Process reminder:**
 
 - Treated as **iterative** — flagged that the definition may be re-sculpted as evidence and ruled-out alternatives accumulate, and (in an office context) negotiated with colleagues/superiors.
+
+## Shared method calls
+
+This file owns the **working problem statement**.
+
+It should call shared methods rather than reproduce them, and only where they change how the problem should be understood.
+
+### Call `../shared/uncertainty-and-learning-guidance.md` when:
+
+- the condition itself is unclear enough that any statement would be a guess about what is happening (problem uncertainty)
+- the framing depends on what affected people are actually encountering, and nobody has looked (experience uncertainty)
+- 2 or more causal accounts of the problem remain live and the definition would have to pick one (mechanism uncertainty)
+
+The test is whether a responsible working frame can be written at all. If it can, write it, mark what is provisional, and move on.
+
+Do not turn problem definition into experiment design. This file decides that inquiry is needed. The shared method designs it.
+
+### Call `../shared/strategic-triangle-guidance.md` when:
+
+- the public purpose is contested enough that the problem changes depending on whose account of the public interest is used
+- the framing quietly assumes delivery capacity that may not exist, so the problem as written is only a problem for an actor who cannot act on it
+- a different framing would change whose authorisation, funding or cooperation the response requires
+
+Use the compact readout, not the full triangle. The point is to expose what the framing costs in value, deliverability and required backing, then return here and define the problem.
+
+Do not require the user to resolve the whole triangle before a problem can be defined.
+
+---
+
+# Canonical boundaries across the method library
+
+- `problem-definition-guidance.md` owns the problem: condition, scope, magnitude, public basis, hidden solutions, causal claims and the framing choice.
+- `stakeholder-analysis-guidance.md` owns who the actors are and what they want. "Who is affected" belongs here; motivations, power, arena and relationships belong there.
+- `evidence-guidance.md` owns what is known and how strong it is. This file marks the gap and says what would fill it. It does not investigate.
+- `alternatives-guidance.md` owns the choice set. Stripping a hidden solution out of a problem statement is not the same as generating options.
+- `criteria-guidance.md` owns what counts as better.
+- `decision-guidance.md` owns the recommendation.
+
+The definition stays provisional. Expect to re-sculpt it as evidence accumulates and alternatives are ruled out.
+
+---
 
 ## One-line reference
 
