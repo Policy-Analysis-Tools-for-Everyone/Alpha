@@ -10,7 +10,7 @@
       "name": "mdee",
       "displayName": "MDEE.MD",
       "description": "A policy-analysis agent. Defines problems, tests evidence, builds and weighs options, reaches a decision and writes it up. Challenges weak framing and refuses to invent figures.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Policy Analysis Tools for Everyone",
         "url": "https://github.com/Policy-Analysis-Tools-for-Everyone"
@@ -19,26 +19,26 @@
       "repository": "https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha",
       "keywords": ["policy", "analysis", "public-policy", "decision-making", "briefing"],
       "category": "knowledge-work",
-      "source": "./",
+      "source": "./skills",
       "strict": false,
       "skills": [
-        "./skills/house-rules",
-        "./skills/problem",
-        "./skills/stakeholders",
-        "./skills/evidence",
-        "./skills/options",
-        "./skills/criteria",
-        "./skills/outcomes",
-        "./skills/trade-offs",
-        "./skills/decide",
-        "./skills/story"
+        "./house-rules",
+        "./problem",
+        "./stakeholders",
+        "./evidence",
+        "./options",
+        "./criteria",
+        "./outcomes",
+        "./trade-offs",
+        "./decide",
+        "./story"
       ]
     },
     {
       "name": "mdee-evaluation",
       "displayName": "MDEE.MD evaluation",
       "description": "Maintainer tool for MDEE.MD. Reviews saved sessions for what the agent did well and badly, classifies findings and designs test cases for a skill that is being changed. Install this only if you work on MDEE.MD itself.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Policy Analysis Tools for Everyone",
         "url": "https://github.com/Policy-Analysis-Tools-for-Everyone"
@@ -47,11 +47,11 @@
       "repository": "https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha",
       "keywords": ["evaluation", "agent-testing", "policy"],
       "category": "knowledge-work",
-      "source": "./",
+      "source": "./skills",
       "strict": false,
       "skills": [
-        "./skills/house-rules",
-        "./skills/evaluation"
+        "./house-rules",
+        "./evaluation"
       ]
     }
   ]
