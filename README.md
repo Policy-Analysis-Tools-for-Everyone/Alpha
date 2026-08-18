@@ -23,6 +23,8 @@ don't pick between them. Claude does.
 You'll need about 2 minutes. There's nothing to download if you're on a paid plan,
 and no technical setup either way.
 
+Quick rutorial video here: https://www.loom.com/share/7a0075882a884d71bbc6a4b4dd29c9bc
+
 ### Step 0: turn on code execution
 
 Claude needs this switched on before any add-on like MDEE.MD will work. It's on by
