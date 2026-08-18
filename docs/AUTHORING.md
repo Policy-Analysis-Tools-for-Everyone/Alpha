@@ -442,5 +442,19 @@ skills one at a time instead of installing a plugin. They are built by
 change to `skills/` and commit the result. The build is deterministic, so an
 unchanged skill produces a byte-identical zip and does not churn in git.
 
+**The plugin zips.** `dist/plugin/*.zip` are self-contained plugin packages for
+claude.ai's Upload local plugin dialog, the workaround when a marketplace install
+fails to fetch. Each one carries its own `.claude-plugin/plugin.json`, generated
+from the matching entry in `marketplace.json`, plus a copy of every skill it
+lists. Built by `tools/build-plugin-zips.py`, reading `marketplace.json` as the
+single source, so the two can't drift apart. Re-run it after any change to
+`skills/` or `marketplace.json` and commit the result. Only `mdee.zip` is linked
+from the README; `mdee-evaluation.zip` is built for parity with the marketplace's
+2 entries but stays unlinked, same as its skill-zip counterpart.
+
+Both zip builds run in CI on the same trigger paths
+(`.github/workflows/build-skill-zips.yml`), so a change to either source gets
+both outputs rebuilt and committed automatically.
+
 **Contributors** load the skills without installing anything by running
 `claude --plugin-dir .` from the repository root.

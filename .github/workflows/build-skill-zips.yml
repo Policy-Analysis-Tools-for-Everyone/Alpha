@@ -1,15 +1,19 @@
-name: Build skill zips
+name: Build distribution zips
 
-# The zips in dist/skills/ are what people on the Claude Free plan download,
-# one per skill. They are generated from skills/ and must never be edited by
-# hand. This rebuilds them whenever a skill changes, so a download can never
-# drift from the source file.
+# dist/skills/*.zip are what people on the Claude Free plan download, one
+# per skill. dist/plugin/*.zip are self-contained plugin packages for
+# claude.ai's Upload local plugin, used when the marketplace install fails.
+# Both are generated, never edited by hand, from skills/ and
+# marketplace.json. This rebuilds them whenever either changes, so a
+# download can never drift from its source.
 
 on:
   push:
     paths:
       - "skills/**"
+      - ".claude-plugin/marketplace.json"
       - "tools/build-skill-zips.py"
+      - "tools/build-plugin-zips.py"
       - ".github/workflows/build-skill-zips.yml"
   workflow_dispatch:
 
@@ -27,16 +31,18 @@ jobs:
           python-version: "3.12"
 
       - name: Build the zips
-        run: python3 tools/build-skill-zips.py
+        run: |
+          python3 tools/build-skill-zips.py
+          python3 tools/build-plugin-zips.py
 
       - name: Commit any changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dist/skills
+          git add dist/skills dist/plugin
           if git diff --cached --quiet; then
-            echo "Zips already match skills/. Nothing to do."
+            echo "Zips already match source. Nothing to do."
           else
-            git commit -m "Rebuild skill zips from skills/"
+            git commit -m "Rebuild distribution zips from source"
             git push
           fi
