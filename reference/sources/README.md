@@ -6,7 +6,7 @@ method layer was built from, kept for provenance.
 The current canonical methods live in `reference/methods/capabilities/` and
 `reference/methods/shared/`. Those Markdown files carry their own source
 citations and are what the runtime skills are written against. Nothing in
-`.claude/skills/` should depend on reading anything in this directory.
+`skills/` should depend on reading anything in this directory.
 
 Two reasons this separation exists. A skill that could be grounded in either a
 distilled method or its original source has two canonical answers, which is one

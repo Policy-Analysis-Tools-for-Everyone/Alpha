@@ -1,0 +1,42 @@
+name: Build skill zips
+
+# The zips in dist/skills/ are what people on the Claude Free plan download,
+# one per skill. They are generated from skills/ and must never be edited by
+# hand. This rebuilds them whenever a skill changes, so a download can never
+# drift from the source file.
+
+on:
+  push:
+    paths:
+      - "skills/**"
+      - "tools/build-skill-zips.py"
+      - ".github/workflows/build-skill-zips.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build the zips
+        run: python3 tools/build-skill-zips.py
+
+      - name: Commit any changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist/skills
+          if git diff --cached --quiet; then
+            echo "Zips already match skills/. Nothing to do."
+          else
+            git commit -m "Rebuild skill zips from skills/"
+            git push
+          fi

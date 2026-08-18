@@ -1,0 +1,310 @@
+---
+name: problem
+description: >
+  Use when the user brings a public problem that is not yet defined: messy
+  notes, a concern, a complaint, an inherited proposal, a draft problem
+  statement, or a solution presented as if it were a problem. Also use when a
+  working problem statement is vague, solution-shaped, unquantified, rests on
+  an unexamined causal claim, or when what the user has called one problem may
+  be several. Not for choosing between options already on the table.
+metadata:
+  status: written, tested once on real work (see evals/transcripts/problem/)
+---
+
+<!--
+Canonical method:
+  reference/methods/capabilities/problem-definition-guidance.md
+  - core rules, anti-patterns, drafting scaffold, self-check rubric, and the
+    shared-method routing to uncertainty and strategic alignment. That file
+    carries the Bardach provenance; the original knowledge file is archived at
+    reference/sources/bardach-problem-definition-guidance.docx and is not the
+    current method.
+
+Also grounded in:
+  [J] reference/copilot-json/declarativeAgent_0.json, via docs/BEHAVIOUR_SPEC.md
+      A4-A11 and A14 - the questioning sequence, its transition conditions, the
+      four-part output, the problem system map, the self-check as a scoring
+      list, and a metric per sub-problem.
+  [O] Project owner - the placeholder set; the contaminated-measure warning
+      (now in house-rules).
+  [E] evals/transcripts/problem/receipt-confirmation.md - first test session.
+      Drove the revision recorded below.
+
+Not grounded:
+  - Move ordering. [J] orders its steps; where bounding and the framing choice
+    sit within that order is an authoring judgement.
+
+Revision history:
+  - 2026-08-17, after the first test session [E]. Four defects fixed: the
+    no-documents rule had over-corrected into wall-of-prose; the labelling and
+    hierarchy decisions were buried inside a move and did not fire on material
+    that needed both, so they were promoted to standing instructions; the
+    problem system map fired late and vaguely; the framing choice surfaced only
+    when the user asked for a recommendation.
+  - Skills implementation pass. Renamed from `01-problem`. Sourcing moved to
+    the canonical method MD. Content that duplicated house-rules removed:
+    the vague-term challenge, the contaminated-measure warning, the
+    no-fabrication rule, the framework ban and the reply-shape rule now live
+    there and are binding here without being restated.
+-->
+
+# Defining the problem
+
+Load `house-rules` before anything else here, and treat it as binding on
+everything below. If it cannot be loaded, its two hardest rules still hold:
+invent nothing, and the user decides.
+
+## What this owns
+
+The user has something that is not yet a problem statement. Turn it into one
+that survives scrutiny, and make the framing choice visible, because how a
+problem is defined determines which solutions can ever be considered.
+
+This owns the condition, its scope, the affected group, magnitude and time, the
+public-problem basis, hidden solutions, causal claims, the problem hierarchy and
+the choice between competing framings.
+
+It does not own who the actors are and what they want (`stakeholders`), whether
+the evidence is any good (`evidence`), or what to do about it (`options`).
+
+## Two things to do throughout, not once
+
+These are standing instructions, not steps you pass. Both failed to fire on the
+first real test precisely because they were buried in a sequence.
+
+**Keep four things apart, and label them the moment the user mixes them:** the
+**problem** (the condition), a **mechanism** (what produces it), a **symptom**
+(how it shows up), and a **constraint** (what limits the response). Most
+material arrives with all four run together. The labelling is usually the single
+most clarifying thing you can do and it costs four short lines, so do it early
+rather than silently re-sorting their material.
+
+**Say out loud whether this is one problem or a hierarchy:** a core problem with
+sub-problems, symptoms and contributing mechanisms beneath it. Decide early and
+name it. If it is a hierarchy, ask which level they want to work at, and expect
+two candidate cores at different levels with different answers, typically the
+harm to the public and the cost to the organisation. Failing to name the
+hierarchy is how a session ends up defining one problem while the user holds
+another.
+
+## The moves
+
+An order of reasoning, not a script. Compress or skip any move the material has
+already answered, and go back when new material undermines an earlier one.
+Marching through all nine is a failure, not thoroughness.
+
+**1. Find the core condition.** Ask what is actually happening that concerns
+them, and recast it as a condition rather than a fix: too much of something, too
+little, or something moving the wrong way. Use "too" deliberately. Use the future
+tense where the problem is still in prospect. If the problem is probabilistic,
+say so in those terms: *the odds are too high that this reactor suffers a
+radiation-emitting accident in the next 25 years*. That phrasing also carries
+anything resisting quantification.
+
+If they answer with a solution, stop and challenge it before anything else.
+
+Two kinds of problem do not take the deficit-or-excess form, and forcing it on
+them is a mistake: a **well-structured decision** already framed as a choice
+(*dump the spoils in the Bay or the Pacific*), and an **invention or opportunity
+challenge** (*find grant funds to close the gap*). A missed opportunity is a
+legitimate problem in its own right. Places worth scanning: sequencing, matching
+and clustering gains, cost-based pricing, complementarity, input substitution,
+developmental sequencing, exchange, multiple-function design, non-traditional
+participants, underutilised capacity.
+
+Where more than one condition could honestly be the core, name both here rather
+than settling on one and revisiting it later. Carry them forward together. A
+choice surfaced at the end is a choice you already made for them.
+
+*Move on when* the condition could not be mistaken for a proposed solution.
+
+**2. Bound what you are defining.** A label often encodes several problems.
+"Teenage pregnancy" can mean morality, life chances, cost to the taxpayer or
+social disintegration. Push for one primary focus; take a second only if it is
+simple enough to carry. Where the user has several statements in play, check for
+overlap: if two describe the same issue at different levels, say so and push
+them to merge, separate or nest them.
+
+*Move on when* you are both working on one identified thing at one identified
+level.
+
+**3. Identify who is affected.** Who experiences this, where, and do some groups
+experience it differently? Push back on broad labels that hide variation, such
+as "businesses", "residents", "young people".
+
+*Move on when* the affected population, place, sector or system is specific
+enough to appear in the statement.
+
+**4. Establish scale and time.** Every assertion of too much or too little
+should carry a number. How big is "too big"? A point estimate with a range is
+often best: *~250,000 homeless persons in families, plausibly 100,000-400,000*.
+
+If no number exists, name the metric that would measure the condition. This
+makes the definition concrete and behavioural: prefer *too many people with
+incomes over £60,000 in subsidised housing* to *too many well-off people in
+public housing*. If the data do not exist, say so, say what would settle it, and
+leave a marked placeholder: `[add magnitude]`, `[add affected group]`,
+`[add time period]`, `[add evidence for causal claim]`,
+`[add baseline or comparator]`.
+
+State a time horizon wherever the problem is prospective. Treat any unquantified
+claim as provisional.
+
+Where the problem is a hierarchy, ask for a metric or observable indicator for
+each sub-problem. A sub-problem carrying no indicator is a claim and should be
+visible as one.
+
+*Move on when* the statement can point to a scale, a trend or a named future
+risk, with gaps marked rather than filled.
+
+**5. Test the public-problem basis.** A problem asserts that something is wrong,
+and "wrong" is contestable. Ask what makes this more than a private
+inconvenience. `house-rules` carries the tests. If no basis can be located, say
+plainly that this may not be a problem public intervention can or should
+address, and do not soften it.
+
+*Move on when* a credible public-interest basis is stated, or you have flagged
+clearly that it needs strengthening.
+
+**6. Read the framing through value, capacity and support.** Ask which of the
+three is weakest here: that the goal is not clearly valuable, that it cannot
+realistically be delivered, that it lacks the backing it needs, or that these
+pull against each other. Where the user is choosing between framings, make the
+cost explicit. What sharpens public value often narrows deliverability or weakens
+support. That trade-off is the point of this move, and it is why it belongs here
+rather than at the end.
+
+*Move on when* the user has a plausible reading of where the strain sits and
+what their framing costs them.
+
+**7. Strip hidden solutions and test causal claims.** The statement must not
+contain a solution. The tip-off: if you catch yourself thinking *"but that's not
+the real problem"*, a solution has probably been smuggled in.
+
+| Do not say | Why it fails | Try instead |
+|---|---|---|
+| "There is too little shelter for homeless families." | Pre-commits to building shelter; blocks prevention. | "Too many families are homeless." |
+| "New schools are being built too slowly." | Pre-commits to building schools; blocks reuse and distance learning. | "There are too many schoolchildren relative to available classroom space." |
+
+Then take the causal language. Treat "because", "driven by" and "due to" as
+hypotheses unless the user has evidence, and soften unsupported ones to "may
+contribute".
+
+A cause can legitimately *be* the problem, as in *states will not enforce engine
+maintenance* behind air pollution. That is powerful because it points towards
+action. But it is diagnostic, not descriptive: it smuggles in a causal claim, and
+the word "definition" can shield that claim from scrutiny. Accept it only where
+the causal chain has been evaluated and is believed real. Otherwise mark the link
+as a claim needing evidence and ask whether the cause has been overstated.
+
+*Move on when* the wording pre-commits to nothing and every causal claim is
+either evidenced or marked.
+
+**8. Settle the framing choice.** The competing framings should already be on the
+table from move 1. This is where they are resolved, not raised. Put each next to
+what move 6 says it costs, in value, deliverability and backing, and let the user
+choose. One or two variants, never a survey. If they do not choose, that is a
+result: record it as contested.
+
+*Move on when* the user has chosen, or has decided to leave it open and recorded
+as contested.
+
+**9. Draft, critique, revise, read out.** When enough is in hand, give four
+things in this order, each labelled so the user can find it:
+
+1. **Candidate statement.** One or two sentences, in their register.
+2. **Critique.** What is still weak and what would fix it. Name the failures; do
+   not narrate them. Four failures is four short claims, not four paragraphs.
+3. **Revised statement.** One or two sentences, with every placeholder spelled
+   out immediately after it: what to supply and where it would come from.
+4. **Readout.** Four labelled lines: *public value*, *operational capacity*,
+   *political support*, *key trade-off*. One or two sentences each. The
+   trade-off line earns its place by saying what this framing costs rather than
+   summarising the other three.
+
+Critique before revision. The user should see why a frame is weak before being
+handed the fix.
+
+**Length is part of the output.** A reader who has to excavate the four parts
+from continuous prose has been given a worse answer however good the analysis
+underneath. That is the failure this move actually hit on its first real test.
+
+Where the user has several linked issues, and a hierarchy always counts, add a
+compact problem system map: *core problem*, *evidence*, *sub-problems*,
+*mechanisms*, *constraints*, *missing metrics*. A line or two each.
+
+If key details are still missing, do not force a draft. Say what is missing and
+ask the next best question. Ending on a single question is almost always right,
+even after a full draft. The draft is a probe, not a delivery.
+
+*Move on when* the user has a statement they can work from. It stays
+provisional.
+
+## What a strong statement looks like
+
+One or two sentences. Evaluative. Quantified where possible. No hidden solution.
+No unverified cause. A condition, not a programme. Usually:
+
+> [deficit or excess] + [quantified magnitude or named metric] + [affected
+> population or scope] + [time horizon, if relevant]
+
+## Boundaries and handoffs
+
+Continue the work rather than announcing a handoff. Never say "now invoke the
+evidence skill". Say what the analysis now turns on and carry on into it.
+
+- The frame depends on a factual or causal claim nobody has tested, so go to
+  `evidence`.
+- No responsible frame can be written because the condition, what affected people
+  actually encounter, or the mechanism is genuinely unknown, so the next move is
+  inquiry, not another draft. That is `evidence` and the learning question inside
+  it.
+- The framing turns on the interests or power of specific actors, so go to
+  `stakeholders`. "Who is affected" stays here; motivations, resources, arena and
+  relationships belong there.
+- The user wants to know what to do, so go to `options`. Stripping a hidden
+  solution out of a statement is not the same as generating alternatives.
+
+## Self-check
+
+Run before returning any drafted or revised statement. This is also the scoring
+list: when asked to score a statement, return pass or fail against each
+criterion with a reason on every fail.
+
+**Must pass, block on any failure:**
+
+- states a deficit, an excess or a concerning trend, or is a legitimate
+  decision, invention or opportunity exception
+- contains no implicit solution, and passes the "that's not the real problem"
+  test
+- any causal claim is marked as a claim, not asserted as fact
+- roughly one to two sentences; describes a condition, not a programme
+
+**Should pass, name the gap if missing:**
+
+- carries a magnitude: a number, a range, or at minimum a named metric, with
+  placeholders marked rather than figures supplied
+- has a public-problem basis you could articulate if challenged
+- states a time horizon where the problem is prospective
+- uses "the odds" where the problem is probabilistic
+- identifies the key trade-off across value, capacity and support
+
+## Failure modes
+
+- **Accepting a solution as a problem.** The most common and most expensive: it
+  silently rules out every answer except the one already assumed. Challenge on
+  the first turn, not after an interview.
+- **Missing the hierarchy.** Treating a tangle of condition, mechanism, symptom
+  and cost as one problem, and defining whichever part was written down most
+  confidently.
+- **Silently picking a framing.** Collapsing a real condition-versus-cause
+  choice, or resolving a contested framing without showing the trade-off.
+- **Forcing deficit or excess** onto a well-structured decision or an invention
+  challenge where it does not fit.
+- **Marching the sequence** when the user arrived with half of it answered.
+- **Burying the four-part output** in prose, or filing it as a document. Both
+  are the same failure.
+- **Treating a label as one problem** when it encodes several, or letting two
+  statements at different levels sit side by side unexamined.
+- **Turning definition into research design.** Naming what would settle a gap is
+  this skill's job. Designing the study is not.

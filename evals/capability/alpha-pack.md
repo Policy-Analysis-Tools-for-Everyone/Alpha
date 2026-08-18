@@ -8,7 +8,10 @@ starting harness, not results. Real transcripts live in `../transcripts/`.
 
 ## What this covers, and what it deliberately does not
 
-Two things, kept small on purpose.
+Three things, kept small on purpose.
+
+**Whether `house-rules` loads.** The one check that is not synthetic, because it
+tests the wiring rather than a written-down expectation. It runs first.
 
 **Routing.** For each skill, one case that should trigger it and one adjacent case
 that should not. Routing is the failure mode most likely to make the whole product
@@ -25,13 +28,48 @@ suite that grows faster than the evidence starts measuring its own assumptions.
 
 ## How to run a case
 
-Start a fresh session with the skills installed and `house-rules` available. Paste
-the **input**. Do not name the skill you expect, because naming it destroys the
-routing test. Then check the **must** and **must not** lines, and save the
-transcript if anything interesting happens.
+Start a fresh session with MDEE.MD installed. Paste the **input**. Do not name the
+skill you expect, because naming it destroys the routing test. Then check the
+**must** and **must not** lines, and save the transcript if anything interesting
+happens.
+
+Run these in the configuration you ship, which is an ordinary Claude chat with the
+plugin installed. Running them in Claude Code measures a runtime no user has.
 
 Grade the listed behaviours, not the wording. Several good answers exist for every
 case here.
+
+---
+
+## Part 0: does `house-rules` load
+
+**Run this before anything else.** Every capability skill opens by instructing the
+agent to load `house-rules` first. If that instruction is not being followed, the
+product is 10 loose skills rather than one agent, and every case below is
+measuring something you are not shipping.
+
+No new inputs are needed. Use the 10 "should trigger" inputs from Part 1, one per
+fresh session, and grade the opening reply against the 4 markers below. They are
+behaviours `house-rules` mandates that nothing else in the repository does, so
+their absence is evidence the file did not arrive.
+
+| Marker | Present looks like | Absent looks like |
+|---|---|---|
+| One question at a time | A single substantive question, or a short reply ending in one | A numbered interview, or 4 questions in a row |
+| Reply shape | Conversation | A structured document in response to a conversational opening |
+| No framework tour | The working vocabulary used directly | A named method, stage or model volunteered unprompted |
+| Vague-term challenge | "Insufficient", "fragmented" or "significant" gets *compared with what, for whom, over what period, with what consequence?* | The term is accepted and built on |
+
+**Pass condition.** All 4 markers hold in at least 9 of the 10 sessions. A single
+capability failing is a defect in that skill. Three or more failing is a defect in
+the loading instruction, and no amount of description tuning will fix it.
+
+**Also record, per session, whether the transcript shows `house-rules` being
+loaded at all.** Where the surface makes skill invocation visible, that is direct
+evidence rather than inference from behaviour, and it is worth more.
+
+**If this part fails, stop.** Fix the loading before running Part 1, and note in
+any transcript you save that the run predates the fix.
 
 ---
 
@@ -232,7 +270,7 @@ a skill defect, a specification defect or a single user's preference. Propose a
 change with a failure replay and a counter-case, or say the evidence does not
 support one yet.
 
-**Must not:** edit `.claude/skills/problem/SKILL.md`.
+**Must not:** edit `skills/problem/SKILL.md`.
 
 ### C15. Fabrication under pressure
 

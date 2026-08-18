@@ -15,7 +15,7 @@ methods, canonical, deliberately rich: provenance, distinctions, source synthesi
 worked examples, anti-patterns, scaffolds, boundaries and self-check rubrics. They
 are written for maintainers and for future revisions.
 
-**The skill layer** is `.claude/skills/`. Eleven runtime files containing only the
+**The skill layer** is `skills/`. Eleven runtime files containing only the
 behaviour that changes what the agent does in a live conversation.
 
 **Method completeness is not skill completeness.** The most common way to write a
@@ -226,9 +226,13 @@ reason.
    should be used directly. Reading this as a ban on the terms produces evasive
    answers, which is what happened on the first test.
 4. **Every move carries a transition condition.**
-5. **Assume `house-rules` is available but do not depend on it for safety.** Each
-   skill carries one short line pointing to it, plus the two rules that would be
-   catastrophic if it were absent: invent nothing, and the user decides.
+5. **Load `house-rules` first, and do not depend on it for safety.** Each
+   capability skill opens by instructing the agent to load `house-rules` before
+   anything else and treat it as binding, then carries the two rules that would be
+   catastrophic if it were absent: invent nothing, and the user decides. The
+   instruction is load-bearing rather than decorative. Claude chat has no always-on
+   instruction layer that ships with a plugin, so this line is the only thing
+   making the persona reach a capability. Copy it verbatim into any new skill.
 6. **UK spelling**, concise, critical rather than affirming.
 7. **Never invent facts, figures, dates or sources.** Marked placeholders and a
    statement of what would close the gap.
@@ -378,9 +382,56 @@ would for a hosted product. Transcripts must always record the model.
 - [ ] Distilled shared behaviour only, with what was left behind named
 - [ ] All 8 constraints in section 6 satisfied
 - [ ] Nothing restated that belongs to `house-rules`
+- [ ] Listed in the relevant plugin entry in `.claude-plugin/marketplace.json`
+- [ ] `python3 tools/build-skill-zips.py` re-run and the result committed
 - [ ] Used on a real problem, not a test case
 - [ ] At least one conversation saved
 - [ ] Tested cold, by someone who did not author it
 - [ ] Regression cases written for anything fixed
 
 Only the first 7 are true of any skill in this repository today.
+
+
+---
+
+## 12. Distribution packaging
+
+The canonical skills live in `skills/`, one directory per skill, each containing a
+`SKILL.md`. That is the only copy. Everything below is generated from it or points
+at it, so a change to a skill is a change everywhere.
+
+**Why `skills/` and not `.claude/skills/`.** It is where Claude's plugin
+specification looks by default, so nothing needs a path override. It is also
+platform-neutral, which matters if these ever go to another tool that supports
+Agent Skills. Nothing about the format is Claude-specific.
+
+**The marketplace.** `.claude-plugin/marketplace.json` is a catalogue that lets
+someone install MDEE.MD from inside normal Claude by naming this repository. It
+lists 2 plugin entries, both drawing from the same `skills/` folder:
+
+- `mdee`, carrying `house-rules` and the 10 policy capabilities. What the public
+  installs.
+- `mdee-evaluation`, carrying `house-rules` and `evaluation`. A maintainer tool,
+  kept out of the public product so policy users do not carry a capability aimed
+  at whoever is working on the agent.
+
+Both use `"source": "./"`, which makes the repository itself the plugin, and both
+name their skills explicitly. With a marketplace-root source the listed paths are
+the complete set for that entry, so **a new skill that is not listed will not
+ship.** There is no default scan to fall back on.
+
+Bump `version` on both entries for every release. Testers cannot report which
+version they ran otherwise, and `evaluation` asks them for exactly that.
+
+**If a claude.ai install ever fails on the 2-entry layout**, collapse it to one
+entry listing all 11 skills. That is the lower-risk configuration and it costs
+only the `evaluation` separation.
+
+**The zips.** `dist/skills/*.zip` exist for people on the Free plan, who upload
+skills one at a time instead of installing a plugin. They are built by
+`tools/build-skill-zips.py` and must never be edited by hand. Re-run it after any
+change to `skills/` and commit the result. The build is deterministic, so an
+unchanged skill produces a byte-identical zip and does not churn in git.
+
+**Contributors** load the skills without installing anything by running
+`claude --plugin-dir .` from the repository root.
