@@ -415,10 +415,19 @@ lists 2 plugin entries, both drawing from the same `skills/` folder:
   kept out of the public product so policy users do not carry a capability aimed
   at whoever is working on the agent.
 
-Both use `"source": "./"`, which makes the repository itself the plugin, and both
-name their skills explicitly. With a marketplace-root source the listed paths are
-the complete set for that entry, so **a new skill that is not listed will not
-ship.** There is no default scan to fall back on.
+Both use `"source": "./skills"`, so the plugin is the `skills/` folder rather than
+the repository, and both name their skills explicitly as paths relative to it:
+`"./problem"`, not `"./skills/problem"`. A new skill that is not listed will not
+ship. The default scan looks for a `skills/` folder *inside* the source, which
+does not exist here, so the listed paths are the whole set for that entry.
+
+**The source is deliberately not `"./"`.** A marketplace-root source makes the
+whole repository the plugin payload, which was 61 files and 3.9 MB, 90% of it
+`reference/` that nothing reads at runtime. Claude Code clones and does not care.
+claude.ai fetches plugin content file by file over the GitHub API, and that
+payload failed to install with `Failed to fetch content: 403`. Scoped to
+`skills/` the payload is 11 files and 177 KB. Keep it that way: if a plugin ever
+needs a file, move the file under `skills/`, rather than widening the source.
 
 Bump `version` on both entries for every release. Testers cannot report which
 version they ran otherwise, and `evaluation` asks them for exactly that.
