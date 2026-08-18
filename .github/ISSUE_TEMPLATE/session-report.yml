@@ -1,0 +1,104 @@
+name: Session report
+description: Tell us what happened when you used MDEE.MD, especially if it was confidently wrong
+title: "[Session] "
+labels: ["session-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for this. The most useful thing anyone can send is a conversation
+        where MDEE.MD was **confidently wrong**, so please do not tidy those up.
+
+        **Before you paste anything: this issue will be public.**
+
+        Take out names, organisations, figures and anything pre-decision,
+        commercially sensitive or politically sensitive. Replace them with
+        equivalents that keep the shape of the reasoning, and say which parts you
+        substituted. What matters is the analytical shape, rather than your real
+        numbers.
+
+        If the conversation cannot be made safe that way, answer the questions
+        below and leave the excerpt out. A described problem is still useful.
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: What were you trying to do?
+      description: The policy work you brought to it, in your own words.
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Where did you get to?
+      description: >
+        What state you reached, rather than whether you were happy with it.
+        Finished, part-way, stuck, gave up, or somewhere it took you that you did
+        not expect.
+    validations:
+      required: true
+
+  - type: textarea
+    id: friction
+    attributes:
+      label: What surprised or frustrated you?
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+    validations:
+      required: false
+
+  - type: textarea
+    id: wrong
+    attributes:
+      label: Was there anything it told you that you think was wrong?
+      description: >
+        An invented figure, a claim it could not support, a confident answer that
+        does not hold up. This is the single most valuable thing in the form, and
+        it is the one nobody volunteers.
+    validations:
+      required: false
+
+  - type: textarea
+    id: excerpt
+    attributes:
+      label: The exchange, redacted
+      description: >
+        The part of the conversation needed to understand what happened. Leave
+        blank if it cannot be made safe.
+      render: markdown
+    validations:
+      required: false
+
+  - type: input
+    id: model
+    attributes:
+      label: Which Claude model were you using, if you know?
+      placeholder: e.g. Opus 5, Sonnet 5, not sure
+    validations:
+      required: false
+
+  - type: dropdown
+    id: install
+    attributes:
+      label: How did you install it?
+      options:
+        - One installation, from Customize then Plugins
+        - Uploaded the skill files individually (Free plan)
+        - Claude Code
+        - Not sure
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: redacted
+    attributes:
+      label: Before you submit
+      options:
+        - label: I have removed anything sensitive, or left the excerpt out
+          required: true
