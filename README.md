@@ -70,11 +70,9 @@ chat window, and nothing is supposed to.
 You may also see a second item called **MDEE.MD evaluation**. Leave it alone. It's
 a tool for people who work on MDEE.MD itself.
 
-### If the marketplace install fails with "Failed to fetch content: 403"
+### Error 403: If the marketplace install fails with "Failed to fetch content: 403"
 
-This has been seen on a paid plan, specifically in the **desktop app**, on an
-account where the exact same install works without trouble at claude.ai in a
-browser. If that's your situation, try a browser first. It may just work, and
+If you encounter error 403 on the desktop app, try a browser first. It may just work, and
 it's the fastest way to find out.
 
 If the browser hits the same error, or the desktop app is what you actually
@@ -87,6 +85,7 @@ failing.
 2. Open Claude, click **Customize**, then **Plugins**.
 3. Click **Add**, then **Upload local plugin**.
 4. Drag the file in, or browse to it, then click **Upload**.
+5. You may have to wait for security scans to complete before you can switch on.
 
 This installs the same plugin as the marketplace route: one entry, all 10
 skills grouped under it. The only thing that changes is where the file comes
@@ -94,8 +93,7 @@ from. It doesn't update itself the way a marketplace install does; see
 [Updating MDEE.MD](#updating-mdeemd) below.
 
 If that dialog doesn't work either, fall back to installing the skills one at
-a time, below. It behaves the same, at the cost of the grouping and 10
-uploads instead of 1.
+a time, below as detailed in the method below.
 
 ### If you're on the Claude Free plan
 
