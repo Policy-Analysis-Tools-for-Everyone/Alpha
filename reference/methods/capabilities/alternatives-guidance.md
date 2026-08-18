@@ -1,6 +1,6 @@
 # Alternatives - Method Guidance
 
-> **Sources and provenance:** This method keeps Eugene Bardach as the main policy-analysis spine and adds Peter J. May where his work changes how the agent should generate options. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Three, Appendix B and related design material - used for starting broad, business-as-usual, learning as an option, causal and system models, strategic thrusts, variants, continuous choices, design problems, transition and learning from practice elsewhere. **[M]** Peter J. May, *Hints for Crafting Alternative Policies* (1981) - used for the idea that alternatives are tentative hypotheses rather than discovered answers; iteration between problem framing and option design; the dangers of stock solutions, top-down prescription, straw alternatives and do-everything packages; and his practical method of identifying policy variables, finding their feasible manipulations, then packaging different combinations into coherent strategies. **[U]** `uncertainty-and-learning-guidance.md` - called when the sensible course is to learn before committing, or when a proposed option should be tested before wider adoption. **[R]** `risk-opportunity-appraisal-guidance.md` - called when options interact as packages or pathways, create material lock-in, or need appraisal as part of wider system change. **Purpose:** Operating instructions for an agent that helps a user *generate a serious set of policy choices, understand what can actually be changed, turn policy variables into plausible strategies, distinguish strategies from variants, and narrow the menu without manufacturing decoys*. This method stops before detailed appraisal.
+> **Sources and provenance:** This method keeps Eugene Bardach as the main policy-analysis spine and adds Peter J. May where his work changes how the agent should generate options. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Three, Appendix B and related design material - used for starting broad, business-as-usual, learning as an option, causal and system models, strategic thrusts, variants, continuous choices, design problems, transition and learning from practice elsewhere. **[M]** Peter J. May, *Hints for Crafting Alternative Policies* (1981) - used for the idea that alternatives are tentative hypotheses rather than discovered answers; iteration between problem framing and option design; the dangers of stock solutions, top-down prescription, straw alternatives and do-everything packages; and his practical method of identifying policy variables, finding their feasible manipulations, then packaging different combinations into coherent strategies. **[U]** `../shared/uncertainty-and-learning-guidance.md` - called when the sensible course is to learn before committing, or when a proposed option should be tested before wider adoption. **[R]** `../shared/risk-opportunity-appraisal-guidance.md` - called when options interact as packages or pathways, create material lock-in, or need appraisal as part of wider system change. **Purpose:** Operating instructions for an agent that helps a user *generate a serious set of policy choices, understand what can actually be changed, turn policy variables into plausible strategies, distinguish strategies from variants, and narrow the menu without manufacturing decoys*. This method stops before detailed appraisal.
 
 ## How to use this document
 
@@ -359,7 +359,7 @@ Scouting is option generation.
 
 It is not proof of effectiveness.
 
-Use `uncertainty-and-learning-guidance.md` if the transfer or effect needs testing.
+Use `../shared/uncertainty-and-learning-guidance.md` if the transfer or effect needs testing.
 
 ---
 
@@ -483,7 +483,7 @@ Where interaction matters, consider:
 - staged A then B
 - portfolio approaches
 
-Use `risk-opportunity-appraisal-guidance.md` where interactions, feedbacks or packages materially affect the appraisal.
+Use `../shared/risk-opportunity-appraisal-guidance.md` where interactions, feedbacks or packages materially affect the appraisal.
 
 Do not create packages solely to produce a "do everything" option.
 
@@ -524,7 +524,7 @@ It may be:
 
 This belongs in the options menu only where learning could materially improve the later decision.
 
-Use `uncertainty-and-learning-guidance.md` to define:
+Use `../shared/uncertainty-and-learning-guidance.md` to define:
 
 - the uncertainty
 - the learning move
@@ -1030,7 +1030,7 @@ This file owns **construction of the choice set**.
 
 It should call shared methods rather than copy them.
 
-## Call `uncertainty-and-learning-guidance.md` when:
+## Call `../shared/uncertainty-and-learning-guidance.md` when:
 
 - the user does not know enough to choose a substantive intervention
 - "learn first" may be a serious strategy
@@ -1042,7 +1042,7 @@ This file decides whether learning belongs in the option set.
 
 The shared uncertainty method designs the learning move.
 
-## Call `risk-opportunity-appraisal-guidance.md` when:
+## Call `../shared/risk-opportunity-appraisal-guidance.md` when:
 
 - options interact materially
 - a package or pathway should be compared with isolated interventions
@@ -1052,7 +1052,7 @@ The shared uncertainty method designs the learning move.
 
 Do not perform the full appraisal inside option generation.
 
-## Call `strategic-triangle-guidance.md` when:
+## Call `../shared/strategic-triangle-guidance.md` when:
 
 - the feasible range depends on uncertain operational capacity
 - an option assumes authority, funding or cooperation that may not exist

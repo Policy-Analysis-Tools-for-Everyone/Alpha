@@ -1058,21 +1058,21 @@ Use only when a visible record helps.
 
 This shared method governs **uncertainty and learning across the policy-analysis journey**.
 
-Its primary home is `03-evidence`, but other skills may call it for specific purposes.
+Its primary home is `../capabilities/evidence-guidance.md`, but other skills may call it for specific purposes.
 
-### `01-problem`
+### Problem — `../capabilities/problem-definition-guidance.md`
 
 May use it to ask whether the framing is understood well enough to proceed or requires direct inquiry.
 
 Do not turn `01` into experiment design.
 
-### `02-stakeholders`
+### Stakeholders — `../capabilities/stakeholder-analysis-guidance.md`
 
 May use it where stakeholder motivations, beliefs or relationships are uncertain and need evidence.
 
 Do not use stakeholder engagement merely as a generic experiment.
 
-### `03-evidence`
+### Evidence — `../capabilities/evidence-guidance.md`
 
 Canonical home for:
 
@@ -1084,43 +1084,43 @@ Canonical home for:
 - experiment or learning-move design
 - decision rules
 
-### `04-options`
+### Options — `../capabilities/alternatives-guidance.md`
 
 May use scouting and experimental options.
 
 Do not put the full evidence-design method inside option generation.
 
-### `05-criteria`
+### Criteria — `../capabilities/criteria-guidance.md`
 
 May define what evidence would count as success.
 
 Do not use criteria to choose the learning method.
 
-### `06-outcomes`
+### Outcomes — `../capabilities/outcomes-guidance.md`
 
 May call this method when projected outcomes depend on assumptions too weak to forecast responsibly.
 
 Do not design the whole experiment inside outcomes projection.
 
-### `07-trade-offs`
+### Trade-offs — `../capabilities/trade-offs-guidance.md`
 
 May use unresolved uncertainty to show when the apparent trade-off is unstable.
 
 Do not resolve the uncertainty by inventing a weight or estimate.
 
-### `08-decide`
+### Decision — `../capabilities/decision-guidance.md`
 
 May use critical uncertainty, reversibility and decision rules to decide whether to act, test further or set a review condition.
 
 Do not reopen every uncertainty once the decision is good enough to make.
 
-### `09-story`
+### Story — `../capabilities/storytelling-guidance.md`
 
 May communicate the learning logic and uncertainty.
 
 Do not manufacture missing evidence during storytelling.
 
-### `10-evaluation`
+### Agent evaluation — `../capabilities/agent-evaluation-guidance.md`
 
 Does not use this method to evaluate the agent itself.
 

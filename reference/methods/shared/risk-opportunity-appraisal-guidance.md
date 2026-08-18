@@ -687,7 +687,7 @@ Where uncertainty and value disagreement are material, ask:
 
 This is a quality check, not a replacement for stakeholder analysis.
 
-Use `02-stakeholders` for the full actor map.
+Use `../capabilities/stakeholder-analysis-guidance.md` for the full actor map.
 
 ---
 
@@ -814,7 +814,7 @@ Instead make the choice visible:
 
 This is analytically honest.
 
-Use `07-trade-offs` to deepen the exchange.
+Use `../capabilities/trade-offs-guidance.md` to deepen the exchange.
 
 ## 47. Do not hide judgment inside weights [S][P]
 
@@ -1165,7 +1165,7 @@ This is a **shared appraisal method**.
 
 It should inform several Bardach steps without replacing them.
 
-## `01-problem`
+## Problem — `../capabilities/problem-definition-guidance.md`
 
 Use this method only to notice when the problem is about:
 
@@ -1175,7 +1175,7 @@ Use this method only to notice when the problem is about:
 
 Do not begin appraisal before the problem is sufficiently clear.
 
-## `02-stakeholders`
+## Stakeholders — `../capabilities/stakeholder-analysis-guidance.md`
 
 The stakeholder method owns:
 
@@ -1190,7 +1190,7 @@ This appraisal method may ask whose knowledge, interests or values are missing a
 
 Do not recreate the stakeholder map here.
 
-## `03-evidence`
+## Evidence — `../capabilities/evidence-guidance.md`
 
 The evidence and uncertainty method owns:
 
@@ -1209,7 +1209,7 @@ This appraisal method contributes:
 
 Where an appraisal gap needs new learning, call `03`.
 
-## `04-options`
+## Options — `../capabilities/alternatives-guidance.md`
 
 The options skill owns construction of alternatives and policy packages.
 
@@ -1221,7 +1221,7 @@ This shared method can reveal that:
 
 Do not generate the full option menu here.
 
-## `05-criteria`
+## Criteria — `../capabilities/criteria-guidance.md`
 
 The criteria skill owns the standards against which outcomes are judged.
 
@@ -1235,7 +1235,7 @@ This shared method contributes the appraisal-method gate:
 
 Do not define all criteria inside this method.
 
-## `06-outcomes`
+## Outcomes — `../capabilities/outcomes-guidance.md`
 
 The outcomes skill owns detailed projection.
 
@@ -1252,7 +1252,7 @@ This shared method strengthens it with:
 
 Do not duplicate the full projection scaffold here.
 
-## `07-trade-offs`
+## Trade-offs — `../capabilities/trade-offs-guidance.md`
 
 The trade-offs skill owns the exchange between competing outcomes and values.
 
@@ -1265,7 +1265,7 @@ This shared method contributes:
 
 Do not make the final trade-off judgment here.
 
-## `08-decide`
+## Decision — `../capabilities/decision-guidance.md`
 
 The decision skill owns the recommendation.
 
@@ -1279,13 +1279,13 @@ This shared method contributes:
 
 The accountable decision remains with the person or institution authorised to make it.
 
-## `09-story`
+## Story — `../capabilities/storytelling-guidance.md`
 
 Use only the parts needed to explain why the comparison was done this way.
 
 Do not turn the final policy story into a lecture on appraisal theory.
 
-## `10-evaluation`
+## Agent evaluation — `../capabilities/agent-evaluation-guidance.md`
 
 Use this method to evaluate whether policy-appraisal behaviour in another skill was sound.
 

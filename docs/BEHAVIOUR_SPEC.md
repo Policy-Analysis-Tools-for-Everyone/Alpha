@@ -2,23 +2,38 @@
 
 This document describes the observable behaviour of the MDEE agent in enough detail for another developer or model to reproduce it.
 
-It is split into two parts that must not be blurred:
+It is split into three parts that must not be blurred:
 
 - **Part A — Recovered behaviour.** What the original Copilot agent observably did, evidenced by the raw exports and the method sources it was grounded in.
 - **Part B — Product extensions.** Behaviour added on top of the recovered kernel: case memory, critical uncertainty and the learning move. None of this is evidenced in the original agent.
+- **Part C — What the current runtime implements.** Which of the above survived into the skills, which was dropped, and which current capabilities have no basis here at all. Added later; Parts A and B are not edited to match the present.
 
 > **How to read this in a skills-only repository.** Part A is live: it is
-> the provenance record the skill modules cite, and the reason each one
-> can say what it is grounded in. **Part B describes a web application
-> with a persistence layer, which this repository does not contain.** The
-> case record, the accept/edit/reject flow and the machine-read proposal
-> contract (B2, B3) are not carried into the skills — a proposal block
-> emitted into a chat where nothing parses it would just show the user
-> raw JSON. The critical-uncertainty and learning-move step (B4) was cut
-> as a module; its parts belong in `03-evidence`, `04-options` and
-> `08-decide`. B1, B6 and B8 do carry over and are cited by
-> `00-house-rules`. Part B is kept in full because it records decisions
-> and their reasoning, not because it describes this repository.
+> the provenance record for behaviour recovered from the original agent,
+> and the reason `house-rules` and `problem` can say what they inherit.
+> **Part B describes a web application with a persistence layer, which
+> this repository does not contain.** The case record, the
+> accept/edit/reject flow and the machine-read proposal contract (B2, B3)
+> are not carried into the skills: a proposal block emitted into a chat
+> where nothing parses it would just show the user raw JSON. The
+> critical-uncertainty and learning-move step (B4) was never built as a
+> module; that material is now a canonical shared method,
+> `reference/methods/shared/uncertainty-and-learning-guidance.md`, and
+> reaches the runtime distilled into `evidence`, `options`, `outcomes` and
+> `decide`. B1, B6 and B8 do carry over and are cited by `house-rules`.
+> Part B is kept in full because it records decisions and their reasoning,
+> not because it describes this repository.
+>
+> **A second warning, added during the skills implementation pass.** This
+> document is a *historical* record and its scope is narrow. The original
+> agent stopped at the problem statement and the value / capacity /
+> support readout (A15). Everything downstream of that, meaning
+> `evidence`, `options`, `criteria`, `outcomes`, `trade-offs`, `decide`,
+> `story`, `stakeholders` and `evaluation`, is grounded in the method
+> layer under `reference/methods/` and **not** in the original agent. Do
+> not cite this document as provenance for any of them. See
+> `docs/AUTHORING.md` for how the current skills are actually sourced, and
+> `reference/methods/README.md` for the method layer.
 
 ## Sources and how they are used
 
@@ -26,13 +41,13 @@ It is split into two parts that must not be blurred:
 |---|---|---|
 | [J] | `reference/copilot-json/declarativeAgent_0.json` | Primary evidence for the original agent's observable behaviour (instructions, modes, conversation starters, capabilities) |
 | [M] | `reference/copilot-json/manifest.json` | Packaging evidence: name, version, description, provenance |
-| [B] | `reference/methods/bardach-problem-definition-guidance.docx` | The knowledge file the original instructions ground the method in ("Bardach — Problem Definition Guidance") |
-| [T] | `reference/methods/2090_0_Strategic Triangle Case.pdf` | Grounds the public-value / operational-capacity / political-support analysis (Donahue, HKS Case 2090.0) |
-| [P] | `docs/product/*` | Current product direction and MVP scope; sole basis for Part B |
-| [C] | `reference/course/*` | Supporting course context only (syllabus, PPC memo instructions). Confirms the Bardach basis and the memo as a *later* destination. Must not expand the first slice into memo generation |
-| [S] | `reference/course/2026_JAN_Digital_Transformation_IIPP0011.md` | The Digital Transformation (IIPP0011) module syllabus in Markdown — the course the product is named after. Intended to sit at the core of the *future* agent (its four-waves structure, reading list, cases and assignment prompts as teachable material). **Not yet wired into any behaviour**: nothing in Part A or Part B is derived from it, and the first slice does not read it |
+| [B] | `reference/sources/bardach-problem-definition-guidance.docx` | The knowledge file the original instructions ground the method in ("Bardach — Problem Definition Guidance"). **Archival.** The current canonical method is `reference/methods/capabilities/problem-definition-guidance.md`; the DOCX was moved out of the active method layer during the skills implementation pass and is retained as evidence, not as a source skills read |
+| [T] | `reference/sources/strategic-triangle-case-2090.pdf` | Grounds the public-value / operational-capacity / political-support analysis (Donahue, HKS Case 2090.0). **Archival.** The current canonical method is `reference/methods/shared/strategic-triangle-guidance.md`, which was checked against all 4 pages of this PDF; the fidelity check is recorded in `reference/sources/README.md` |
+| [P] | `docs/product/*` | Current product direction and MVP scope; sole basis for Part B. **These files are not in this repository.** They were the working product documents at the time this specification was written. Part B records their content; the documents themselves were never committed |
+| [C] | `reference/course/*` | Supporting course context only (syllabus, PPC memo instructions). **This directory does not exist in this repository.** The PPC memo instructions survive at `reference/sources/ucl-ppc-one-pager-instructions.pdf` and are now distilled into `reference/methods/capabilities/storytelling-guidance.md`, where PPC is one output mode rather than the whole method. The constraint recorded here, that the memo was a *later* destination beyond the first slice, is a historical statement about the first slice and no longer describes the product: `story` produces memos deliberately |
+| [S] | `reference/course/2026_JAN_Digital_Transformation_IIPP0011.md` | The Digital Transformation (IIPP0011) module syllabus — the course the product is named after. **This file is not in this repository.** Nothing in Part A or Part B is derived from it, and nothing in the current runtime reads it |
 | [O] | Project owner, authored directly | Material the owner supplies as their own draft rather than from a source document — device lists, vocabulary, direction on how modules divide. Authored, not unsourced: cite `[O]` rather than leaving it on a module's "not grounded" line, and say what it was |
-| [E] | `evals/transcripts/*` | Behavioural evidence from real sessions. The only record of what this agent actually says, as opposed to what it was configured to say. Grounds revisions made after testing |
+| [E] | `evals/transcripts/*` | Behavioural evidence from real sessions. There is currently 1. The only record of what this agent actually says, as opposed to what it was configured to say. Grounds revisions made after testing |
 
 **Truncation notice.** The `instructions` field in [J] ends mid-sentence, inside its second worked example: `"…then test whether the binding issue is unmet need, delivery capacity, political"`. The text after that point is lost. Nothing in this specification reconstructs or completes the missing tail. Where the truncated example's behaviour matters (challenging "not enough shelter" as a hidden solution), it is independently supported by the surviving portion of the example, by the general rules earlier in [J], and by the hidden-solution anti-pattern and worked table in [B].
 
@@ -230,7 +245,7 @@ Everything in this part comes from the product documents [P]. None of it is evid
 - A normal chat reply leaves the case unchanged. [P]
 - The agent proposes an update only when the conversation produces a **material change**: a revised problem statement, a new evidence judgement, an assumption becoming explicit, a different causal account, a new critical uncertainty, an agreed learning move. [P]
 - The user must be able to see the change before it is saved, and can **accept, edit or reject** it. The accepted case never changes silently. Rejected wording is not applied; contested wording can be recorded as contested rather than accepted. [P]
-- The minimum structured contract for proposals is defined in `.claude/skills/00-house-rules/SKILL.md`.
+- The minimum structured contract for proposals was to have been defined in the shared-rules module. **It never was, and is deliberately not carried into `house-rules`:** see the reading note at the top of this document. There is no proposal contract in this repository.
 
 ## B4. Extension of the pipeline: uncertainty and the learning move
 
@@ -282,3 +297,69 @@ Two consequences worth recording:
 
 - **The case record needs no change.** A conversation may produce material for later sections before earlier ones are filled. The record has no required order and empty sections stay hidden (B2), so open entry costs nothing schema-side.
 - **A5's stopping rule becomes harder, not easier.** "Stop interviewing once you can produce useful work" [J] assumed an interview had started. With open entry the agent must also judge when *not* to start one — a user arriving with a worked solution wants it tested, not to be interviewed from scratch. Over-interviewing a user who has already supplied the material is the failure mode to watch, and it is a variant of A14's repetitive-questioning risk.
+
+---
+
+# Part C — What the current runtime actually implements
+
+Added during the skills implementation pass. Parts A and B are historical and are
+not edited to match the present. This part exists so a reader can tell, without
+guessing, which of the behaviour above survived into the skills, which was
+dropped, and which of the current capabilities has no basis here at all.
+
+## C1. Recovered behaviour that carried over
+
+Into `house-rules`: chat as the whole experience with no routine document-shaped
+reply (B1); removal of deployment-specific references (B6); open entry and mode
+recognition (B8); tone, UK spelling and critical rather than affirming posture
+(A13); one focused question at a time and the stopping rule (A3, A5); the
+never-invent and marked-placeholder rules (A10); competing framings preserved
+rather than silently collapsed (A11); the failure modes (A14).
+
+Into `problem`: the reasoning sequence and its informational transition conditions
+(A4); the ask-or-stop test (A5); the 4-part output of candidate, critique,
+revision and readout, plus the problem system map (A6); the self-check doubling as
+the scoring list (A7); the hidden-solution treatment (A8); the treatment of
+unsupported causal claims (A9); a metric per sub-problem (A10).
+
+The 5 named modes (A2) are not separate skills. `house-rules` folds them into open
+entry: interview, draft, critique, score and diagnose are things the agent does as
+the exchange requires, not modes the user selects.
+
+## C2. Product extensions that did not carry over
+
+The case record, its update rule and the accept/edit/reject flow (B2, B3) are not
+implemented. They describe a persistence layer this repository does not have.
+
+The 5 orienting questions and the single first workflow (B5) are not implemented
+as a sequence. The product deliberately has no mandatory journey.
+
+## C3. Behaviour with no basis in Part A or Part B
+
+`stakeholders`, `evidence`, `options`, `criteria`, `outcomes`, `trade-offs`,
+`decide`, `story` and `evaluation` are grounded in the method layer under
+`reference/methods/`, and in nothing recorded in this document. The original agent
+stopped at the problem statement and the readout (A15).
+
+The critical-uncertainty and learning-move material (B4) is the one Part B
+extension that survives in substance. It is no longer a pipeline step. It is a
+canonical shared method,
+`reference/methods/shared/uncertainty-and-learning-guidance.md`, distilled into
+`evidence` (its primary home), `options`, `outcomes` and `decide`.
+
+Two further shared methods have no antecedent here at all: risk-opportunity
+appraisal, and the fuller strategic alignment method that replaced the A12 summary
+of the triangle.
+
+## C4. The tension in B7 that this pass resolved
+
+B7 records the recovered endpoint (the problem statement) against the product
+endpoint (uncertainty and a learning move) as an unresolved tension. It is now
+settled in favour of neither: the product runs from problem definition through to
+storytelling and agent evaluation, so both endpoints are staging posts. Fidelity
+to the original should still be judged only up to the readout, exactly as B7 says.
+
+The other tensions in B7 stand as recorded. `discourage_model_knowledge` is
+preserved in spirit as an evidence-discipline rule rather than a platform flag.
+Paste versus upload is no longer a live constraint, because a skills library
+imposes neither.
