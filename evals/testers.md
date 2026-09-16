@@ -18,7 +18,7 @@ Sessions stay in `transcripts/`. Nothing here duplicates them.
 
 | ID | Role type | Policy experience | AI familiarity | Knows MDEE | Sessions | First session | Consent to publish |
 |---|---|---|---|---|---|---|---|
-| T001 | Project owner and author | `[add]` | high | authored it | 1 | 2026-08-17 | yes |
+| T001 | Project owner and author | `[add]` | high | authored it | 6 | 2026-08-17 | yes |
 
 ## What each field is for
 
