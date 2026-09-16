@@ -265,6 +265,14 @@ and so cannot be cited as evidence either way on the no-invented-figures rule.
    vague in its claims rather than in its vocabulary, or building a measure is treated as
    discharging it. Worth one targeted case before any skill change.
 
+   > **Editorial note, added when `../problem/problem-1.md` was recorded.** That session is
+   > evidence that this challenge is material-dependent rather than simply absent: it fires
+   > three times there, each time on a term carrying several distinct meanings. The
+   > distinguishing feature appears to be the kind of vagueness — a word doing several jobs,
+   > versus a claim that is merely unquantified, which is what this session contains. The
+   > finding above stands exactly as recorded. The targeted case it asks for should test that
+   > distinction rather than the challenge in general.
+
 **Open**
 
 7. **Several figures cannot be traced within this record.** Almost certainly from the user's
