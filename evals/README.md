@@ -15,19 +15,47 @@ The loop it serves:
 ```text
 evals/
   transcripts/   real sessions, anonymised. The only behavioural evidence
+  debriefs/      agent-written accounts of sessions. Not transcripts. See its README
   capability/    hard cases the agent may still fail. Synthetic
   regression/    behaviour already shown to work, or already fixed
   testers.md     pseudonymous register of who ran which session
 ```
 
 `syntheses/` will hold cross-session reviews once there are several sessions to
-review. It does not exist yet, and creating an empty directory to look organised
-would misrepresent how much evidence this project has.
+review. **That condition is now met and the directory still does not exist.**
+Cross-session observations are currently recorded at the foot of individual
+transcripts, which is where they had to go and not where they belong. Creating an
+empty directory to look organised would still misrepresent how much evidence this
+project has; writing the first synthesis would not.
 
-**The honest current state: 1 real session, on 1 capability, run warm, without
-`house-rules` loaded because it did not exist yet.** Everything else here is
-synthetic and labelled as such. Nothing in this repository has been
-behaviourally tested cold.
+**The honest current state: 9 real sessions, 2 testers, every one of them warm.**
+Three capabilities have transcripts filed under them: `problem` 4, `story` 3,
+`evidence` 2. Four more — `criteria`, `outcomes`, `stakeholders`, `decide` — appear
+in headers as having fired inside somebody else's session, but none has a session of
+its own. **`options` and `trade-offs` have never appeared in a single header.**
+Everything under `capability/` and `regression/` is synthetic and labelled as such.
+
+Four things that number does not say, and should.
+
+**Nothing here has been tested cold.** Not one session, across either tester. The
+distinction is doing real work: the two clearest defects on record were caught
+because the tester knew their own evidence base well enough to contradict the
+agent, which is exactly what a cold tester cannot do.
+
+**The two testers are not two independent samples.** T001 authored the skills. All
+six of their sessions are adjacent work in a single month. T002's three may share
+memory context with each other; it was asked and cannot be established. Report
+findings as *n testers / m sessions* and never as a rate.
+
+**One session ran a skill this repository has never contained.** `problem-3` loaded
+a problem skill from a user path whose provenance is not known, alongside plugin
+`house-rules`. Its findings cannot be promoted to a regression result, and it was
+caught only because a debrief recorded the file path.
+
+**Whether `house-rules` loads is mostly still inference.** It is directly observed
+in three sessions. In one of those it loaded *after* the first artefact was already
+written, which is the loading instruction failing. Two testers, including the
+author, have separately reported being unable to tell whether it had loaded.
 
 ## `transcripts/` is the valuable directory
 
