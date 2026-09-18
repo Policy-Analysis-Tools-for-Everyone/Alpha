@@ -1,161 +1,80 @@
 # Evaluation
 
-Evidence about what this agent actually does, as opposed to what its skills say
-it should do. The method is
-`reference/methods/capabilities/agent-evaluation-guidance.md`, and the runtime
-skill that applies it is `evaluation`.
-
-The loop it serves:
-
-> real use, transcript, session review, finding, pattern, change hypothesis,
-> skill revision, regression test, cold re-test, new evidence
-
-## What is in here, and what is not
+Evidence about what this agent actually does, as opposed to what its skills say it should do.
+Method: `reference/methods/capabilities/agent-evaluation-guidance.md`. The runtime skill that
+applies it is `evaluation`.
 
 ```text
 evals/
   transcripts/   real sessions, anonymised. The only behavioural evidence
-  debriefs/      agent-written accounts of sessions. Not transcripts. See its README
+  wiki/          what recurs across sessions, and the tests it asks for
+  debriefs/      agent-written accounts of sessions. Not transcripts
   capability/    hard cases the agent may still fail. Synthetic
   regression/    behaviour already shown to work, or already fixed
   testers.md     pseudonymous register of who ran which session
 ```
 
-`syntheses/` will hold cross-session reviews once there are several sessions to
-review. **That condition is now met and the directory still does not exist.**
-Cross-session observations are currently recorded at the foot of individual
-transcripts, which is where they had to go and not where they belong. Creating an
-empty directory to look organised would still misrepresent how much evidence this
-project has; writing the first synthesis would not.
+Each directory has its own README. **[`wiki/findings.md`](wiki/findings.md) is the one to read
+first** — it holds what more than one session shows, and the honest count of what the corpus
+does not have.
 
-**The honest current state: 9 real sessions, 2 testers, every one of them warm.**
-Three capabilities have transcripts filed under them: `problem` 4, `story` 3,
-`evidence` 2. Four more — `criteria`, `outcomes`, `stakeholders`, `decide` — appear
-in headers as having fired inside somebody else's session, but none has a session of
-its own. **`options` and `trade-offs` have never appeared in a single header.**
-Everything under `capability/` and `regression/` is synthetic and labelled as such.
+The loop: real use → transcript → finding → pattern → change hypothesis → skill revision →
+regression test → cold re-test.
 
-Four things that number does not say, and should.
+## Current state
 
-**Nothing here has been tested cold.** Not one session, across either tester. The
-distinction is doing real work: the two clearest defects on record were caught
-because the tester knew their own evidence base well enough to contradict the
-agent, which is exactly what a cold tester cannot do.
+**9 sessions, 2 testers, August 2026. Every one warm.** `problem` 4, `story` 3, `evidence` 2.
+Four more capabilities have fired inside other people's sessions without having one of their
+own. `options` and `trade-offs` have never appeared in a header. Everything under
+`capability/` and `regression/` is synthetic and labelled as such.
 
-**The two testers are not two independent samples.** T001 authored the skills. All
-six of their sessions are adjacent work in a single month. T002's three may share
-memory context with each other; it was asked and cannot be established. Report
-findings as *n testers / m sessions* and never as a rate.
+**Nothing has been tested cold.** Neither tester. See
+[`wiki/prompts/cold-session.md`](wiki/prompts/cold-session.md).
 
-**One session ran a skill this repository has never contained.** `problem-3` loaded
-a problem skill from a user path whose provenance is not known, alongside plugin
-`house-rules`. Its findings cannot be promoted to a regression result, and it was
-caught only because a debrief recorded the file path.
-
-**Whether `house-rules` loads is mostly still inference.** It is directly observed
-in three sessions. In one of those it loaded *after* the first artefact was already
-written, which is the loading instruction failing. Two testers, including the
-author, have separately reported being unable to tell whether it had loaded.
-
-## `transcripts/` is the valuable directory
-
-Real sessions are the only record of what the agent says. The Copilot exports
-under `reference/copilot-json/` preserve the original agent's configuration and
-not one line of its behaviour, which is exactly the gap these files fill.
-
-Save into `transcripts/<skill>/<short-name>.md` with a header naming the skills
-used, the version or commit tested, the model, the date, the tester, whether the
-run was cold or warm, and which other skills were loaded. Without the model and
-the version, a transcript cannot be interpreted later: these skills pin no model,
-so challenge quality varies with whatever the reader is running.
-
-**Anonymise before committing, and label every substitution.** Remove personal
-data. Replace organisation and programme names where necessary. Substitute
-sensitive figures and say clearly that they are substituted, because an
-unlabelled substituted number gets cited as real 18 months later. Then check that
-the causal, organisational and analytical structure survives: a case anonymised
-into genericness can no longer reproduce the behaviour it was saved for.
-`transcripts/problem/receipt-confirmation.md` is the worked example of the format
-and of how far the anonymisation can go.
-
-**Never rewrite a transcript to make a skill look better.** If a skill has
-changed since a session, say so in an editorial note and leave the record alone.
-
-Two sessions are worth saving above all others: the one that made you change a
-skill, and the one where the agent was confidently wrong. The second is more
-useful and much easier to lose.
-
-## Who ran the session
-
-`testers.md` holds a pseudonymous register: T001, T002, one row each. Every
-transcript header names the tester by ID.
-
-It exists so that *how many independent people* is answerable. The method requires
-it and warns against counting one person's repeated objections as several users.
-Read it during synthesis, to count independent testers. Never read it instead of a
-transcript.
-
-Report findings as **n testers / m sessions**. Never a percentage at this sample
-size. A behaviour seen 4 times in one person's sessions is *1 tester (4 sessions)*.
+`syntheses/` does not exist. `wiki/findings.md` does the job for now.
 
 ## Cold testing, and what must never reach the agent
 
-**Nothing about a tester reaches MDEE.** The register, and any future learning
-record, are evaluation-side artefacts. They live in this repository and go nowhere
-near a Project, a skill, a system prompt or Claude's memory.
+A session is **cold** when the tester has not read the skill files, has not seen what the evals
+expect, and has not used MDEE before. Their second session is not cold, whatever else is true.
 
-Break that and every subsequent result measures a personalised build rather than
-the product a new person installs.
+**Nothing about a tester reaches MDEE.** The register and any future learning record are
+evaluation-side artefacts. They go nowhere near a Project, a skill, a system prompt or Claude's
+memory. Break that and every later result measures a personalised build rather than the product
+a new person installs.
 
-A session is **cold** when the tester has not read the skill files, has not seen
-what the evals expect, and has not used MDEE before. Their second session is no
-longer cold, whatever else is true, which is why the register counts sessions.
-
-Someone installing MDEE.MD from the plugin has no path to `evals/` at all, so the
-boundary holds without anyone having to remember it. Do not helpfully undo that by
-pasting evaluation material into a Project.
-
-**Runtime memory is a separate question.** Claude's own memory feature, including
-its `MEMORY.md` entrypoint, is runtime personalisation that loads into a
-conversation. Everything here is evidence about behaviour. Never give an
-evaluation file the name of a file a runtime feature loads, and never use auto
-memory as an evidence source: notes the model wrote about its own corrections are
-not a transcript. Whether retained user context improves repeated work is a
-product experiment with its own hypothesis and its own eval, and it is not a
-follow-on from this.
+**Runtime memory is a separate question.** Never give an evaluation file the name of a file a
+runtime feature loads, and never use auto memory as an evidence source: notes the model wrote
+about its own corrections are not a transcript.
 
 ## Privacy
 
-Proportionate to a small open-source alpha. Five rules.
-
-1. **Pseudonymous IDs in the repository.** The mapping to real people is held
-   privately by the maintainer and never committed.
-2. **Ask before the session:** *"May I save an anonymised version of this
-   conversation in a public repository?"* Record the answer in `testers.md`.
-3. **Where consent is refused,** or the work is pre-decision, commercially
-   sensitive or politically sensitive, write the finding and do not commit the
-   transcript. Cite it as an uncommitted session.
-4. **Redact before committing, never after.** The anonymisation rules above cover
-   how far to go.
+1. **Pseudonymous IDs in the repository.** The mapping to real people is held privately by the
+   maintainer and never committed.
+2. **Ask before the session:** *"May I save an anonymised version of this conversation in a
+   public repository?"* Record the answer in `testers.md`.
+3. **Where consent is refused,** or the work is pre-decision, commercially sensitive or
+   politically sensitive, write the finding and do not commit the transcript.
+4. **Redact before committing, never after.**
 5. **Register fields stay broad categories.** No free text about a person.
+
+## Counting
+
+**n testers / m sessions.** Never a percentage, never "most users". A behaviour seen 4 times in
+one person's sessions is *1 tester (4 sessions)*. That is the whole defence against inventing
+significance from a tiny alpha sample.
 
 ## `capability/` and `regression/` are different jobs
 
-**Capability cases** are hard, realistic and possibly unsolved. A meaningful
-failure rate is the point. They tell you what the agent still cannot do.
+**Capability cases** are hard, realistic and possibly unsolved. A meaningful failure rate is the
+point. **Regression cases** protect behaviour already shown to work and should pass almost every
+time. Promote a case when a capability failure is fixed and becomes reliable.
 
-**Regression cases** protect behaviour already shown to work. They should pass
-almost every time. When a capability failure is fixed and becomes reliable,
-promote the case here.
+Never report one aggregate score across both. For any behaviour that fires conditionally, keep a
+matched pair: a case where it must fire and one where it must not. An agent tested only on
+whether it challenges learns to challenge everything.
 
-Never report one aggregate score across both. And for any behaviour that fires
-conditionally, keep a matched pair: a case where it must fire, and a case where it
-must not. An agent tested only on whether it challenges learns to challenge
-everything, which for this agent is as unhelpful as challenging nothing.
-
-## Do not overclaim testing
-
-Four distinct states, worth keeping apart in every status claim:
+## Do not overclaim
 
 | State | What it means |
 |---|---|
@@ -164,28 +83,19 @@ Four distinct states, worth keeping apart in every status claim:
 | **Behaviourally tested** | Run on real work, in a session that was saved |
 | **Regression-tested** | A saved case re-runs and still passes after changes |
 
-A same-session self-test catches structure, obvious routing errors, missing rules
-and formatting. It is weak evidence about behaviour, because the author already
-knows what the file says. Label it as warm and expect a cold run to find
-different things.
-
-Cold sessions, run by someone who did not author the skill, should drive the next
-major revision.
+A same-session self-test catches structure, not behaviour, because the author already knows what
+the file says. Label it warm and expect a cold run to find different things.
 
 ## Reporting a problem
 
-The most useful thing anyone can send is a conversation where the agent was
-**confidently wrong**. Those are worth more than the ones where it worked, and
-they are much easier to lose.
+The most useful thing anyone can send is a conversation where the agent was **confidently
+wrong**. Worth more than the ones where it worked, and much easier to lose.
 
-**If you installed MDEE.MD and something went wrong,** open a session report:
+**If something went wrong,** open a session report:
 [new issue](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/issues/new?template=session-report.yml).
-Redact anything sensitive before you paste it. GitHub issues are public, so
-material that has not been through that check should go to the maintainer
-privately instead.
+Issues are public — redact first, or send it to the maintainer privately.
 
-**If you are one of the alpha testers,** you do not write anything up. The
-debrief is 5 questions and takes about 3 minutes:
+**If you are an alpha tester,** you write nothing up. Five questions, about three minutes:
 
 1. What were you trying to do?
 2. Where did you get to?
@@ -193,11 +103,9 @@ debrief is 5 questions and takes about 3 minutes:
 4. What did you expect instead?
 5. Was there anything it told you that you think was wrong?
 
-Question 2 asks for the state reached rather than whether you were happy, because
-satisfaction is not the eval and the two get recorded separately. Question 5 earns
-its place because someone who was confidently misled does not know it yet, and no
-other question will surface it.
+Question 2 asks for the state reached rather than whether you were happy; satisfaction is not
+the eval. Question 5 earns its place because someone who was confidently misled does not know it
+yet.
 
-The maintainer anonymises the conversation, writes the transcript header, and runs
-the structured analysis through the `evaluation` skill. Testers are not expected
-to become evaluation researchers.
+The maintainer anonymises, writes the header and runs the analysis. Testers are not expected to
+become evaluation researchers.
