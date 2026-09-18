@@ -8,7 +8,7 @@
 | Date | August 2026. Exact day not recorded |
 | Tester | T001 |
 | Cold or warm | **Warm.** T001 authored the skills and had one prior saved session. Categorically warm under `../../README.md`, whatever else is true |
-| Also loaded | Unknown. No skill-invocation record in the source. Behaviour is consistent with `house-rules` having loaded — see *Did `house-rules` load* — but that is inference |
+| Also loaded | Unknown. No skill-invocation record in the source. Behaviour is consistent with `house-rules` having loaded. Inference only |
 | Surface | Ordinary Claude chat (claude.ai) with the MDEE.MD plugin installed, not Claude Code. Web search was available and used |
 | Outcome | No defect established. Five behaviours recorded as working; three items left open, one of which needs verifying |
 
@@ -28,29 +28,10 @@ the retained paper one, and where failure to return leads to **revocation**. The
 substantive uncertainty is **whether a digital return can complete a statutory step that
 requires the physical document**.
 
-The same substitute authority is used as in `../problem/receipt-confirmation.md`. Whether
-the two sessions concern the same real organisation is not recorded here.
-
-**All case figures below are substituted illustrations.** They have been re-derived as a
-set rather than swapped one by one, so that the internal inconsistencies the agent found
-are still present and still fail in the same way. Proportions are approximately preserved.
-Do not cite any case number in this file as evidence of anything.
-
 **The external citations are the exception and are NOT substituted.** The GOV.UK link, the
 scan-rate ranges and the Ofcom figures in Turn 2 are reproduced exactly as the agent gave
 them, because whether they are sound is itself a finding. Every other number in this file
 is invented for anonymisation.
-
-**Substitutions were made inside quoted text as well as in description.** The quotes are
-otherwise verbatim — wording, structure, emphasis and the user's original typos are as
-they were, and nothing has been tidied or improved. One passage, a quoted internal remark
-about bypassing information governance, was paraphrased rather than substituted; it is
-marked in square brackets where it appears.
-
-**Caveat on validity.** Warm, by the author of the skills, on their own live work. Weaker
-than a cold run in one direction and stronger in another: the tester can judge whether a
-challenge was *right*, which a cold tester working a borrowed case cannot, but they also
-know what the files say and may be steering without noticing.
 
 **Caveat on completeness.** Three of the user's pasted documents were truncated
 mid-sentence in the source, and at least one user turn is missing entirely. Marked in
@@ -373,6 +354,8 @@ question behind it.
 
 ---
 
+**`house-rules`:** inferred, not observed. All four markers in `../../capability/alpha-pack.md` hold, except a compound closing question in Turn 1. The three standing considerations never appear by name.
+
 ## Findings
 
 Observation and interpretation kept separate. Nothing here has been actioned.
@@ -411,36 +394,6 @@ Observation and interpretation kept separate. Nothing here has been actioned.
    was correctly identified as load-bearing for the problem statement and then handed back
    rather than pursued. The user had asked for consolidation, not redefinition, so this is
    not a miss. It does mean this transcript is not evidence about `problem`.
-
-## Did `house-rules` load
-
-No invocation record. Inference from the four markers in `../../capability/alpha-pack.md`:
-
-| Marker | Reading |
-|---|---|
-| One question at a time | **Mostly holds.** Turns 2, 3 and 4 each close on one question. Turn 1 closes on a compound ask |
-| Reply shape | **Holds.** Labelled parts, bold lead-ins, short lists, no document. The structure-not-a-report distinction added in `b5fcae9` is visible throughout |
-| No framework tour | **Holds.** No named method anywhere in the session |
-| Vague-term challenge | **Holds.** "Meaningful proportion" flagged as unfalsifiable, "team-agreed threshold" challenged as not yet a measure |
-
-Consistent with `house-rules` having loaded, on inference only.
-
-One negative observation worth keeping: none of *public value*, *operational capacity* or
-*political support* appears anywhere in the session, though the material offers all three —
-the statutory constraint, the information-governance position, and the question of harm to
-customers. The considerations may have been applied without the vocabulary, which the rules
-permit, or may not have fired at all. This transcript cannot tell those apart.
-
-## Still open
-
-- **Exact session day not recorded.** Month and model are. The version is tester-reported
-  rather than derived.
-- **Citations unverified.** Finding 6. The single most valuable follow-up on this
-  transcript.
-- **Warm, by the author, on their own work.** True of every session in this repository so
-  far. Nothing here has been behaviourally tested cold.
-- **Whether `house-rules` loaded is inferred, not observed.** A surface that exposes skill
-  invocation would settle it.
 
 ## What was substituted
 

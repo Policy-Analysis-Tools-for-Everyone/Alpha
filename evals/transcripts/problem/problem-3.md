@@ -123,6 +123,8 @@ evidence about the user's case."*
 
 ---
 
+**`house-rules`:** loaded from the plugin, established from the invocation log. All four markers hold, and the vague-term challenge appears in full four-part form for the first time. The three standing considerations are used by name, unlike every T001 session.
+
 ## Findings
 
 **The regression result**
@@ -196,38 +198,6 @@ This is the first time the evaluation has come close to attributing behaviour to
 file, and it was caught only because the debrief recorded full paths. **The general lesson is
 in `../../debriefs/README.md`:** without an invocation log, this session would have been filed
 as a clean regression result on a skill that may not have run.
-
-## Did `house-rules` load
-
-**Yes, established from the invocation log**, not inferred. The second of the three file reads
-was `/mnt/skills/plugins/mdee:house-rules/SKILL.md`.
-
-| Marker | Reading |
-|---|---|
-| One question at a time | **Holds.** One closing question |
-| Reply shape | **Holds.** Labelled parts, short lists, no document |
-| No framework tour | **Holds.** No named method, though the three standing considerations appear by name in the readout, which the rules permit |
-| Vague-term challenge | **Fires.** *"'Ill prepared' and 'at risk' carry no scale: prepared compared with what, at what cost, over what period?"* — the four-part challenge, in full, for the first time in this repository |
-
-**The vague-term challenge appears here in its complete form**, which neither `evidence-2.md`
-(where it did not fire) nor `problem-1.md` (where it fired on multi-meaning terms) recorded.
-That extends the refinement noted in `problem-1.md`: it fires on unquantified claims too, at
-least when `problem` is the active capability.
-
-**And the considerations are used by name** — public value, operational capacity, political
-support — where all six T001 sessions applied them without the vocabulary. That was recorded
-across three of those transcripts as something to watch. This is the counter-example.
-
-## Still open
-
-- **Provenance of `01-problem-definition` is closed unresolved.** Asked and not known. Findings
-  1 to 3 can never be promoted to a regression result on the shipped skill, so if that result
-  is wanted it has to come from a fresh session on a confirmed plugin install.
-- **Model not confirmed.**
-- **Still no cold session.** T002 was familiar with the skills. The repository holds nine
-  sessions across two testers and none of them is cold.
-- **Whether the general-knowledge defect is fixable by rule.** It now has two testers and
-  three sessions behind it, and in every case the agent could name the failure afterwards.
 
 ## What was substituted
 
