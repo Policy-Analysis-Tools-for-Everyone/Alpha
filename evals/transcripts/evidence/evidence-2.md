@@ -8,7 +8,7 @@
 | Date | August 2026. Exact day not recorded |
 | Tester | T001 |
 | Cold or warm | **Warm.** Fourth saved session. T001 authored the skills |
-| Also loaded | **`house-rules`, directly observed.** The user typed `/house-rules` as an explicit slash command between their first message and the agent's reply, so it was loaded for both captured agent turns. The only session in this repository where loading is established rather than inferred. See *Did `house-rules` load* — the reason it was typed matters more than the fact |
+| Also loaded | **`house-rules`, directly observed.** The user typed `/house-rules` as an explicit slash command between their first message and the agent's reply, so it was loaded for both captured agent turns. The only session in this repository where loading is established rather than inferred. The reason it was typed matters more than the fact — see `../../wiki/findings.md` F2 |
 | Surface | Ordinary Claude chat (claude.ai) with the MDEE.MD plugin installed |
 | Outcome | Five behaviours recorded as working. One candidate defect: the vague-term challenge did not fire, in the only session where `house-rules` is known to have been loaded |
 
@@ -43,8 +43,6 @@ Several figures the agent uses — a contact-mix proportion, an annual cost, a s
 — likewise have no visible origin. **Roughly half the agent's material cannot be traced to
 anything in this record.** Nothing has been reconstructed, and the assessments below are
 written against what can be seen.
-
-**Caveat on validity.** Warm, by the author of the skills, on their own live work.
 
 ---
 
@@ -88,8 +86,7 @@ culture more broadly."* Closing:
 ## Between turns — `/house-rules`
 
 The user issued `/house-rules` as an explicit slash command. **The tester's recorded reason:
-they did not know whether it had loaded.** See *Did `house-rules` load*, where this is the
-principal finding of the session.
+they did not know whether it had loaded.** This is the principal finding of the session, and F2 in `../../wiki/findings.md`.
 
 The interface then displayed a single-line activity summary — *"Scrutinized unresolved
 metrics and restored missing documentation elements."* This is client chrome describing the
@@ -235,6 +232,8 @@ and so cannot be cited as evidence either way on the no-invented-figures rule.
 
 ---
 
+**`house-rules`:** loaded — the user typed `/house-rules` before both captured turns. Reply shape and no-framework-tour hold; question discipline not assessable; **the vague-term challenge does not fire**, which is finding 6 and only carries weight because loading is known here.
+
 ## Findings
 
 **Behaviours that fired, and worked**
@@ -286,77 +285,6 @@ and so cannot be cited as evidence either way on the no-invented-figures rule.
 9. **Question discipline.** The agent asks nothing in either captured turn. As in
    `../story/story-1.md`, this is permitted for a user arriving with worked material, and as
    there it means this transcript is weak evidence either way.
-
-## Cross-session observations
-
-Flagged for a future synthesis. **1 tester / 3 sessions**, all T001's, all on adjacent work.
-Correlated observations, not independent ones.
-
-- **The contaminated-measure behaviour is now the strongest candidate pattern in this
-  repository.** In `evidence-1.md` a call-volume measure was shown to move for reasons
-  unrelated to the thing being measured. In `../story/story-1.md` an activity measure was shown
-  to be carrying an outcome claim. Here an escalation measure is shown to be satisfiable by the
-  design change itself. Three sessions, three different shapes, one rule. **Candidate
-  hypothesis: this behaviour is reliable.** It is the single thing most worth testing cold, and
-  it is also the behaviour most likely to be over-claimed from one person's correlated sessions.
-
-## Did `house-rules` load
-
-**Yes, and it is established rather than inferred — but the reason it can be established is
-itself the finding.**
-
-The user typed `/house-rules` as an explicit slash command, between their first message and
-the agent's reply. Both captured agent turns therefore ran with the skill loaded.
-
-**The tester's recorded reason: they did not know whether it had loaded.** Not routine, and
-not a noticed failure. They could not tell.
-
-Three things follow, and the third is the one that matters beyond this session.
-
-**1. This session's behaviour can be read against a known-loaded skill.** That is not true of
-any other transcript here, and it is what promotes the vague-term observation from a note to
-finding 6.
-
-**2. It says nothing about whether loading works unprompted.** The command was manual and
-mid-conversation, so the state before it is unknown and unrecoverable. This session is evidence
-about behaviour with `house-rules` present, not evidence about the loading instruction.
-
-**3. Loading is not observable to the user — including to the author of the skill.**
-`../../capability/alpha-pack.md` Part 0 says to record per session whether the transcript shows
-`house-rules` being loaded at all, and that where the surface makes invocation visible, that is
-direct evidence and *"worth more"*. The evidence of this session is that the surface does not
-make it visible in the configuration the product ships in. The person who wrote the file could
-not tell from inside a live conversation.
-
-**Consequence for the eval method, not just the skill.** Part 0's better route may not exist
-for an ordinary chat install. If it does not, every Part 0 result will rest on the four
-behavioural markers, which is the weaker evidence the method itself flags — and a tester who
-resolves their own uncertainty the way this one did has changed the thing being measured.
-**Part 0 should say what a tester does when they cannot tell**, because the natural move is to
-type the command, and that ends the test.
-
-Against the four behavioural markers, for comparison with the other transcripts:
-
-| Marker | Reading |
-|---|---|
-| One question at a time | **Not assessable.** No questions asked in either captured turn |
-| Reply shape | **Holds.** Labelled parts, short lists, no document |
-| No framework tour | **Holds.** No named method anywhere |
-| Vague-term challenge | **Does not fire.** See finding 6. The only marker reading recorded in this repository against a skill known to be present |
-
-The three standing considerations again never appear by name. Public value is plainly the
-reasoning behind the decision-quality floor — a licensing service that gets faster and decides
-worse has destroyed value — and the words are not used. **Third consecutive session in which
-the considerations are applied without the vocabulary, and the first in which `house-rules` is
-known to have been loaded while it happened.**
-
-## Still open
-
-- **Exact session day not recorded.** Month, model and version are.
-- **Roughly half the agent's material is untraceable in this record.**
-- **Finding 6 needs a targeted case** before anything is concluded about the vague-term rule.
-- **Warm, by the author, on their own work.** True of all four sessions. Nothing in this
-  repository has been tested cold.
 
 ## What was substituted
 

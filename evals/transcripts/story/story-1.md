@@ -8,7 +8,7 @@
 | Date | August 2026, across several days rather than one sitting. Exact dates not recorded |
 | Tester | T001 |
 | Cold or warm | **Warm.** Third saved session. T001 authored the skills |
-| Also loaded | Unknown. No skill-invocation record. Inference only — see *Did `house-rules` load* |
+| Also loaded | Unknown. No skill-invocation record. Inference only |
 | Surface | Ordinary Claude chat (claude.ai) with the MDEE.MD plugin installed. Artefacts were produced as separate documents, not inline |
 | Outcome | No defect established. Four behaviours recorded as working, one recorded as discussable rather than good or bad, two open |
 
@@ -33,28 +33,10 @@ safety purpose, seeking linkage with **a national injury registry** named as a p
 in **a published national safety strategy**, where the authority's data would have to enter
 the registry for the second half of the analysis to work.
 
-The same substitute authority is used as in `../evidence/evidence-1.md` and
-`../problem/receipt-confirmation.md`. The legal adviser appearing in both this session and
-`evidence-1` is the same substituted role. Whether the sessions concern the same real
-organisation is not recorded here.
-
 **The registry is substituted too, and that matters.** It is a real, publicly named body
 identified in a published strategy, and substituting the authority alone would have
 anonymised nothing. The cost is that a reader cannot check the case against public sources.
 That cost was accepted deliberately.
-
-**All case figures below are substituted illustrations.** Rates, proportions, durations,
-dates and deadlines. Relationships between them are preserved where the reasoning depends on
-them. Do not cite any number in this file as evidence of anything.
-
-**Substitutions were made inside quoted text as well as in description.** Quotes are
-otherwise verbatim, including the user's original typos. Nothing has been tidied. Where a
-quotation could not be carried across anonymisation without losing its point, it is
-paraphrased inside square brackets rather than silently altered.
-
-**Caveat on validity.** Warm, by the author of the skills, on their own live work. The
-tester can judge whether a challenge was *right*, which a cold tester cannot; they also know
-what the files say and may be steering without noticing.
 
 **Caveat on completeness.** At least one user turn is missing between Turn 2 and Turn 3 —
 the post-session draft the agent then edits, together with whatever supplied the factual
@@ -316,6 +298,8 @@ second instance of the same behaviour.
 
 ---
 
+**`house-rules`:** inferred. Reply shape and no-framework-tour hold. Question discipline not assessable — the agent asks almost nothing, which the rules permit for a user arriving with worked material. Vague-term challenge fires on implications rather than vocabulary.
+
 ## Findings
 
 Observation and interpretation kept separate.
@@ -360,53 +344,6 @@ Observation and interpretation kept separate.
    hijacking a document request into a definitional challenge is the failure mode on the
    other side. **This is useful as a non-trigger case**: it is the *must not fire* half of a
    matched pair for `problem`, observed in real use rather than written synthetically.
-
-## Cross-session observations
-
-Flagged for a future synthesis, not conclusions. Both are **1 tester / 2 sessions** under the
-counting rule in `../../testers.md`, and both sessions are T001's, days apart, on adjacent
-work. They are correlated observations, not independent ones.
-
-- **The denominator behaviour.** In `../evidence/evidence-1.md` the agent challenged an
-  unexplained denominator and warned a bare percentage would be over-read. Here it wrote
-  essentially the same warning into a document, unprompted. Candidate hypothesis: this is
-  reliable rather than incidental. Untested.
-- **The pre-leave handover behaviour.** Both sessions end with a handover note before the
-  same period of leave, and in both the agent's finding is that a cold reader will misread
-  the status as settled. Candidate hypothesis: the agent reliably reads for the absent
-  reader. Untested, and the two instances are close to the same event.
-
-Neither should be reported as a pattern until a second tester or an unrelated session
-produces one.
-
-## Did `house-rules` load
-
-No invocation record. Inference from the four markers in `../../capability/alpha-pack.md`:
-
-| Marker | Reading |
-|---|---|
-| One question at a time | **Not assessable.** The agent asks almost nothing, which the rule permits for a user arriving with worked material. No batching observed; no question discipline observed either |
-| Reply shape | **Holds.** Conversational replies; documents produced separately and only when asked, which is the rule's stated exception rather than a breach |
-| No framework tour | **Holds.** No named method anywhere |
-| Vague-term challenge | **Partial.** Fires on implications — "agreed in principle" read as "done", a resourcing remark read as a warning — rather than on vague vocabulary. No instance of the four-part *compared with what, for whom, over what period, with what consequence* challenge |
-
-Consistent with `house-rules` having loaded, on inference only, and weaker evidence than
-`evidence-1` on two of the four markers.
-
-The three standing considerations again never appear by name. Operational capacity and
-political support are both plainly being reasoned about throughout — governance timelines,
-funding, who can commit, who can be seen to say what — so this is a second session in which
-the considerations appear to be applied without the vocabulary. Two sessions is not a
-pattern, but it is now worth watching.
-
-## Still open
-
-- **Exact session dates not recorded.** Month, model and version are.
-- **Turn 2 not committed.** The most interesting behaviour in the session exists only in the
-  uncommitted record.
-- **Warm, by the author, on their own work.** True of all three sessions in this repository.
-- **Whether `house-rules` loaded is inferred, not observed.**
-- **The audience-splitting behaviour has no capability case.** Finding 6.
 
 ## What was substituted
 

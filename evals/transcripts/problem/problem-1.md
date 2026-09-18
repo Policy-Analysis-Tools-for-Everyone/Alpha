@@ -25,9 +25,6 @@ routing tag actually encodes. Organisation, programme, operating-model, system a
 names have been substituted, and all figures replaced. The substitute authority is the same
 as in `../evidence/evidence-1.md`, `../evidence/evidence-2.md` and `receipt-confirmation.md`.
 
-**All case figures are substituted illustrations.** Proportions between them are preserved
-where an argument depends on it. Do not cite any number here as evidence of anything.
-
 **No personal names appear in this session.** The recipient is described only as a team
 member.
 
@@ -35,11 +32,6 @@ member.
 report, a later scoping exercise, and several figures about the service. `Read 2 files`
 indicates at least some of this came from files the skill loaded, which are not identified.
 Nothing has been reconstructed.
-
-**Caveat on validity.** Warm, by the author of the skills, on their own live work. The
-correction in Turn 4 depends on the tester knowing their own service well enough to catch the
-error, which a cold tester on a borrowed case could not have done. That cuts both ways: it is
-why the defect surfaced at all, and it is why the defect might survive a cold run unnoticed.
 
 ---
 
@@ -119,7 +111,7 @@ The three vagueness challenges are the clearest instances of that behaviour in t
 repository, and all three take the same shape: the word is doing several jobs, here they are,
 they are not the same thing. Note for comparison that `../evidence/evidence-2.md` records the
 same challenge *failing* to fire — on claims that were unquantified rather than on words with
-multiple meanings. See *Cross-session observations*.
+multiple meanings. See `../../wiki/findings.md` F5.
 
 Flagging the missing problem definition inside the document, unprompted, is the behaviour
 that sets up the rest of the session.
@@ -292,6 +284,8 @@ deliverable from something arguable into something settleable, and says so.
 
 ---
 
+**`house-rules`:** inferred. Behaviours fire more strongly here than anywhere else in the corpus — competing framings at the permitted size, marked placeholders, a gap refused as a negative finding, the status quo steelmanned. Vague-term challenge fires three times.
+
 ## Findings
 
 **The defect**
@@ -335,56 +329,6 @@ deliverable from something arguable into something settleable, and says so.
    to test. Unresolvable from this record.
 9. **Material used but not visible in the record**: a discovery report, a later scoping
    exercise, and several service figures.
-
-## Cross-session observations
-
-Flagged for a future synthesis. All sessions are T001's, on adjacent work. **Correlated
-observations, not independent ones.**
-
-- **The vague-term challenge is material-dependent, not simply under-firing.**
-  `../evidence/evidence-2.md` finding 6 recorded it failing to fire on three vague claims,
-  with `house-rules` known loaded. It fires three times here. The distinguishing feature is
-  what kind of vagueness: **it fires on a term carrying several distinct meanings** —
-  integration, universal, level — **and not on a claim that is merely unquantified** —
-  "better and more informed decisions". That is a sharper hypothesis than evidence-2 could
-  reach alone, and it changes what a matched-pair case needs to test. **1 tester / 2 sessions.**
-- **Two figures recur across sessions.** A contact-mix proportion and an annual cost appear in
-  this session's source and in `../evidence/evidence-2.md`'s, where finding 7 recorded them as
-  untraceable. Recurrence across two sessions does not verify them, but it does indicate
-  stable context rather than one-off invention.
-- **`problem` now has two real sessions.** `receipt-confirmation.md` found four defects, all
-  structural — buried labelling, no hierarchy decision, a late system map, a framing choice
-  that never fired. **None of those four recurs here.** On this evidence the `b5fcae9`
-  revision holds. That is the closest thing to a regression result in this repository, and it
-  is still one tester, twice.
-
-## Did `house-rules` load
-
-Inferred, not observed — `/problem` was invoked, `house-rules` was not. But its behaviours
-fire more strongly here than in any other session in this repository:
-
-| Marker | Reading |
-|---|---|
-| One question at a time | **Holds.** Turns 2 and 3 each close on a single question |
-| Reply shape | **Holds.** Documents produced when asked, conversation otherwise |
-| No framework tour | **Holds.** No named method anywhere, including in the turn where a skill was explicitly invoked by name |
-| Vague-term challenge | **Fires, three times.** See cross-session observations |
-
-Four further `house-rules` rules fire almost verbatim: competing framings at one or two
-variants with costs attached, marked placeholders naming what would fill them, a gap refused
-as a negative finding, and scepticism in a direction — the status quo steelmanned against the
-new proposal.
-
-**The inference problem remains.** As `../evidence/evidence-2.md` records, loading is not
-observable in this surface. Strong behavioural evidence is still inference.
-
-## Still open
-
-- **The defect has no regression case yet.** Finding 1, with the paired run described.
-- **Warm, by the author, on their own work.** True of all five sessions.
-- **The correction depended on domain knowledge the tester happened to hold.** A cold tester
-  would likely have accepted the fake test. This is the clearest argument in the repository
-  for why cold runs find different things rather than simply fewer things.
 
 ## What was substituted
 
