@@ -19,7 +19,13 @@ Sessions stay in `transcripts/`. Nothing here duplicates them.
 | ID | Role type | Policy experience | AI familiarity | Knows MDEE | Sessions | First session | Consent to publish |
 |---|---|---|---|---|---|---|---|
 | T001 | Project owner and author | `[add]` | high | authored it | 6 | 2026-08-17 | yes |
-| T002 | `[add]` | `[add]` | `[add]` | yes, familiar before first session | 3 | 2026-08 (day not recorded) | yes, anonymised |
+| T002 | `[add]` | `[add]` | high | yes, familiar before first session | 3 | 2026-08 (day not recorded) | yes, anonymised |
+
+**`AI familiarity` does not vary during the alpha.** The maintainer confirms that everyone
+testing in this phase has good familiarity, so the field is currently a constant and cannot
+explain any difference between testers. It stays in the table because it will start varying
+the moment anyone outside this group installs the plugin, and a finding recorded now would
+otherwise be uninterpretable against later ones.
 
 ## What each field is for
 

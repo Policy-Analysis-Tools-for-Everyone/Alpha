@@ -181,12 +181,15 @@ the method file `reference/methods/capabilities/problem-definition-guidance.md`.
 So this session ran a **mixed installation**: plugin `house-rules` alongside a problem skill of
 unknown provenance.
 
+**The provenance was put to the maintainer and could not be established.** They did not know
+where the file came from, and there is no reason to expect that to become recoverable. **This
+is a permanent limitation on this transcript, not a pending question.**
+
 **What that does and does not undermine.** The behaviour recorded above matches this
 repository's `problem` skill closely — the labelling, the four-part output, the placeholders,
 the readout, the framing choice. That is consistent with the user file being a copy of some
-version of it. It is not proof. **Until the provenance is established, findings 1 to 3 should
-be read as evidence that a skill closely resembling `problem` behaves this way, not as a
-regression result on the shipped file.** Finding 4 is unaffected, since the rule it breaches
+version of it. It is not proof. **Findings 1 to 3 therefore stand permanently as evidence that a skill closely resembling
+`problem` behaves this way, and not as a regression result on the shipped file.** Finding 4 is unaffected, since the rule it breaches
 lives in `house-rules`, which is confirmed to be the plugin's.
 
 This is the first time the evaluation has come close to attributing behaviour to the wrong
@@ -217,11 +220,12 @@ across three of those transcripts as something to watch. This is the counter-exa
 
 ## Still open
 
-- **Provenance of `01-problem-definition`.** Blocks findings 1 to 3 from being a regression
-  result on the shipped skill.
+- **Provenance of `01-problem-definition` is closed unresolved.** Asked and not known. Findings
+  1 to 3 can never be promoted to a regression result on the shipped skill, so if that result
+  is wanted it has to come from a fresh session on a confirmed plugin install.
 - **Model not confirmed.**
-- **Still no cold session.** T002 was familiar with the skills. The repository has seven
-  sessions and none of them is cold.
+- **Still no cold session.** T002 was familiar with the skills. The repository holds nine
+  sessions across two testers and none of them is cold.
 - **Whether the general-knowledge defect is fixable by rule.** It now has two testers and
   three sessions behind it, and in every case the agent could name the failure afterwards.
 

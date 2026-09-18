@@ -256,9 +256,11 @@ in-session support, and a memo date wrong by about a month that was never flagge
 - **The loading instruction has now failed once, observably.** Finding 1. Part 0's pass condition
   is all four markers in at least 9 of 10 sessions; this is a different and more direct
   measurement, and one instance is not a rate.
-- **Memory carried context between sessions.** The tester could not confirm whether memory was
-  on. If it was, T002's three sessions are not independent of each other, and
-  `../../testers.md`'s counting rule applies within a tester as well as across testers.
+- **Memory carried context into this session**, from a discussion predating it. Whether memory
+  was on across all three of T002's sessions was asked and cannot be established. **Treat the
+  three as correlated rather than independent**, which is the conservative reading and the one
+  `../../testers.md` already requires: its counting rule applies within a tester, not only
+  across them. Recorded as unresolvable rather than pending.
 - **`evaluation` ran in the wild** for the first time, producing
   [`../../debriefs/story-2-debrief.md`](../../debriefs/story-2-debrief.md). Its
   `metadata: status` reads "written, not behaviourally tested"; that is now out of date.
