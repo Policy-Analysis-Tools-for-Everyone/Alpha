@@ -36,3 +36,24 @@ carrying a plausible value.
 
 If a skill changed after a session, add an editorial note and leave the record alone. The
 transcript is what happened.
+
+## Adding a session
+
+Write the transcript, then re-mine `../wiki/findings.md` against it. Three questions.
+
+**Does it add a sighting to a finding that already exists?** Add the row. A fourth sighting
+matters less than the first, but the count is the argument.
+
+**Does it contradict one?** The valuable case. Record the contradiction rather than smoothing
+it — `F5` exists because two sessions disagreed.
+
+**Does it leave something with nowhere to go?** A behaviour seen twice that nobody has tried to
+break, a defect with a mechanism and no case. That is a prompt, and it goes in
+`../wiki/prompts/`.
+
+Then update the mined-on date in `findings.md`, add or update the row in `../testers.md`, and
+check whether any existing prompt is now answered or dead. A dead prompt gets deleted.
+
+**What a new session needs before it can be written up:** date, model, plugin version, whether
+the tester had read the skill files or used MDEE before, and consent to publish. A field nobody
+can confirm says so — it never carries a plausible-looking value.

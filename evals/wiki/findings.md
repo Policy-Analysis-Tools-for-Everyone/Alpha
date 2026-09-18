@@ -1,7 +1,10 @@
 # Findings
 
-What recurs across sessions. Mined from `../transcripts/` and `../debriefs/`, 9 sessions,
-2 testers, August 2026.
+What recurs across sessions. Mined from `../transcripts/` and `../debriefs/`.
+
+**Mined 2026-09-18, from 9 sessions and 2 testers.** Re-mine whenever a session is added —
+`../transcripts/README.md` has the three questions. An entry that has not been checked against
+the newest transcript is stale, and nothing detects that automatically.
 
 Working notes. Blunt on purpose: an entry that starts reading like an essay has become a
 draft and stopped being useful.
