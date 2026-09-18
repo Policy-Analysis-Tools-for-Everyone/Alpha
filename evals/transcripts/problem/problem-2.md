@@ -24,19 +24,12 @@ programme, backlog-tool, initiative and epic names have been substituted, the st
 provision is described rather than cited, and all figures replaced. The substitute authority
 is the same as in the other transcripts in this repository.
 
-**All case figures are substituted illustrations.** Where a figure also appears in another
-transcript here, the same substitute value is used, so the corpus stays internally
-consistent. Do not cite any number in this file as evidence of anything.
-
 **No personal names appear in this session.**
 
 **Caveat on completeness.** The session opens mid-argument. The draft problem statement the
 user is challenging, and the turn that produced it, are not in the source. The agent also
 refers to a feature list discussed "yesterday" which is not present. Nothing has been
 reconstructed.
-
-**Caveat on validity.** Warm, by the author of the skills, on their own live work. Both
-defects below were caught because the tester knew their own evidence base. See *Still open*.
 
 ---
 
@@ -118,7 +111,7 @@ and labelled when the user mixes them. Here the agent did the mixing itself.
 *Severity:* both would have shipped. The statement was being prepared for a session the next
 day, and its central claim rested on the two unmarked imports.
 
-*Frequency:* 1 tester / 1 session for each, though see *Cross-session observations* on what
+*Frequency:* 1 tester / 1 session for each, though see `../../wiki/findings.md` F1 for what
 they share with `problem-1.md`.
 
 **Assessment — the recovery.** Better than the error, and the same shape as `problem-1.md`.
@@ -245,6 +238,8 @@ where earlier sessions applied the considerations without naming them.
 
 ---
 
+**`house-rules`:** inferred. All four markers hold, including the vague-term challenge — **and two of its evidence rules were breached in the same session** (findings 1 and 2). First session where the markers and the rules point opposite ways.
+
 ## Findings
 
 **Defects**
@@ -281,52 +276,6 @@ where earlier sessions applied the considerations without naming them.
 **Open**
 
 9. **The session opens mid-argument.** The draft being challenged is not in the record.
-
-## Cross-session observations
-
-All sessions are T001's, on adjacent work. **Correlated, not independent.**
-
-- **Correcting beyond what was challenged is now 1 tester / 2 sessions.** `problem-1.md`
-  volunteered a second correction the user had not raised; this session generalised the user's
-  objection to find more instances of the same fault. Both times the extension made the agent's
-  position worse and the user's work better. **Candidate hypothesis: this is a reliable
-  behaviour under challenge**, and it is the most distinctive thing in the corpus.
-- **Both `problem` defects were caught by domain knowledge the tester happened to hold.**
-  `problem-1.md` needed the tester to know recurrence was established; this needed them to know
-  their own Discovery flagged a need as provisional. **Neither is catchable by a cold tester on
-  a borrowed case.** Three sessions now point the same way: cold runs will find different
-  failures, not simply fewer.
-- **Second regression signal for `b5fcae9`.** `problem-1.md` recorded that none of the four
-  original defects recurred. This session records the self-check working as a scoring list,
-  which was one of the two omissions that revision fixed. **`problem` now has three real
-  sessions**, which is more than any other capability, and the revision holds in both later runs.
-
-## Did `house-rules` load
-
-Inferred. `/problem` was invoked twice, `house-rules` never.
-
-| Marker | Reading |
-|---|---|
-| One question at a time | **Holds.** Turn 1 closes on a single question with its reason attached |
-| Reply shape | **Holds.** Labelled parts, no document |
-| No framework tour | **Holds.** No named method, including in turns where a skill was invoked by name |
-| Vague-term challenge | **Fires.** *"Clear" and "timely" are unmeasured. Compared with what, and timely relative to what event.* Consistent with the refinement in `problem-1.md`: it fires on terms, not on unquantified claims |
-
-**But two `house-rules` evidence rules were breached in the same session** — see findings 1 and
-2 — which is the first time in this repository that the skill's behaviours and its rules point
-in opposite directions. Whether `house-rules` was loaded and its evidence rules failed, or it
-was not loaded and the four markers arose from the model's own defaults, cannot be established.
-**This is the sharpest illustration yet of why the loading question matters**, and why
-`../evidence/evidence-2.md`'s finding about observability is a method problem rather than a
-detail.
-
-## Still open
-
-- **Findings 1 and 2 have no regression case.** Both are testable: give the agent material with
-  an explicitly provisional user need in it and see whether it is carried as provisional.
-- **Finding 3's matched pair exists in real use** and could be promoted into
-  `../../capability/` directly.
-- **Warm, by the author, on their own work.** True of all six sessions.
 
 ## What was substituted
 

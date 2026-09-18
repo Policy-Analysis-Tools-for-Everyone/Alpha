@@ -116,23 +116,6 @@ produced it. That output is [`../../debriefs/story-3-non-trigger-debrief.md`](..
 5. **The model's own defaults caught one thing.** The unsourced figure in the user's memo was
    flagged for verification. Evidence discipline is not entirely dependent on the skill.
 
-## Cross-session observations
-
-- **Two testers now cannot tell whether the skill loaded.** Finding 2. With
-  `../evidence/evidence-2.md`'s conclusion that loading is not observable in this surface, and
-  `../../capability/alpha-pack.md` Part 0's reliance on visible invocation as the stronger
-  evidence route, this is a product problem and a method problem at once.
-- **The invocation log is what made this recordable.** Without the debrief's tool list this
-  session would have been written up as a weak `story` run rather than as a non-trigger. See
-  [`../../debriefs/README.md`](../../debriefs/README.md).
-
-## Still open
-
-- **Finding 3 has no case.** The persona-instruction hypothesis is cheap to test and untested.
-- **Model not confirmed.**
-- **Whether `story`'s description or the routing mechanism is at fault** cannot be told from one
-  session.
-
 ## What was substituted
 
 - **Replaced:** the head of the civil service and the adviser role; the country; the three
