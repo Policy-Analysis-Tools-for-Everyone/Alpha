@@ -9,6 +9,7 @@ evals/
   transcripts/   real sessions, anonymised. The only behavioural evidence
   wiki/          what recurs across sessions, and the tests it asks for
   syntheses/     cross-session reviews. One author, one date, one snapshot
+  feedback/      testers' own accounts, in their words. No transcript
   debriefs/      agent-written accounts of sessions. Not transcripts
   capability/    hard cases the agent may still fail. Synthetic
   regression/    behaviour already shown to work, or already fixed
@@ -24,13 +25,14 @@ regression test → cold re-test.
 
 ## Current state
 
-**15 sessions, 3 testers, August 2026. Every one warm.** Nine are held here as transcripts;
-T003's six are reviewed in `syntheses/` and their transcripts have been requested. Seven of
-the ten capabilities have now been exercised. Everything under `capability/` and `regression/`
+**17 sessions, 4 testers, August 2026.** Nine are held here as transcripts; T003's six are
+reviewed in `syntheses/` and T004's two exist only as a note in `feedback/`. Seven of the ten
+capabilities have been exercised. Everything under `capability/` and `regression/`
 is synthetic and labelled as such.
 
-**Nothing has been tested cold**, and **nothing tests whether the agent accepts sound work** —
-every session so far offered it something to challenge. Those are the two largest gaps. See
+**No session is confirmed cold** — T004 may be the exception and has not been asked — and
+**nothing tests whether the agent accepts sound work**, since every session so far offered it
+something to challenge. Those are the two largest gaps. See
 [`wiki/prompts/cold-session.md`](wiki/prompts/cold-session.md) and
 [`wiki/prompts/sound-work.md`](wiki/prompts/sound-work.md).
 
