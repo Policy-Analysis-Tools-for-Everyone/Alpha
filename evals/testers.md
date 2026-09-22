@@ -20,6 +20,7 @@ Sessions stay in `transcripts/`. Nothing here duplicates them.
 |---|---|---|---|---|---|---|---|
 | T001 | Project owner and author | `[add]` | high | authored it | 6 | 2026-08-17 | yes |
 | T002 | `[add]` | `[add]` | high | yes, familiar before first session | 3 | 2026-08 (day not recorded) | yes, anonymised |
+| T003 | `[add]` | `[add]` | high | yes, wrote runs up against the evaluation method | 6 | 2026-08 (day not recorded) | `[confirm]` |
 
 **`AI familiarity` does not vary during the alpha.** The maintainer confirms that everyone
 testing in this phase has good familiarity, so the field is currently a constant and cannot

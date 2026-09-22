@@ -1,6 +1,6 @@
 # One cold session
 
-**Status:** the largest gap in the repository. Nine sessions, two testers, none cold.
+**Status:** the largest gap in the repository. Fifteen sessions, three testers, none cold.
 
 ## What it would settle
 
