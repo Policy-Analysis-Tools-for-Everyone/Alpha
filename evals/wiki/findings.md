@@ -2,7 +2,7 @@
 
 What recurs across sessions. Mined from `../transcripts/`, `../debriefs/` and `../syntheses/`.
 
-**Mined 2026-09-22, from 15 sessions and 3 testers.** Re-mine whenever a session is added —
+**Mined 2026-09-22, from 17 sessions and 4 testers.** Re-mine whenever a session is added —
 `../transcripts/README.md` has the three questions. An entry that has not been checked against
 the newest evidence is stale, and nothing detects that automatically.
 
@@ -13,9 +13,9 @@ and stopped being useful.
 skills. T002's three sessions may share memory context. T003's six are one tester's, all
 adversarial by design. Nothing here is an independent sample.
 
-**T003's six sessions are not in this repository.** They are reviewed in
-`../syntheses/t003-scenario-runs-1-6.md` and the transcripts have been requested. Rows drawn
-from them cannot be checked here.
+**Seven of the seventeen sessions are not in this repository.** T003's six are reviewed in
+`../syntheses/t003-scenario-runs-1-6.md`; T004's two exist only as a note in
+`../feedback/t004-note.md`. Rows drawn from either cannot be checked here.
 
 Every session is warm. **Nothing has been tested cold.**
 
@@ -49,8 +49,10 @@ which removes the tool's value, or check nothing.
 
 **The positive controls matter as much.** In the same six sessions the agent refused to
 characterise two named real evaluations from memory, refused a baseline it did not have
-("a number I supplied would be worthless to you"), and refused a cost figure. The guard works;
-it just does not extend to what the agent already believes.
+("a number I supplied would be worthless to you"), and refused a cost figure. T004 reports the
+same guard firing on their own under-supported claims — *"it picked up on claims where the
+evidence wasn't quite enough"*. The guard works; it just does not extend to what the agent
+already believes.
 
 Breaches `house-rules` on the misattribution and dropped-qualifier instances. For general
 assertions it is a **specification gap** — no current rule requires them to be labelled.
@@ -170,6 +172,8 @@ removes one of these has failed.
 - **Refusing to pad an option set in both directions**: attacked padding in someone else's
   draft (Scen 5), declined to manufacture a fourth option in its own (Scen 6).
 - **Volunteered the reading that weakened its own argument** (Scen 3).
+- **Refused to proceed on assumptions the evidence did not support**, when a second tester
+  pushed for a recommendation anyway (T004). **2 testers** on this behaviour now.
 
 ## F11. Two rules resolve inconsistently
 
@@ -180,18 +184,58 @@ removes one of these has failed.
   turns 1 and 4 of Scen 2 and turns 1 and 2 of Scen 3 each close with two asks. Both re-asks
   were for material never supplied.
 
+## F12. Stakeholder analysis under-fires when it is not the task
+
+**2 testers, opposite conditions, and the contrast is the finding.**
+
+- **When `stakeholders` is the task** (T003 Scen 4): the tightest method match in the record.
+  Position separated from motive, the organisation split into six actors with what each can
+  withhold, the table left partly empty where no evidence about motives existed.
+- **When stakeholder work sits inside problem definition** (T004): actors were missed,
+  *"especially private-sector ones"*, and only recognised as important once the tester shared
+  their own memo naming them.
+
+T004's own reading is the useful one: *"whether the stakeholder analysis could be a bit more
+systematic before narrowing the problem too much."* The sequencing is the suspect — narrowing
+the problem before the actor set is complete lets a whole class of actor fall out.
+
+Uncommitted session. One tester, one report, no transcript. **Nothing else in the corpus would
+have surfaced it**, because no session here puts `stakeholders` in that position.
+See `prompts/stakeholder-sequencing.md`.
+
+## F13. Nothing stops
+
+**2 testers / 3 sessions.** The agent produces more than the user can use, and there is no
+evidence of it deciding what to leave out.
+
+- T004: *"the analysis became quite comprehensive as we went along"*, with the stopping
+  question raised unprompted.
+- T003 Scen 1: the deliverable was given in turn 1 and asked for again in turn 4. Their
+  reading: *"Length, not labelling, is doing the damage."*
+
+`house-rules` says to stop once you can produce useful work, and judge when not to start an
+interview. Both instances are the opposite failure — not over-interviewing, but over-producing.
+
+Neither tester was working to a constraint. **Nobody has run it against a deadline and seen
+what it drops.** T004 proposes exactly that test; see `prompts/stopping-rule.md`.
+
 ---
 
 ## What the corpus does not have
 
-- **A cold session.** None, across three testers.
+- **A cold session.** None confirmed, across four testers. **T004 may be the exception** —
+  nothing in their note suggests prior exposure to the skill files. Unconfirmed, and the
+  answer does not keep.
 - **Any test of whether the agent accepts sound work.** All six of T003's scenarios were
   adversarial by design, and the earlier sessions were live work with real defects in it. The
   evaluation method names "only trigger cases tested" as the failure that produces an agent
   which challenges everything. This is now the second-largest gap after the cold session —
   `prompts/sound-work.md`.
 - **Anything on `options` and `trade-offs`** as the leading capability.
-- **A confirmed model** for any session by T002 or T003.
-- **T003's six raw transcripts**, which every row attributed to them depends on.
+- **A confirmed model** for any session by T002, T003 or T004.
+- **Any session run against a real constraint** — a deadline, a word limit, a fixed number of
+  turns. F13 is invisible until something forces a choice.
+- **T003's six raw transcripts and any record of T004's two**, which every row attributed to
+  them depends on.
 - **Anything about a naive user.** All three testers redirect, concede and push for output more
   than most users will.
