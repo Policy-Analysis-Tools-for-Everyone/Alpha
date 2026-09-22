@@ -8,6 +8,7 @@ applies it is `evaluation`.
 evals/
   transcripts/   real sessions, anonymised. The only behavioural evidence
   wiki/          what recurs across sessions, and the tests it asks for
+  syntheses/     cross-session reviews. One author, one date, one snapshot
   debriefs/      agent-written accounts of sessions. Not transcripts
   capability/    hard cases the agent may still fail. Synthetic
   regression/    behaviour already shown to work, or already fixed
@@ -23,15 +24,15 @@ regression test → cold re-test.
 
 ## Current state
 
-**9 sessions, 2 testers, August 2026. Every one warm.** `problem` 4, `story` 3, `evidence` 2.
-Four more capabilities have fired inside other people's sessions without having one of their
-own. `options` and `trade-offs` have never appeared in a header. Everything under
-`capability/` and `regression/` is synthetic and labelled as such.
+**15 sessions, 3 testers, August 2026. Every one warm.** Nine are held here as transcripts;
+T003's six are reviewed in `syntheses/` and their transcripts have been requested. Seven of
+the ten capabilities have now been exercised. Everything under `capability/` and `regression/`
+is synthetic and labelled as such.
 
-**Nothing has been tested cold.** Neither tester. See
-[`wiki/prompts/cold-session.md`](wiki/prompts/cold-session.md).
-
-`syntheses/` does not exist. `wiki/findings.md` does the job for now.
+**Nothing has been tested cold**, and **nothing tests whether the agent accepts sound work** —
+every session so far offered it something to challenge. Those are the two largest gaps. See
+[`wiki/prompts/cold-session.md`](wiki/prompts/cold-session.md) and
+[`wiki/prompts/sound-work.md`](wiki/prompts/sound-work.md).
 
 ## Cold testing, and what must never reach the agent
 
