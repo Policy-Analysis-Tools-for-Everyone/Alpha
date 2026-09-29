@@ -2,6 +2,7 @@
 
 | | |
 |---|---|
+| Kind | **Note** — the tester's own account, in their words. No transcript |
 | Tester | T004 |
 | Sessions | 2. A policy area, then a policy memo written for a previous semester |
 | Date | `[add]` — not recorded |

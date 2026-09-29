@@ -2,6 +2,7 @@
 
 | | |
 |---|---|
+| Kind | **Transcript** — the record of what the agent said. The only behavioural evidence |
 | Module | `01-problem` |
 | Version tested | commit `bdd8640` (first draft) |
 | Model | Claude Opus 5 (`claude-opus-5`) |
@@ -18,7 +19,7 @@
 
 > **Editorial note, added when the tester register was introduced.** The `Tester`
 > row read "Project owner" and now reads `T001`, the pseudonymous identifier in
-> [`../../testers.md`](../../testers.md). The identifier was assigned
+> [`../testers.md`](../testers.md). The identifier was assigned
 > retrospectively to the person who already ran this session. Nothing about the
 > session changed.
 

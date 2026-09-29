@@ -2,13 +2,14 @@
 
 | | |
 |---|---|
+| Kind | **Transcript** — the record of what the agent said. The only behavioural evidence |
 | Skills used | `evidence` (dominant), `criteria`, `outcomes`; `decide` surfaces in the second turn |
 | Version tested | `0.1.1`, commit `e6795b4`. Tester-reported |
 | Model | Claude Opus 5 (`claude-opus-5`) |
 | Date | August 2026. Exact day not recorded |
 | Tester | T001 |
 | Cold or warm | **Warm.** Fourth saved session. T001 authored the skills |
-| Also loaded | **`house-rules`, directly observed.** The user typed `/house-rules` as an explicit slash command between their first message and the agent's reply, so it was loaded for both captured agent turns. The only session in this repository where loading is established rather than inferred. The reason it was typed matters more than the fact — see `../../wiki/findings.md` F2 |
+| Also loaded | **`house-rules`, directly observed.** The user typed `/house-rules` as an explicit slash command between their first message and the agent's reply, so it was loaded for both captured agent turns. The only session in this repository where loading is established rather than inferred. The reason it was typed matters more than the fact — see `../wiki/findings.md` F2 |
 | Surface | Ordinary Claude chat (claude.ai) with the MDEE.MD plugin installed |
 | Outcome | Five behaviours recorded as working. One candidate defect: the vague-term challenge did not fire, in the only session where `house-rules` is known to have been loaded |
 
@@ -24,8 +25,8 @@ objective, and is named second for that reason.
 fitness licensing function, testing whether a single multi-skilled team owning a customer
 group end to end outperforms a split casework-and-telephony model. Organisation, programme,
 operating-model and grade names, systems, cost and contact figures have been substituted.
-The substitute authority is the same as in `evidence-1.md`, `../story/story-1.md` and
-`../problem/receipt-confirmation.md`.
+The substitute authority is the same as in `t001-evidence-1.md`, `t001-story-1.md` and
+`t001-problem-receipt-confirmation.md`.
 
 **All case figures are substituted illustrations**, including the contact-mix proportion,
 the annual cost, and the two decision months. The gap between the two months is preserved
@@ -86,7 +87,7 @@ culture more broadly."* Closing:
 ## Between turns — `/house-rules`
 
 The user issued `/house-rules` as an explicit slash command. **The tester's recorded reason:
-they did not know whether it had loaded.** This is the principal finding of the session, and F2 in `../../wiki/findings.md`.
+they did not know whether it had loaded.** This is the principal finding of the session, and F2 in `../wiki/findings.md`.
 
 The interface then displayed a single-line activity summary — *"Scrutinized unresolved
 metrics and restored missing documentation elements."* This is client chrome describing the
@@ -257,14 +258,14 @@ and so cannot be cited as evidence either way on the no-invented-figures rule.
    measures that would expose a vague claim — but the four-part *compared with what, for whom,
    over what period, with what consequence* challenge does not appear.
 
-   **This is the first time this observation carries weight.** In `evidence-1.md` and
-   `../story/story-1.md` the same marker read partial, but loading was inferred, so
+   **This is the first time this observation carries weight.** In `t001-evidence-1.md` and
+   `t001-story-1.md` the same marker read partial, but loading was inferred, so
    under-firing could not be distinguished from the skill never arriving. Here it can.
    *Evaluator interpretation:* either the challenge is under-specified for material that is
    vague in its claims rather than in its vocabulary, or building a measure is treated as
    discharging it. Worth one targeted case before any skill change.
 
-   > **Editorial note, added when `../problem/problem-1.md` was recorded.** That session is
+   > **Editorial note, added when `t001-problem-1.md` was recorded.** That session is
    > evidence that this challenge is material-dependent rather than simply absent: it fires
    > three times there, each time on a term carrying several distinct meanings. The
    > distinguishing feature appears to be the kind of vagueness — a word doing several jobs,
@@ -283,7 +284,7 @@ and so cannot be cited as evidence either way on the no-invented-figures rule.
 **Not assessable**
 
 9. **Question discipline.** The agent asks nothing in either captured turn. As in
-   `../story/story-1.md`, this is permitted for a user arriving with worked material, and as
+   `t001-story-1.md`, this is permitted for a user arriving with worked material, and as
    there it means this transcript is weak evidence either way.
 
 ## What was substituted

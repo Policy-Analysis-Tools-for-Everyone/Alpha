@@ -2,15 +2,16 @@
 
 | | |
 |---|---|
+| Kind | **Transcript** — the record of what the agent said. The only behavioural evidence |
 | Skills used | `story`, `house-rules`, `evaluation`. **No analytical capability skill loaded at any point**, though the memo performs stakeholder, criteria, options and trade-off work |
-| Version tested | **Unresolved.** The debrief records `view` calls on the `story` and `house-rules` skill files but records no paths for them, so plugin-versus-user provenance cannot be established. Compare `../problem/problem-3.md`, where paths were recorded and mattered |
+| Version tested | **Unresolved.** The debrief records `view` calls on the `story` and `house-rules` skill files but records no paths for them, so plugin-versus-user provenance cannot be established. Compare `t002-problem-3.md`, where paths were recorded and mattered |
 | Model | **Not confirmed.** The tester could not say. Maintainer's estimate is Claude Opus 5 or Fable 5.1, recorded as an estimate, not a finding |
 | Date | August 2026. Exact day not recorded |
 | Tester | T002 |
-| Cold or warm | **Warm**, in the sense `../../README.md` uses: T002 reports prior familiarity with the skills. Also warm in an unrelated sense — the model held stored memory context about this piece of work from before the session |
+| Cold or warm | **Warm**, in the sense `../README.md` uses: T002 reports prior familiarity with the skills. Also warm in an unrelated sense — the model held stored memory context about this piece of work from before the session |
 | Also loaded | `house-rules`, **directly observed, and loaded late** — after the first artefact was already written. See finding 1 |
 | Surface | Ordinary Claude chat (claude.ai) with the plugin installed. Web search used |
-| Corroborated by | [`../../debriefs/story-2-debrief.md`](../../debriefs/story-2-debrief.md), which carries the invocation log — and which was written with several sources no longer in context. Read its visibility caveat |
+| Corroborated by | [`t002-story-2-debrief.md`](t002-story-2-debrief.md), which carries the invocation log — and which was written with several sources no longer in context. Read its visibility caveat |
 | Outcome | **The first directly observed Part 0 failure.** Plus a natural before-and-after inside one session, five behaviours that worked, and six claims that did not hold |
 
 **Anonymised.** The real case is a nine-year-old published analysis arguing grid battery
@@ -198,7 +199,7 @@ in-session support, and a memo date wrong by about a month that was never flagge
    it plainly: *"`story` instructs that `house-rules` be loaded first; it was loaded only at the
    memo stage, after the blog artefact was already written."* Every capability skill opens by
    instructing that load. **This is the first directly observed instance of that instruction not
-   being followed**, and `../../capability/alpha-pack.md` Part 0 exists to detect exactly it.
+   being followed**, and `../tests/capability-alpha-pack.md` Part 0 exists to detect exactly it.
 
 2. **No analytical capability skill loaded at any point**, though the memo performs stakeholder,
    criteria, options and trade-off work — and performs it competently. Either the routing did
@@ -211,19 +212,19 @@ in-session support, and a memo date wrong by about a month that was never flagge
    turns after contain flagged figures, named omissions, a conceded counter-argument and an
    explicit "I couldn't verify".** One session, two halves. Not a controlled comparison — the
    tasks also change — but the shape is what the loading rule predicts, and it is the second
-   such comparison in this repository. Read with `story-3-non-trigger.md`, where no skill loaded
+   such comparison in this repository. Read with `t002-story-3-non-trigger.md`, where no skill loaded
    at all.
 
 **The defect, now at two testers**
 
 4. **Claims resting on general knowledge presented as fact about the user's case**, six times
-   across the memo and blog. Same class as `../problem/problem-2.md` finding 1 and
-   `../problem/problem-3.md` finding 4. **2 testers / 4 sessions**, and in every instance the
+   across the memo and blog. Same class as `t001-problem-2.md` finding 1 and
+   `t002-problem-3.md` finding 4. **2 testers / 4 sessions**, and in every instance the
    agent could name the failure afterwards but not at the time.
 
 5. **The hedge stayed in chat and never reached the artefact.** The agent said it could not
    verify the memo's opening premise, then wrote the premise into the memo as fact. Contrast
-   `../evidence/evidence-1.md`, where the limitation was written into the circulating document
+   `t001-evidence-1.md`, where the limitation was written into the circulating document
    with its consequence named. **The rule appears to fire for the reply and not for the file**,
    which is the more consequential of the two.
 
@@ -247,7 +248,7 @@ in-session support, and a memo date wrong by about a month that was never flagge
 12. **It acted after being told not to.** *"Don't do anything yet"* → a memory write in the same
     turn, and a substantive commentary. Minor in effect, and it is an instruction being
     overridden.
-13. **Skill file provenance not recorded.** Unlike `../problem/problem-3.md`, the debrief gives
+13. **Skill file provenance not recorded.** Unlike `t002-problem-3.md`, the debrief gives
     no paths for `story` or `house-rules`, so plugin-versus-user cannot be established.
 14. **Model not confirmed.**
 

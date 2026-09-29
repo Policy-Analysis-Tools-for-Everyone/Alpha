@@ -1,5 +1,9 @@
 # Scenario runs 1 to 6 — tester evaluation report
 
+| | |
+|---|---|
+| Kind | **Synthesis** — one author's cross-session review, at one date |
+
 **Submitted by T003**, 26 August 2026. Six sessions, seven capabilities, with an independent
 second read of all six transcripts and reviews.
 

@@ -9,10 +9,10 @@ F5. Whether the challenge keys on the *kind of vagueness* or on the *active capa
 ## Evidence in hand
 
 - Fires three times on words doing several jobs — "integration", "universal", "level"
-  (`problem-1`).
+  (`t001-problem-1`).
 - Does not fire on "better and more informed decisions", with `house-rules` known loaded
-  (`evidence-2`).
-- Fires in full four-part form on an unquantified claim (`problem-3`), where `problem` was
+  (`t001-evidence-2`).
+- Fires in full four-part form on an unquantified claim (`t002-problem-3`), where `problem` was
   active.
 
 The first two suggest material. The third suggests capability. Nothing separates them.

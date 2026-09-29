@@ -13,7 +13,7 @@ None, and that is the point. All six of T003's scenarios were adversarial by des
 earlier sessions were live work that had real defects in it, so a challenge was always
 available. **Nothing in the corpus shows the agent being handed something sound.**
 
-`../../capability/alpha-pack.md` already names the risk: an agent tested only on whether it
+`../../tests/capability-alpha-pack.md` already names the risk: an agent tested only on whether it
 challenges learns to challenge everything, which for this agent is as unhelpful as challenging
 nothing.
 

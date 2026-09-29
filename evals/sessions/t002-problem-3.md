@@ -2,6 +2,7 @@
 
 | | |
 |---|---|
+| Kind | **Transcript** — the record of what the agent said. The only behavioural evidence |
 | Skills used | `problem` (dominant), `house-rules` |
 | Version tested | **Unresolved, and this matters.** `house-rules` loaded from the plugin (`/mnt/skills/plugins/mdee:house-rules/`). The problem skill loaded from `/mnt/skills/user/01-problem-definition/` — a user-installed file. This repository has never contained a skill of that name: it had `01-problem` in its first commit and `problem` since `ae393ce` (2026-08-18). Provenance not established. See *The version problem* |
 | Model | **Not confirmed.** The tester could not say. Maintainer's estimate is Claude Opus 5 or Fable 5.1, recorded as an estimate, not a finding |
@@ -10,7 +11,7 @@
 | Cold or warm | **Warm.** T002 reports being familiar with skills and with MDEE before this session. Nothing in this repository has been tested cold |
 | Also loaded | `house-rules`, **directly observed** via the debrief's tool list. Memory was also written to |
 | Surface | Ordinary Claude chat (claude.ai). Session shows `Read 3 files, updated memory` |
-| Corroborated by | [`../../debriefs/problem-3-debrief.md`](../../debriefs/problem-3-debrief.md), which carries the invocation log and T002's five answers |
+| Corroborated by | [`t002-problem-3-debrief.md`](t002-problem-3-debrief.md), which carries the invocation log and T002's five answers |
 | Outcome | **The strongest single run of `problem` in this repository, by someone who did not write it.** Three of the four defects fixed in `b5fcae9` are visibly repaired. Three claims rest on general knowledge presented as fact |
 
 **Anonymised.** The real case is a one-page policy memo arguing that a middle power's AI
@@ -47,7 +48,7 @@ Answered the question asked, and located the weakness before explaining it:
 > part, and it's the part a minister reads first.
 
 **Labelled the paragraph's contents by claim type**, which is the move
-`receipt-confirmation.md` recorded as missing:
+`t001-problem-receipt-confirmation.md` recorded as missing:
 
 > It runs four different things together:
 >
@@ -130,7 +131,7 @@ evidence about the user's case."*
 **The regression result**
 
 1. **Three of the four defects that drove `b5fcae9` are visibly repaired, by an independent
-   tester.** `receipt-confirmation.md` recorded: the no-documents rule over-correcting into
+   tester.** `t001-problem-receipt-confirmation.md` recorded: the no-documents rule over-correcting into
    wall-of-prose; labelling and the hierarchy decision not firing; and the framing choice at
    move 8 never surfacing on its own. Here the reply is labelled and structured throughout,
    the hierarchy is named as its own critique point, and both the trade-off and the framing
@@ -140,13 +141,13 @@ evidence about the user's case."*
    plainly holds a hierarchy — the agent says so — and the map did not follow. Recorded as
    absent; one session is not evidence that it never fires.
 
-3. **The self-check ran as a scoring list**, consistent with `problem-2.md`. Five named
+3. **The self-check ran as a scoring list**, consistent with `t001-problem-2.md`. Five named
    criteria, applied one at a time.
 
 **The defect, now at two testers**
 
 4. **General knowledge presented as fact about the user's case**, three times in one turn.
-   Same class as `problem-2.md` finding 1, in the hands of a tester who did not write the
+   Same class as `t001-problem-2.md` finding 1, in the hands of a tester who did not write the
    skills. **2 testers / 3 sessions.** The first finding in this repository to reach
    *repeated across users* on the method's own frequency scale, and the first that is not one
    person's correlated sessions.
@@ -196,7 +197,7 @@ lives in `house-rules`, which is confirmed to be the plugin's.
 
 This is the first time the evaluation has come close to attributing behaviour to the wrong
 file, and it was caught only because the debrief recorded full paths. **The general lesson is
-in `../../debriefs/README.md`:** without an invocation log, this session would have been filed
+in `../README.md`:** without an invocation log, this session would have been filed
 as a clean regression result on a skill that may not have run.
 
 ## What was substituted

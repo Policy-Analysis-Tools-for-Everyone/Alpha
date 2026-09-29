@@ -8,10 +8,10 @@ Whether the map can be made to fire on an observable condition rather than a jud
 
 ## Evidence in hand
 
-`problem-3`, and both of T003's `problem` runs. Two candidate cores named explicitly in each,
+`t002-problem-3`, and both of T003's `problem` runs. Two candidate cores named explicitly in each,
 which is the material the map exists for, and no map in any of them.
 
-It has already been patched once, after `receipt-confirmation` recorded it firing "late and
+It has already been patched once, after `t001-problem-receipt-confirmation` recorded it firing "late and
 vaguely". The patch moved it; it did not make it fire.
 
 ## What is missing

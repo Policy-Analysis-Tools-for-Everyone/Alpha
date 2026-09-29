@@ -4,11 +4,11 @@
 
 ## What it would settle
 
-Whether `problem-1`'s failure was carelessness or a missing rule.
+Whether `t001-problem-1`'s failure was carelessness or a missing rule.
 
 ## Evidence in hand
 
-`problem-1`. The agent asserted recurrence as established. Two turns later, asked to draft
+`t001-problem-1`. The agent asserted recurrence as established. Two turns later, asked to draft
 "without evidence", it offered the opposite as the falsification condition and called it the
 most useful line on the page.
 
@@ -21,7 +21,7 @@ silently became an open question.
 A paired run. Same material, same request to loosen the draft, once with the figures in and
 once with them stripped. The test is whether the claim's status survives.
 
-Adjacent and untested: `problem-2`, where the user's own research flagged a need as
+Adjacent and untested: `t001-problem-2`, where the user's own research flagged a need as
 provisional and the agent carried it as established. Same class, different route.
 
 ## What would make it fail
