@@ -1,71 +1,86 @@
-# Original source material: archive
+# Sources
 
-**These files are not the current method.** They are the original documents the
-method layer was built from, kept for provenance.
+Every third-party source the method layer draws on, in one place. Each method
+file under `reference/methods/` carries its own citations and says what it uses
+each source for; this list is the index.
 
-The current canonical methods live in `reference/methods/capabilities/` and
-`reference/methods/shared/`. Those Markdown files carry their own source
-citations and are what the runtime skills are written against. Nothing in
-`skills/` should depend on reading anything in this directory.
+The method files set out these sources' ideas in this project's own words. They
+do not reproduce the sources' text beyond short, attributed examples. To read a
+source, obtain it from its publisher. This repository holds no copy of any
+source in this list except where the table under "Held in this repository" says
+so.
 
-Two reasons this separation exists. A skill that could be grounded in either a
-distilled method or its original source has two canonical answers, which is one
-too many. And these are binary formats: a `.docx` and two PDFs cannot be read
-without conversion, so a skill citing them would be citing something the runtime
-usually cannot open.
+## Policy analysis
 
-| File | What it is | Now distilled into | Status |
-|---|---|---|---|
-| `bardach-problem-definition-guidance.docx` | Eugene Bardach, *A Practical Guide for Policy Analysis*, "Step One: Define the Problem", as supplied to the original Copilot agent as its knowledge file. Derived from the edition marked "Version 4", not the 6th edition | `reference/methods/capabilities/problem-definition-guidance.md` | Superseded as current method. Retained as the original agent's knowledge file and as evidence for `docs/BEHAVIOUR_SPEC.md` source key `[B]` |
-| `strategic-triangle-case-2090.pdf` | John D. Donahue, "Strategic Alignment for Policy Analysis and Design", Harvard Kennedy School Case Program, Case 2090.0 (2017). 4 pages | `reference/methods/shared/strategic-triangle-guidance.md` | Superseded as current method. See the fidelity check below |
-| `ucl-ppc-one-pager-instructions.pdf` | UCL Personal Policy Problem memo instructions, adapted from Policy Design and Delivery at HKS. The 8-section memo format and its page conventions | `reference/methods/capabilities/storytelling-guidance.md`, PPC memo mode | Superseded as current method. Retained because the format is a contract with an external convention, and the MD paraphrases rather than reproduces it |
+- Bardach, E. *A Practical Guide for Policy Analysis: The Eightfold Path to More
+  Effective Problem Solving*. 4th edn. The main analytical spine: problem
+  definition (Step One), evidence (Step Two and Part II), alternatives (Step
+  Three and Appendix B), criteria (Step Four), outcomes (Step Five), trade-offs
+  (Step Six), decision (Step Seven), storytelling (Step Eight), and institutions
+  and political support (Appendices C and D).
+- Donahue, J. D. (2017) *Strategic Alignment for Policy Analysis and Design*.
+  Harvard Kennedy School Case Program, Case 2090.0. Grounds
+  `reference/methods/shared/strategic-triangle-guidance.md`.
+- May, P. J. (1981) *Hints for Crafting Alternative Policies*.
+- Weimer, D. L. and Vining, A. R. *Policy Analysis: Concepts and Practice*. 5th
+  edn.
 
-## Strategic Triangle: fidelity check against the source
+## Stakeholders, power and negotiation
 
-The shared method MD was compared against all 4 pages of the source PDF during
-the skills implementation pass. The MD is faithful and is now canonical.
+- Fisher, R., Ury, W. and Patton, B. *Getting to Yes*. 2nd edn.
+- Mandell, B. S., Petraeus, S., Subramanian, G. and Cox, L. (2022) "Eight Types
+  of Power City Leaders Can Use When Negotiating".
+- Reinikainen, E. (2020) "Understanding Government as a Complex System through
+  Network Mapping". Used for concepts and method only.
 
-Preserved from the source:
+## Evidence, uncertainty and learning
 
-- the 3 dimensions, in Donahue's own terms: net public value; operational
-  feasibility, with financial, legal, technical, personnel and managerial
-  resources named explicitly; political feasibility, defined as required
-  stakeholders endorsing the purposes **and** believing in operational
-  feasibility
-- all 3 caveats: perfect alignment is rare so "good enough" is the realistic
-  ambition; alignment is constructed through cognition and action rather than
-  discovered; alignment is characteristically unstable, so assume it is fragile
-  and stay poised for repair
-- all 3 misalignment types, with capacity treated as elastic (the lunar-landing
-  case) while extraordinary mobilisation stays the exception rather than the
-  assumption
-- support is not a test of value: rights that survive majority disagreement,
-  policies good for those with political resources and bad for those without,
-  future generations, and slavery as the case that settles the argument
-- the "we just need political will" lament and the instruction to diagnose what
-  the actor is actually unwilling to support
-- the 2 asymmetric self-deceptions: stakeholders of established policies about
-  value (the DARE example), advocates of new ideas about capacity and support
-- the triangle and overlapping-circle graphics as mnemonics, not analytical
-  tools
-- the closing observation that the framework is a cue to use other methods
-  rather than a stand-alone tool
+- Saltelli, A. and Giampietro, M. (2017) *What is wrong with evidence based
+  policy, and how can it be improved?*
+- McGuinness, T. D. and Slaughter, A.-M. (2019) *The New Practice of Public
+  Problem Solving*.
+- Rodrik, D. (2008) *The New Development Economics: We Shall Experiment, but How
+  Shall We Learn?*
+- Demos Helsinki. *Experimentation Guidelines for the Latvian Public Sector*.
 
-What the MD adds beyond the source, and why it is not a fidelity problem: the
-per-dimension question sets, the scale-and-pace test, the pilot-versus-system
-warning, the "minimum consequential set" definition of required support, the
-prohibition on numerical scoring, and the fragility triggers. These
-operationalise Donahue's argument for an agent that has to ask questions in a
-live conversation. They are consistent with the source and none contradicts it.
-The prohibition on scoring is the strongest addition and follows directly from
-the source's own point that the graphics are mnemonics rather than analytical
-tools.
+## Appraisal
 
-The MD attributes nothing to Donahue that the PDF does not support.
+- Sharpe, S., Mercure, J.-F., Vinuales, J., Ives, M., Grubb, M., Pollitt, H.,
+  Knobloch, F. and Nijsse, F. J. M. M. (2021) *Deciding how to decide:
+  Risk-opportunity analysis as a generalisation of cost-benefit analysis*.
+- Flyvbjerg, B. and Bester, D. W. (2021) *The Cost-Benefit Fallacy: Why
+  Cost-Benefit Analysis Is Broken and How to Fix It*.
+- Funtowicz, S. O. and Ravetz, J. R. (1994) *The Worth of a Songbird: Ecological
+  Economics as a Post-Normal Science*.
+- Kattel, R., Mazzucato, M., Ryan-Collins, J. and Sharpe, S. (2018) *The
+  Economics of Change: Policy Appraisal for Missions, Market Shaping and Public
+  Purpose*.
 
-## Rules for this directory
+## Agent evaluation
 
-Do not edit these files. They are evidence.
+- Anthropic (2026) "Demystifying evals for AI agents".
+- OpenAI (2025) "How evals drive the next chapter in AI for businesses".
 
-If a method MD turns out to misread its source, correct the MD and record the
-correction there. The source stays as it is.
+## Digital public infrastructure (domain material)
+
+- Mazzucato, M., Eaves, D. and Vasconcellos, B. (2024) *Digital public
+  infrastructure and public value: What is 'public' about DPI?* UCL Institute for
+  Innovation and Public Purpose, Working Paper WP 2024-05.
+- Eaves, D., Coyle, D., Vasconcellos, B. and Deshmukh, S. (2025) *The Economics
+  of Shared Digital Infrastructures: A framework for assessing societal value*.
+  UCL IIPP and Bennett Institute for Public Policy, Cambridge, Policy Report
+  2025/02.
+
+## Held in this repository
+
+| File | What it is | Used by |
+|---|---|---|
+| `ucl-ppc-one-pager-instructions.pdf` | UCL Personal Policy Problem memo instructions: the 8-section memo format and its page conventions | `reference/methods/capabilities/storytelling-guidance.md`, PPC memo mode, which paraphrases the format rather than reproducing it |
+| `../domain/dpi/*.pdf` | The two DPI papers above | `reference/domain/dpi/dpi-public-value-framework.md` |
+
+These are held under their own terms, not this repository's licences. See
+`LICENSE-CONTENT.md` at the repository root.
+
+## If a method misreads its source
+
+Correct the method file and record the correction there.
