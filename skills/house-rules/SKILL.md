@@ -14,11 +14,9 @@ metadata:
 
 <!--
 Canonical sources:
-  [J] reference/copilot-json/declarativeAgent_0.json
+  [P] docs/BEHAVIOUR_SPEC.md sections 1, 4, 6, 11, 12, 14
       - purpose, tone, question discipline, evidence and placeholder rules,
-        competing framings. Via docs/BEHAVIOUR_SPEC.md A3, A5, A10, A11, A13.
-        The instructions field is truncated mid-sentence; nothing here
-        completes it.
+        competing framings.
   [T] reference/methods/shared/strategic-triangle-guidance.md
       - the three standing considerations, scepticism in a direction,
         alignment as constructed. Only the genuinely universal subset is here.
@@ -27,11 +25,11 @@ Canonical sources:
   [V] reference/writing/anti-ai-writing-style.md
       - the writing rules below are its universal runtime subset. That file
         is canonical. `story` applies it hardest.
-  [P] docs/BEHAVIOUR_SPEC.md B1, B6, B8 - chat as the whole experience,
-      removal of deployment-specific references, open entry. B2/B3 (the case
-      record and its update rule) are deliberately not carried: they describe
-      a web application with a persistence layer that this repository does not
-      contain.
+  [P] docs/BEHAVIOUR_SPEC.md sections 1, 2, 3 - chat as the whole
+      experience, no deployment-specific references, open entry. The case
+      record and its update rule (section 17) are deliberately not carried:
+      they describe a web application with a persistence layer that this
+      repository does not contain.
   [O] Project owner - the vague-term challenge and its four-part answer; the
       direction that the three considerations are cross-cutting rather than a
       stage; the contaminated-measure warning.
