@@ -2,118 +2,60 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>policymemo.ai</title>
 <meta name="description" content="MDEE.MD: a toolkit for working through a public policy problem properly. Alpha, coming soon.">
-<meta name="theme-color" content="#141414">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700&family=Inter+Tight:wght@200;400&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#e8e8e6">
 <style>
-  :root {
-    --ink: #f2efe9;
-    --ink-soft: rgba(242, 239, 233, 0.72);
-    --bg: #141414;
-    --pink: #f0708e;
-    --coral: #f58a6b;
-    --green: #5e7d5e;
-    --gutter: clamp(16px, 4vw, 48px);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --bg: #e8e8e6; --ink: #1d1d1b; --muted: #6b6b68; }
+  * { box-sizing: border-box; margin: 0; }
   html, body { height: 100%; overflow: hidden; }
   body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "Inter Tight", system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
+    background: var(--bg); color: var(--ink);
+    font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid; place-items: center; padding: 16px; text-align: center;
   }
-
-  /* Blurred gradient field */
-  .field {
-    position: fixed; inset: -20%;
-    background:
-      radial-gradient(40% 45% at 22% 30%, var(--pink) 0%, transparent 70%),
-      radial-gradient(35% 40% at 30% 72%, var(--coral) 0%, transparent 70%),
-      radial-gradient(45% 50% at 85% 25%, var(--green) 0%, transparent 70%),
-      radial-gradient(60% 60% at 80% 85%, #1c1c1a 0%, transparent 70%),
-      var(--bg);
-    filter: blur(60px);
-    animation: drift 24s ease-in-out infinite alternate;
-  }
-  @keyframes drift {
-    to { transform: translate3d(3%, -2%, 0) scale(1.06) rotate(2deg); }
-  }
-  @media (prefers-reduced-motion: reduce) { .field { animation: none; } }
-
-  /* Film grain */
-  .grain {
-    position: fixed; inset: 0; pointer-events: none;
-    opacity: 0.22; mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  main {
-    position: relative; height: 100dvh;
-    display: grid; grid-template-rows: auto 1fr auto;
-    padding: var(--gutter);
-  }
-
-  .bar {
-    display: flex; justify-content: space-between;
-    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-
-  h1 {
-    align-self: center;
-    font-weight: 200;
-    font-size: clamp(72px, 14vw, 200px);
-    line-height: 0.9; letter-spacing: -0.04em;
-  }
-
-  .foot { text-align: center; max-width: 640px; margin: 0 auto; }
-  .kicker { font-size: 12px; letter-spacing: 0.08em; color: var(--ink-soft); }
-  h2 {
-    font-family: "Archivo", sans-serif;
-    font-stretch: 125%; font-weight: 700;
-    font-size: clamp(20px, 3vw, 28px);
-    letter-spacing: 0.02em; text-transform: uppercase;
-    margin: 6px 0 14px;
-  }
-  .foot p {
-    font-size: 11px; line-height: 1.5; letter-spacing: 0.04em;
-    text-transform: uppercase; color: var(--ink-soft);
-  }
-  .links {
-    display: flex; justify-content: center; gap: 28px; margin-top: 22px;
-    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
-  }
-  .links a {
-    color: var(--ink); text-decoration: none;
-    border-bottom: 1px solid rgba(242, 239, 233, 0.35);
-    padding-bottom: 2px;
-  }
-  .links a:hover, .links a:focus-visible { border-color: var(--ink); outline: none; }
-
-  @media (max-height: 560px) { .foot p { display: none; } }
+  svg { width: min(260px, 60vw); height: auto; display: block; margin: 0 auto 32px;
+        filter: drop-shadow(0 10px 18px rgba(0,0,0,.12)); }
+  p { max-width: 340px; margin: 0 auto; color: var(--muted); }
+  nav { margin-top: 20px; display: flex; gap: 20px; justify-content: center; font-size: 14px; }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid rgba(0,0,0,.25); }
+  a:hover, a:focus-visible { border-color: var(--ink); outline: none; }
 </style>
 </head>
 <body>
-  <div class="field" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
   <main>
-    <div class="bar"><span>policymemo.ai</span><span>Alpha</span></div>
-    <h1>(policy/<br>memo)</h1>
-    <div class="foot">
-      <div class="kicker">MDEE.MD / Coming soon</div>
-      <h2>Better policy analysis</h2>
-      <p>Work out what the problem actually is, test what you know, build and weigh options, decide, and write it up for someone else to read. A toolkit for Claude that makes bad analysis harder to write.</p>
-      <nav class="links">
-        <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/plugin/mdee.zip">Download alpha</a>
-        <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha#install-mdeemd-in-claude">Install guide</a>
-        <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
-      </nav>
-    </div>
+    <svg viewBox="0 0 260 200" role="img" aria-label="A locked folder tagged policymemo.ai">
+      <defs>
+        <linearGradient id="back" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#b8703f"/><stop offset="1" stop-color="#9a5a30"/>
+        </linearGradient>
+        <linearGradient id="front" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f4f1ea"/><stop offset="1" stop-color="#e6e1d6"/>
+        </linearGradient>
+      </defs>
+      <!-- back + tab -->
+      <path d="M12 20a10 10 0 0 1 10-10h62a10 10 0 0 1 8 4l8 10h136a10 10 0 0 1 10 10v140H12z" fill="url(#back)"/>
+      <!-- paper -->
+      <rect x="22" y="30" width="216" height="40" rx="3" fill="#fff"/>
+      <!-- front -->
+      <rect x="8" y="40" width="244" height="152" rx="12" fill="url(#front)"/>
+      <rect x="8.5" y="40.5" width="243" height="151" rx="11.5" fill="none" stroke="#fff" stroke-opacity=".7"/>
+      <!-- tag -->
+      <rect x="70" y="100" width="120" height="30" rx="4" fill="#1d1d1b"/>
+      <text x="130" y="120" text-anchor="middle" fill="#f4f1ea"
+            font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing=".3">policymemo.ai</text>
+      <!-- lock -->
+      <path d="M120 154v-6a10 10 0 0 1 20 0v6" fill="none" stroke="#1d1d1b" stroke-width="3"/>
+      <rect x="115" y="153" width="30" height="22" rx="4" fill="#1d1d1b"/>
+      <circle cx="130" cy="163" r="2.6" fill="#e6e1d6"/>
+    </svg>
+    <p>A toolkit for Claude that helps you work through a policy problem properly. Alpha, coming soon.</p>
+    <nav>
+      <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/plugin/mdee.zip">Download</a>
+      <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha#install-mdeemd-in-claude">Install guide</a>
+      <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
+    </nav>
   </main>
 </body>
 </html>
