@@ -2,7 +2,8 @@
 
 What recurs across sessions. Mined from `../sessions/`, `../sessions/` and `../sessions/`.
 
-**Mined 2026-09-22, from 17 sessions and 4 testers.** Re-mine whenever a session is added —
+**Mined 2026-09-22, from 17 sessions and 4 testers. Changes made 2026-09-29 — see
+*What round 1 changed* at the foot before reading any finding as open.** Re-mine whenever a session is added —
 `../README.md` has the three questions. An entry that has not been checked against
 the newest evidence is stale, and nothing detects that automatically.
 
@@ -239,3 +240,37 @@ what it drops.** T004 proposes exactly that test; see `prompts/stopping-rule.md`
   them depends on.
 - **Anything about a naive user.** All three testers redirect, concede and push for output more
   than most users will.
+
+
+---
+
+## What round 1 changed
+
+Skills edited 2026-09-29, plugin `0.1.1` → `0.1.2`. Every session above tested `0.1.1`, so
+**nothing here is evidence about what ships now.**
+
+| Finding | Change | Where |
+|---|---|---|
+| F1 | The one-line rule on background knowledge replaced with four categories and an in-sentence label, plus an explicit over-correction warning | `house-rules`, Evidence discipline |
+| F1 | Self-check line 1 rewritten. It demanded that nothing in a reply came from the agent, which is unachievable, so it was read as "I invented nothing" and could never fail | `house-rules`, Self-check |
+| F13 | Lead with the deliverable; under a constraint, choose and say what you dropped | `house-rules`, Chat is the whole experience |
+| F1, F13 | Two matching entries added so the failure list agrees with the rules | `house-rules`, Failure modes |
+| F7 | System map moved out of move 9 and onto the hierarchy standing instruction, which does fire: *if you say hierarchy, draw it* | `problem` |
+
+**The gate was not run.** T003 named C-9 — useful background, direct answer needed — as
+mandatory before and after the F1 change, and `prompts/sound-work.md` records that nothing in
+the corpus tests whether the agent accepts sound work. The changes were made on the evidence
+without it. The risk is specific and already has a precedent in this repository: a ban on
+naming frameworks, read too broadly, produced evasive answers on the first recorded test. The
+F1 edit carries an explicit over-correction paragraph for that reason, and that paragraph is
+untested.
+
+**Least evidenced change here:** the constraint rule under F13. No session in the corpus was
+run against a deadline or a length limit, so it is written from two reports of the symptom and
+none of the condition.
+
+**What to do next, in order.** Run C-9 and C-8. Re-run both `problem` transcripts against the
+new map trigger, and C-3 against it. Then a cold session on `0.1.2`.
+
+Not changed, and why: F6 has one clear instance still blocked on a lost user turn. F12 has one
+tester and no transcript. F2 is a packaging problem, not a skill one.

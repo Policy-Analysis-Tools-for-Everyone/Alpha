@@ -8,7 +8,7 @@ description: >
   someone's motives, influence or position is being asserted without evidence,
   or when an organisation is being treated as though it had a single mind.
 metadata:
-  status: written, not behaviourally tested
+  status: written, exercised in 1 reported run and 1 tester note; no session of its own
 ---
 
 <!--

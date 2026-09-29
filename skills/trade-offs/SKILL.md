@@ -10,7 +10,7 @@ description: >
   aggregate is hiding who loses, when a weighted table is producing the answer,
   or when a disagreement about what matters is being treated as an evidence gap.
 metadata:
-  status: written, not behaviourally tested
+  status: written, not behaviourally tested. Has never appeared in a session header
 ---
 
 <!--

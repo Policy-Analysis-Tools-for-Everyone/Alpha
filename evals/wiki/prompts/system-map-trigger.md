@@ -1,6 +1,6 @@
 # The problem system map has never fired
 
-**Status:** a live defect with a proposed fix. 2 testers / 3 sessions, zero firings.
+**Status:** fixed in `0.1.2`, untested. Was 2 testers / 3 sessions, zero firings.
 
 ## What it would settle
 
@@ -14,9 +14,17 @@ which is the material the map exists for, and no map in any of them.
 It has already been patched once, after `t001-problem-receipt-confirmation` recorded it firing "late and
 vaguely". The patch moved it; it did not make it fire.
 
+## What was done
+
+The map moved out of move 9 and onto the hierarchy standing instruction — which does fire, in
+all four `problem` runs — as *if you say hierarchy, draw it*, with the single-level
+counter-case stated in the same breath. That is a smaller change than the proposed trigger and
+attaches to something already known to work.
+
 ## What is missing
 
-T003's proposed trigger, tested: produce the map if two candidate cores have been named, **or**
+Both `problem` transcripts replayed against `0.1.2`, and **C-3**, the counter-case below.
+T003's original proposal, if the simpler fix does not take: produce the map if two candidate cores have been named, **or**
 if three or more of problem, mechanism, symptom and constraint have been labelled. Both
 existing `problem` transcripts meet both conditions, so the replay is free.
 

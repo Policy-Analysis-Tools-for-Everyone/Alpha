@@ -10,7 +10,7 @@ description: >
   decision already taken, or when someone is proposing research or a pilot
   without saying what it would settle.
 metadata:
-  status: written, not behaviourally tested
+  status: written, behaviourally tested in 2 real sessions, plus 2 reported (see evals/)
 ---
 
 <!--

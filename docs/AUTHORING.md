@@ -133,7 +133,7 @@ then the symptoms that should also trigger it, then any adjacent case it should
 boundary stated, or one will swallow the other.
 
 A skill that never triggers is a skill that does not exist. Test descriptions with
-the routing pairs in `evals/capability/alpha-pack.md`.
+the routing pairs in `evals/tests/capability-alpha-pack.md`.
 
 ---
 
@@ -331,7 +331,7 @@ Do not force this sequence when the user entered somewhere else.
    to spot afterwards because it reads well.
 2. **Draft `SKILL.md`** against the extraction test in section 1.
 3. **Use it on real work.** Not a test case; an actual problem you have.
-4. **Save the conversation** into `evals/transcripts/<skill>/`.
+4. **Save the conversation** into `evals/sessions/`.
 5. **Revise.** Most of the value is here, not in the first draft.
 6. **Re-test cold**, with `house-rules` loaded, ideally by someone who did not
    write it. Authoring and testing in the same session catches structural faults

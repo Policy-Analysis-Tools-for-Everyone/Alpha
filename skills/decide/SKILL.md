@@ -10,7 +10,7 @@ description: >
   recommendation needs its strongest contrary case, its accepted trade-off and
   the conditions that should reopen it made explicit.
 metadata:
-  status: written, not behaviourally tested
+  status: written, exercised in 2 reported runs; no session of its own
 ---
 
 <!--

@@ -10,7 +10,7 @@ description: >
   rests on a guess, when the base case is today frozen in time, or when everyone
   else in the system is assumed to carry on behaving exactly as before.
 metadata:
-  status: written, not behaviourally tested
+  status: written, exercised inside other sessions and in 1 reported run; no session of its own
 ---
 
 <!--

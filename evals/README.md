@@ -21,7 +21,8 @@ regression test → cold re-test.
 
 ## Current state
 
-**17 sessions, 4 testers, August 2026.** Nine are transcripts; the rest are a tester's
+**17 sessions, 4 testers, August 2026, all on plugin `0.1.1`.** `0.1.2` changed
+`house-rules` and `problem` from these findings and has no sessions behind it yet. Nine are transcripts; the rest are a tester's
 cross-session report and a tester's note. Seven of the ten capabilities have been exercised.
 Everything in `tests/` is synthetic and labelled as such.
 
