@@ -18,7 +18,7 @@ Canonical method:
   - the maturity check, the Grandma Bessie test, audience and purpose, output
     modes, story construction, the PPC memo mode as a format contract,
     compression rules and the upstream returns. Provenance: Bardach Step Eight;
-    the UCL Personal Policy Problem instructions, archived at
+    the UCL Personal Policy Problem instructions, held at
     reference/sources/ucl-ppc-one-pager-instructions.pdf.
 
 Writing quality:

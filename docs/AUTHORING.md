@@ -162,8 +162,8 @@ maintaining a second copy of provenance that will drift. List an original source
 only where a claim bypasses the method layer entirely.
 
 Keep 4 kinds of grounding distinguishable, using the keys in
-[BEHAVIOUR_SPEC.md](./BEHAVIOUR_SPEC.md): canonical method, recovered
-original-agent behaviour, project-owner product decisions, and behavioural
+[BEHAVIOUR_SPEC.md](./BEHAVIOUR_SPEC.md): canonical method, project-owner
+product decisions, material the owner authored directly, and behavioural
 evidence from testing.
 
 **The "not grounded" line matters more than the rest.** A skill with an empty one

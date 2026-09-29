@@ -16,22 +16,19 @@ Canonical method:
   reference/methods/capabilities/problem-definition-guidance.md
   - core rules, anti-patterns, drafting scaffold, self-check rubric, and the
     shared-method routing to uncertainty and strategic alignment. That file
-    carries the Bardach provenance; the original knowledge file is archived at
-    reference/sources/bardach-problem-definition-guidance.docx and is not the
-    current method.
+    carries the Bardach citation.
 
 Also grounded in:
-  [J] reference/copilot-json/declarativeAgent_0.json, via docs/BEHAVIOUR_SPEC.md
-      A4-A11 and A14 - the questioning sequence, its transition conditions, the
-      four-part output, the problem system map, the self-check as a scoring
-      list, and a metric per sub-problem.
+  [P] docs/BEHAVIOUR_SPEC.md sections 4-12 and 15 - the questioning sequence,
+      its transition conditions, the four-part output, the problem system map,
+      the self-check as a scoring list, and a metric per sub-problem.
   [O] Project owner - the placeholder set; the contaminated-measure warning
       (now in house-rules).
   [E] evals/sessions/t001-problem-receipt-confirmation.md - first test session.
       Drove the revision recorded below.
 
 Not grounded:
-  - Move ordering. [J] orders its steps; where bounding and the framing choice
+  - Move ordering. [P] orders its steps; where bounding and the framing choice
     sit within that order is an authoring judgement.
 
 Revision history:
