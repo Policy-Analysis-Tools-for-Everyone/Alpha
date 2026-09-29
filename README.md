@@ -367,10 +367,9 @@ universal subset; `story` applies it hardest. It shapes writing without changing
 evidence, analysis or necessary technical terms. It is a maintainer reference and
 is not loaded at runtime.
 
-**The archive**, `reference/sources/`, `reference/domain/` and
-`reference/copilot-json/`, holds original source documents, domain-specific
-material and the original Copilot exports. Provenance, not current method. No skill
-reads it.
+**Sources and domain material.** `reference/sources/README.md` lists every source
+the method layer cites. `reference/domain/` holds domain-specific material. No
+skill reads either.
 
 ### How house-rules reaches the other capabilities
 
@@ -409,7 +408,7 @@ sourced or not being honest.
 |---|---|
 | `[B]` | Bardach, *A Practical Guide for Policy Analysis*, the main analytical spine |
 | `[T]` | Donahue, "Strategic Alignment for Policy Analysis and Design", HKS Case 2090.0 |
-| `[J]` | The original Microsoft 365 Copilot agent this work recovers, kept as a raw archive |
+| `[P]` | Product decisions recorded in `docs/BEHAVIOUR_SPEC.md` |
 | `[O]` | Material the project owner authored directly |
 | `[E]` | Behavioural evidence from saved sessions |
 
@@ -418,11 +417,14 @@ Vining, Fisher and Ury, May, Saltelli and Giampietro, Rodrik, McGuinness and
 Slaughter, Flyvbjerg, Funtowicz and Ravetz, Kattel and colleagues, and Sharpe and
 colleagues.
 
-[`docs/BEHAVIOUR_SPEC.md`](docs/BEHAVIOUR_SPEC.md) records what the original
-Copilot agent observably did, and which behaviour here is recovered from it rather
-than added later. That separation is maintained deliberately: the original stopped
-at the problem statement, so nothing downstream of it can claim recovered
-provenance.
+[`docs/BEHAVIOUR_SPEC.md`](docs/BEHAVIOUR_SPEC.md) specifies the core behaviour:
+the rules that hold in every conversation and how the agent defines a problem.
+Every other capability is specified by its method file.
+
+The method files set out their sources' ideas in this project's own words, with
+citations. No third-party text is reproduced beyond short attributed examples.
+See [`reference/sources/README.md`](reference/sources/README.md) for the full
+citations list.
 
 `reference/domain/dpi/` holds a synthesis of 2 UCL IIPP papers on digital public
 infrastructure. It is domain material rather than generic method, and only one
@@ -446,3 +448,11 @@ the house rules*.
 Each skill is a `SKILL.md` with spec-compliant frontmatter, so they also work
 through the Skills API. If you assemble several into one system prompt, put
 `house-rules` first.
+
+## Licence
+
+Copyright (c) 2026 Jack Strachan. Code (`tools/`, `.github/`, `.claude-plugin/`)
+is under the [MIT Licence](LICENSE). Everything else written for this project,
+including the skills, methods, docs and evals, is under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Third-party sources are
+cited, not licensed. See [`LICENSE-CONTENT.md`](LICENSE-CONTENT.md) for the detail.

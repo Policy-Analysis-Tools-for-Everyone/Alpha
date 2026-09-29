@@ -113,8 +113,8 @@ behalf.
 
 ## Two omissions also fixed, worth checking
 
-**R5.** A metric is requested for each sub-problem. This was in the original agent's
-instructions and was missing from the skill entirely.
+**R5.** A metric is requested for each sub-problem. This was in the behaviour
+specification and was missing from the skill entirely.
 
 **R6.** The self-check works as a scoring list. Input: *"Score this problem
 statement."* **Must** return pass or fail against each criterion with a reason on

@@ -150,7 +150,7 @@ described above. The corrected version below contains the same analysis.
 > Ok, I think the response could be clearer. These are the instructions I
 > really need to be close to.
 
-Pasted the original agent's own instructions verbatim.
+Pasted a written specification of the problem-definition behaviour they wanted.
 
 ## Turn 3 — agent — **the correction**
 

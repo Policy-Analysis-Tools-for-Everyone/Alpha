@@ -68,7 +68,8 @@ policy-analysis method. It shapes writing without changing evidence, analysis or
 necessary technical terminology. `house-rules` carries the universal subset;
 `story` applies it hardest.
 
-## `../sources/`, `../domain/`, `../copilot-json/`
+## `../sources/`, `../domain/`
 
-Archive. Original source documents, domain-specific material and the original
-Copilot exports. See the README in each. No runtime skill reads them.
+`../sources/` lists every source the method layer cites and holds the UCL
+Personal Policy Problem instructions. `../domain/` holds domain-specific
+material. See the README in each. No runtime skill reads them.
