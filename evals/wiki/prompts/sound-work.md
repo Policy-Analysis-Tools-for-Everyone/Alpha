@@ -1,7 +1,7 @@
 # Counter-cases: does it accept sound work?
 
-**Status:** the second-largest gap, after the cold session. Fifteen sessions, none of them a
-test of this.
+**Status:** the second-largest gap, and now overdue. Seventeen sessions, none a test of this —
+and `0.1.2` has already shipped a change this was supposed to gate.
 
 ## What it would settle
 

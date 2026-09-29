@@ -11,7 +11,7 @@ description: >
   metric has quietly become the objective, or when a scoring table is deciding
   the answer without anyone owning the weights.
 metadata:
-  status: written, not behaviourally tested
+  status: written, exercised inside other sessions and in 1 reported run; no session of its own
 ---
 
 <!--

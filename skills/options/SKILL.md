@@ -9,7 +9,7 @@ description: >
   genuinely different mechanisms under one label, try to do everything at once,
   or arrive as a familiar intervention with no explanation of why it fits.
 metadata:
-  status: written, not behaviourally tested
+  status: written, not behaviourally tested. Has never appeared in a session header
 ---
 
 <!--

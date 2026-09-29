@@ -10,7 +10,7 @@ description: >
   classifying before anything gets edited. Not for evaluating whether a public
   policy worked.
 metadata:
-  status: written, not behaviourally tested
+  status: written, behaviourally tested: it produced 3 debriefs and a tester report in evals/
 ---
 
 <!--

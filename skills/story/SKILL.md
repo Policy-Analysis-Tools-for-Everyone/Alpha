@@ -9,7 +9,7 @@ description: >
   with background nobody needs, dumps evidence without attaching it to claims,
   loses the uncertainty that matters, or reads like machine-generated prose.
 metadata:
-  status: written, not behaviourally tested
+  status: written, behaviourally tested in 3 real sessions, one a non-trigger (see evals/)
 ---
 
 <!--

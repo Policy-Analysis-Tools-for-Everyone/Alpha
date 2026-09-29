@@ -8,7 +8,7 @@ description: >
   an unexamined causal claim, or when what the user has called one problem may
   be several. Not for choosing between options already on the table.
 metadata:
-  status: written, tested once on real work (see evals/transcripts/problem/)
+  status: written, behaviourally tested in 4 real sessions; revised twice (see evals/)
 ---
 
 <!--
@@ -27,7 +27,7 @@ Also grounded in:
       list, and a metric per sub-problem.
   [O] Project owner - the placeholder set; the contaminated-measure warning
       (now in house-rules).
-  [E] evals/transcripts/problem/receipt-confirmation.md - first test session.
+  [E] evals/sessions/t001-problem-receipt-confirmation.md - first test session.
       Drove the revision recorded below.
 
 Not grounded:
@@ -41,6 +41,12 @@ Revision history:
     that needed both, so they were promoted to standing instructions; the
     problem system map fired late and vaguely; the framing choice surfaced only
     when the user asked for a recommendation.
+  - 2026-09-29, from round 1 of alpha testing. The problem system map had
+    never fired: 2 testers, 3 sessions, two candidate cores named in every one
+    (evals/wiki/findings.md F7). It had already been patched once for firing
+    late and vaguely, and was still sitting inside move 9 behind a judgement
+    call. Moved onto the hierarchy standing instruction, which does fire, as
+    "if you say hierarchy, draw it", with the single-level counter-case stated.
   - Skills implementation pass. Renamed from `01-problem`. Sourcing moved to
     the canonical method MD. Content that duplicated house-rules removed:
     the vague-term challenge, the contaminated-measure warning, the
@@ -86,6 +92,11 @@ two candidate cores at different levels with different answers, typically the
 harm to the public and the cost to the organisation. Failing to name the
 hierarchy is how a session ends up defining one problem while the user holds
 another.
+
+**If you say hierarchy, draw it.** Naming one and not mapping it leaves the user
+with the word and none of the structure. A compact problem system map, a line or
+two each: *core problem*, *evidence*, *sub-problems*, *mechanisms*,
+*constraints*, *missing metrics*. A single-level problem does not get one.
 
 ## The moves
 
@@ -228,10 +239,6 @@ handed the fix.
 **Length is part of the output.** A reader who has to excavate the four parts
 from continuous prose has been given a worse answer however good the analysis
 underneath. That is the failure this move actually hit on its first real test.
-
-Where the user has several linked issues, and a hierarchy always counts, add a
-compact problem system map: *core problem*, *evidence*, *sub-problems*,
-*mechanisms*, *constraints*, *missing metrics*. A line or two each.
 
 If key details are still missing, do not force a draft. Say what is missing and
 ask the next best question. Ending on a single question is almost always right,
