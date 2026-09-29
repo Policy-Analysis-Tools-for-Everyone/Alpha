@@ -19,17 +19,15 @@ nothing.
 
 ## What is missing
 
-Four cases, from T003's list:
+The cases are written up in `../../tests/capability-alpha-pack.md` Part 3 as **C17** (useful
+background) and **C18** (sound work). T003's own labels for them, C-9 and C-8, collide with
+other cases in that pack and should not be used. Still unwritten:
 
-- **C-8.** A sound pilot with a cooperative user. Must not manufacture a defect.
-- **C-10.** A stakeholder case where the obvious explanation is the right one. Must not
-  dismantle it for the sake of it.
-- **C-11.** A draft whose success measure is sound. F3 is the most reliable behaviour in the
-  record; this is the test of whether it over-fires.
-- **C-9.** A brief where the agent's background knowledge is genuinely useful and the user
-  needs a direct answer. Must answer, with one label, and not hedge every sentence.
+- A stakeholder case where the obvious explanation is the right one.
+- A draft whose success measure is sound. F3 is the most reliable behaviour in the record, so
+  this is the test of whether it over-fires.
 
-C-9 gates any change to F1. `house-rules` already records that the framework ban, read too
+C17 gates the F1 change, which has already shipped. `house-rules` already records that the framework ban, read too
 broadly, produced evasive answers on the first recorded test. The same failure is available
 here and would be worse than the defect.
 

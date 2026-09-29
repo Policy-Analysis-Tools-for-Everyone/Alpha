@@ -269,8 +269,14 @@ untested.
 run against a deadline or a length limit, so it is written from two reports of the symptom and
 none of the condition.
 
-**What to do next, in order.** Run C-9 and C-8. Re-run both `problem` transcripts against the
-new map trigger, and C-3 against it. Then a cold session on `0.1.2`.
+**What to do next, in order.** The three gates are now written up as **C17**, **C18** and
+**C19** in `../tests/capability-alpha-pack.md` Part 3, and none has been run. They cannot be
+run here: MDEE is not installed in the maintainer's working session, and the author of a
+change cannot behaviourally test it — `../README.md` says a same-session self-test catches
+structure, not behaviour. They need a fresh chat on `0.1.2`, ideally not the author's.
+
+Then replay both `problem` transcripts against the new map trigger, and take a cold session on
+`0.1.2`.
 
 Not changed, and why: F6 has one clear instance still blocked on a lost user turn. F12 has one
 tester and no transcript. F2 is a packaging problem, not a skill one.
