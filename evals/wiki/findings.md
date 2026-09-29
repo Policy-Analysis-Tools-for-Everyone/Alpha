@@ -1,9 +1,9 @@
 # Findings
 
-What recurs across sessions. Mined from `../transcripts/`, `../debriefs/` and `../syntheses/`.
+What recurs across sessions. Mined from `../sessions/`, `../sessions/` and `../sessions/`.
 
 **Mined 2026-09-22, from 17 sessions and 4 testers.** Re-mine whenever a session is added —
-`../transcripts/README.md` has the three questions. An entry that has not been checked against
+`../README.md` has the three questions. An entry that has not been checked against
 the newest evidence is stale, and nothing detects that automatically.
 
 Working notes. Blunt on purpose: an entry that starts reading like an essay has become a draft
@@ -14,8 +14,8 @@ skills. T002's three sessions may share memory context. T003's six are one teste
 adversarial by design. Nothing here is an independent sample.
 
 **Seven of the seventeen sessions are not in this repository.** T003's six are reviewed in
-`../syntheses/t003-scenario-runs-1-6.md`; T004's two exist only as a note in
-`../feedback/t004-note.md`. Rows drawn from either cannot be checked here.
+`../sessions/t003-scenario-runs-1-6.md`; T004's two exist only as a note in
+`../sessions/t004-note.md`. Rows drawn from either cannot be checked here.
 
 Every session is warm. **Nothing has been tested cold.**
 
@@ -38,10 +38,10 @@ which removes the tool's value, or check nothing.
 
 | Session | Tester | How it showed up |
 |---|---|---|
-| `problem-2` | T001 | A statutory provision imported from outside the user's material and built into a problem statement, unmarked |
-| `problem-3` | T002 | Three claims about a memo that names no audience and says nothing about when its strategy was announced |
-| `story-2` | T002 | Six, including an inference about an organisation's culture stated as fact and a hypothetical written as the live proposal |
-| `story-3-non-trigger` | T002 | A risk the agent invented, presented inside the artefact as established. **No MDEE skill was loaded** |
+| `t001-problem-2` | T001 | A statutory provision imported from outside the user's material and built into a problem statement, unmarked |
+| `t002-problem-3` | T002 | Three claims about a memo that names no audience and says nothing about when its strategy was announced |
+| `t002-story-2` | T002 | Six, including an inference about an organisation's culture stated as fact and a hypothetical written as the live proposal |
+| `t002-story-3-non-trigger` | T002 | A risk the agent invented, presented inside the artefact as established. **No MDEE skill was loaded** |
 | T003 Scen 2 | T003 | Attenuation at scale attributed to a named trial that does not make the argument — one paragraph after a citation from the same paper verified accurate |
 | T003 Scen 3 | T003 | A qualifier dropped from an accurate finding, in the same sentence as two verbatim-correct claims |
 | T003 Scen 4 | T003 | "Two-thirds of England's local authorities by area are not metropolitan" — population unspecified, and wrong on the most natural reading |
@@ -61,17 +61,17 @@ assertions it is a **specification gap** — no current rule requires them to be
 
 **3 testers.** Now every tester in the register.
 
-- `evidence-2`: T001, who wrote the skills, typed `/house-rules` because they could not tell.
-- `story-3-non-trigger`: T002 supplied a session as one where the skill was "clearly invoked".
+- `t001-evidence-2`: T001, who wrote the skills, typed `/house-rules` because they could not tell.
+- `t002-story-3-non-trigger`: T002 supplied a session as one where the skill was "clearly invoked".
   Nothing from MDEE loaded.
 - T003: did not capture loading on any of six runs, and flags that every classification in
   their report saying "against `house-rules`" is conditional on it.
 
 Direct loading evidence exists in 3 of 15 sessions, all from slash commands or a debrief's tool
-list. `story-2` is the one observed failure: `house-rules` loaded **after** the first artefact
+list. `t002-story-2` is the one observed failure: `house-rules` loaded **after** the first artefact
 was written.
 
-**Consequence for the method.** `../capability/alpha-pack.md` Part 0 offers visible invocation
+**Consequence for the method.** `../tests/capability-alpha-pack.md` Part 0 offers visible invocation
 as the stronger evidence route. It does not exist in an ordinary chat install, and the natural
 response to not knowing — typing the command — ends the test.
 
@@ -80,8 +80,8 @@ response to not knowing — typing the command — ends the test.
 **2 testers / 8 sessions.** The most reliable good behaviour in the record.
 
 Named as unsafe *as evidence* and *as a success measure*, with the mechanism attached, in
-`evidence-1` (call volume moves with capacity to answer), `story-1` (an activity rate carrying
-an outcome claim), `evidence-2` (escalation rate can hit zero two ways), and five of T003's six
+`t001-evidence-1` (call volume moves with capacity to answer), `t001-story-1` (an activity rate carrying
+an outcome claim), `t001-evidence-2` (escalation rate can hit zero two ways), and five of T003's six
 scenarios.
 
 T003's Scen 5 goes further than condemning it: decomposed the measure into components that
@@ -89,17 +89,17 @@ would detect the confound.
 
 ## F4. Corrections extend past what was challenged
 
-**1 tester / 2 sessions.** `problem-1` volunteered a second correction the user had not raised.
-`problem-2`: *"The same objection kills more of my draft than the phrase you've picked."* Both
+**1 tester / 2 sessions.** `t001-problem-1` volunteered a second correction the user had not raised.
+`t001-problem-2`: *"The same objection kills more of my draft than the phrase you've picked."* Both
 times the extension made the agent's position worse and the user's work better.
 
 Untested by a second tester.
 
 ## F5. The vague-term challenge is material-dependent
 
-**2 testers / 3 sessions.** Fires on a word doing several jobs (`problem-1`, ×3). Does not fire
-on claims that are merely unquantified (`evidence-2`, skill known loaded). Fires in full
-four-part form on an unquantified claim in `problem-3`, where `problem` was active — so the
+**2 testers / 3 sessions.** Fires on a word doing several jobs (`t001-problem-1`, ×3). Does not fire
+on claims that are merely unquantified (`t001-evidence-2`, skill known loaded). Fires in full
+four-part form on an unquantified claim in `t002-problem-3`, where `problem` was active — so the
 split may be the capability rather than the material. Unresolved. See
 `prompts/vague-term-pair.md`.
 
@@ -110,8 +110,8 @@ reach the file, and the claim about the file that was never verified.
 
 | Session | What happened |
 |---|---|
-| `evidence-1` | Limitation written into the circulating document with its consequence named. **The good case** |
-| `story-2` | Agent said it could not verify the memo's opening premise, then wrote the premise into the memo as fact |
+| `t001-evidence-1` | Limitation written into the circulating document with its consequence named. **The good case** |
+| `t002-story-2` | Agent said it could not verify the memo's opening premise, then wrote the premise into the memo as fact |
 | T003 Scen 6 | Covering note asserts "nothing in the document is a figure I produced"; the document contains a count the Issue section leaves as a placeholder twice. The missing user turn decides whether the agent produced it — **either way the assurance was not checked** |
 
 T003's reading is the sharp one: a wrong assurance is worse than no assurance, because it
@@ -119,10 +119,10 @@ switches off the reader's scrutiny at the point the register exists to direct it
 
 ## F7. `problem`'s revision mostly holds — and the system map does not fire
 
-`receipt-confirmation` found four defects, fixed in `b5fcae9`. Four later `problem` runs across
+`t001-problem-receipt-confirmation` found four defects, fixed in `b5fcae9`. Four later `problem` runs across
 three testers.
 
-| Defect | `problem-1` | `problem-2` | `problem-3` | T003 Scen 1, 5 |
+| Defect | `t001-problem-1` | `t001-problem-2` | `t002-problem-3` | T003 Scen 1, 5 |
 |---|---|---|---|---|
 | Wall-of-prose | fixed | fixed | fixed | fixed |
 | Labelling and hierarchy not firing | fixed | fixed | fixed | fixed |
@@ -135,23 +135,23 @@ cores named in every one of them, and it never fired. It had already been patche
 firing "late and vaguely". T003 proposes an observable trigger; see
 `prompts/system-map-trigger.md`.
 
-**Caveat that cannot be removed.** `problem-3`'s problem skill loaded from a user path this
+**Caveat that cannot be removed.** `t002-problem-3`'s problem skill loaded from a user path this
 repository has never contained, and the provenance is not recoverable.
 
 ## F8. Routing
 
-- `story-3-non-trigger`: no MDEE skill fired on a senior-audience memo edit. The turn opened
+- `t002-story-3-non-trigger`: no MDEE skill fired on a senior-audience memo edit. The turn opened
   with a persona instruction. Candidate cause, untested — `prompts/persona-routing.md`.
-- `story-2`: `story` and `house-rules` only, though the memo did stakeholder, criteria, options
+- `t002-story-2`: `story` and `house-rules` only, though the memo did stakeholder, criteria, options
   and trade-off work competently.
 - T003 Scen 2 and 3: traversed three and four capabilities in one conversation **without
   announcing a handoff**, which is the behaviour working.
-- `story-1`: `problem` correctly did not fire on problem-shaped material.
+- `t001-story-1`: `problem` correctly did not fire on problem-shaped material.
 
 ## F9. The standing considerations are applied without the vocabulary
 
 All six T001 sessions reason about public value, operational capacity and political support
-without using the words. `problem-3` and `problem-2` use them; both have `problem` active.
+without using the words. `t002-problem-3` and `t001-problem-2` use them; both have `problem` active.
 Permitted by the rules. Recorded because it was consistent across six sessions.
 
 ## F10. Behaviours that held under pressure

@@ -8,9 +8,9 @@ F6. Whether a limitation named in conversation makes it into the document that t
 
 ## Evidence in hand
 
-- `evidence-1`: the denominator limitation written into the circulating email, with its
+- `t001-evidence-1`: the denominator limitation written into the circulating email, with its
   consequence named, before any number existed to be misread. The good case.
-- `story-2`: the agent said it could not verify the memo's opening premise, proposed a
+- `t002-story-2`: the agent said it could not verify the memo's opening premise, proposed a
   softening — and the memo went out asserting it as fact.
 
 - T003 Scen 6: a covering note asserting the document contained no figure the agent produced,

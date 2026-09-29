@@ -1,12 +1,13 @@
 # Debrief — story-2
 
 **Agent-written self-report.** Corroboration for
-[`../transcripts/story/story-2.md`](../transcripts/story/story-2.md), which is the record.
-See [`README.md`](README.md) for what this evidence class is and is not.
+[`t002-story-2.md`](t002-story-2.md), which is the record.
+See [`README.md`](../README.md) for what this evidence class is and is not.
 
 | | |
 |---|---|
-| Session | `../transcripts/story/story-2.md` |
+| Kind | **Debrief** — the agent's own account of a session. Self-report, never cited where a transcript exists |
+| Session | `t002-story-2.md` |
 | Tester | T002 |
 | Date of session | August 2026. Exact day not recorded |
 | Model used | **Not confirmed.** The tester could not say. The maintainer's estimate is Claude Opus 5 or Fable 5.1, recorded as an estimate and not as a finding |

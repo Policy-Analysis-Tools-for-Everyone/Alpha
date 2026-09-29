@@ -2,7 +2,7 @@
 
 **Synthetic. Not behavioural evidence.** Every case here was written alongside the
 skills, by the same pass that wrote them, and none has been run. They are a
-starting harness, not results. Real transcripts live in `../transcripts/`.
+starting harness, not results. Real transcripts live in `../sessions/`.
 
 **Status:** written, never run.
 

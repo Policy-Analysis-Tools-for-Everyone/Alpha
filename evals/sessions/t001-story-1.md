@@ -2,6 +2,7 @@
 
 | | |
 |---|---|
+| Kind | **Transcript** — the record of what the agent said. The only behavioural evidence |
 | Skills used | `story` (dominant), `stakeholders`, `evidence`; `decide` surfaces briefly |
 | Version tested | `0.1.1`, commit `e6795b4`. Tester-reported |
 | Model | Claude Opus 5 (`claude-opus-5`) |
@@ -12,7 +13,7 @@
 | Surface | Ordinary Claude chat (claude.ai) with the MDEE.MD plugin installed. Artefacts were produced as separate documents, not inline |
 | Outcome | No defect established. Four behaviours recorded as working, one recorded as discussable rather than good or bad, two open |
 
-> **Partially committed under `../../README.md` privacy rule 3.** Turn 2 of this session
+> **Partially committed under `../README.md` privacy rule 3.** Turn 2 of this session
 > concerned a live, unresolved disagreement about a chief executive's stated position and
 > how it should be handled internally. That is politically sensitive work involving people
 > who have not consented, and rule 3 directs that the finding be written and the transcript
@@ -134,7 +135,7 @@ is useful evidence on the *must not fire* side of a matched pair.
 
 ## Turn 2 — **not committed**
 
-Recorded as a finding only, under `../../README.md` privacy rule 3. See the note at the head
+Recorded as a finding only, under `../README.md` privacy rule 3. See the note at the head
 of this file.
 
 **What happened, in structural terms.** New information arrived that changed the position
@@ -357,7 +358,7 @@ Observation and interpretation kept separate.
   names; the described technical fault.
 - **Roles rather than names:** the registry lead and the registry's analytical lead are kept
   distinct, as the session depends on them being two people; the legal adviser is the same
-  substituted role as in `../evidence/evidence-1.md`; the chief executive, senior sponsor and
+  substituted role as in `t001-evidence-1.md`; the chief executive, senior sponsor and
   director are kept distinct because the audience reasoning depends on the differences
   between them.
 - **Substituted figures:** the headline revoke/refuse rate, the incident attendance

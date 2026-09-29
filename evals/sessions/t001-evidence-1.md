@@ -2,12 +2,13 @@
 
 | | |
 |---|---|
+| Kind | **Transcript** — the record of what the agent said. The only behavioural evidence |
 | Skills used | `evidence` (dominant), `criteria`, `story`; `problem`, `outcomes`, `stakeholders` surface briefly |
 | Version tested | `0.1.1`, commit `e6795b4`. Tester-reported as the current version |
 | Model | Claude Opus 5 (`claude-opus-5`) |
 | Date | August 2026. Exact day not recorded |
 | Tester | T001 |
-| Cold or warm | **Warm.** T001 authored the skills and had one prior saved session. Categorically warm under `../../README.md`, whatever else is true |
+| Cold or warm | **Warm.** T001 authored the skills and had one prior saved session. Categorically warm under `../README.md`, whatever else is true |
 | Also loaded | Unknown. No skill-invocation record in the source. Behaviour is consistent with `house-rules` having loaded. Inference only |
 | Surface | Ordinary Claude chat (claude.ai) with the MDEE.MD plugin installed, not Claude Code. Web search was available and used |
 | Outcome | No defect established. Five behaviours recorded as working; three items left open, one of which needs verifying |
@@ -354,7 +355,7 @@ question behind it.
 
 ---
 
-**`house-rules`:** inferred, not observed. All four markers in `../../capability/alpha-pack.md` hold, except a compound closing question in Turn 1. The three standing considerations never appear by name.
+**`house-rules`:** inferred, not observed. All four markers in `../tests/capability-alpha-pack.md` hold, except a compound closing question in Turn 1. The three standing considerations never appear by name.
 
 ## Findings
 

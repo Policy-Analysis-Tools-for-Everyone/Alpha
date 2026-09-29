@@ -2,6 +2,7 @@
 
 | | |
 |---|---|
+| Kind | **Transcript** — the record of what the agent said. The only behavioural evidence |
 | Skills used | `problem` (dominant, invoked twice), `evidence`; `criteria` and `story` surface briefly |
 | Version tested | `0.1.1`, commit `e6795b4`. Tester-reported |
 | Model | Claude Opus 5 (`claude-opus-5`) |
@@ -13,7 +14,7 @@
 | Outcome | **Two evidence-discipline defects, both self-reported under challenge.** One further finding about a rule over-firing. Five behaviours recorded as working |
 
 > **The second consecutive session in which the agent was wrong and the tester caught it.**
-> Read alongside `problem-1.md`. The failures are different in kind — that one was a
+> Read alongside `t001-problem-1.md`. The failures are different in kind — that one was a
 > reasoning error, this one is a direct breach of a named rule — and the recovery behaviour
 > is the same in both.
 
@@ -111,10 +112,10 @@ and labelled when the user mixes them. Here the agent did the mixing itself.
 *Severity:* both would have shipped. The statement was being prepared for a session the next
 day, and its central claim rested on the two unmarked imports.
 
-*Frequency:* 1 tester / 1 session for each, though see `../../wiki/findings.md` F1 for what
-they share with `problem-1.md`.
+*Frequency:* 1 tester / 1 session for each, though see `../wiki/findings.md` F1 for what
+they share with `t001-problem-1.md`.
 
-**Assessment — the recovery.** Better than the error, and the same shape as `problem-1.md`.
+**Assessment — the recovery.** Better than the error, and the same shape as `t001-problem-1.md`.
 The agent does not defend the challenged phrase or narrow the concession to it. It identifies
 the class of error, applies it back across its own draft, and finds more instances than the
 user did.
@@ -153,12 +154,12 @@ one argument that survives both objections, having first said why the objections
 **And a finding the user's objection exposes.** The `[Assumption, unevidenced: …]` block is
 the `house-rules` placeholder rule applied literally — mark the gap, say what would fill it and
 where it would come from. The rule is right and the application is wrong, because the artefact
-was a sentence to be read aloud to a room. `problem-1.md` shows the same rule producing three
+was a sentence to be read aloud to a room. `t001-problem-1.md` shows the same rule producing three
 placeholders in a working draft, where it was correct.
 
 *Finding:* **the placeholder rule does not account for what the artefact is for.** The two
 sessions are a naturally occurring matched pair — one where marking the gap in place is right,
-one where it is not — which is the structure `../../capability/alpha-pack.md` asks for and
+one where it is not — which is the structure `../tests/capability-alpha-pack.md` asks for and
 rarely gets from real use.
 
 ## Turn 3 — user
@@ -222,7 +223,7 @@ magnitude and no named metric, by choice; the terms *clear* and *timely* are unm
 **Assessment.** Two things here are worth separating.
 
 The self-check runs *as a scoring list* — holds, accepted failures, the one that matters —
-rather than as prose. `receipt-confirmation.md` recorded that the self-check "was not usable as
+rather than as prose. `t001-problem-receipt-confirmation.md` recorded that the self-check "was not usable as
 a scoring list" and that this was fixed in `b5fcae9`. This is behavioural evidence that the fix
 took.
 
@@ -256,7 +257,7 @@ where earlier sessions applied the considerations without naming them.
 **Finding about a rule, not a failure of one**
 
 3. **The placeholder rule does not account for what the artefact is for.** Marking the gap in
-   place is right for a working draft, as in `problem-1.md`, and wrong for a sentence to be
+   place is right for a working draft, as in `t001-problem-1.md`, and wrong for a sentence to be
    read aloud. The user's "don't over-engineer" is the observation, and the two sessions form a
    matched pair.
 

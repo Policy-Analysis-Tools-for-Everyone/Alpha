@@ -2,6 +2,7 @@
 
 | | |
 |---|---|
+| Kind | **Transcript** — the record of what the agent said. The only behavioural evidence |
 | Skills used | **None from MDEE.** The only skill loaded was Anthropic's public `docx` skill (`/mnt/skills/public/docx/SKILL.md`) |
 | Version tested | **Not applicable.** No MDEE skill ran. The plugin was installed; nothing from it was invoked |
 | Model | **Not confirmed.** The tester could not say. Maintainer's estimate is Claude Opus 5 or Fable 5.1, recorded as an estimate, not a finding |
@@ -9,10 +10,10 @@
 | Tester | T002 |
 | Cold or warm | **Warm.** T002 reports prior familiarity with the skills and with MDEE |
 | Surface | Ordinary Claude chat (claude.ai) with the plugin installed |
-| Corroborated by | [`../../debriefs/story-3-non-trigger-debrief.md`](../../debriefs/story-3-non-trigger-debrief.md), whose tool list is what establishes the non-trigger |
-| Outcome | **A routing miss, recorded as behavioural evidence.** This is the file to read against `story-2.md` and `../problem/problem-3.md`, which are the same tester in the same period with a skill loaded |
+| Corroborated by | [`t002-story-3-non-trigger-debrief.md`](t002-story-3-non-trigger-debrief.md), whose tool list is what establishes the non-trigger |
+| Outcome | **A routing miss, recorded as behavioural evidence.** This is the file to read against `t002-story-2.md` and `t002-problem-3.md`, which are the same tester in the same period with a skill loaded |
 
-> **Why a non-trigger is filed as a transcript.** `../../capability/alpha-pack.md` asks for
+> **Why a non-trigger is filed as a transcript.** `../tests/capability-alpha-pack.md` asks for
 > matched pairs — a case where a behaviour must fire and one where it must not — and warns
 > that routing is *"the failure mode most likely to make the whole product feel wrong, because
 > a user who gets the wrong capability never sees the right one."* This is that failure,
@@ -81,7 +82,7 @@ not nothing.
 ## Later — user
 
 Pasted a debrief-generating instruction asking for a two-part session record, and the agent
-produced it. That output is [`../../debriefs/story-3-non-trigger-debrief.md`](../../debriefs/story-3-non-trigger-debrief.md).
+produced it. That output is [`t002-story-3-non-trigger-debrief.md`](t002-story-3-non-trigger-debrief.md).
 
 ---
 
@@ -95,19 +96,19 @@ produced it. That output is [`../../debriefs/story-3-non-trigger-debrief.md`](..
 2. **The tester could not tell.** T002 supplied this session as one of three where the skill
    was *"clearly invoked"*, adding: *"It is not easy to spot when the skill has been
    involved."* The record shows it was not invoked at all. **That is the same observability
-   problem recorded in `../evidence/evidence-2.md`** — where T001, who wrote the skills, typed
+   problem recorded in `t001-evidence-2.md`** — where T001, who wrote the skills, typed
    `/house-rules` because they could not tell either. **2 testers / 2 sessions**, and the
    second tester was wrong about what had happened in their own session.
 
 3. **A candidate cause, not established.** The turn opens with a persona instruction — *"Assume
-   you are [X]"* — rather than a description of the work. Compare `../problem/problem-3.md`,
+   you are [X]"* — rather than a description of the work. Compare `t002-problem-3.md`,
    the same tester days apart, which opens *"Did I define the problem well?"* and loaded two
    skills. **Hypothesis: a role-assignment opening routes away from capability matching.**
    Testable with a matched pair: the same memo-editing task phrased as a persona instruction
    and as a task description.
 
 4. **What absence looks like, for comparison.** Held against the same tester's
-   `../problem/problem-3.md` and `story-2.md`: affirming rather than critical opening; persona
+   `t002-problem-3.md` and `t002-story-2.md`: affirming rather than critical opening; persona
    adopted without question; policy logic unexamined; a self-introduced claim presented as
    established inside the artefact; an unmeasured quantitative assertion. **This is the closest
    thing in the repository to a before-and-after**, and it is not a controlled comparison — the

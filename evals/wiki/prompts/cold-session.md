@@ -10,8 +10,8 @@ revision, and there has never been one.
 ## Evidence in hand
 
 Three sessions where a defect was caught only because the tester knew their own material:
-`problem-1` (recurrence was established, the agent offered it as a kill condition), `problem-2`
-(a user need flagged provisional by the tester's own research), `problem-3` (three claims about
+`t001-problem-1` (recurrence was established, the agent offered it as a kill condition), `t001-problem-2`
+(a user need flagged provisional by the tester's own research), `t002-problem-3` (three claims about
 a memo that named no audience).
 
 **All three are invisible to someone working a borrowed case.** That is the argument for cold

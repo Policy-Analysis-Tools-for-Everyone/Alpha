@@ -12,7 +12,7 @@ occurrence up to *repeated across users*. Without a stable identifier, 2 testers
 both recorded as "policy adviser" cannot be told apart from 1 person tested twice.
 
 The join is the `Tester` row in each transcript header, which carries the ID.
-Sessions stay in `transcripts/`. Nothing here duplicates them.
+Sessions stay in `sessions/`. Nothing here duplicates them.
 
 ## The register
 

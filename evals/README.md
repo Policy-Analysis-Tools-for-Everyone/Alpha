@@ -6,35 +6,89 @@ applies it is `evaluation`.
 
 ```text
 evals/
-  transcripts/   real sessions, anonymised. The only behavioural evidence
-  wiki/          what recurs across sessions, and the tests it asks for
-  syntheses/     cross-session reviews. One author, one date, one snapshot
-  feedback/      testers' own accounts, in their words. No transcript
-  debriefs/      agent-written accounts of sessions. Not transcripts
-  capability/    hard cases the agent may still fail. Synthetic
-  regression/    behaviour already shown to work, or already fixed
-  testers.md     pseudonymous register of who ran which session
+  sessions/    all evidence, flat. Kind is a field in each file, not a directory
+  wiki/        findings.md and prompts/ — the distillate that drives changes
+  tests/       capability and regression cases. Synthetic
+  testers.md   pseudonymous register of who ran which session
 ```
 
-Each directory has its own README. **[`wiki/findings.md`](wiki/findings.md) is the one to read
-first** — it holds what more than one session shows, and the honest count of what the corpus
-does not have.
+**[`wiki/findings.md`](wiki/findings.md) is the one to read first.** It holds what more than
+one session shows, and the honest count of what the corpus does not have. Everything in
+`sessions/` is a source for it.
 
-The loop: real use → transcript → finding → pattern → change hypothesis → skill revision →
+The loop: real use → session → finding → pattern → change hypothesis → skill revision →
 regression test → cold re-test.
 
 ## Current state
 
-**17 sessions, 4 testers, August 2026.** Nine are held here as transcripts; T003's six are
-reviewed in `syntheses/` and T004's two exist only as a note in `feedback/`. Seven of the ten
-capabilities have been exercised. Everything under `capability/` and `regression/`
-is synthetic and labelled as such.
+**17 sessions, 4 testers, August 2026.** Nine are transcripts; the rest are a tester's
+cross-session report and a tester's note. Seven of the ten capabilities have been exercised.
+Everything in `tests/` is synthetic and labelled as such.
 
 **No session is confirmed cold** — T004 may be the exception and has not been asked — and
 **nothing tests whether the agent accepts sound work**, since every session so far offered it
 something to challenge. Those are the two largest gaps. See
 [`wiki/prompts/cold-session.md`](wiki/prompts/cold-session.md) and
 [`wiki/prompts/sound-work.md`](wiki/prompts/sound-work.md).
+
+## Four kinds of evidence, and what each is worth
+
+Every file in `sessions/` names its kind in the header. They are not equivalent.
+
+**Transcript.** What the agent actually said. The only behavioural evidence.
+
+**Debrief.** The agent's own account of a session, produced by the `evaluation` skill. A model
+grading itself. **Never cite one where a transcript exists.** Its value is the invocation log:
+the chat surface does not show whether a skill loaded, and a debrief lists the file reads. Two
+findings in the wiki exist only because of that.
+
+**Synthesis.** One author's cross-session review, at one date. May rest on sessions this
+repository does not hold — it says so at the top when it does. Change proposals in a synthesis
+stay proposals; recording one is not adopting it.
+
+**Note.** A tester's own words, no transcript. Weaker than a transcript and not nothing: it
+reports what the tester noticed, which is the only route to behaviour nobody thought to look
+for. Never cite a note for what the agent said, and cite the session as uncommitted.
+
+## Conventions, so no file restates them
+
+**Figures are substituted.** Every case number in every file is an invented illustration,
+re-derived as a set so the relationships an argument depends on still hold. Never cite one as
+evidence of anything. A file that substitutes something unusually, or deliberately leaves
+something unsubstituted, says so.
+
+**Substitutions are made inside quotations too.** Quotes are otherwise verbatim: wording,
+structure, emphasis and the user's original typos. Nothing is tidied. Where a quote could not
+survive substitution intact it is paraphrased in square brackets, never silently altered.
+
+**Organisations are substituted consistently across files.** Whether two sessions concern the
+same real organisation is not recorded.
+
+**Headers carry the metadata a reader needs**: kind, skills used, version, model, date, tester,
+cold or warm, what else was loaded. A field nobody can confirm says so rather than carrying a
+plausible value.
+
+**Never rewrite a session.** If a skill changed afterwards, add an editorial note and leave the
+record alone.
+
+## Adding a session
+
+Write it up, then re-mine [`wiki/findings.md`](wiki/findings.md) against it. Three questions.
+
+**Does it add a sighting to a finding that already exists?** Add the row. A fourth sighting
+matters less than the first, but the count is the argument.
+
+**Does it contradict one?** The valuable case. Record the contradiction rather than smoothing
+it — `F5` exists because two sessions disagreed.
+
+**Does it leave something with nowhere to go?** That is a prompt, and it goes in
+`wiki/prompts/`.
+
+Then update the mined-on date in `findings.md`, add or update the row in `testers.md`, and
+delete any prompt the session has answered or killed.
+
+**What a session needs before it can be written up:** date, model, plugin version, whether the
+tester had read the skill files or used MDEE before, and consent to publish.
 
 ## Cold testing, and what must never reach the agent
 
@@ -47,8 +101,7 @@ memory. Break that and every later result measures a personalised build rather t
 a new person installs.
 
 **Runtime memory is a separate question.** Never give an evaluation file the name of a file a
-runtime feature loads, and never use auto memory as an evidence source: notes the model wrote
-about its own corrections are not a transcript.
+runtime feature loads, and never use auto memory as an evidence source.
 
 ## Privacy
 
@@ -57,7 +110,7 @@ about its own corrections are not a transcript.
 2. **Ask before the session:** *"May I save an anonymised version of this conversation in a
    public repository?"* Record the answer in `testers.md`.
 3. **Where consent is refused,** or the work is pre-decision, commercially sensitive or
-   politically sensitive, write the finding and do not commit the transcript.
+   politically sensitive, write the finding and do not commit the session.
 4. **Redact before committing, never after.**
 5. **Register fields stay broad categories.** No free text about a person.
 
@@ -67,7 +120,7 @@ about its own corrections are not a transcript.
 one person's sessions is *1 tester (4 sessions)*. That is the whole defence against inventing
 significance from a tiny alpha sample.
 
-## `capability/` and `regression/` are different jobs
+## `tests/`
 
 **Capability cases** are hard, realistic and possibly unsolved. A meaningful failure rate is the
 point. **Regression cases** protect behaviour already shown to work and should pass almost every
@@ -106,9 +159,5 @@ Issues are public — redact first, or send it to the maintainer privately.
 4. What did you expect instead?
 5. Was there anything it told you that you think was wrong?
 
-Question 2 asks for the state reached rather than whether you were happy; satisfaction is not
-the eval. Question 5 earns its place because someone who was confidently misled does not know it
-yet.
-
-The maintainer anonymises, writes the header and runs the analysis. Testers are not expected to
-become evaluation researchers.
+Question 2 asks for the state reached rather than whether you were happy. Question 5 earns its
+place because someone who was confidently misled does not know it yet.

@@ -2,6 +2,7 @@
 
 | | |
 |---|---|
+| Kind | **Transcript** — the record of what the agent said. The only behavioural evidence |
 | Skills used | `problem` (dominant, explicitly invoked), `story`, `evidence`, `outcomes` |
 | Version tested | `0.1.1`, commit `e6795b4`. Tester-reported |
 | Model | Claude Opus 5 (`claude-opus-5`) |
@@ -12,18 +13,18 @@
 | Surface | Ordinary Claude chat (claude.ai) with the MDEE.MD plugin installed |
 | Outcome | **The agent was confidently wrong, was corrected, and diagnosed its own error.** One defect established. Six behaviours recorded as working, several of them the strongest instances in the repository |
 
-> **This is the session `../../README.md` asks for above all others.** *"The most useful
+> **This is the session `../README.md` asks for above all others.** *"The most useful
 > thing anyone can send is a conversation where the agent was confidently wrong. Those are
 > worth more than the ones where it worked, and they are much easier to lose."* It is also
 > the second real test of `problem`, the only capability with prior behavioural evidence, so
-> it is directly comparable with `receipt-confirmation.md` in this directory.
+> it is directly comparable with `t001-problem-receipt-confirmation.md` in this directory.
 
 **Anonymised.** The real case is a provocation document for a service redesign inside a
 public body's medical fitness licensing function, covering whether work should be organised
 around customers rather than cases, what automation does to a generalist role, and what a
 routing tag actually encodes. Organisation, programme, operating-model, system and grade
 names have been substituted, and all figures replaced. The substitute authority is the same
-as in `../evidence/evidence-1.md`, `../evidence/evidence-2.md` and `receipt-confirmation.md`.
+as in `t001-evidence-1.md`, `t001-evidence-2.md` and `t001-problem-receipt-confirmation.md`.
 
 **No personal names appear in this session.** The recipient is described only as a team
 member.
@@ -109,9 +110,9 @@ before it lands on the end state — is not in the source material in any form.
 
 The three vagueness challenges are the clearest instances of that behaviour in the
 repository, and all three take the same shape: the word is doing several jobs, here they are,
-they are not the same thing. Note for comparison that `../evidence/evidence-2.md` records the
+they are not the same thing. Note for comparison that `t001-evidence-2.md` records the
 same challenge *failing* to fire — on claims that were unquantified rather than on words with
-multiple meanings. See `../../wiki/findings.md` F5.
+multiple meanings. See `../wiki/findings.md` F5.
 
 Flagging the missing problem definition inside the document, unprompted, is the behaviour
 that sets up the rest of the session.
@@ -171,7 +172,7 @@ Closed on one question — which level the team should work at — with the hand
 attached.
 
 **Assessment.** This is the `problem` capability working as specified, and it is a stronger
-run than `receipt-confirmation.md` recorded on almost every axis.
+run than `t001-problem-receipt-confirmation.md` recorded on almost every axis.
 
 The mechanism-not-a-problem label fires in the first sentence, where the earlier transcript
 recorded it arriving late and unlabelled. The hidden-solution challenge is named with its
@@ -311,7 +312,7 @@ deliverable from something arguable into something settleable, and says so.
 **Behaviours that fired, and worked**
 
 2. **Mechanism labelled as mechanism in the opening sentence**, with the hidden solution named
-   and its tell given. Stronger and earlier than `receipt-confirmation.md` recorded.
+   and its tell given. Stronger and earlier than `t001-problem-receipt-confirmation.md` recorded.
 3. **Two candidate problems at different levels, with what each costs, and the choice left
    open.** The competing-framings rule at exactly the permitted size.
 4. **Placeholders marked, and a gap explicitly refused as a negative finding.**
@@ -325,7 +326,7 @@ deliverable from something arguable into something settleable, and says so.
 **Open**
 
 8. **`Read 2 files` names no files.** If the two were `problem` and `house-rules`, this would
-   be direct evidence of the chained load that `../../capability/alpha-pack.md` Part 0 exists
+   be direct evidence of the chained load that `../tests/capability-alpha-pack.md` Part 0 exists
    to test. Unresolvable from this record.
 9. **Material used but not visible in the record**: a discovery report, a later scoping
    exercise, and several service figures.
