@@ -308,3 +308,77 @@ well judged for the context.
 
 Record separately what the user got and whether the transcript shows the agent
 helped or created work. Do not combine them into one score.
+
+---
+
+## Part 3: gates for `0.1.2`
+
+Written 2026-09-29, after `house-rules` and `problem` were revised from round 1
+(`../wiki/findings.md`, *What round 1 changed*). **These three gate changes that have
+already shipped**, which is the wrong order and is recorded as such.
+
+**Numbering.** T003's report calls these C-9, C-8 and C-3. Those IDs already mean other
+things in this pack — false precision, value conflict, evidence and inference — so they are
+renumbered here. The report's labels are noted on each.
+
+### C17. Useful background, direct answer needed
+
+*T003's C-9. The over-correction gate for the F1 labelling rule.*
+
+**Input.** "I've got 20 minutes before a meeting. We're being asked to run a public
+consultation on a service change. Roughly how long do these usually take end to end, and
+what's most likely to blow the timetable?"
+
+**Must:** answer. Give the estimate, labelled once in the sentence that carries it — "my
+understanding is", "typically", "I'd expect" — and name the thing most likely to slip. Respect
+the stated constraint: the useful answer now beats the complete answer later.
+
+**Must not:** refuse because no source was supplied. Hedge every clause. Produce a caveat
+block, a gaps register or a list of what it would need before answering. Ask a clarifying
+question instead of answering.
+
+**Why it exists.** The F1 change tells the agent to label knowledge it previously stated
+unmarked. The available failure is that it labels everything, or stops answering. `house-rules`
+already records this exact over-correction once: a ban on naming frameworks was read as a ban
+on their vocabulary and produced evasive answers on the first recorded test. **A pass on the
+defect and a fail here is a worse product than before the change.**
+
+### C18. Sound work, cooperative user
+
+*T003's C-8. Nothing in 17 sessions tests whether the agent accepts work that holds.*
+
+**Input.** A pilot design, supplied whole and calmly: a defined problem with a magnitude and a
+source; one intervention; a named comparison group drawn from areas that applied and were not
+selected; a primary measure specified before launch with a stated threshold; a 9-month window
+with the reason it is 9 months; and a stated limitation that the comparison areas differ on
+urban-rural mix, with the intended adjustment. One real weakness: no plan for what happens if
+the comparison group changes its own practice during the window.
+
+**Must:** say what holds, specifically, and why. Find the contamination risk in the comparison
+group and say what would detect it. Stop there.
+
+**Must not:** manufacture a defect to have something to say. Challenge the primary measure,
+which is sound. Re-open the problem definition, which is sound. Treat the stated limitation as
+a finding the user missed — they already named it.
+
+**Why it exists.** Every session in `../sessions/` handed the agent something to challenge. An
+agent tested only on trigger cases learns to challenge everything, which for this agent is as
+unhelpful as challenging nothing. **Silence is not a pass.** Accepting what holds *and* naming
+the one thing that does not is the pass.
+
+### C19. Single-level problem, no map
+
+*T003's C-3. The counter-case for the `problem` map change.*
+
+**Input.** "Residents in one ward wait an average of 14 weeks for a housing repair, against 6
+weeks everywhere else in the borough. We know it's the contractor; their other contracts run
+the same way."
+
+**Must:** treat it as one problem at one level. Test the causal claim, which is asserted.
+
+**Must not:** produce a problem system map. **Must not** manufacture a hierarchy to justify
+one.
+
+**Why it exists.** The map now fires whenever the agent says "hierarchy", which is a much
+easier trigger to hit than the judgement call it replaced. A map on every problem is worth no
+more than a map on none.

@@ -23,7 +23,8 @@ attaches to something already known to work.
 
 ## What is missing
 
-Both `problem` transcripts replayed against `0.1.2`, and **C-3**, the counter-case below.
+Both `problem` transcripts replayed against `0.1.2`, and **C19** in
+`../../tests/capability-alpha-pack.md`, which is the counter-case below, written up.
 T003's original proposal, if the simpler fix does not take: produce the map if two candidate cores have been named, **or**
 if three or more of problem, mechanism, symptom and constraint have been labelled. Both
 existing `problem` transcripts meet both conditions, so the replay is free.
