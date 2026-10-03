@@ -89,14 +89,14 @@ Then update the mined-on date in `findings.md`, add or update the row in `tester
 delete any prompt the session has answered or killed.
 
 **What a session needs before it can be written up:** date, model, plugin version, whether the
-tester had read the skill files or used MDEE before, and consent to publish.
+tester had read the skill files or used policymemo.ai before, and consent to publish.
 
 ## Cold testing, and what must never reach the agent
 
 A session is **cold** when the tester has not read the skill files, has not seen what the evals
-expect, and has not used MDEE before. Their second session is not cold, whatever else is true.
+expect, and has not used policymemo.ai before. Their second session is not cold, whatever else is true.
 
-**Nothing about a tester reaches MDEE.** The register and any future learning record are
+**Nothing about a tester reaches policymemo.ai.** The register and any future learning record are
 evaluation-side artefacts. They go nowhere near a Project, a skill, a system prompt or Claude's
 memory. Break that and every later result measures a personalised build rather than the product
 a new person installs.

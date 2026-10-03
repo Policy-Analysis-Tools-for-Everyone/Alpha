@@ -27,7 +27,7 @@ Everything else written for this project is licensed under the
 
 You may share and adapt this content for any purpose, including commercially,
 provided you give appropriate credit, link to the licence, and indicate if you
-made changes. Suggested credit: "MDEE.MD by Jack Strachan, licensed under
+made changes. Suggested credit: "policymemo.ai by Jack Strachan, licensed under
 CC BY 4.0".
 
 ## Third-party sources

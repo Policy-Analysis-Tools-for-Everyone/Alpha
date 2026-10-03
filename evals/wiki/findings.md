@@ -42,7 +42,7 @@ which removes the tool's value, or check nothing.
 | `t001-problem-2` | T001 | A statutory provision imported from outside the user's material and built into a problem statement, unmarked |
 | `t002-problem-3` | T002 | Three claims about a memo that names no audience and says nothing about when its strategy was announced |
 | `t002-story-2` | T002 | Six, including an inference about an organisation's culture stated as fact and a hypothetical written as the live proposal |
-| `t002-story-3-non-trigger` | T002 | A risk the agent invented, presented inside the artefact as established. **No MDEE skill was loaded** |
+| `t002-story-3-non-trigger` | T002 | A risk the agent invented, presented inside the artefact as established. **No policymemo.ai skill was loaded** |
 | T003 Scen 2 | T003 | Attenuation at scale attributed to a named trial that does not make the argument — one paragraph after a citation from the same paper verified accurate |
 | T003 Scen 3 | T003 | A qualifier dropped from an accurate finding, in the same sentence as two verbatim-correct claims |
 | T003 Scen 4 | T003 | "Two-thirds of England's local authorities by area are not metropolitan" — population unspecified, and wrong on the most natural reading |
@@ -64,7 +64,7 @@ assertions it is a **specification gap** — no current rule requires them to be
 
 - `t001-evidence-2`: T001, who wrote the skills, typed `/house-rules` because they could not tell.
 - `t002-story-3-non-trigger`: T002 supplied a session as one where the skill was "clearly invoked".
-  Nothing from MDEE loaded.
+  Nothing from policymemo.ai loaded.
 - T003: did not capture loading on any of six runs, and flags that every classification in
   their report saying "against `house-rules`" is conditional on it.
 
@@ -141,7 +141,7 @@ repository has never contained, and the provenance is not recoverable.
 
 ## F8. Routing
 
-- `t002-story-3-non-trigger`: no MDEE skill fired on a senior-audience memo edit. The turn opened
+- `t002-story-3-non-trigger`: no policymemo.ai skill fired on a senior-audience memo edit. The turn opened
   with a persona instruction. Candidate cause, untested — `prompts/persona-routing.md`.
 - `t002-story-2`: `story` and `house-rules` only, though the memo did stakeholder, criteria, options
   and trade-off work competently.
@@ -271,7 +271,7 @@ none of the condition.
 
 **What to do next, in order.** The three gates are now written up as **C17**, **C18** and
 **C19** in `../tests/capability-alpha-pack.md` Part 3, and none has been run. They cannot be
-run here: MDEE is not installed in the maintainer's working session, and the author of a
+run here: policymemo.ai is not installed in the maintainer's working session, and the author of a
 change cannot behaviourally test it — `../README.md` says a same-session self-test catches
 structure, not behaviour. They need a fresh chat on `0.1.2`, ideally not the author's.
 

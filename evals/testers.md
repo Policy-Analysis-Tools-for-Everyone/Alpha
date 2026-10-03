@@ -1,6 +1,6 @@
 # Testers
 
-A pseudonymous register of everyone who has run MDEE.MD in a session that was
+A pseudonymous register of everyone who has run policymemo.ai in a session that was
 saved. One row each, no directories, no session content.
 
 **It exists to answer one question: how many independent people?** The method
@@ -16,7 +16,7 @@ Sessions stay in `sessions/`. Nothing here duplicates them.
 
 ## The register
 
-| ID | Role type | Policy experience | AI familiarity | Knows MDEE | Sessions | First session | Consent to publish |
+| ID | Role type | Policy experience | AI familiarity | Knows policymemo.ai | Sessions | First session | Consent to publish |
 |---|---|---|---|---|---|---|---|
 | T001 | Project owner and author | `[add]` | high | authored it | 6 | 2026-08-17 | yes |
 | T002 | `[add]` | `[add]` | high | yes, familiar before first session | 3 | 2026-08 (day not recorded) | yes, anonymised |
@@ -39,7 +39,7 @@ Every field has to change how a finding is read, or it comes out.
 | `Role type` | Broad, such as "policy adviser, local government". Whether a finding is about the tool or about the job |
 | `Policy experience` | Whether "it challenged too hard" means the challenge was wrong or the tester is junior |
 | `AI familiarity` | Low, medium or high. The largest confounder on any finding about interaction |
-| `Knows MDEE` | Has read the skill files, or has not. Extends the warm and cold distinction to the person |
+| `Knows policymemo.ai` | Has read the skill files, or has not. Extends the warm and cold distinction to the person |
 | `Sessions` | Count and first date. Longitudinal visibility without a second file |
 | `Consent to publish` | Whether an anonymised transcript may be committed to a public repository |
 
@@ -82,7 +82,7 @@ A record of what one person's repeated use teaches would own a real job that
 nothing else covers: separating change in the user from change in the agent. A
 cross-session synthesis groups by skill, version, model and use case, across
 people on purpose. A transcript is one moment. Only a per-person time series can
-say whether a fourth session went better because MDEE improved or because the
+say whether a fourth session went better because policymemo.ai improved or because the
 tester learned to drive it.
 
 It needs input before it can say anything. **Build one when a single tester

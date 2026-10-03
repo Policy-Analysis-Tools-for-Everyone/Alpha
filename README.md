@@ -1,6 +1,6 @@
-# MDEE.MD
+# policymemo.ai
 
-MDEE.MD helps you work through a public policy problem properly: working out what
+policymemo.ai helps you work through a public policy problem properly: working out what
 the problem actually is, testing what you know, building and weighing options,
 deciding, and writing it up for someone else to read.
 
@@ -19,7 +19,7 @@ don't pick between them. Claude does.
 
 ---
 
-## Install MDEE.MD in Claude
+## Install policymemo.ai in Claude
 
 You'll need about 2 minutes. There's nothing to download if you're on a paid plan,
 and no technical setup either way.
@@ -28,7 +28,7 @@ Quick tutorial video for Claude here: https://www.loom.com/share/7a0075882a884d7
 
 ### Step 0: turn on code execution
 
-Claude needs this switched on before any add-on like MDEE.MD will work. It's on by
+Claude needs this switched on before any add-on like policymemo.ai will work. It's on by
 default for most people.
 
 1. Open Claude, in your browser at [claude.ai](https://claude.ai) or in the Claude
@@ -37,7 +37,7 @@ default for most people.
 3. Go to **Capabilities**.
 4. Make sure code execution is switched on.
 
-If you skip this, MDEE.MD installs and then appears to do nothing, which is
+If you skip this, policymemo.ai installs and then appears to do nothing, which is
 confusing enough that it's worth the 20 seconds now.
 
 ### If you're on Claude Pro, Max, Team or Enterprise
@@ -56,24 +56,24 @@ This is one installation. You do it once.
    ```
 
 7. Click **Sync**.
-8. You'll see **MDEE.MD** appear in the list. Click **Install** next to it.
+8. You'll see **policymemo.ai** appear in the list. Click **Install** next to it.
 9. Claude will warn you that it can't verify what's inside add-ons made by other
    people. That warning is correct and it appears for everything of this kind. If
-   you want to check first, everything MDEE.MD contains is readable in the
+   you want to check first, everything policymemo.ai contains is readable in the
    `skills` folder of [this
    repository](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/tree/main/skills).
 10. Start a new chat.
 
 **What you should see afterwards.** The **Install** button changes to **Manage**,
-and MDEE.MD is listed under Personal plugins. That's it. Nothing appears in your
+and policymemo.ai is listed under Personal plugins. That's it. Nothing appears in your
 chat window, and nothing is supposed to.
 
-You may also see a second item called **MDEE.MD evaluation**. You don't need it,
-whether you're using MDEE.MD or helping test it.
+You may also see a second item called **policymemo.ai evaluation**. You don't need it,
+whether you're using policymemo.ai or helping test it.
 
 If you're testing, the useful thing is the conversation itself: what you were
 trying to do, and what felt useful, confusing, wrong or missing. See [Telling us
-when it goes wrong](#telling-us-when-it-goes-wrong) for how to send it. MDEE.MD
+when it goes wrong](#telling-us-when-it-goes-wrong) for how to send it. policymemo.ai
 evaluation is what happens afterward, on our side: reviewing conversations like
 yours, finding patterns, and deciding what's worth changing. It has no part in
 actual policy work.
@@ -88,7 +88,8 @@ need working, install the plugin from a file instead of the marketplace. This
 uses a different route in Claude that doesn't depend on the fetch that's
 failing.
 
-1. Download [`mdee.zip`](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/plugin/mdee.zip).
+1. Download [`policymemo-ai-claude.zip`](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/download/policymemo-ai-claude.zip),
+   the same file as the Download button on [policymemo.ai](https://policymemo.ai).
    Don't unzip it.
 2. Open Claude, click **Customize**, then **Plugins**.
 3. Click **Add**, then **Upload local plugin**.
@@ -98,14 +99,14 @@ failing.
 This installs the same plugin as the marketplace route: one entry, all 10
 skills grouped under it. The only thing that changes is where the file comes
 from. It doesn't update itself the way a marketplace install does; see
-[Updating MDEE.MD](#updating-mdeemd) below.
+[Updating policymemo.ai](#updating-policymemoai) below.
 
 If that dialog doesn't work either, fall back to installing the skills one at
 a time, below as detailed in the method below.
 
 ### If you're on the Claude Free plan
 
-Add-ons of the plugin kind need a paid plan. You can still have all of MDEE.MD, by
+Add-ons of the plugin kind need a paid plan. You can still have all of policymemo.ai, by
 adding the pieces one at a time. It takes about 10 minutes and it behaves
 identically once it's done.
 
@@ -144,7 +145,7 @@ If you only ever do 2 of these, do `house-rules` and `problem`.
 You don't choose a workflow, and you don't work through 10 steps in order.
 
 Start an ordinary chat and describe the policy problem you're actually working on,
-in your own words, the way you'd describe it to a colleague. MDEE.MD makes several
+in your own words, the way you'd describe it to a colleague. policymemo.ai makes several
 analytical capabilities available to Claude, and Claude reaches for the relevant
 one as the work develops. When the conversation moves on, so does it.
 
@@ -200,11 +201,11 @@ gaps belong to its neighbours and carries on into them.
 
 | Plan | What you can use | How |
 |---|---|---|
-| Free | All of MDEE.MD | Upload the 10 files, above |
-| Pro | All of MDEE.MD | One installation, above |
-| Max | All of MDEE.MD | One installation |
-| Team | All of MDEE.MD | One installation |
-| Enterprise | All of MDEE.MD | One installation |
+| Free | All of policymemo.ai | Upload the 10 files, above |
+| Pro | All of policymemo.ai | One installation, above |
+| Max | All of policymemo.ai | One installation |
+| Team | All of policymemo.ai | One installation |
+| Enterprise | All of policymemo.ai | One installation |
 
 The one-click route needs a paid plan, because that's how Claude handles add-ons of
 this kind. Free users get the same capabilities by uploading them individually.
@@ -213,15 +214,15 @@ Everyone needs code execution switched on. See [Step 0](#step-0-turn-on-code-exe
 
 ---
 
-## Updating MDEE.MD
+## Updating policymemo.ai
 
-MDEE.MD will change, especially while it's in alpha.
+policymemo.ai will change, especially while it's in alpha.
 
 **If you installed it in one go**, updates arrive on their own in most cases. To
-pull them in by hand, go to **Customize**, then **Plugins**, find MDEE.MD, and use
+pull them in by hand, go to **Customize**, then **Plugins**, find policymemo.ai, and use
 the update or re-sync option. You don't reinstall and you don't download anything.
 
-**If you uploaded `mdee.zip` or the files individually**, you'll need to download
+**If you uploaded the zip or the files individually**, you'll need to download
 the changed ones again and re-upload them. There's no automatic route. Watching
 this repository on GitHub will tell you when something changes.
 
@@ -317,7 +318,7 @@ the analysis.
 
 ## For developers and contributors
 
-Everything below here is for people working on MDEE.MD rather than using it.
+Everything below here is for people working on policymemo.ai rather than using it.
 
 ### Working on the skills
 
@@ -402,7 +403,7 @@ has.
 
 `evals/testers.md` is a pseudonymous register of who ran which session, so that
 *how many independent people* is answerable and one person's repeated objection
-never gets counted as several users. Nothing about a tester ever reaches MDEE
+never gets counted as several users. Nothing about a tester ever reaches policymemo.ai
 during a session: the register is evaluation evidence, and loading any of it into
 the agent would measure a personalised build rather than the product a new person
 installs. `evals/README.md` carries that rule and the privacy rules with it.

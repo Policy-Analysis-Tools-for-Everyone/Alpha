@@ -28,7 +28,7 @@ suite that grows faster than the evidence starts measuring its own assumptions.
 
 ## How to run a case
 
-Start a fresh session with MDEE.MD installed. Paste the **input**. Do not name the
+Start a fresh session with policymemo.ai installed. Paste the **input**. Do not name the
 skill you expect, because naming it destroys the routing test. Then check the
 **must** and **must not** lines, and save the transcript if anything interesting
 happens.

@@ -4,11 +4,12 @@
 One zip per platform, written to dist/download/. Today that is Claude only;
 Copilot gets its own entry in PLATFORMS when it exists.
 
-The Claude zip is the same plugin as dist/plugin/mdee.zip, packaged under
-the policymemo.ai name with both licence files inside, so it installs
-through claude.ai's Customize > Plugins > Add > Upload local plugin and
-carries its terms with it. Regenerate after any change to skills/,
-marketplace.json or the licences and commit the result:
+The Claude zip is the same plugin as dist/plugin/mdee.zip, with both
+licence files inside so it carries its terms with it. It keeps the
+marketplace's plugin name, mdee, so every install route produces the same
+plugin. It installs through claude.ai's Customize > Plugins > Add > Upload
+local plugin. Regenerate after any change to skills/, marketplace.json or
+the licences and commit the result:
 
     python3 tools/build-download-zips.py
 
@@ -26,17 +27,13 @@ OUT = ROOT / "dist" / "download"
 FIXED_TIME = (2026, 1, 1, 0, 0, 0)
 LICENCES = ("LICENSE", "LICENSE-CONTENT.md")
 
-# Which marketplace entry each download is built from, and what it is
-# called once installed.
+# Which marketplace entry each download is built from, and any manifest
+# fields that differ from it.
 PLATFORMS = {
     "policymemo-ai-claude": {
         "source": "mdee",
         "folder": "policymemo-ai",
-        "manifest": {
-            "name": "policymemo-ai",
-            "displayName": "policymemo.ai",
-            "homepage": "https://policymemo.ai",
-        },
+        "manifest": {"homepage": "https://policymemo.ai"},
     },
 }
 

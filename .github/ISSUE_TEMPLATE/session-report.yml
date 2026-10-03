@@ -1,5 +1,5 @@
 name: Session report
-description: Tell us what happened when you used MDEE.MD, especially if it was confidently wrong
+description: Tell us what happened when you used policymemo.ai, especially if it was confidently wrong
 title: "[Session] "
 labels: ["session-report"]
 body:
@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Thanks for this. The most useful thing anyone can send is a conversation
-        where MDEE.MD was **confidently wrong**, so please do not tidy those up.
+        where policymemo.ai was **confidently wrong**, so please do not tidy those up.
 
         **Before you paste anything: this issue will be public.**
 
