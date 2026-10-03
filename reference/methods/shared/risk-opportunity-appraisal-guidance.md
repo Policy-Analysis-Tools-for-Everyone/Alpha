@@ -1159,7 +1159,7 @@ Do not fabricate a reference class where none is credible.
 
 ---
 
-# Canonical boundaries across MDEE.MD
+# Canonical boundaries across policymemo.ai
 
 This is a **shared appraisal method**.
 

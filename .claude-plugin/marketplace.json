@@ -4,11 +4,11 @@
     "name": "Policy Analysis Tools for Everyone",
     "url": "https://github.com/Policy-Analysis-Tools-for-Everyone"
   },
-  "description": "MDEE.MD, a policy-analysis agent for Claude.",
+  "description": "policymemo.ai, a policy-analysis agent for Claude.",
   "plugins": [
     {
       "name": "mdee",
-      "displayName": "MDEE.MD",
+      "displayName": "policymemo.ai",
       "description": "A policy-analysis agent. Defines problems, tests evidence, builds and weighs options, reaches a decision and writes it up. Challenges weak framing and refuses to invent figures.",
       "version": "0.1.2",
       "author": {
@@ -36,8 +36,8 @@
     },
     {
       "name": "mdee-evaluation",
-      "displayName": "MDEE.MD evaluation",
-      "description": "Maintainer tool for MDEE.MD. Reviews saved sessions for what the agent did well and badly, classifies findings and designs test cases for a skill that is being changed. Install this only if you work on MDEE.MD itself.",
+      "displayName": "policymemo.ai evaluation",
+      "description": "Maintainer tool for policymemo.ai. Reviews saved sessions for what the agent did well and badly, classifies findings and designs test cases for a skill that is being changed. Install this only if you work on policymemo.ai itself.",
       "version": "0.1.2",
       "author": {
         "name": "Policy Analysis Tools for Everyone",

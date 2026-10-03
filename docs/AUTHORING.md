@@ -406,7 +406,7 @@ platform-neutral, which matters if these ever go to another tool that supports
 Agent Skills. Nothing about the format is Claude-specific.
 
 **The marketplace.** `.claude-plugin/marketplace.json` is a catalogue that lets
-someone install MDEE.MD from inside normal Claude by naming this repository. It
+someone install policymemo.ai from inside normal Claude by naming this repository. It
 lists 2 plugin entries, both drawing from the same `skills/` folder:
 
 - `mdee`, carrying `house-rules` and the 10 policy capabilities. What the public
@@ -448,9 +448,15 @@ fails to fetch. Each one carries its own `.claude-plugin/plugin.json`, generated
 from the matching entry in `marketplace.json`, plus a copy of every skill it
 lists. Built by `tools/build-plugin-zips.py`, reading `marketplace.json` as the
 single source, so the two can't drift apart. Re-run it after any change to
-`skills/` or `marketplace.json` and commit the result. Only `mdee.zip` is linked
-from the README; `mdee-evaluation.zip` is built for parity with the marketplace's
-2 entries but stays unlinked, same as its skill-zip counterpart.
+`skills/` or `marketplace.json` and commit the result. Neither is linked from the
+README any more; they are built for parity with the marketplace's 2 entries.
+
+**The download zip.** `dist/download/policymemo-ai-claude.zip` is what the
+Download button on policymemo.ai and the README's file-install route serve. It is
+the `mdee` plugin plus `LICENSE` and `LICENSE-CONTENT.md`, keeping the plugin name
+`mdee` so it is the same plugin whichever route installed it. Built by
+`tools/build-download-zips.py`. A Copilot build gets its own entry in that
+script's `PLATFORMS` when it exists.
 
 Both zip builds run in CI on the same trigger paths
 (`.github/workflows/build-skill-zips.yml`), so a change to either source gets

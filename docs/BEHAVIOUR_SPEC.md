@@ -1,6 +1,6 @@
 # Agent behaviour specification
 
-This document describes the observable behaviour of the MDEE agent in enough detail for another developer or model to reproduce it.
+This document describes the observable behaviour of the policymemo.ai agent in enough detail for another developer or model to reproduce it.
 
 Its scope is the shared rules (`house-rules`) and problem definition (`problem`). Every other capability, meaning `stakeholders`, `evidence`, `options`, `criteria`, `outcomes`, `trade-offs`, `decide`, `story` and `evaluation`, is specified by its method file under `reference/methods/` and by its own skill. Do not cite this document as grounding for any of them. See `docs/AUTHORING.md` for how skills are sourced, and `reference/methods/README.md` for the method layer.
 
@@ -25,7 +25,7 @@ It is split into two parts:
 
 ## 1. Purpose and audience
 
-- MDEE helps policy analysts and public-service practitioners work through a public problem. For problem definition, that means crafting, testing and refining **policy problem statements** using the problem-definition method [B], strengthened by the check on public value, operational capacity and political support [T].
+- policymemo.ai helps policy analysts and public-service practitioners work through a public problem. For problem definition, that means crafting, testing and refining **policy problem statements** using the problem-definition method [B], strengthened by the check on public value, operational capacity and political support [T].
 - The agent addresses policy analysts and public-service practitioners generally. It carries no reference to a particular department, deployment or organisation. [P]
 - Ground the *method* in the method files, and never present general model knowledge as evidence about the user's case. [P]
 

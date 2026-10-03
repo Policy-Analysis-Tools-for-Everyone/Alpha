@@ -1,6 +1,6 @@
 # Evaluating and Improving the Agent - Method Guidance
 
-> **Sources and provenance:** This method is designed for the MDEE.MD alpha and is grounded first in the project's own behaviour specification and real evaluation transcripts. It is informed by **[E]** `evals/sessions/*`, which the project already treats as behavioural evidence of what the agent actually did; **[B]** `docs/BEHAVIOUR_SPEC.md`, which specifies the designed behaviour that transcripts are compared against; **[A]** Anthropic, “Demystifying evals for AI agents” (2026), especially its guidance on real failures, multi-turn transcripts, capability versus regression evals, balanced task sets, grader choice, repeated trials, and transcript review; and **[O]** OpenAI, “How evals drive the next chapter in AI for businesses” (2025), especially its feedback-loop model of logging real inputs, outputs and outcomes, reviewing them, adding new failure modes to evals, and using those findings to improve the system. **Purpose:** Operating instructions for an evaluation skill that turns real use of MDEE.MD into evidence for improving its skills. The evaluator studies *how people actually use the agent*, where the agent helps or fails, which patterns recur, and what specific skill changes should be tested next. It does not automatically rewrite the skills.
+> **Sources and provenance:** This method is designed for the policymemo.ai alpha and is grounded first in the project's own behaviour specification and real evaluation transcripts. It is informed by **[E]** `evals/sessions/*`, which the project already treats as behavioural evidence of what the agent actually did; **[B]** `docs/BEHAVIOUR_SPEC.md`, which specifies the designed behaviour that transcripts are compared against; **[A]** Anthropic, “Demystifying evals for AI agents” (2026), especially its guidance on real failures, multi-turn transcripts, capability versus regression evals, balanced task sets, grader choice, repeated trials, and transcript review; and **[O]** OpenAI, “How evals drive the next chapter in AI for businesses” (2025), especially its feedback-loop model of logging real inputs, outputs and outcomes, reviewing them, adding new failure modes to evals, and using those findings to improve the system. **Purpose:** Operating instructions for an evaluation skill that turns real use of policymemo.ai into evidence for improving its skills. The evaluator studies *how people actually use the agent*, where the agent helps or fails, which patterns recur, and what specific skill changes should be tested next. It does not automatically rewrite the skills.
 
 ## Why this method exists
 
@@ -64,7 +64,7 @@ Examples:
 
 ### 4. The product
 
-What does the session reveal about what people are actually trying to do with MDEE.MD?
+What does the session reveal about what people are actually trying to do with policymemo.ai?
 
 Examples:
 
@@ -200,7 +200,7 @@ A method can be followed correctly and still fail the user's task.
 
 ### 5. Judge the conversation, not only the final answer
 
-MDEE.MD is conversational.
+policymemo.ai is conversational.
 
 Evaluate:
 
@@ -1020,7 +1020,7 @@ Do not combine these mechanically into one "quality score" during the alpha.
 
 ---
 
-## What to look for across the whole MDEE.MD system
+## What to look for across the whole policymemo.ai system
 
 As the alpha grows, track themes such as:
 
@@ -1209,7 +1209,7 @@ Before returning an evaluation, confirm:
 
 ## Scope boundary
 
-This method evaluates and improves the **MDEE.MD agent and its skills**.
+This method evaluates and improves the **policymemo.ai agent and its skills**.
 
 It is not the method for evaluating whether a public policy itself worked after implementation.
 

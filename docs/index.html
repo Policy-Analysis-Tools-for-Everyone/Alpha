@@ -1,73 +1,354 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>policymemo.ai</title>
-<meta name="description" content="policymemo.ai 0.1.2. MDEE.MD: a toolkit for working through a public policy problem properly. Alpha, coming soon.">
-<meta name="theme-color" content="#e8e8e6">
+<meta name="description" content="policymemo.ai is a set of skills for Claude that works through a public policy problem with you. It challenges weak framing, asks one question at a time and leaves a marked gap where a figure is missing.">
+<meta property="og:title" content="policymemo.ai">
+<meta property="og:description" content="Policy analysis that starts by questioning the problem you brought.">
+<meta property="og:url" content="https://policymemo.ai">
+<meta name="theme-color" content="#f6f4ee">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,0..100&family=Geist:wght@400..600&display=swap" rel="stylesheet">
 <style>
-  :root { --bg: #e8e8e6; --ink: #1d1d1b; --muted: #6b6b68; }
-  * { box-sizing: border-box; margin: 0; }
-  html, body { height: 100%; overflow: hidden; }
+  :root {
+    --bg: #f6f4ee;
+    --surface: #fffefb;
+    --ink: #1c1b18;
+    --muted: #66645c;
+    --faint: #e4e0d5;
+    --line: #d9d4c7;
+    --red: #EB4043;
+    --accent: #C42B2E;
+    --accent-ink: #ffffff;
+    --accent-soft: #fbe4e2;
+    --user: #ece8dd;
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Geist", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #151513; --surface: #1d1d1a; --ink: #ece9e1; --muted: #a29f95;
+      --faint: #2a2a26; --line: #34332e; --accent: #ff7a7c; --accent-ink: #1a0b0b;
+      --accent-soft: #3a1e1e; --user: #26261f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #151513; --surface: #1d1d1a; --ink: #ece9e1; --muted: #a29f95;
+    --faint: #2a2a26; --line: #34332e; --accent: #ff7a7c; --accent-ink: #1a0b0b;
+    --accent-soft: #3a1e1e; --user: #26261f;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
-    background: var(--bg); color: var(--ink);
-    font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    display: grid; place-items: center; padding: 16px; text-align: center;
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased;
   }
-  svg { width: min(200px, 50vw); height: auto; display: block; margin: 0 auto 8px; cursor: pointer;
-        filter: drop-shadow(0 10px 18px rgba(0,0,0,.12)); }
-  svg.shake { animation: shake .45s ease-in-out; }
-  @keyframes shake {
-    0%, 100% { transform: translateX(0) rotate(0); }
-    20% { transform: translateX(-8px) rotate(-3deg); }
-    40% { transform: translateX(7px) rotate(2.5deg); }
-    60% { transform: translateX(-5px) rotate(-1.5deg); }
-    80% { transform: translateX(3px) rotate(1deg); }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 32px; } }
+
+  /* Header */
+  header.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid transparent; transition: border-color .2s; }
+  header.top.scrolled { border-color: var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .brand { display: inline-flex; align-items: center; gap: 9px; font: 500 19px/1 var(--serif); text-decoration: none; letter-spacing: -.01em; }
+  .brand i { width: 13px; height: 13px; border-radius: 2px; background: var(--red); display: inline-block; }
+  .bar nav { display: flex; align-items: center; gap: 22px; font-size: 14px; }
+  .bar nav a.plain { text-decoration: none; color: var(--muted); }
+  .bar nav a.plain:hover { color: var(--ink); }
+  @media (max-width: 560px) { .bar nav a.plain { display: none; } }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; font: 500 15px/1 var(--sans);
+    text-decoration: none; padding: 13px 20px; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
+  .btn.primary { background: var(--ink); color: var(--bg); }
+  .btn.primary:hover { background: var(--red); color: #fff; }
+  .btn.small { padding: 9px 14px; font-size: 14px; }
+  .btn.ghost { border-color: var(--line); color: var(--muted); cursor: default; }
+  .btn svg { width: 16px; height: 16px; flex: none; }
+  .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .soon { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; padding: 3px 7px; border-radius: 999px;
+    background: var(--faint); color: var(--muted); }
+
+  /* Hero */
+  .hero { padding: 72px 0 40px; text-align: center; }
+  .pill { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; margin-bottom: 28px; }
+  .pill i { width: 7px; height: 7px; border-radius: 1px; background: var(--red); display: inline-block; }
+  h1 { font: 400 clamp(40px, 7vw, 76px)/1.04 var(--serif); font-variation-settings: "opsz" 144, "SOFT" 50; letter-spacing: -.03em; margin: 0 auto 22px; max-width: 14ch; }
+  .lede { font-size: clamp(17px, 2vw, 19px); color: var(--muted); max-width: 37em; margin: 0 auto 34px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+  /* Demo */
+  .demo { padding: 40px 0 96px; }
+  .window { max-width: 820px; margin: 0 auto; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 18px; box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 30px 60px -30px rgba(30,25,10,.25); overflow: hidden; }
+  .chrome { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  .dots { display: flex; gap: 6px; margin-right: 6px; }
+  .dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--faint); }
+  .chrome .replay { margin-left: auto; background: none; border: 1px solid var(--line); color: var(--muted);
+    border-radius: 999px; font: 500 12px/1 var(--sans); padding: 6px 10px; cursor: pointer; }
+  .chrome .replay:hover { color: var(--ink); border-color: var(--muted); }
+  .chat { padding: 24px 18px 28px; display: grid; gap: 22px; min-height: 420px; }
+  @media (min-width: 720px) { .chat { padding: 32px 40px 40px; } }
+  .msg-user { justify-self: end; max-width: 92%; background: var(--user); border-radius: 16px 16px 4px 16px; padding: 14px 16px; font-size: 14.5px; }
+  .msg-user .tag { font-size: 12px; color: var(--muted); margin-bottom: 6px; display: flex; gap: 6px; align-items: center; }
+  .msg-user p { margin: 0 0 8px; } .msg-user p:last-child { margin: 0; }
+  .msg-user b { font-weight: 600; }
+  .msg-agent { font-size: 15.5px; max-width: 64ch; }
+  .who { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  .who .mark { width: 13px; height: 13px; border-radius: 2px; background: var(--red); }
+  .msg-agent p { margin: 0 0 14px; }
+  .msg-agent p.q { font-weight: 500; border-left: 3px solid var(--red); padding-left: 14px; margin-top: 18px; }
+  .typing { display: inline-flex; gap: 4px; padding: 6px 0; }
+  .typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); opacity: .4; animation: blink 1.2s infinite; }
+  .typing span:nth-child(2) { animation-delay: .2s; } .typing span:nth-child(3) { animation-delay: .4s; }
+  @keyframes blink { 50% { opacity: 1; } }
+  .js .reveal { opacity: 0; transform: translateY(6px); transition: opacity .5s ease, transform .5s ease; }
+  .js .reveal.on { opacity: 1; transform: none; }
+  .hidden { display: none !important; }
+
+  .note { max-width: 820px; margin: 28px auto 0; display: grid; gap: 24px; }
+  @media (min-width: 720px) { .note { grid-template-columns: 1fr 1fr; gap: 40px; } }
+  .note h3 { font: 500 14px/1.4 var(--sans); margin: 0 0 6px; }
+  .note p { margin: 0 0 10px; color: var(--muted); font-size: 15px; }
+  .note a { color: var(--ink); }
+
+  /* Sections */
+  section.block { padding: 88px 0; border-top: 1px solid var(--line); }
+  h1, h2 { text-wrap: balance; }
+  .eyebrow { font-size: 13px; color: var(--accent); font-weight: 500; margin: 0 0 12px; }
+  h2 { font: 400 clamp(30px, 4.4vw, 46px)/1.1 var(--serif); font-variation-settings: "opsz" 144, "SOFT" 50; letter-spacing: -.025em; margin: 0 0 16px; max-width: 24ch; }
+  .intro { color: var(--muted); max-width: 36em; margin: 0 0 48px; font-size: 17px; }
+
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; background: var(--line);
+    border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  @media (min-width: 640px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 960px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .steps li { background: var(--surface); padding: 24px 22px 26px; }
+  .steps .n { font: 400 13px/1 var(--sans); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .steps h3 { font: 500 21px/1.25 var(--serif); margin: 10px 0 8px; }
+  .steps p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .rules { display: grid; gap: 40px 48px; }
+  @media (min-width: 720px) { .rules { grid-template-columns: 1fr 1fr; } }
+  .rule h3 { font: 500 22px/1.25 var(--serif); margin: 0 0 8px; }
+  .rule p { margin: 0; color: var(--muted); }
+  .rule code { font: 13.5px/1 ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--accent-soft); color: var(--ink);
+    padding: 2px 6px; border-radius: 5px; white-space: nowrap; }
+
+  /* Closing CTA */
+  .close { text-align: center; }
+  .close h2 { margin-left: auto; margin-right: auto; }
+  .close .intro { margin-left: auto; margin-right: auto; margin-bottom: 32px; }
+  .install { list-style: none; counter-reset: s; padding: 0; margin: 44px auto 0; max-width: 820px; display: grid; gap: 14px; text-align: left; }
+  @media (min-width: 720px) { .install { grid-template-columns: repeat(3, 1fr); } }
+  .install li { counter-increment: s; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 20px; font-size: 15px; }
+  .install li::before { content: counter(s); display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
+    background: var(--accent-soft); color: var(--accent); font-weight: 600; font-size: 13px; margin-bottom: 12px; }
+  .install b { font-weight: 600; }
+  .status { max-width: 640px; margin: 40px auto 0; font-size: 14px; color: var(--muted); }
+  .status a { color: var(--ink); }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 13px; color: var(--muted); }
+  footer .row { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
+  footer a { text-decoration: none; } footer a:hover { color: var(--ink); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .reveal { transition: none; }
+    .typing span { animation: none; }
   }
-  @media (prefers-reduced-motion: reduce) { svg.shake { animation-duration: .2s; } }
-  .label { font-size: 13px; font-weight: 500; margin-bottom: 28px; }
-  p { max-width: 340px; margin: 0 auto; color: var(--muted); }
-  nav { margin-top: 20px; display: flex; gap: 20px; justify-content: center; font-size: 14px; }
-  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid rgba(0,0,0,.25); }
-  a:hover, a:focus-visible { border-color: var(--ink); outline: none; }
 </style>
 </head>
 <body>
-  <main>
-    <svg viewBox="0 0 260 200" role="img" aria-label="Folder">
-      <defs>
-        <linearGradient id="back" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#4f9fe3"/><stop offset="1" stop-color="#3d8bd6"/>
-        </linearGradient>
-        <linearGradient id="front" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#8ccaf9"/><stop offset="1" stop-color="#6db4f2"/>
-        </linearGradient>
-      </defs>
-      <!-- back + tab -->
-      <path d="M10 26a14 14 0 0 1 14-14h66a14 14 0 0 1 10 4l10 10h126a14 14 0 0 1 14 14v140H10z" fill="url(#back)"/>
-      <!-- paper -->
-      <rect x="20" y="34" width="220" height="40" rx="4" fill="#fff" fill-opacity=".92"/>
-      <!-- front -->
-      <rect x="6" y="46" width="248" height="146" rx="14" fill="url(#front)"/>
-      <path d="M20 46.8h220" stroke="#b9e0ff" stroke-width="1.6" stroke-linecap="round"/>
-    </svg>
-    <div class="label">policymemo.ai.0.1.2</div>
-    <p>A toolkit that helps you work through a policy problem properly. Alpha, coming soon.</p>
-    <nav>
-      <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/plugin/mdee.zip">Download</a>
-      <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha#install-mdeemd-in-claude">Install guide</a>
-      <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
+<script>document.documentElement.classList.add('js');</script>
+
+<header class="top" id="top">
+  <div class="wrap bar">
+    <a class="brand" href="#"><i aria-hidden="true"></i>policymemo.ai</a>
+    <nav aria-label="Main">
+      <a class="plain" href="#demo">See it work</a>
+      <a class="plain" href="#what">What it does</a>
+      <a class="plain" href="#how">How it behaves</a>
+      <a class="btn primary small" href="#download">Download</a>
     </nav>
-  </main>
-  <script>
-    const folder = document.querySelector('svg');
-    folder.addEventListener('click', () => {
-      folder.classList.remove('shake');
-      void folder.getBoundingClientRect();
-      folder.classList.add('shake');
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="pill"><i></i> Private beta · version 0.1.2</div>
+    <h1>Policy analysis that questions the problem first.</h1>
+    <p class="lede">policymemo.ai is a set of skills for Claude that works through a public policy problem with you: what the problem is, what you actually know, which options are real and what each one costs. It asks one question at a time, and where a figure is missing it leaves a marked gap.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/download/policymemo-ai-claude.zip" download>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>
+        Download for Claude
+      </a>
+      <span class="btn ghost" aria-disabled="true">Copilot <span class="soon">Soon</span></span>
+    </div>
+    <p class="fine">Free. One zip, 10 skills. Needs a paid Claude plan, and installs in about 2 minutes.</p>
+  </section>
+
+  <section class="demo wrap" id="demo" aria-labelledby="demo-title">
+    <h2 id="demo-title" class="hidden">A real session</h2>
+    <div class="window">
+      <div class="chrome">
+        <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        Claude, with policymemo.ai installed
+        <button class="replay hidden" type="button" id="replay">Replay</button>
+      </div>
+      <div class="chat" id="chat">
+        <div class="msg-user reveal" data-step>
+          <div class="tag">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z M9.5 1.5V5H13"/></svg>
+            Plan document, pasted in (condensed)
+          </div>
+          <p><b>Problem:</b> applicants sending paper renewals and health declarations receive little or no confirmation that their documents have arrived. The lack of reassurance creates uncertainty about status and next steps, leading to calls to the contact centre.</p>
+          <p><b>Data:</b> about 1 call in 6 over 3 months was checking whether an application had been received (~23,000). It can take around 2 weeks from posting to a case being created. First calls spike at around 3 weeks.</p>
+          <p><b>Hypothesis:</b> proactively confirming receipt will reduce reassurance-driven calls.</p>
+        </div>
+
+        <div class="msg-agent">
+          <div class="who reveal" data-step><span class="mark" aria-hidden="true"></span> policymemo.ai</div>
+          <div class="typing hidden" id="typing" aria-hidden="true"><span></span><span></span><span></span></div>
+          <p class="reveal" data-step>Your problem statement describes the missing fix, not the problem. “Applicants receive little or no confirmation that their documents have been received” defines the problem as the absence of a receipt confirmation, which pre-commits you to sending one, and quietly rules out everything else: closing the two-week gap before a case exists, publishing an expected timescale, telling people whether they may continue in the meantime, or reducing the wait itself.</p>
+          <p class="reveal" data-step>Your summary line does the same thing one level up. “Testing whether proactive receipt updates reduce contact” is an option being appraised, not a problem being defined.</p>
+          <p class="reveal" data-step>One thing buried in your own data cuts against the fix as stated: you note it can be around two weeks between posting and case creation. If a confirmation fires on case creation, it arrives at roughly the same moment as the three-week calling spike you’ve identified.</p>
+          <p class="reveal q" data-step>So: if sending a receipt confirmation were off the table entirely, what is the condition you would still be trying to change?</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <div>
+        <h3>The first session I ran</h3>
+        <p>This was a plan I had written for a real service. I thought the problem was a missing receipt letter. Within one reply it had found the fix hiding in my problem statement, turned my own timing data against it, and asked a single question.</p>
+        <p>The organisation and figures are changed. The agent’s reply is lightly trimmed and otherwise as it gave it.</p>
+      </div>
+      <div>
+        <h3>And where it went wrong</h3>
+        <p>I skipped the question and asked for a draft. It gave me 700 words of dense prose with the structure buried somewhere inside. That failure is why the problem skill now separates the problem, its mechanism, its symptoms and its constraints before it writes anything.</p>
+        <p><a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/blob/main/evals/sessions/t001-problem-receipt-confirmation.md">Read the whole session</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="what" aria-labelledby="what-title">
+    <div class="wrap">
+      <p class="eyebrow">What it does</p>
+      <h2 id="what-title">The whole route from a messy concern to a decision someone can read.</h2>
+      <p class="intro">There are 9 skills for the analysis and 1 set of house rules that holds across all of them. You don’t choose between them. Claude picks whichever the conversation needs, and moves on when the work does.</p>
+      <ol class="steps">
+        <li><span class="n">01</span><h3>Problem</h3><p>Pulls the problem apart from the fix you already had in mind, and splits a tangle into the condition, what produces it and what you can see of it.</p></li>
+        <li><span class="n">02</span><h3>Stakeholders</h3><p>Who holds the problem, who has to fund or sign off a response, and who would be affected differently. Claims about motive need evidence too.</p></li>
+        <li><span class="n">03</span><h3>Evidence</h3><p>Separates what is known from what is inferred or assumed, and works out which uncertainty actually matters to the decision.</p></li>
+        <li><span class="n">04</span><h3>Options</h3><p>Builds a real set of choices, so the preferred answer has something to beat besides two decoys and a bigger version of itself.</p></li>
+        <li><span class="n">05</span><h3>Criteria</h3><p>Settles what counts as better before anything gets scored, and keeps hard constraints apart from the things you are willing to trade.</p></li>
+        <li><span class="n">06</span><h3>Outcomes</h3><p>Projects what would actually happen, how big and how soon, against what would have happened anyway.</p></li>
+        <li><span class="n">07</span><h3>Trade-offs</h3><p>Says what each serious option gains and gives up, who carries the loss, and what the choice really turns on.</p></li>
+        <li><span class="n">08</span><h3>Decide</h3><p>Reaches a recommendation with its strongest counter-argument attached, and the conditions that should reopen it.</p></li>
+        <li><span class="n">09</span><h3>Story</h3><p>Writes it up for the person who has to read it: a submission, a board paper, an email to a minister. The recommendation goes first.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="how" aria-labelledby="rules-title">
+    <div class="wrap">
+      <p class="eyebrow">How it behaves</p>
+      <h2 id="rules-title">Built to make weak analysis harder to write.</h2>
+      <p class="intro">The house rules apply in every conversation, whichever skill is doing the work.</p>
+      <div class="rules">
+        <div class="rule"><h3>One question at a time</h3><p>It asks the question that would change the analysis most, then waits for your answer. You get a conversation you can steer, and a finished document only once there is something worth writing.</p></div>
+        <div class="rule"><h3>Missing figures stay missing</h3><p>It will not make up a number, a date or a source. A gap appears as a marked placeholder such as <code>[add magnitude]</code>, with the place you would find it named alongside.</p></div>
+        <div class="rule"><h3>Competing framings stay visible</h3><p>When the material supports two readings of the problem, you see both and you choose. It does not settle the argument on your behalf.</p></div>
+        <div class="rule"><h3>Value, capacity and support, together</h3><p>Every option is weighed for public value, for whether the money, powers and people exist to deliver it, and for whether the people it depends on will back it. Strengthening one usually costs another, so it names that cost instead of handing you three scores.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block close" id="download" aria-labelledby="dl-title">
+    <div class="wrap">
+      <h2 id="dl-title">Try it on a problem you’re stuck on.</h2>
+      <p class="intro">Bring the notes, the inherited proposal or the draft you aren’t sure about. It works best on something real.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/download/policymemo-ai-claude.zip" download>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>
+          Download for Claude
+        </a>
+        <span class="btn ghost" aria-disabled="true">Copilot <span class="soon">Soon</span></span>
+      </div>
+      <ol class="install">
+        <li><b>Download the zip</b> and leave it zipped. Claude wants the file exactly as it arrives.</li>
+        <li>In Claude, open <b>Customize</b>, then <b>Plugins</b>, then <b>Add</b>, and choose <b>Upload local plugin</b>.</li>
+        <li><b>Upload the zip</b>, switch it on once the security scan finishes, and start a new chat.</li>
+      </ol>
+      <p class="status">Needs Claude Pro, Max, Team or Enterprise with code execution switched on. On the free plan you can add the skills one at a time: the <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha#if-youre-on-the-claude-free-plan">install guide</a> has the steps.</p>
+      <p class="status">This is an alpha. 4 testers have run 17 saved sessions, and 2 skills have been revised from what those sessions found. The revised versions haven’t been tested yet.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span>policymemo.ai · 0.1.2</span>
+    <nav aria-label="Footer">
+      <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
+      <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha#install-policymemoai-in-claude">Install guide</a>
+      <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/blob/main/LICENSE-CONTENT.md">Licence</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var header = document.getElementById('top');
+  function onScroll() { header.classList.toggle('scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  var steps = Array.prototype.slice.call(document.querySelectorAll('#chat [data-step]'));
+  var typing = document.getElementById('typing');
+  var replay = document.getElementById('replay');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timers = [];
+
+  function showAll() {
+    steps.forEach(function (el) { el.classList.add('on'); });
+    typing.classList.add('hidden');
+  }
+  function play() {
+    timers.forEach(clearTimeout); timers = [];
+    steps.forEach(function (el) { el.classList.remove('on'); });
+    replay.classList.add('hidden');
+    var t = 200;
+    steps.forEach(function (el, i) {
+      timers.push(setTimeout(function () {
+        if (i === 2) typing.classList.add('hidden');
+        el.classList.add('on');
+        if (i === 1) typing.classList.remove('hidden');
+        if (i === steps.length - 1) replay.classList.remove('hidden');
+      }, t));
+      t += i === 0 ? 700 : i === 1 ? 1200 : 1300;
     });
-    folder.addEventListener('animationend', () => folder.classList.remove('shake'));
-  </script>
+  }
+
+  if (reduce || !('IntersectionObserver' in window)) { showAll(); return; }
+  var io = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting) { io.disconnect(); play(); }
+  }, { threshold: 0.35 });
+  io.observe(document.getElementById('chat'));
+  replay.addEventListener('click', play);
+})();
+</script>
 </body>
 </html>

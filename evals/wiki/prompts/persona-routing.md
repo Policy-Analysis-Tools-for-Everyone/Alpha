@@ -9,7 +9,7 @@ F8. Why `story` did not fire on a task its own description covers.
 ## Evidence in hand
 
 `t002-story-3-non-trigger` opens *"Assume you are [a senior adviser] to [the head of the civil
-service]"* and then asks for an edit. Nothing from MDEE loaded.
+service]"* and then asks for an edit. Nothing from policymemo.ai loaded.
 
 `t002-problem-3`, same tester days apart, opens *"Did I define the problem well?"* and loaded two
 skills.
