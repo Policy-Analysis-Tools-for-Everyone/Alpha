@@ -70,7 +70,7 @@
   .mascot { display: block; color: var(--mascot); overflow: visible; }
   .m-pupil { fill: var(--pupil, currentColor); transform: translate(var(--px), var(--py)); }
   .m-lid { transform-box: fill-box; transform-origin: 50% 0; transform: scaleY(var(--lid)); }
-  .brand .mascot { width: 15px; height: 23px; flex: none; }
+  .brand .mascot { width: 19px; height: 29px; flex: none; }
   .bar nav { display: flex; align-items: center; gap: 22px; font-size: 14px; }
   .bar nav a.plain { text-decoration: none; color: var(--muted); }
   .bar nav a.plain:hover { color: var(--ink); }
@@ -89,21 +89,49 @@
     background: var(--faint); color: var(--muted); }
 
   /* Hero */
-  .hero { padding-top: 48px; padding-bottom: 40px; text-align: center; }
-  .hero-mascot { width: 62px; height: 96px; margin: 0 auto 24px; }
+  .hero { padding-top: 28px; padding-bottom: 24px; text-align: center; }
+  .hero-mascot { width: 46px; height: 71px; margin: 0 auto 14px; }
+  .hero h1 { max-width: 23ch; }
   .hero-mascot .mascot { width: 100%; height: 100%; }
   .fine { font-size: 13px; color: var(--muted); margin: 16px 0 0; }
   .js .hero-mascot { animation: rise 1s var(--ease) both; }
   @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
-  h1 { font: 400 clamp(40px, 7vw, 76px)/1.04 var(--serif); font-variation-settings: "SOFT" 50; letter-spacing: -.02em; margin: 0 auto 22px; max-width: 14ch; }
-  .lede { font-size: clamp(17px, 2vw, 19px); color: var(--muted); max-width: 37em; margin: 0 auto 34px; }
+  h1 { font: 400 clamp(36px, 5vw, 62px)/1.04 var(--serif); font-variation-settings: "SOFT" 50; letter-spacing: -.02em; margin: 0 auto 16px; max-width: 14ch; }
+  .lede { font-size: clamp(16px, 1.8vw, 18px); color: var(--muted); max-width: 46em; margin: 0 auto 24px; }
   .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
   .fine { font-size: 13px; color: var(--muted); margin-top: 16px; }
 
   /* Demo */
-  .demo { padding-top: 40px; padding-bottom: 96px; }
-  .window { max-width: 820px; margin: 0 auto; background: var(--surface); border: 1px solid var(--line);
-    border-radius: 18px; box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 30px 60px -30px rgba(30,25,10,.25); overflow: hidden; }
+  .demo { padding: 12px 20px 96px; overflow-x: clip; }
+  .tour { max-width: 1140px; margin: 0 auto; position: relative; }
+  .window { position: relative; z-index: 1; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+    box-shadow: 0 1px 2px rgba(30,25,10,.05), 0 18px 36px -14px rgba(30,25,10,.16), 0 60px 120px -40px rgba(30,25,10,.32); }
+  .app { display: grid; grid-template-columns: 236px minmax(0, 1fr); }
+  .side { border-right: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 65%, var(--surface));
+    padding: 12px 10px 18px; font-size: 13.5px; color: var(--muted); display: flex; flex-direction: column; }
+  .side .row { display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 8px; }
+  .side .row.strong { color: var(--ink); font-weight: 500; }
+  .side .ui { width: 15px; height: 15px; flex: none; }
+  .side-h { font-size: 12px; padding: 16px 10px 6px; }
+  .skills { list-style: none; margin: 0; padding: 0; }
+  .skills .dot { width: 8px; height: 8px; border-radius: 2px; background: var(--line); flex: none; transition: background-color .6s var(--ease); }
+  .tour.skill-on .skills .sk-problem .dot { background: var(--red); }
+  .skills li { display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 8px; color: var(--muted);
+    transition: background-color .6s var(--ease), color .6s var(--ease); }
+  .tour.skill-on .skills .sk-problem { background: var(--accent-soft); color: var(--ink); }
+  .ghost { display: flex; align-items: center; gap: 10px; padding: 8px 10px; }
+  .ghost i { width: 12px; height: 12px; border-radius: 3px; background: var(--faint); flex: none; }
+  .ghost b { height: 7px; border-radius: 4px; background: var(--faint); }
+  .main { display: flex; flex-direction: column; min-width: 0; }
+  .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 20px; border-bottom: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  .crumb { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crumb b { color: var(--ink); font-weight: 500; } .crumb i { font-style: normal; margin: 0 7px; opacity: .55; }
+  .tb-r { display: flex; align-items: center; gap: 14px; flex: none; }
+  .tb-r .share { border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px; color: var(--ink); }
+  .chat > .scenes { width: 100%; max-width: 720px; margin: 0 auto; }
+  .icon .ink { fill: currentColor; }
+  .icon .line { stroke: currentColor; stroke-width: 28; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+  @media (max-width: 760px) { .app { grid-template-columns: minmax(0, 1fr); } .side { display: none; } .toolbar { padding: 9px 14px; } .tb-r .more { display: none; } }
   .chrome { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--line); font-size: 13px; color: var(--muted); }
   .dots { display: flex; gap: 6px; margin-right: 6px; }
   .dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--faint); }
@@ -285,7 +313,7 @@
 
 <header class="top" id="top">
   <div class="wrap bar">
-    <a class="brand" href="#"><svg class="mascot" viewBox="0 0 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg>policymemo.ai</a>
+    <a class="brand" href="#" aria-label="policymemo.ai home"><svg class="mascot" viewBox="0 0 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg></a>
     <nav aria-label="Main">
       <a class="plain" href="#demo">See it work</a>
       <a class="plain" href="#what">What it does</a>
@@ -310,7 +338,7 @@
     <p class="fine">Beta · version 0.1.2</p>
   </section>
 
-  <section class="demo wrap" id="demo" aria-labelledby="demo-title">
+  <section class="demo" id="demo" aria-labelledby="demo-title">
     <h2 id="demo-title" class="hidden">A real session</h2>
     <div class="tour scene-0" id="tour">
       <div class="window">
@@ -319,6 +347,7 @@
           <span class="label">Claude, with policymemo.ai installed</span>
           <button class="replay" type="button" id="replay" hidden>Replay</button>
         </div>
+        <div class="app"><aside class="side" aria-hidden="true"><span class="row strong"><svg class="ui" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3z"/></svg>New chat</span><span class="row"><svg class="ui" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10zM14 14l-3.5-3.5"/></svg>Search</span><span class="side-h">Skills</span><ul class="skills"><li class="sk-problem"><i class="dot"></i>Problem</li><li class="sk-stakeholders"><i class="dot"></i>Stakeholders</li><li class="sk-evidence"><i class="dot"></i>Evidence</li><li class="sk-options"><i class="dot"></i>Options</li><li class="sk-criteria"><i class="dot"></i>Criteria</li><li class="sk-uncertainty"><i class="dot"></i>Outcomes</li><li class="sk-tradeoffs"><i class="dot"></i>Trade-offs</li><li class="sk-decision"><i class="dot"></i>Decide</li><li class="sk-story"><i class="dot"></i>Story</li></ul><span class="side-h">Projects</span><span class="ghost"><i></i><b style="width:62%"></b></span><span class="ghost"><i></i><b style="width:48%"></b></span><span class="ghost"><i></i><b style="width:70%"></b></span><span class="side-h">Recents</span><span class="ghost"><i></i><b style="width:74%"></b></span><span class="ghost"><i></i><b style="width:56%"></b></span><span class="ghost"><i></i><b style="width:66%"></b></span><span class="ghost"><i></i><b style="width:44%"></b></span></aside><div class="main"><div class="toolbar" aria-hidden="true"><span class="crumb">Receipt confirmation<i>/</i><b>Problem</b></span><span class="tb-r"><span class="share">Share</span><span class="more">···</span></span></div>
         <div class="chat" id="chat"><div class="scenes">
           <div class="scene" data-scene="0">
             <div class="msg-user">
@@ -362,6 +391,7 @@
               </div>
             </div>
           </div>
+        </div></div>
         </div></div>
       </div>
       <div class="tour-nav">
@@ -467,10 +497,10 @@
 
   var SCENES = [
     { label: 'The pushback',
-      steps: [[0, 's0-doc'], [700, 's0-ask'], [2700, 's0-who'], [2700, 'thinking']],
+      steps: [[0, 's0-doc'], [700, 's0-ask'], [2700, 's0-who'], [2700, 'thinking'], [2700, 'skill-on']],
       typing: { at: 950, dur: 1450 }, sent: 2450, thinkingEnd: 3900, stream: 3900, after: [], tail: 3800 },
     { label: 'The structure',
-      steps: [[0, 's1-ask'], [2150, 's1-who'], [2150, 'thinking'], [3200, 's1-l1'], [3520, 's1-l2'], [3840, 's1-l3'], [4160, 's1-l4']],
+      steps: [[0, 's1-ask'], [2150, 's1-who'], [2150, 'thinking'], [2150, 'skill-on'], [3200, 's1-l1'], [3520, 's1-l2'], [3840, 's1-l3'], [4160, 's1-l4']],
       typing: { at: 250, dur: 1650 }, sent: 2000, thinkingEnd: 3200, stream: 4900, after: [[450, 's1-rev'], [1500, 'gap-on']], tail: 4000 }
   ];
 
@@ -519,7 +549,7 @@
     sc.dur = Math.max(sc.streamEnd, lastStep) + sc.tail;
   });
 
-  var FLAGS = ['thinking', 'gap-on', 'hl-on', 'typing-now'];
+  var FLAGS = ['thinking', 'gap-on', 'hl-on', 'typing-now', 'skill-on'];
   var current = 0, elapsed = 0, playing = false, inView = false, holding = 0, rafId = null, lastTs = null;
   var followMode = false, followTarget = 0;
 
@@ -621,7 +651,7 @@
     chat.style.minHeight = '0px'; chat.style.height = '';
     var max = 0;
     SCENES.forEach(function (sc, i) { render(i, Infinity); max = Math.max(max, chat.getBoundingClientRect().height); });
-    var cap = Math.min(640, Math.round(window.innerHeight * 0.72));
+    var cap = Math.min(600, Math.round(window.innerHeight * 0.58));
     if (window.innerWidth <= 560 && max > cap) {
       followMode = true; chat.classList.add('follow'); chat.style.height = cap + 'px';
     } else {
