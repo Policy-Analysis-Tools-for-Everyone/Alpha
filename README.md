@@ -12,9 +12,10 @@ plausible-looking document on request.
 Inside it are 10 analytical capabilities that work together as one toolkit. You
 don't pick between them. Claude does.
 
-> **Alpha.** All 11 files are written. One has been tested on real work, once, by
-> the person who wrote it. Read [Status](#status) before you rely on this for
-> anything that matters.
+> **Alpha.** All 11 files are written. 17 real sessions across 4 testers have been
+> run against them, and 2 skills were revised from what those sessions found. The
+> revised versions have no sessions of their own yet. Read [Status](#status)
+> before you rely on this for anything that matters.
 
 ---
 
@@ -257,25 +258,30 @@ Written is not tested. Four states worth keeping apart:
 
 | Skill | Written | Structurally checked | Behaviourally tested |
 |---|---|---|---|
-| `house-rules` | yes | yes | **no** |
-| `problem` | yes | yes | once, warm, on the previous version |
-| `stakeholders` | yes | yes | **no** |
-| `evidence` | yes | yes | **no** |
-| `options` | yes | yes | **no** |
-| `criteria` | yes | yes | **no** |
-| `outcomes` | yes | yes | **no** |
-| `trade-offs` | yes | yes | **no** |
-| `decide` | yes | yes | **no** |
-| `story` | yes | yes | **no** |
-| `evaluation` | yes | yes | **no** |
+| `house-rules` | yes | yes | 17 sessions, 4 testers, on `0.1.1`; revised into `0.1.2`, which has none of its own yet |
+| `problem` | yes | yes | 4 real sessions, on `0.1.1`; revised twice into `0.1.2`, which has none of its own yet |
+| `stakeholders` | yes | yes | exercised inside other sessions and in 1 reported run; no session of its own |
+| `evidence` | yes | yes | 2 real sessions, plus 2 reported |
+| `options` | yes | yes | **no.** Never appeared in a session header |
+| `criteria` | yes | yes | exercised inside other sessions and in 1 reported run; no session of its own |
+| `outcomes` | yes | yes | exercised inside other sessions and in 1 reported run; no session of its own |
+| `trade-offs` | yes | yes | **no.** Never appeared in a session header |
+| `decide` | yes | yes | exercised in 2 reported runs; no session of its own |
+| `story` | yes | yes | 3 real sessions, 1 a non-trigger |
+| `evaluation` | yes | yes | produced 3 debriefs and a tester report |
 
-**Nothing here has been tested cold**, by someone who did not write it. The single
-real session, `evals/transcripts/problem/receipt-confirmation.md`, was run warm by
-the author against an earlier version of `problem`, and without `house-rules`,
-which did not exist yet. It found 4 defects, which were fixed. Two of them had not
-been predicted, and 4 of 5 predictions made beforehand were wrong.
+**17 sessions, 4 testers, all in August 2026, all on plugin `0.1.1`.** `0.1.2`
+revised `house-rules` and `problem` from what those sessions found, and has no
+sessions of its own yet. 9 of the 17 are transcripts; the rest are a tester's
+cross-session report and a tester's note. 7 of the 10 capabilities have been
+exercised at all; `options` and `trade-offs` have not.
 
-The method layer is settled. The runtime is not validated.
+No session is confirmed cold, and nothing yet tests whether the agent accepts
+sound work rather than something to challenge, since every session so far gave
+it something to push back on. Those are the 2 largest gaps.
+
+The method layer is settled. The runtime has real evidence behind parts of it,
+unevenly, and the current text of the two most load-bearing files has none.
 
 ---
 
@@ -301,7 +307,7 @@ say which parts you changed. The analytical shape is what matters, rather than
 your real numbers. If a conversation can't be made safe that way, answer the
 questions and leave the conversation out. A described problem is still useful.
 
-`evals/transcripts/problem/receipt-confirmation.md` shows how far the
+`evals/sessions/t001-problem-receipt-confirmation.md` shows how far the
 anonymisation can go while the case still works.
 
 You don't have to write anything up. Answering the questions is enough, and we do
@@ -379,17 +385,20 @@ it as binding, and carries the 2 rules that would be catastrophic if it were
 absent: invent nothing, and the user decides.
 
 That line is load-bearing. Copy it verbatim into any new skill. Part 0 of
-`evals/capability/alpha-pack.md` is the test for whether it's actually working, and
-it should be run before anything else in the pack.
+`evals/tests/capability-alpha-pack.md` is the test for whether it's actually
+working, and it should be run before anything else in the pack.
 
 ### Evaluation
 
-`evals/` holds the improvement loop: real transcripts, a synthetic capability pack
-and regression cases traceable to real fixes. `evals/README.md` explains what each
-directory is for and how to save a session.
+`evals/` holds the improvement loop: real sessions, a wiki that distills them into
+findings, and synthetic capability and regression cases. `evals/README.md` explains
+what each directory is for and how to save a session;
+[`evals/wiki/findings.md`](evals/wiki/findings.md) is the one to read first, since
+everything in `evals/sessions/` is a source for it.
 
-Run the pack in the configuration you ship, which is an ordinary Claude chat with
-the plugin installed. Running it in Claude Code measures a runtime no user has.
+Run real sessions in the configuration you ship, which is an ordinary Claude chat
+with the plugin installed. Running one in Claude Code measures a runtime no user
+has.
 
 `evals/testers.md` is a pseudonymous register of who ran which session, so that
 *how many independent people* is answerable and one person's repeated objection
