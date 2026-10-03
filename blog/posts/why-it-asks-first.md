@@ -1,6 +1,6 @@
 ---
 title: Why policymemo.ai asks before it writes
-date: 2026-10-06
+date: 2026-10-03
 category: why
 summary: A general AI model will write you a problem statement on request. That is the problem policymemo.ai was built to fix.
 ---
