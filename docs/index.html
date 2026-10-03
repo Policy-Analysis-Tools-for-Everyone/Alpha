@@ -92,12 +92,9 @@
   .hero { padding-top: 48px; padding-bottom: 40px; text-align: center; }
   .hero-mascot { width: 62px; height: 96px; margin: 0 auto 24px; }
   .hero-mascot .mascot { width: 100%; height: 100%; }
-  .pill.beta { margin-top: 22px; }
+  .fine { font-size: 13px; color: var(--muted); margin: 16px 0 0; }
   .js .hero-mascot { animation: rise 1s var(--ease) both; }
   @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
-  .pill { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted);
-    border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; margin: 0; }
-  .pill i { width: 7px; height: 7px; border-radius: 1px; background: var(--red); display: inline-block; }
   h1 { font: 400 clamp(40px, 7vw, 76px)/1.04 var(--serif); font-variation-settings: "SOFT" 50; letter-spacing: -.02em; margin: 0 auto 22px; max-width: 14ch; }
   .lede { font-size: clamp(17px, 2vw, 19px); color: var(--muted); max-width: 37em; margin: 0 auto 34px; }
   .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
@@ -113,7 +110,7 @@
   .chrome .label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .chat { padding: 24px 18px 28px; display: grid; align-content: start; gap: 22px; min-height: 420px; }
   @media (min-width: 720px) { .chat { padding: 32px 40px 40px; } }
-  @media (max-width: 480px) { .chat { padding: 20px 14px 24px; gap: 18px; } .msg-agent { font-size: 14.5px; } .attach, .labels div { font-size: 13px; } .bubble { font-size: 14px; } }
+  @media (max-width: 480px) { .chat { padding: 20px 14px 24px; gap: 18px; } .msg-agent { font-size: 14.5px; grid-template-columns: 18px minmax(0, 1fr); column-gap: 10px; } .msg-agent .avatar { width: 16px; height: 25px; } .attach, .labels div { font-size: 13px; } .bubble { font-size: 14px; } }
   .chat > .scenes { display: grid; }
   .scene { grid-area: 1 / 1; display: grid; align-content: start; gap: 22px; min-width: 0;
     transition: opacity .5s var(--ease) .12s, filter .6s var(--ease) .12s, visibility 0s; }
@@ -129,8 +126,12 @@
   .caret { display: inline-block; width: 1.5px; height: 1.05em; background: var(--ink); vertical-align: -2px; margin-left: 1px; opacity: 0; }
   .tour.typing-now .caret { opacity: 1; animation: caret 1s steps(1) infinite; }
   @keyframes caret { 50% { opacity: 0; } }
-  .msg-agent { font-size: 15.5px; max-width: 64ch; min-width: 0; }
-  .who { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  .msg-agent { font-size: 15.5px; display: grid; grid-template-columns: 24px minmax(0, 64ch); column-gap: 14px; align-items: start; min-width: 0; }
+  .msg-agent .avatar { width: 20px; height: 31px; margin-top: -3px; }
+  .reply { min-width: 0; }
+  .tour.thinking .msg-agent .avatar { animation: glance 1.5s var(--ease-io) infinite; }
+  @keyframes glance { 0%, 100% { --px: 0px; } 22%, 38% { --px: -70px; } 60%, 76% { --px: 70px; } }
+  .who { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 12px; min-height: 22px; }
   .tour.thinking .skill i { animation: pulse 1.4s var(--ease-io) infinite; }
   @keyframes pulse { 50% { opacity: .2; transform: scale(.7); } }
   .skill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px 2px 7px; }
@@ -225,7 +226,7 @@
     html { scroll-behavior: auto; }
     .w, .step, .hl, .gap, .scene, .window, .msg-agent p.q { transition: none !important; filter: none !important; }
     .js .hero-mascot { animation: none; }
-    .tour.typing-now .caret, .tour.thinking .skill i { animation: none; }
+    .tour.typing-now .caret, .tour.thinking .skill i, .tour.thinking .msg-agent .avatar { animation: none; }
   }
 </style>
 </head>
@@ -266,7 +267,7 @@
       </a>
       <span class="btn ghost" aria-disabled="true">Copilot <span class="soon">Soon</span></span>
     </div>
-    <div class="pill beta"><i></i> Beta · version 0.1.2</div>
+    <p class="fine">Beta · version 0.1.2</p>
   </section>
 
   <section class="demo wrap" id="demo" aria-labelledby="demo-title">
@@ -292,10 +293,13 @@
               <div class="bubble step" data-s="s0-ask"><span class="typed" data-text="Can you look at this problem statement?"></span><span class="caret" aria-hidden="true"></span></div>
             </div>
             <div class="msg-agent">
-              <div class="who step" data-s="s0-who"><span class="skill"><i aria-hidden="true"></i><b>using problem</b></span></div>
-              <p class="stream">Your problem statement describes the missing fix, not the problem. “Applicants receive little or no confirmation that their documents have been received” defines the problem as the absence of a receipt confirmation, which pre-commits you to sending one, and quietly rules out everything else: closing the two-week gap before a case exists, publishing an expected timescale, telling people whether they may continue in the meantime, or reducing the wait itself.</p>
-              <p class="stream">One thing buried in your own data cuts against the fix as stated: you note it can be around <span class="hl" data-trigger>two weeks between posting and case creation.</span> If a confirmation fires on case creation, it arrives at roughly the same moment as the three-week calling spike you’ve identified.</p>
-              <p class="stream q">So: if sending a receipt confirmation were off the table entirely, what is the condition you would still be trying to change?</p>
+              <svg class="mascot avatar step" data-s="s0-who" viewBox="0 0 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg>
+              <div class="reply">
+                <div class="who step" data-s="s0-who"><span class="skill"><i aria-hidden="true"></i><b>using problem</b></span></div>
+                <p class="stream">Your problem statement describes the missing fix, not the problem. “Applicants receive little or no confirmation that their documents have been received” defines the problem as the absence of a receipt confirmation, which pre-commits you to sending one, and quietly rules out everything else: closing the two-week gap before a case exists, publishing an expected timescale, telling people whether they may continue in the meantime, or reducing the wait itself.</p>
+                <p class="stream">One thing buried in your own data cuts against the fix as stated: you note it can be around <span class="hl" data-trigger>two weeks between posting and case creation.</span> If a confirmation fires on case creation, it arrives at roughly the same moment as the three-week calling spike you’ve identified.</p>
+                <p class="stream q">So: if sending a receipt confirmation were off the table entirely, what is the condition you would still be trying to change?</p>
+              </div>
             </div>
           </div>
 
@@ -304,15 +308,18 @@
               <div class="bubble step" data-s="s1-ask"><span class="typed" data-text="Provide a recommended adjustment to the problem statement."></span><span class="caret" aria-hidden="true"></span></div>
             </div>
             <div class="msg-agent">
-              <div class="who step" data-s="s1-who"><span class="skill"><i aria-hidden="true"></i><b>using problem</b></span></div>
-              <dl class="labels">
-                <div class="step" data-s="s1-l1"><dt>Problem</dt><dd>Applicants cannot establish whether they may lawfully continue, or when they will know.</dd></div>
-                <div class="step" data-s="s1-l2"><dt>Mechanism</dt><dd>No acknowledgement on receipt; roughly two weeks between posting and case creation; no published expected timescale.</dd></div>
-                <div class="step" data-s="s1-l3"><dt>Symptom</dt><dd>~23,000 status enquiries, about one call in six.</dd></div>
-                <div class="step" data-s="s1-l4"><dt>Constraint</dt><dd>Usable contact details are assumed, not confirmed.</dd></div>
-              </dl>
-              <p class="stream">This is a hierarchy, not a single problem. The applicant’s uncertainty and the contact centre’s load sit at different levels, and they do not have the same answers.</p>
-              <div class="revised step" data-s="s1-rev"><span class="k">Revised problem statement</span>Applicants who post a renewal cannot find out whether they may lawfully continue while it is assessed, or when they will know. They wait <span class="gap">[add magnitude: time from posting to decision, from case records]</span> without that answer.</div>
+              <svg class="mascot avatar step" data-s="s1-who" viewBox="0 0 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg>
+              <div class="reply">
+                <div class="who step" data-s="s1-who"><span class="skill"><i aria-hidden="true"></i><b>using problem</b></span></div>
+                <dl class="labels">
+                  <div class="step" data-s="s1-l1"><dt>Problem</dt><dd>Applicants cannot establish whether they may lawfully continue, or when they will know.</dd></div>
+                  <div class="step" data-s="s1-l2"><dt>Mechanism</dt><dd>No acknowledgement on receipt; roughly two weeks between posting and case creation; no published expected timescale.</dd></div>
+                  <div class="step" data-s="s1-l3"><dt>Symptom</dt><dd>~23,000 status enquiries, about one call in six.</dd></div>
+                  <div class="step" data-s="s1-l4"><dt>Constraint</dt><dd>Usable contact details are assumed, not confirmed.</dd></div>
+                </dl>
+                <p class="stream">This is a hierarchy, not a single problem. The applicant’s uncertainty and the contact centre’s load sit at different levels, and they do not have the same answers.</p>
+                <div class="revised step" data-s="s1-rev"><span class="k">Revised problem statement</span>Applicants who post a renewal cannot find out whether they may lawfully continue while it is assessed, or when they will know. They wait <span class="gap">[add magnitude: time from posting to decision, from case records]</span> without that answer.</div>
+              </div>
             </div>
           </div>
         </div></div>
