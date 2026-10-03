@@ -22,6 +22,7 @@
     --faint: #e4e0d5;
     --line: #d9d4c7;
     --red: #EB4043;
+    --mascot: var(--ink);
     --accent: #C42B2E;
     --accent-ink: #ffffff;
     --accent-soft: #fbe4e2;
@@ -61,7 +62,15 @@
   header.top.scrolled { border-color: var(--line); }
   .bar { display: flex; align-items: center; justify-content: space-between; height: 60px; }
   .brand { display: inline-flex; align-items: center; gap: 9px; font: 500 19px/1 var(--serif); text-decoration: none; letter-spacing: -.01em; }
-  .brand i { width: 13px; height: 13px; border-radius: 2px; background: var(--red); display: inline-block; }
+  /* The mascot. Pupil and eyelid are driven by --px, --py and --lid, which
+     inherit into each <use> copy, so every instance can look and blink alone. */
+  @property --px { syntax: '<length>'; inherits: true; initial-value: 0px; }
+  @property --py { syntax: '<length>'; inherits: true; initial-value: 0px; }
+  @property --lid { syntax: '<number>'; inherits: true; initial-value: 0; }
+  .mascot { display: block; color: var(--mascot); overflow: visible; }
+  .m-pupil { fill: var(--pupil, currentColor); transform: translate(var(--px), var(--py)); }
+  .m-lid { transform-box: fill-box; transform-origin: 50% 0; transform: scaleY(var(--lid)); }
+  .brand .mascot { width: 17px; height: 26px; }
   .bar nav { display: flex; align-items: center; gap: 22px; font-size: 14px; }
   .bar nav a.plain { text-decoration: none; color: var(--muted); }
   .bar nav a.plain:hover { color: var(--ink); }
@@ -81,6 +90,10 @@
 
   /* Hero */
   .hero { padding-top: 72px; padding-bottom: 40px; text-align: center; }
+  .hero-mascot { width: 76px; height: 118px; margin: 0 auto 26px; }
+  .hero-mascot .mascot { width: 100%; height: 100%; }
+  .js .hero-mascot { animation: rise 1s var(--ease) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
   .pill { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted);
     border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; margin-bottom: 28px; }
   .pill i { width: 7px; height: 7px; border-radius: 1px; background: var(--red); display: inline-block; }
@@ -117,13 +130,12 @@
   @keyframes caret { 50% { opacity: 0; } }
   .msg-agent { font-size: 15.5px; max-width: 64ch; min-width: 0; }
   .who { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
-  .who .mark { width: 13px; height: 13px; border-radius: 2px; background: var(--red); }
+  .who .mascot { width: 14px; height: 22px; }
+  .tour.thinking .who .mascot { animation: glance 1.5s var(--ease-io) infinite; }
+  @keyframes glance { 0%, 100% { --px: 0px; } 22%, 38% { --px: -70px; } 60%, 76% { --px: 70px; } }
   .skill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px 2px 7px; }
   .skill i { width: 6px; height: 6px; border-radius: 1px; background: var(--red); }
   .skill b { font-weight: 400; }
-  .tour.thinking .skill b { color: transparent; background: linear-gradient(90deg, var(--muted) 0%, var(--muted) 35%, var(--ink) 50%, var(--muted) 65%, var(--muted) 100%) 0 0 / 250% 100%;
-    -webkit-background-clip: text; background-clip: text; animation: shimmer 1.6s linear infinite; }
-  @keyframes shimmer { from { background-position: 100% 0; } to { background-position: -150% 0; } }
   .msg-agent p { margin: 0 0 14px; }
   .msg-agent p.q { font-weight: 500; border-left: 3px solid var(--red); padding-left: 14px; margin-top: 18px; transition: border-color .6s var(--ease); }
   .msg-agent p.q:not(.started) { border-left-color: transparent; }
@@ -212,16 +224,27 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .w, .step, .hl, .gap, .scene, .window, .msg-agent p.q { transition: none !important; filter: none !important; }
-    .tour.typing-now .caret, .tour.thinking .skill b { animation: none; }
+    .js .hero-mascot { animation: none; }
+    .tour.typing-now .caret, .tour.thinking .who .mascot { animation: none; }
   }
 </style>
 </head>
 <body>
 <script>document.documentElement.classList.add('js');</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs><clipPath id="pm-eye"><path d="M819 565L818 569 795 587 767 606 761 607 748 616 744 616 734 622 719 628 711 629 704 633 693 634 684 639 676 638 664 642 652 641 644 644 601 644 584 639 554 636 549 632 531 629 521 622 513 621 508 617 498 615 491 609 474 602 462 592 450 585 451 580 464 571 469 565 502 543 535 525 566 514Q630 500 694 508L717 512 725 517 733 518 739 522 745 523 781 541 788 547 796 549 802 555 812 559Z"/></clipPath></defs>
+  <symbol id="pm-mascot" viewBox="356 215 566 877">
+    <path fill="currentColor" fill-rule="evenodd" d="M732 235L720 238 701 237 685 241 680 239 629 239 625 241 609 240 607 242 565 241 554 244 536 241 520 241 504 245 485 243 480 247 468 247 454 244 444 245 440 248 433 248 431 246 413 248 405 246 400 248 386 247 379 253 376 264 378 282 376 299 381 319 378 331 379 344 377 349 377 357 380 368 378 395 381 411 379 425 381 428 380 443 382 448 378 487 380 500 379 554 383 593 379 608 381 621 380 638 383 652 380 683 384 691 384 713 381 719 382 742 380 745 380 759 382 764 380 794 384 802 382 817 384 841 381 864 381 880 383 883 384 894 382 923 387 930 393 933 408 932 412 934 420 934 430 930 442 932 462 930 470 933 496 934 496 955 491 966 491 975 480 995 458 1011 453 1011 427 1022 419 1027 406 1041 401 1052 401 1059 404 1064 412 1069 439 1069 447 1067 457 1069 480 1067 482 1069 489 1069 495 1066 529 1066 538 1063 542 1060 548 1049 547 1038 549 1021 552 1017 552 1009 555 1003 555 993 557 990 560 971 560 959 564 949 567 931 596 927 641 927 645 925 659 928 680 926 682 928 683 940 690 964 693 989 695 991 694 1003 698 1018 704 1031 705 1051 710 1055 711 1061 719 1066 753 1067 761 1070 781 1069 789 1071 813 1070 816 1072 829 1072 832 1070 854 1072 863 1066 864 1059 866 1058 866 1051 859 1043 858 1037 847 1028 841 1027 837 1020 824 1013 816 1013 809 1007 801 1006 794 1002 784 1002 777 995 772 993 760 972 759 961 755 952 754 925 803 922 806 920 855 920 869 917 883 919 892 914 897 905 896 883 898 878 896 874 896 867 892 865 892 861 897 856 898 848 896 813 898 810 896 791 897 753 895 751 898 717 895 699 897 689 894 684 894 678 897 676 898 672 897 632 899 627 899 616 897 607 898 597 900 595 900 582 897 570 899 560 897 554 899 544 899 536 897 532 897 520 899 515 897 485 900 475 898 461 901 455 899 440 901 435 902 418 898 406 888 397 878 380 871 373 868 373 865 370 865 366 848 350 845 343 830 325 821 318 812 305 795 288 789 286 782 273 776 267 768 264 766 257 745 238ZM819 565L818 569 795 587 767 606 761 607 748 616 744 616 734 622 719 628 711 629 704 633 693 634 684 639 676 638 664 642 652 641 644 644 601 644 584 639 554 636 549 632 531 629 521 622 513 621 508 617 498 615 491 609 474 602 462 592 450 585 451 580 464 571 469 565 502 543 535 525 566 514Q630 500 694 508L717 512 725 517 733 518 739 522 745 523 781 541 788 547 796 549 802 555 812 559ZM739 270L741 270 748 280 757 288 765 301 774 310 779 318 798 335 808 351 852 396 862 403 865 407 864 410 801 413 768 412 765 414 761 414 756 411 741 410 736 297 738 293 737 279Z"/>
+    <g clip-path="url(#pm-eye)">
+      <ellipse class="m-pupil" cx="631" cy="545" rx="62" ry="53"/>
+    </g>
+    <path class="m-lid" fill="currentColor" stroke="currentColor" stroke-width="10" stroke-linejoin="round" d="M819 565L818 569 795 587 767 606 761 607 748 616 744 616 734 622 719 628 711 629 704 633 693 634 684 639 676 638 664 642 652 641 644 644 601 644 584 639 554 636 549 632 531 629 521 622 513 621 508 617 498 615 491 609 474 602 462 592 450 585 451 580 464 571 469 565 502 543 535 525 566 514Q630 500 694 508L717 512 725 517 733 518 739 522 745 523 781 541 788 547 796 549 802 555 812 559Z"/>
+  </symbol>
+</svg>
 
 <header class="top" id="top">
   <div class="wrap bar">
-    <a class="brand" href="#"><i aria-hidden="true"></i>policymemo.ai</a>
+    <a class="brand" href="#"><svg class="mascot " viewBox="356 215 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg>policymemo.ai</a>
     <nav aria-label="Main">
       <a class="plain" href="#demo">See it work</a>
       <a class="plain" href="#what">What it does</a>
@@ -233,6 +256,7 @@
 
 <main>
   <section class="hero wrap">
+    <div class="hero-mascot" id="hero-mascot"><svg class="mascot " viewBox="356 215 566 877" role="img" aria-label="The policymemo.ai mascot, a page with one watchful eye"><use href="#pm-mascot"/></svg></div>
     <div class="pill"><i></i> Private beta · version 0.1.2</div>
     <h1>Policy analysis that questions the problem first.</h1>
     <p class="lede">policymemo.ai is a set of skills for Claude that works through a public policy problem with you: what the problem is, what you actually know, which options are real and what each one costs. It asks one question at a time, and where a figure is missing it leaves a marked gap.</p>
@@ -269,7 +293,7 @@
               <div class="bubble step" data-s="s0-ask"><span class="typed" data-text="Can you look at this problem statement?"></span><span class="caret" aria-hidden="true"></span></div>
             </div>
             <div class="msg-agent">
-              <div class="who step" data-s="s0-who"><span class="mark" aria-hidden="true"></span> policymemo.ai <span class="skill"><i aria-hidden="true"></i><b>using problem</b></span></div>
+              <div class="who step" data-s="s0-who"><svg class="mascot " viewBox="356 215 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg> policymemo.ai <span class="skill"><i aria-hidden="true"></i><b>using problem</b></span></div>
               <p class="stream">Your problem statement describes the missing fix, not the problem. “Applicants receive little or no confirmation that their documents have been received” defines the problem as the absence of a receipt confirmation, which pre-commits you to sending one, and quietly rules out everything else: closing the two-week gap before a case exists, publishing an expected timescale, telling people whether they may continue in the meantime, or reducing the wait itself.</p>
               <p class="stream">One thing buried in your own data cuts against the fix as stated: you note it can be around <span class="hl" data-trigger>two weeks between posting and case creation.</span> If a confirmation fires on case creation, it arrives at roughly the same moment as the three-week calling spike you’ve identified.</p>
               <p class="stream q">So: if sending a receipt confirmation were off the table entirely, what is the condition you would still be trying to change?</p>
@@ -281,7 +305,7 @@
               <div class="bubble step" data-s="s1-ask"><span class="typed" data-text="Provide a recommended adjustment to the problem statement."></span><span class="caret" aria-hidden="true"></span></div>
             </div>
             <div class="msg-agent">
-              <div class="who step" data-s="s1-who"><span class="mark" aria-hidden="true"></span> policymemo.ai <span class="skill"><i aria-hidden="true"></i><b>using problem</b></span></div>
+              <div class="who step" data-s="s1-who"><svg class="mascot " viewBox="356 215 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg> policymemo.ai <span class="skill"><i aria-hidden="true"></i><b>using problem</b></span></div>
               <dl class="labels">
                 <div class="step" data-s="s1-l1"><dt>Problem</dt><dd>Applicants cannot establish whether they may lawfully continue, or when they will know.</dd></div>
                 <div class="step" data-s="s1-l2"><dt>Mechanism</dt><dd>No acknowledgement on receipt; roughly two weeks between posting and case creation; no published expected timescale.</dd></div>
@@ -602,6 +626,71 @@
 
   window.pmTour = { go: go, seek: seek, play: play, pause: pause, scenes: SCENES,
     state: function () { return { scene: current, t: Math.round(elapsed), playing: playing, inView: inView, holding: holding, raf: rafId !== null }; } };
+})();
+
+/* The hero mascot. Its pupil follows the pointer with a soft lag, wanders on
+   touch screens, and it blinks every few seconds. Off screen it sleeps. */
+(function () {
+  var host = document.getElementById('hero-mascot');
+  if (!host) return;
+  var svg = host.querySelector('svg');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  var fine = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+  var MAX_X = 58, MAX_Y = 16;               // pupil travel, in drawing units
+  var EYE = { x: (631 - 356) / 566, y: (575 - 215) / 877 };   // eye centre as a fraction of the box
+  var x = 0, y = 0, tx = 0, ty = 0, lid = 0;
+  var nextBlink = performance.now() + 1400, blinkAt = -1, doubleBlink = false;
+  var nextWander = 0, visible = true, raf = null, last = null;
+
+  function aim(cx, cy) {
+    var r = svg.getBoundingClientRect();
+    var ex = r.left + r.width * EYE.x, ey = r.top + r.height * EYE.y;
+    var dx = cx - ex, dy = cy - ey, d = Math.sqrt(dx * dx + dy * dy) || 1;
+    var reach = Math.min(1, d / 260);         // close to the eye, it looks less far
+    tx = dx / d * MAX_X * reach;
+    ty = dy / d * MAX_Y * reach;
+  }
+  if (fine) window.addEventListener('pointermove', function (e) { aim(e.clientX, e.clientY); start(); }, { passive: true });
+
+  function lidAt(now) {
+    if (blinkAt < 0) return 0;
+    var t = now - blinkAt;                     // close 90ms, hold 40ms, open 130ms
+    if (t < 90) return t / 90;
+    if (t < 130) return 1;
+    if (t < 260) return 1 - (t - 130) / 130;
+    if (doubleBlink) { doubleBlink = false; blinkAt = now + 120; return 0; }
+    blinkAt = -1; return 0;
+  }
+
+  function frame(now) {
+    raf = null;
+    if (!visible || document.hidden) { last = null; return; }
+    var dt = last == null ? 16 : Math.min(64, now - last); last = now;
+    if (!fine && now > nextWander) {           // touch: glance around now and then
+      var spots = [[0, 0], [-1, 0.2], [1, 0.1], [0, 1], [-0.6, -0.8]];
+      var sp = spots[Math.floor(Math.random() * spots.length)];
+      tx = sp[0] * MAX_X; ty = sp[1] * MAX_Y;
+      nextWander = now + 1800 + Math.random() * 2600;
+    }
+    if (now > nextBlink && blinkAt < 0) {
+      blinkAt = now; doubleBlink = Math.random() < 0.2;
+      nextBlink = now + 2600 + Math.random() * 3600;
+    }
+    var k = 1 - Math.pow(0.001, dt / 1000 * 1.6);   // soft, frame-rate-independent lag
+    x += (tx - x) * k; y += (ty - y) * k;
+    lid = lidAt(now);
+    host.style.setProperty('--px', x.toFixed(2) + 'px');
+    host.style.setProperty('--py', y.toFixed(2) + 'px');
+    host.style.setProperty('--lid', lid.toFixed(3));
+    raf = requestAnimationFrame(frame);
+  }
+  function start() { if (raf === null && visible && !document.hidden) { last = null; raf = requestAnimationFrame(frame); } }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { visible = es[es.length - 1].isIntersecting; start(); }).observe(host);
+  }
+  document.addEventListener('visibilitychange', start);
+  start();
 })();
 </script>
 </body>
