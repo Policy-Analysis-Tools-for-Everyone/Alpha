@@ -15,6 +15,7 @@
 <meta property="og:image:alt" content="The policymemo.ai mascot beside the headline: Policy analysis that questions the problem first.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f6f4ee">
+<meta name="color-scheme" content="light">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,19 +37,8 @@
     --ease: cubic-bezier(.22, 1, .36, 1);
     --ease-io: cubic-bezier(.65, 0, .35, 1);
     --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    color-scheme: light;
     --sans: "Geist", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #151513; --surface: #1d1d1a; --ink: #ece9e1; --muted: #a29f95;
-      --faint: #2a2a26; --line: #34332e; --accent: #ff7a7c; --accent-ink: #1a0b0b;
-      --accent-soft: #3a1e1e; --user: #26261f;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #151513; --surface: #1d1d1a; --ink: #ece9e1; --muted: #a29f95;
-    --faint: #2a2a26; --line: #34332e; --accent: #ff7a7c; --accent-ink: #1a0b0b;
-    --accent-soft: #3a1e1e; --user: #26261f;
   }
 
   * { box-sizing: border-box; }
