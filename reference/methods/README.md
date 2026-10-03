@@ -61,12 +61,13 @@ behaviour it actually needs and nothing else. `outcomes` needs the outside view
 and a rule for turning an ungrounded decision-sensitive forecast into a learning
 question. It does not need the rest of the appraisal method.
 
-## `../writing/anti-ai-writing-style.md`
+## Writing: `../../skills/story/writing.md`
 
-The shared output-quality specification for substantial user-facing prose. Not a
-policy-analysis method. It shapes writing without changing evidence, analysis or
+The output-quality specification for everything the agent writes. Not a
+policy-analysis method, and not kept here, because it has to ship: it lives in the
+`story` skill's folder. It shapes writing without changing evidence, analysis or
 necessary technical terminology. `house-rules` carries the universal subset;
-`story` applies it hardest.
+`story` applies it in full.
 
 ## `../sources/`, `../domain/`
 

@@ -280,10 +280,10 @@ Hence: distil what is needed, and point at the canonical path for the full
 version, so both environments work.
 
 `story` is the exception worth noting. It carries the operative writing rules
-inline and points at `reference/writing/anti-ai-writing-style.md` for the full
-catalogue, because that file is long, it is genuinely worth reading before
-drafting substantial prose, and the inline subset has to work when it is
-unavailable.
+inline and bundles the full catalogue as `writing.md` in its own folder, because
+that file is long, it is worth reading before drafting a document, and the inline
+subset has to work when it is not read. Bundling it is what makes it available at
+runtime; the old copy under `reference/` never was.
 
 ---
 

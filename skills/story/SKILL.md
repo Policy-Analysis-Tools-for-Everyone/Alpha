@@ -22,9 +22,28 @@ Canonical method:
     reference/sources/ucl-ppc-one-pager-instructions.pdf.
 
 Writing quality:
-  reference/writing/anti-ai-writing-style.md is canonical for voice and surface
-  quality. Read it before drafting substantial prose if it is available. The
-  operative rules are distilled below so this skill works when it is not.
+  writing.md, in this skill's folder, is canonical for register and surface
+  quality and ships with the skill. Read it before drafting a document. The
+  operative rules are distilled below so this skill works if it is not read.
+
+Revision history:
+  - 2026-10-03, writing and transfer.
+    The writing pass was distilled from reference/writing/anti-ai-writing-style.md,
+    an old copy of the project owner's personal voice file, never available at
+    runtime. It now follows writing.md in this folder. Resolved on the way: the
+    contrast rule forbade every negation, including this capability's most
+    useful move, so it now targets contrasts with a position nobody holds;
+    paragraph length follows the format instead of a fixed 1 to 3 sentences; a
+    third item is cut only when it was added for rhythm; policy terms such as
+    robust and transparent survive where they are precise; and "direct address"
+    is gone, because a document belongs to the user and is written in their
+    organisation's register.
+    F6 (2 testers, 3 sessions): t002-story-2 said it could not verify a memo's
+    opening premise, then wrote the premise in as fact; T003 Scen 6 gave an
+    assurance about a document that the document contradicted. New section:
+    From the analysis to the page.
+    F11 (2 of 2 `problem` runs): a contested framing at the moment a draft was
+    requested resolved two ways. The same section now says which.
 
 Not grounded:
   - Nothing beyond the files above.
@@ -214,41 +233,59 @@ needs a long explanation, when cell labels are vague, or when magnitude, uncerta
 or the central trade-off disappears into it. Never use a matrix because policy
 memos are expected to look analytical.
 
+## From the analysis to the page
+
+The document is a record of the analysis, so what was true of a claim in the
+conversation stays true of it on the page.
+
+- **Flags travel.** Anything the conversation marked as unverified, assumed,
+  contested or missing keeps that mark in the document, in the sentence that
+  makes the claim. A premise the conversation could not verify never becomes the
+  document's opening fact.
+- **Check before you assure.** Before saying anything about the document, such
+  as "every figure is yours" or "nothing here is invented", check the document.
+  A wrong assurance is worse than none, because it switches off the reader's
+  scrutiny exactly where it is needed.
+- **A contested framing stays visible.** If the user asks for the document
+  before choosing between framings, draft on one, say in the reply which one and
+  why, and offer the other in a line. Produce one draft, not both. If the
+  document has to proceed on a contested framing, the document says so.
+
 ## The writing pass
 
 Apply this after the structure is sound, never as a substitute for it. The full
-specification lives in the project repository at
-`reference/writing/anti-ai-writing-style.md`, as a maintainer reference rather than
-a runtime file. These are the rules that matter most.
+rules are in `writing.md` in this folder. These are the ones that matter most.
 
-- UK spelling. Numbers as digits.
-- Short paragraphs, 1 to 3 sentences. Vary sentence length: even pacing is the
-  clearest signal of machine text. Short, then longer, then a fragment, then a
-  sentence that earns its length.
-- Contractions where they fit. Active voice. Direct address.
+- **The document belongs to the user.** Write it in their organisation's
+  register: no "I" unless it is a personal note, no direct address to the reader
+  unless it is a letter or an email, contractions only in informal notes.
+- **The format sets the shape.** Short paragraphs in a briefing note or an email;
+  room for a causal chain in an analysis section. Vary sentence length: even
+  pacing is the clearest signal of machine text. Never pad.
+- UK spelling. Numbers as digits. Sentence case in headings.
 - **No em dashes.** Commas, colons, semicolons, full stops or brackets.
 - **Say "is" and "has".** Not serves as, stands as, represents, marks a, boasts,
   features, offers.
-- **No negated reframes.** "This isn't X, it's Y", "not just X but Y", "the
-  question isn't X, it's Y", "less X, more Y", and the disguised versions: "while
-  X might seem right, Y is actually", "sure, X works, but Y is where". Delete
-  everything before the positive claim. This is the most reliable machine tell
-  there is.
-- **No dead vocabulary.** delve, realm, harness, unlock, tapestry, landscape,
-  intricate, crucial, pivotal, leverage, robust, seamless, holistic, foster,
-  underscore, showcase, transformative, empower, streamline, elevate,
-  data-driven, unprecedented, testament, commendable.
+- **Contrast only against a real position.** Models negate a framing nobody holds
+  to sound sharp: "this isn't X, it's Y", "not just X but Y", "less X, more Y",
+  "while X might seem right, Y is actually". Make the positive claim. A contrast
+  with the user's draft, a stated assumption or a common explanation the analysis
+  has dealt with is doing work and stays.
+- **No promotional vocabulary.** delve, realm, harness, unlock, tapestry,
+  pivotal, showcase, testament, groundbreaking, game-changer, elevate,
+  frictionless. Words like robust, transparent, integrated and landscape stay
+  where they are the precise or technical term and go where they are praise.
 - **No filler or meta-commentary.** No "it's important to note", "in today's", "in
   order to", "let's explore", "in this section we will".
 - **No mechanical transitions.** No furthermore, moreover, additionally, that
   said, with that in mind.
 - **No puffery.** State the fact and let the reader judge its significance. No
   pivotal moments, significant shifts or key turning points.
-- **No rule of three by reflex.** Three adjectives in a row is a tell. Use 2, or
-  4, or the one that matters.
-- **No fake ranges.** "From ancient traditions to modern innovations" means
-  nothing.
-- **Sentence case in headings**, not Title Case.
+- **Use the number of items the analysis has.** A third item added because the
+  sentence sounds complete is a tell.
+- **No fake ranges.** "From local pilots to national programmes" means nothing.
+- **Use the same term for the same thing.** A scheme, a programme and a pilot are
+  different things.
 - **Use the real subject.** *DVLA would change the rule*, not *a change to the
   rule would be undertaken by DVLA*. *The evidence is weak*, not *there are
   limitations in relation to the available evidence base*.
@@ -303,6 +340,10 @@ announcing a handoff.
 - the strongest serious objection has not been ignored
 - the structure does not narrate the analytical method
 - no weak analytical section has been repaired with invented prose
+- every flag from the conversation (unverified, assumed, contested, missing) is
+  still in the document
+- any assurance given about the document has been checked against it
+- a contested framing is either the user's choice or named as the one drafted on
 - the writing pass has been applied
 
 **PPC mode must also pass:**
@@ -343,5 +384,11 @@ announcing a handoff.
 - **The risks section as a disclaimer**, where everything is uncertain.
 - **Polish hiding a gap.** Elegant prose over a weak mechanism, a fake trade-off
   or an unsupported recommendation. The most dangerous failure available here.
-- **Machine voice.** Filler, hype, negated reframes, mechanical transitions,
+- **Flags lost in transfer.** A caveat in the conversation that never reaches the
+  document, or an unverified premise written in as fact.
+- **The unchecked assurance.** Telling the user something about the document that
+  the document contradicts.
+- **The agent's register in the user's document.** "I think", direct address or
+  chat phrasing in a memo someone else will read.
+- **Machine voice.** Filler, hype, empty contrasts, mechanical transitions,
   metronome rhythm.

@@ -20,7 +20,7 @@ Everything else written for this project is licensed under the
 (CC BY 4.0). That includes:
 
 - `skills/` and the packaged copies in `dist/`
-- `reference/methods/`, `reference/writing/` and `reference/domain/dpi/dpi-public-value-framework.md`
+- `reference/methods/` and `reference/domain/dpi/dpi-public-value-framework.md`
 - `docs/`
 - `evals/`
 - `README.md` and the other Markdown files
