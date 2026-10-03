@@ -61,7 +61,7 @@
     border-bottom: 1px solid transparent; transition: border-color .2s; }
   header.top.scrolled { border-color: var(--line); }
   .bar { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-  .brand { display: inline-flex; align-items: center; gap: 9px; font: 500 19px/1 var(--serif); text-decoration: none; letter-spacing: -.01em; }
+  .brand { display: inline-flex; align-items: center; gap: 8px; font: 600 16px/1 var(--sans); text-decoration: none; letter-spacing: -.015em; }
   /* The mascot. Pupil and eyelid are driven by --px, --py and --lid, which
      inherit into each <use> copy, so every instance can look and blink alone. */
   @property --px { syntax: '<length>'; inherits: true; initial-value: 0px; }
@@ -70,7 +70,7 @@
   .mascot { display: block; color: var(--mascot); overflow: visible; }
   .m-pupil { fill: var(--pupil, currentColor); transform: translate(var(--px), var(--py)); }
   .m-lid { transform-box: fill-box; transform-origin: 50% 0; transform: scaleY(var(--lid)); }
-  .brand .mascot { width: 17px; height: 26px; }
+  .brand .mascot { width: 15px; height: 23px; flex: none; }
   .bar nav { display: flex; align-items: center; gap: 22px; font-size: 14px; }
   .bar nav a.plain { text-decoration: none; color: var(--muted); }
   .bar nav a.plain:hover { color: var(--ink); }
@@ -89,13 +89,14 @@
     background: var(--faint); color: var(--muted); }
 
   /* Hero */
-  .hero { padding-top: 72px; padding-bottom: 40px; text-align: center; }
-  .hero-mascot { width: 76px; height: 118px; margin: 0 auto 26px; }
+  .hero { padding-top: 48px; padding-bottom: 40px; text-align: center; }
+  .hero-mascot { width: 62px; height: 96px; margin: 0 auto 24px; }
   .hero-mascot .mascot { width: 100%; height: 100%; }
+  .pill.beta { margin-top: 22px; }
   .js .hero-mascot { animation: rise 1s var(--ease) both; }
   @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
   .pill { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted);
-    border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; margin-bottom: 28px; }
+    border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; margin: 0; }
   .pill i { width: 7px; height: 7px; border-radius: 1px; background: var(--red); display: inline-block; }
   h1 { font: 400 clamp(40px, 7vw, 76px)/1.04 var(--serif); font-variation-settings: "SOFT" 50; letter-spacing: -.02em; margin: 0 auto 22px; max-width: 14ch; }
   .lede { font-size: clamp(17px, 2vw, 19px); color: var(--muted); max-width: 37em; margin: 0 auto 34px; }
@@ -130,9 +131,8 @@
   @keyframes caret { 50% { opacity: 0; } }
   .msg-agent { font-size: 15.5px; max-width: 64ch; min-width: 0; }
   .who { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
-  .who .mascot { width: 14px; height: 22px; }
-  .tour.thinking .who .mascot { animation: glance 1.5s var(--ease-io) infinite; }
-  @keyframes glance { 0%, 100% { --px: 0px; } 22%, 38% { --px: -70px; } 60%, 76% { --px: 70px; } }
+  .tour.thinking .skill i { animation: pulse 1.4s var(--ease-io) infinite; }
+  @keyframes pulse { 50% { opacity: .2; transform: scale(.7); } }
   .skill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px 2px 7px; }
   .skill i { width: 6px; height: 6px; border-radius: 1px; background: var(--red); }
   .skill b { font-weight: 400; }
@@ -225,7 +225,7 @@
     html { scroll-behavior: auto; }
     .w, .step, .hl, .gap, .scene, .window, .msg-agent p.q { transition: none !important; filter: none !important; }
     .js .hero-mascot { animation: none; }
-    .tour.typing-now .caret, .tour.thinking .who .mascot { animation: none; }
+    .tour.typing-now .caret, .tour.thinking .skill i { animation: none; }
   }
 </style>
 </head>
@@ -244,7 +244,7 @@
 
 <header class="top" id="top">
   <div class="wrap bar">
-    <a class="brand" href="#"><svg class="mascot " viewBox="356 215 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg>policymemo.ai</a>
+    <a class="brand" href="#"><svg class="mascot" viewBox="0 0 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg>policymemo.ai</a>
     <nav aria-label="Main">
       <a class="plain" href="#demo">See it work</a>
       <a class="plain" href="#what">What it does</a>
@@ -256,8 +256,7 @@
 
 <main>
   <section class="hero wrap">
-    <div class="hero-mascot" id="hero-mascot"><svg class="mascot " viewBox="356 215 566 877" role="img" aria-label="The policymemo.ai mascot, a page with one watchful eye"><use href="#pm-mascot"/></svg></div>
-    <div class="pill"><i></i> Private beta · version 0.1.2</div>
+    <div class="hero-mascot" id="hero-mascot"><svg class="mascot" viewBox="0 0 566 877" role="img" aria-label="The policymemo.ai mascot, a page with one watchful eye"><use href="#pm-mascot"/></svg></div>
     <h1>Policy analysis that questions the problem first.</h1>
     <p class="lede">policymemo.ai is a set of skills for Claude that works through a public policy problem with you: what the problem is, what you actually know, which options are real and what each one costs. It asks one question at a time, and where a figure is missing it leaves a marked gap.</p>
     <div class="cta">
@@ -267,7 +266,7 @@
       </a>
       <span class="btn ghost" aria-disabled="true">Copilot <span class="soon">Soon</span></span>
     </div>
-    <p class="fine">Free. One zip, 10 skills. Needs a paid Claude plan, and installs in about 2 minutes.</p>
+    <div class="pill beta"><i></i> Beta · version 0.1.2</div>
   </section>
 
   <section class="demo wrap" id="demo" aria-labelledby="demo-title">
@@ -293,7 +292,7 @@
               <div class="bubble step" data-s="s0-ask"><span class="typed" data-text="Can you look at this problem statement?"></span><span class="caret" aria-hidden="true"></span></div>
             </div>
             <div class="msg-agent">
-              <div class="who step" data-s="s0-who"><svg class="mascot " viewBox="356 215 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg> policymemo.ai <span class="skill"><i aria-hidden="true"></i><b>using problem</b></span></div>
+              <div class="who step" data-s="s0-who"><span class="skill"><i aria-hidden="true"></i><b>using problem</b></span></div>
               <p class="stream">Your problem statement describes the missing fix, not the problem. “Applicants receive little or no confirmation that their documents have been received” defines the problem as the absence of a receipt confirmation, which pre-commits you to sending one, and quietly rules out everything else: closing the two-week gap before a case exists, publishing an expected timescale, telling people whether they may continue in the meantime, or reducing the wait itself.</p>
               <p class="stream">One thing buried in your own data cuts against the fix as stated: you note it can be around <span class="hl" data-trigger>two weeks between posting and case creation.</span> If a confirmation fires on case creation, it arrives at roughly the same moment as the three-week calling spike you’ve identified.</p>
               <p class="stream q">So: if sending a receipt confirmation were off the table entirely, what is the condition you would still be trying to change?</p>
@@ -305,7 +304,7 @@
               <div class="bubble step" data-s="s1-ask"><span class="typed" data-text="Provide a recommended adjustment to the problem statement."></span><span class="caret" aria-hidden="true"></span></div>
             </div>
             <div class="msg-agent">
-              <div class="who step" data-s="s1-who"><svg class="mascot " viewBox="356 215 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg> policymemo.ai <span class="skill"><i aria-hidden="true"></i><b>using problem</b></span></div>
+              <div class="who step" data-s="s1-who"><span class="skill"><i aria-hidden="true"></i><b>using problem</b></span></div>
               <dl class="labels">
                 <div class="step" data-s="s1-l1"><dt>Problem</dt><dd>Applicants cannot establish whether they may lawfully continue, or when they will know.</dd></div>
                 <div class="step" data-s="s1-l2"><dt>Mechanism</dt><dd>No acknowledgement on receipt; roughly two weeks between posting and case creation; no published expected timescale.</dd></div>
