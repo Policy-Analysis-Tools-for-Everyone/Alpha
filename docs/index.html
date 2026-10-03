@@ -125,6 +125,19 @@
   .skills li { display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 8px; color: var(--muted);
     transition: background-color .6s var(--ease), color .6s var(--ease); }
   .tour.skill-on .skills .sk-problem { background: var(--accent-soft); color: var(--ink); }
+  .crumb .cr-m, .tour.scene-2 .crumb .cr-p { display: none; }
+  .tour.scene-2 .crumb .cr-m { display: inline; }
+  .tour.skill-story .skills .sk-story { background: var(--accent-soft); color: var(--ink); }
+  .tour.skill-story .skills .sk-story .dot { background: var(--red); }
+  .memo { margin-top: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px 8px;
+    box-shadow: 0 1px 2px rgba(30,25,10,.04), 0 14px 30px -18px rgba(30,25,10,.22); font-size: 14.5px; }
+  .memo-h { display: grid; gap: 4px; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .memo-t { font: 500 19px/1.25 var(--serif); color: var(--ink); }
+  .memo-m { font-size: 12px; color: var(--muted); }
+  .memo section { margin-bottom: 14px; }
+  .memo h4 { margin: 0 0 3px; font: 600 11.5px/1.4 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .memo p { margin: 0; }
+  @media (max-width: 480px) { .memo { padding: 16px 16px 4px; font-size: 13.5px; } .memo-t { font-size: 17px; } }
   .ghost { display: flex; align-items: center; gap: 10px; padding: 8px 10px; }
   .ghost i { width: 12px; height: 12px; border-radius: 3px; background: var(--faint); flex: none; }
   .ghost b { height: 7px; border-radius: 4px; background: var(--faint); }
@@ -148,7 +161,7 @@
   .chat > .scenes { display: grid; }
   .scene { grid-area: 1 / 1; display: grid; align-content: start; gap: 22px; min-width: 0;
     transition: opacity .5s var(--ease) .12s, filter .6s var(--ease) .12s, visibility 0s; }
-  .tour:not(.scene-0) .scene[data-scene="0"], .tour:not(.scene-1) .scene[data-scene="1"] {
+  .tour:not(.scene-0) .scene[data-scene="0"], .tour:not(.scene-1) .scene[data-scene="1"], .tour:not(.scene-2) .scene[data-scene="2"] {
     opacity: 0; filter: blur(8px); visibility: hidden; pointer-events: none;
     transition: opacity .35s var(--ease-io), filter .35s var(--ease-io), visibility 0s .35s; }
   .msg-user { justify-self: end; max-width: 92%; min-width: 0; display: grid; gap: 10px; justify-items: end; }
@@ -360,7 +373,7 @@
           <span class="label">Claude, with policymemo.ai installed</span>
           <button class="replay" type="button" id="replay" hidden>Replay</button>
         </div>
-        <div class="app"><aside class="side" aria-hidden="true"><span class="row strong"><svg class="ui" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3z"/></svg>New chat</span><span class="row"><svg class="ui" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10zM14 14l-3.5-3.5"/></svg>Search</span><span class="side-h">Skills</span><ul class="skills"><li class="sk-problem"><i class="dot"></i>Problem</li><li class="sk-stakeholders"><i class="dot"></i>Stakeholders</li><li class="sk-evidence"><i class="dot"></i>Evidence</li><li class="sk-options"><i class="dot"></i>Options</li><li class="sk-criteria"><i class="dot"></i>Criteria</li><li class="sk-uncertainty"><i class="dot"></i>Outcomes</li><li class="sk-tradeoffs"><i class="dot"></i>Trade-offs</li><li class="sk-decision"><i class="dot"></i>Decide</li><li class="sk-story"><i class="dot"></i>Story</li></ul><span class="side-h">Projects</span><span class="ghost"><i></i><b style="width:62%"></b></span><span class="ghost"><i></i><b style="width:48%"></b></span><span class="ghost"><i></i><b style="width:70%"></b></span><span class="side-h">Recents</span><span class="ghost"><i></i><b style="width:74%"></b></span><span class="ghost"><i></i><b style="width:56%"></b></span><span class="ghost"><i></i><b style="width:66%"></b></span><span class="ghost"><i></i><b style="width:44%"></b></span></aside><div class="main"><div class="toolbar" aria-hidden="true"><span class="crumb">Receipt confirmation<i>/</i><b>Problem</b></span><span class="tb-r"><span class="share">Share</span><span class="more">···</span></span></div>
+        <div class="app"><aside class="side" aria-hidden="true"><span class="row strong"><svg class="ui" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3z"/></svg>New chat</span><span class="row"><svg class="ui" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10zM14 14l-3.5-3.5"/></svg>Search</span><span class="side-h">Skills</span><ul class="skills"><li class="sk-problem"><i class="dot"></i>Problem</li><li class="sk-stakeholders"><i class="dot"></i>Stakeholders</li><li class="sk-evidence"><i class="dot"></i>Evidence</li><li class="sk-options"><i class="dot"></i>Options</li><li class="sk-criteria"><i class="dot"></i>Criteria</li><li class="sk-uncertainty"><i class="dot"></i>Outcomes</li><li class="sk-tradeoffs"><i class="dot"></i>Trade-offs</li><li class="sk-decision"><i class="dot"></i>Decide</li><li class="sk-story"><i class="dot"></i>Story</li></ul><span class="side-h">Projects</span><span class="ghost"><i></i><b style="width:62%"></b></span><span class="ghost"><i></i><b style="width:48%"></b></span><span class="ghost"><i></i><b style="width:70%"></b></span><span class="side-h">Recents</span><span class="ghost"><i></i><b style="width:74%"></b></span><span class="ghost"><i></i><b style="width:56%"></b></span><span class="ghost"><i></i><b style="width:66%"></b></span><span class="ghost"><i></i><b style="width:44%"></b></span></aside><div class="main"><div class="toolbar" aria-hidden="true"><span class="crumb">Receipt confirmation<i>/</i><b class="cr-p">Problem</b><b class="cr-m">Memo</b></span><span class="tb-r"><span class="share">Share</span><span class="more">···</span></span></div>
         <div class="chat" id="chat"><div class="scenes">
           <div class="scene" data-scene="0">
             <div class="msg-user">
@@ -404,6 +417,26 @@
               </div>
             </div>
           </div>
+          <div class="scene" data-scene="2">
+            <div class="msg-user">
+              <div class="bubble step" data-s="s2-ask"><span class="typed" data-text="Write this up as a one-page memo for the service director."></span><span class="caret" aria-hidden="true"></span></div>
+            </div>
+            <div class="msg-agent">
+              <svg class="mascot avatar step" data-s="s2-who" viewBox="0 0 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg>
+              <div class="reply">
+                <div class="who step" data-s="s2-who"><span class="skill"><i aria-hidden="true"></i><b>using story</b></span></div>
+                <p class="stream">Here is a one-page memo built from what we’ve established. One figure is still missing, so I’ve left it marked.</p>
+                <article class="memo step" data-s="s2-memo">
+                  <header class="memo-h"><span class="memo-t">Paper renewals: what applicants are waiting to know</span><span class="memo-m">For the service director · Example output</span></header>
+                  <section class="step" data-s="s2-m1"><h4>Issue</h4><p>Applicants who post a renewal cannot find out whether they may lawfully continue while it is assessed, or when they will know. About 1 call in 6 to the contact centre is someone checking their forms arrived.</p></section>
+                  <section class="step" data-s="s2-m2"><h4>Analysis</h4><p>The plan treats a missing receipt letter as the problem. The larger driver is the wait: around 2 weeks between posting and a case existing, and no published timescale. A confirmation sent when the case is created would land at about the same time as the 3-week peak in calls.</p></section>
+                  <section class="step" data-s="s2-m3"><h4>Trade-off</h4><p>The framing with the strongest public-value case, shortening the wait, is the one this team can least deliver and least easily authorise. A receipt message is cheap and should reduce calls, but call volume cannot show whether people are still waiting without an answer.</p></section>
+                  <section class="step" data-s="s2-m4"><h4>Decision needed</h4><p>Choose which problem this work is for: the applicant’s uncertainty, or the contact centre’s load. Each needs its own measure, and the wait itself is still <span class="gap">[add magnitude: time from posting to decision, from case records]</span>.</p></section>
+                  <section class="step" data-s="s2-m5"><h4>Before deciding</h4><p>Check whether the call sampling separates callers asking if their forms arrived from callers asking whether they can carry on.</p></section>
+                </article>
+              </div>
+            </div>
+          </div>
         </div></div>
         </div></div>
       </div>
@@ -411,6 +444,7 @@
         <div class="chips" role="group" aria-label="Demo scenes">
           <button class="chip" type="button" data-go="0" aria-pressed="true"><span class="n">1</span>The pushback<span class="bar"></span></button>
           <button class="chip" type="button" data-go="1" aria-pressed="false"><span class="n">2</span>The structure<span class="bar"></span></button>
+          <button class="chip" type="button" data-go="2" aria-pressed="false"><span class="n">3</span>The memo<span class="bar"></span></button>
         </div>
         <p class="provenance">From a real session. Details changed.</p>
         <p class="sr" role="status" id="announce"></p>
@@ -528,7 +562,11 @@
       typing: { at: 950, dur: 1450 }, sent: 2450, thinkingEnd: 3900, stream: 3900, after: [], tail: 3800 },
     { label: 'The structure',
       steps: [[0, 's1-ask'], [2150, 's1-who'], [2150, 'thinking'], [2150, 'skill-on'], [3200, 's1-l1'], [3520, 's1-l2'], [3840, 's1-l3'], [4160, 's1-l4']],
-      typing: { at: 250, dur: 1650 }, sent: 2000, thinkingEnd: 3200, stream: 4900, after: [[450, 's1-rev'], [1500, 'gap-on']], tail: 4000 }
+      typing: { at: 250, dur: 1650 }, sent: 2000, thinkingEnd: 3200, stream: 4900, after: [[450, 's1-rev'], [1500, 'gap-on']], tail: 4000 },
+    { label: 'The memo',
+      steps: [[0, 's2-ask'], [2150, 's2-who'], [2150, 'thinking'], [2150, 'skill-story']],
+      typing: { at: 250, dur: 1750 }, sent: 2050, thinkingEnd: 3300, stream: 3300,
+      after: [[350, 's2-memo'], [900, 's2-m1'], [1700, 's2-m2'], [2600, 's2-m3'], [3500, 's2-m4'], [4300, 'gap-on'], [4700, 's2-m5']], tail: 4200 }
   ];
 
   function wordDelay(word) {
@@ -576,14 +614,14 @@
     sc.dur = Math.max(sc.streamEnd, lastStep) + sc.tail;
   });
 
-  var FLAGS = ['thinking', 'gap-on', 'hl-on', 'typing-now', 'skill-on'];
+  var FLAGS = ['thinking', 'gap-on', 'hl-on', 'typing-now', 'skill-on', 'skill-story'];
   var current = 0, elapsed = 0, playing = false, inView = false, holding = 0, rafId = null, lastTs = null;
   var followMode = false, followTarget = 0;
 
   function render(i, t) {
     var sc = SCENES[i];
     if (!root.classList.contains('scene-' + i)) {
-      root.classList.remove('scene-0', 'scene-1');
+      root.classList.remove('scene-0', 'scene-1', 'scene-2');
       root.classList.add('scene-' + i);
     }
     FLAGS.forEach(function (c) { root.classList.remove(c); });
@@ -678,8 +716,9 @@
     chat.style.minHeight = '0px'; chat.style.height = '';
     var max = 0;
     SCENES.forEach(function (sc, i) { render(i, Infinity); max = Math.max(max, chat.getBoundingClientRect().height); });
-    var cap = Math.min(600, Math.round(window.innerHeight * 0.58));
-    if (window.innerWidth <= 560 && max > cap) {
+    // Phones get a short window; wider screens cap at 680px so the long memo scene scrolls inside it.
+    var cap = window.innerWidth <= 560 ? Math.min(600, Math.round(window.innerHeight * 0.58)) : 680;
+    if (max > cap) {
       followMode = true; chat.classList.add('follow'); chat.style.height = cap + 'px';
     } else {
       chat.style.minHeight = Math.ceil(max) + 'px';
