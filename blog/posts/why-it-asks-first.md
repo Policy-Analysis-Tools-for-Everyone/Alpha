@@ -1,9 +1,8 @@
 ---
 title: Why policymemo.ai asks before it writes
-date: 2026-10-06
+date: 2026-10-03
 category: why
 summary: A general AI model will write you a problem statement on request. That is the problem policymemo.ai was built to fix.
-draft: true
 ---
 
 The first time I ran policymemo.ai on real work, I gave it a plan I had written for a service that processes paper renewals. I thought the problem was obvious. Applicants posted their forms, heard nothing, and rang the contact centre to check they had arrived. About 1 call in 6 was someone asking exactly that. So the plan proposed a receipt letter.
