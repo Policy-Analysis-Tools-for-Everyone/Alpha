@@ -368,11 +368,13 @@ carries the distilled part it actually needs and calls nothing at runtime.
 `outcomes` needs the outside view and a rule for turning an ungrounded forecast
 into a learning question; it does not need the rest of the appraisal method.
 
-**The writing layer**, `reference/writing/anti-ai-writing-style.md`, is the shared
-output-quality specification for substantial prose. `house-rules` carries the
-universal subset; `story` applies it hardest. It shapes writing without changing
-evidence, analysis or necessary technical terms. It is a maintainer reference and
-is not loaded at runtime.
+**The writing layer**, `skills/story/writing.md`, is the output-quality
+specification for everything the agent writes. It ships with `story`, which
+applies it in full to documents; `house-rules` carries the subset that holds in
+every reply. It separates the agent's register in a reply from the user's
+register in a document they send on, and it shapes writing without changing
+evidence, analysis or necessary technical terms. It carries no individual's
+personal style.
 
 **Sources and domain material.** `reference/sources/README.md` lists every source
 the method layer cites. `reference/domain/` holds domain-specific material. No

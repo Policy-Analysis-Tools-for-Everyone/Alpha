@@ -1,6 +1,6 @@
 # Storytelling - Method Guidance
 
-> **Sources and provenance:** This method keeps Eugene Bardach as the main storytelling spine and adds the UCL Personal Policy Problem memo as a specific output format. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Eight - used for the Grandma Bessie test, audience, medium, narrative structure, serious alternatives, recommendation, objections, compression, background discipline and the distinction between doing analysis and telling its story. **[P]** UCL Personal Policy Problem instructions, adapted from Policy Design and Delivery at HKS - used as a format contract for a concise professional policy memo containing Issue, Stakeholders, Analysis, Criteria, Options, Recommendation, Risks and Uncertainties, and Implementation. The UCL instructions say the memo will typically use around 2 pages, with endnotes outside the page count, and may be accompanied by a 1-page cover letter in the course setting. (A copy is held at `../../sources/ucl-ppc-one-pager-instructions.pdf`; this file is the canonical method, and PPC memo mode paraphrases the format rather than reproducing it, so skills cite this file rather than the PDF.) **[V]** `../../writing/anti-ai-writing-style.md` - used as the separate output-quality layer for voice, rhythm, formatting and known AI writing habits. **Purpose:** Operating instructions for an agent that helps a user *turn mature policy reasoning into something another person can understand, use and decide from*. The analytical methods stay upstream. This method decides what the audience needs to see, how the reasoning should be ordered, and which output format fits the task.
+> **Sources and provenance:** This method keeps Eugene Bardach as the main storytelling spine and adds the UCL Personal Policy Problem memo as a specific output format. **[B]** Eugene Bardach, *A Practical Guide for Policy Analysis: The Eightfold Path to More Effective Problem Solving*, Fourth Edition, Step Eight - used for the Grandma Bessie test, audience, medium, narrative structure, serious alternatives, recommendation, objections, compression, background discipline and the distinction between doing analysis and telling its story. **[P]** UCL Personal Policy Problem instructions, adapted from Policy Design and Delivery at HKS - used as a format contract for a concise professional policy memo containing Issue, Stakeholders, Analysis, Criteria, Options, Recommendation, Risks and Uncertainties, and Implementation. The UCL instructions say the memo will typically use around 2 pages, with endnotes outside the page count, and may be accompanied by a 1-page cover letter in the course setting. (A copy is held at `../../sources/ucl-ppc-one-pager-instructions.pdf`; this file is the canonical method, and PPC memo mode paraphrases the format rather than reproducing it, so skills cite this file rather than the PDF.) **[V]** `../../../skills/story/writing.md` - used as the separate output-quality layer for register, rhythm, formatting and known AI writing habits. **Purpose:** Operating instructions for an agent that helps a user *turn mature policy reasoning into something another person can understand, use and decide from*. The analytical methods stay upstream. This method decides what the audience needs to see, how the reasoning should be ordered, and which output format fits the task.
 
 ## How to use this document
 
@@ -598,16 +598,15 @@ Do not use a matrix because policy memos are expected to look analytical.
 
 # Part 7 - Apply the writing-quality layer
 
-## 32. Apply `../../writing/anti-ai-writing-style.md` after the policy structure is sound [V]
+## 32. Apply `../../../skills/story/writing.md` after the policy structure is sound [V]
 
-The writing file is the source of truth for voice and surface quality.
+The writing file is the source of truth for register and surface quality.
 
 It requires, among other things:
 
-- short paragraphs
-- direct language
-- active voice
-- natural contractions
+- the document in the user's organisation's register, not the agent's
+- paragraph length set by the format, never padded
+- direct language and active voice, with the real subject
 - numbers as digits
 - no em dash
 - varied sentence length
@@ -615,7 +614,7 @@ It requires, among other things:
 - concrete detail
 - no mechanical transitions
 - no AI filler or hype
-- no negative reframe constructions in published prose
+- contrasts only against a real position, never against a framing nobody holds
 - no meta commentary about what the writer is about to say [V]
 
 Do not copy the full style rules into this method.
@@ -755,7 +754,7 @@ Writing is the final test of the analytical chain.
 14. **Uncertainty:** What could materially change the recommendation?
 15. **Action:** What happens next if the reader agrees?
 16. **Compression:** What can be cut without weakening the decision?
-17. **Voice check:** Apply `../../writing/anti-ai-writing-style.md`.
+17. **Writing check:** Apply `../../../skills/story/writing.md`.
 18. **Upstream check:** Does any weak section reveal unfinished analysis?
 
 → **Core story:** `[issue]`. The decision is `[choice]`. The serious options are `[options]`. The main difference is `[projected outcomes / trade-off]`. The current recommendation is `[option]` because `[decisive reason]`. The result should be reconsidered if `[material uncertainty / condition]`. If agreed, `[next action]`.
@@ -1018,7 +1017,7 @@ It is not a replacement for:
 
 ## Writing style
 
-`../../writing/anti-ai-writing-style.md` owns the voice and surface rules.
+`../../../skills/story/writing.md` owns the register and surface rules.
 
 This method tells the agent **when to apply them**.
 
