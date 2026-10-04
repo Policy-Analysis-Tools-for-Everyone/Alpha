@@ -122,7 +122,7 @@ def page(title, description, body, css, home, depth_note=""):
     <nav aria-label="Main">
       <a class="plain" href="{home}#what">What it does</a>
       <a class="plain keep" href="{home}blog/" aria-current="page" data-latest="{LATEST}">Notes</a>
-      <a class="plain" href="{FEEDBACK}">Feedback</a>
+      <a class="plain keep" href="{FEEDBACK}">Feedback</a>
       <a class="btn primary small" href="{DOWNLOAD}">Download</a>
     </nav>
   </div>
