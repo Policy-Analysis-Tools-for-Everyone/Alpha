@@ -16,7 +16,8 @@ knowledge files, not loaded skills). A failure on a port can come from any of th
 Run these in order. Each stage is cheap and stops a wasted run at the next.
 
 1. **Install check.** Follow the [install page](https://policymemo.ai/install/) exactly, from the download onwards. Note anything about the download or unzipping that would confuse someone new to it. Record
-   whether the instructions saved whole, and whether knowledge upload was available.
+   whether the instructions saved whole, and on Copilot whether skills, knowledge
+   upload, both or neither were available.
    On Gemini, record whether the full instructions held or the fallback was needed.
 2. **Smoke test.** Open with each of the 3 README openings, in fresh chats. Check the
    things the instructions carry directly: 1 question at a time, no document as a
@@ -30,10 +31,10 @@ Run these in order. Each stage is cheap and stops a wasted run at the next.
      W4 or W5 for this: `core.md` now carries their rules too
    - `evals/wiki/prompts/stakeholder-sequencing.md` (the `stakeholders` file)
 
-   Run each twice: with the knowledge files, and on an agent built from the
-   instructions alone. If the 2 runs don't differ, the files aren't being reached.
-   That is the most important single result for the free Copilot tier, where
-   uploads may be unavailable.
+   Run each on an agent with the skills (Copilot) or knowledge files, and on one
+   built from the instructions alone. If the runs don't differ, the method isn't
+   being reached. On Copilot, also run a trade-offs case: it lives inside
+   `policymemo-decide`, so it shows whether a supporting file is read at all.
 4. **Regression.** Run `evals/tests/regression-problem-first-session.md` and
    `evals/tests/regression-writing-and-transfer.md` as written, changing only the
    surface.
@@ -43,7 +44,7 @@ Run these in order. Each stage is cheap and stops a wasted run at the next.
 
 Record port runs in `evals/sessions/` like any other session, with these fields added
 to the header: surface (Copilot or Gemini), the build date and house-rules hash from
-the first lines of `1 Paste into Instructions.txt`, whether knowledge files were present, and on
+the first lines of `1 Paste into Instructions.txt`, whether skills or knowledge files were present, and on
 Gemini whether the fallback instructions were used.
 
 A finding that reproduces on Claude belongs to the skills. A finding that appears only

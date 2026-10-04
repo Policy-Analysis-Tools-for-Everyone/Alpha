@@ -7,8 +7,10 @@ In short:
 1. In Copilot Chat, click Create agent, then the Configure tab.
 2. Open "1 Paste into Instructions.txt", select everything, copy it, and paste it
    into the Instructions box.
-3. Under Knowledge, click Upload files and choose all 10 files in the
-   "2 Upload these 10 files" folder. Do not rename them.
+3. Under Skills, upload each of the 8 zip files in the "2 Upload these 8 skills"
+   folder, one at a time. Do not unzip them and do not rename them.
+   No Skills option? Under Knowledge, upload the 10 files in
+   "3 No Skills option - upload these as knowledge instead" instead. No upload option at all? Skip this step.
 4. Click Create.
 
 Cannot upload the files? You may be looking inside the zip without having

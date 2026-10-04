@@ -118,13 +118,13 @@
 
   <h3 id="copilot-needs">What you need</h3>
   <ul class="needs">
-    <li>A work or university Microsoft account with Copilot Chat. The free tier included with most Microsoft 365 accounts is enough. On the free tier you cannot upload the knowledge files, so the agent runs on its instructions alone. That works, with less depth.</li>
+    <li>A work or university Microsoft account with Copilot Chat. The free tier included with most Microsoft 365 accounts is enough. Depending on your account, you add the detailed method as skills, as knowledge files, or not at all. The agent works in every case, with less depth the less it has.</li>
     <li>Permission to create agents. Open Copilot Chat and look for <b>Create agent</b> (sometimes <b>New agent</b>) in the left-hand panel. If it is not there, your organisation has switched agent creation off and none of this will work. Ask your IT service.</li>
     <li>No admin rights.</li>
   </ul>
   <div class="get">
     <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/policymemo-ai-copilot.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download for Copilot</a>
-    <p><b>Unzip it first</b>, unlike the Claude version. On Windows, right-click the zip and choose <b>Extract All</b>: opening it with a double-click is not enough, because Copilot cannot upload files from inside a zip. On a Mac, double-click it. You get a folder with the files numbered in the order you use them.</p>
+    <p><b>Unzip it first</b>, unlike the Claude version. On Windows, right-click the zip and choose <b>Extract All</b>: opening it with a double-click is not enough, because Copilot cannot upload files from inside a zip. On a Mac, double-click it. You get a folder with the files numbered in the order you use them. Inside it, leave the 8 skill zips zipped: Copilot wants those exactly as they are.</p>
   </div>
 
   <h3 id="copilot-steps">Build the agent</h3>
@@ -137,11 +137,12 @@
       <span class="val"><code>Works through a public policy problem with you: defines it, tests the evidence, builds and weighs options, decides and writes it up. Challenges weak framing and refuses to invent figures.</code><button type="button" class="copy" data-copy="Works through a public policy problem with you: defines it, tests the evidence, builds and weighs options, decides and writes it up. Challenges weak framing and refuses to invent figures.">Copy</button></span></li>
     <li><b>Instructions:</b> open <code class="inline">1 Paste into Instructions.txt</code>, select everything, copy and paste it into the box. It is about 7,800 characters, and the limit is 8,000.
       <span class="sm">Scroll to the end of the box to check it pasted whole. The last words should be “is still flagged in any document I produced.” If they are not, clear the box and paste again.</span></li>
-    <li><b>Knowledge:</b> click <b>Upload files</b>, open the <code class="inline">2 Upload these 10 files</code> folder, select all 10 and upload them. Do not rename them: the instructions find them by name.
-      <span class="sm">No <b>Upload files</b> option? That is normal on the free Copilot Chat tier: uploading files needs a paid Microsoft 365 Copilot licence. Skip this step. The agent works from the instructions alone, with less depth. Do not add web links instead: Copilot searches them through Bing rather than reading them, so they will not carry the method.</span></li>
+    <li><b>Skills:</b> in the <b>Skills</b> section, upload each of the 8 zip files in the <code class="inline">2 Upload these 8 skills</code> folder, one at a time. Do not unzip them and do not rename them.
+      <span class="sm">Skills carry the detailed method for each part of the analysis, and Copilot loads the right one as the work moves on. Trade-offs travels inside <code class="inline">policymemo-decide</code>, because Copilot allows 8 skills per agent.</span>
+      <span class="sm">No <b>Skills</b> section? Under <b>Knowledge</b>, click <b>Upload files</b> and upload the 10 files in <code class="inline">3 No Skills option - upload these as knowledge instead</code>. No upload option there either? That is normal on some free accounts. Skip this step: the agent works from the instructions alone, with less depth. Do not add web links instead: Copilot searches them through Bing rather than reading them, so they will not carry the method.</span></li>
     <li><b>Web search:</b> switch it off for now. The Claude version does not search the web unless asked, and keeping them alike makes reports comparable.</li>
     <li><b>Other settings:</b> switch off <b>Create documents, charts and code</b>, <b>Create images</b> and <b>Discourage model knowledge</b>.
-      <span class="sm">policymemo.ai writes memos as text in the chat, so it needs neither of the first 2. Discourage model knowledge would limit the agent to the knowledge files, which hold the method but nothing about your policy area, so it would have nothing to apply the method to. The instructions handle the risk this setting guards against: the agent must label anything it adds from its own knowledge and must never invent a figure.</span></li>
+      <span class="sm">policymemo.ai writes memos as text in the chat, so it needs neither of the first 2. Discourage model knowledge would limit the agent to the skills and files you added, which hold the method but nothing about your policy area, so it would have nothing to apply the method to. The instructions handle the risk this setting guards against: the agent must label anything it adds from its own knowledge and must never invent a figure.</span></li>
     <li><b>Starter prompts:</b> add these, title then message.
       <ul class="prompts">
         <li><b>Find the real problem</b><span>I think we've already jumped to a solution. Help me work out what the actual problem is.</span><button type="button" class="copy" data-copy="I think we've already jumped to a solution. Help me work out what the actual problem is.">Copy</button></li>
@@ -170,20 +171,20 @@
     <div><p>Clear the box and paste again, then check the last words are “is still flagged in any document I produced.” The full text fits inside Copilot’s 8,000-character limit.</p></div>
   </details>
   <details>
-    <summary>There is no Upload files option under Knowledge</summary>
-    <div><p>Uploading files to an agent needs a paid Microsoft 365 Copilot licence, or an organisation that pays for Copilot by use. Most free Copilot Chat accounts, including most student accounts, only see the option to add web links. You have not done anything wrong. Skip the knowledge step: the instructions carry the core rules, and the agent works from them alone.</p><p>Linking to the knowledge files on GitHub does not work as a substitute. Copilot only searches linked sites through Bing, it accepts at most 4 links, and it gets snippets rather than whole files.</p></div>
+    <summary>There is no Skills section, or no Upload files option under Knowledge</summary>
+    <div><p>What you can add depends on your account and your organisation's settings. Skills are a newer Copilot feature that not every organisation has switched on. Uploading knowledge files needs a paid Microsoft 365 Copilot licence, or an organisation that pays for Copilot by use. Use whichever you have. If you have neither, you have not done anything wrong: skip the step, because the instructions carry the core rules and the agent works from them alone.</p><p>Linking to the knowledge files on GitHub does not work as a substitute. Copilot only searches linked sites through Bing, it accepts at most 4 links, and it gets snippets rather than whole files.</p></div>
   </details>
   <details>
     <summary>It ignores the detailed method</summary>
-    <div><p>The core rules are in the instructions and always apply. If you uploaded the knowledge files, the method for each part of the analysis is in them, and Copilot reads them when it searches, which it may not do every time. Asking it to use the relevant file usually helps.</p></div>
+    <div><p>The core rules are in the instructions and always apply. The method for each part of the analysis is in the skills or knowledge files you added. Copilot loads a skill when the work matches it, and searches knowledge files only some of the time. Naming the job usually helps, for example "help me weigh the evidence".</p></div>
   </details>
   <details>
     <summary>The upload cannot find the files, or will not take them</summary>
-    <div><p>You are probably looking inside the zip without having unzipped it. Close the upload window, unzip the download as described above, and upload from the folder that appears.</p></div>
+    <div><p>You are probably looking inside the zip without having unzipped it. Close the upload window, unzip the download as described above, and upload from the folder that appears.</p><p>For skills, upload each <code class="inline">policymemo-</code> zip file itself. A skill that has been unzipped into a folder will not upload.</p></div>
   </details>
   <details>
     <summary>policymemo.ai has been updated</summary>
-    <div><p>Updates are not automatic. Download the new zip, paste the new instructions and replace the knowledge files.</p><p><a href="mailto:jack@civicworks.co?subject=Tell%20me%20about%20policymemo.ai%20updates">Email me</a> if you'd like to hear when there's a new version.</p></div>
+    <div><p>Updates are not automatic. Download the new zip, paste the new instructions and replace the skills or knowledge files.</p><p><a href="mailto:jack@civicworks.co?subject=Tell%20me%20about%20policymemo.ai%20updates">Email me</a> if you'd like to hear when there's a new version.</p></div>
   </details>
 </section>
 

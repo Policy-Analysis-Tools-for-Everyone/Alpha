@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import hashlib
+import io
 import json
 import re
 import shutil
@@ -40,8 +41,33 @@ ZIP_NAME = "policymemo-ai-{surface}.zip"  # no folder inside: Extract All and Ar
 README_FILE = "0 Read me first.txt"
 INSTRUCTIONS_FILE = "1 Paste into Instructions.txt"
 KNOWLEDGE_DIR = "2 Upload these 10 files"
+SKILLS_DIR = "2 Upload these 8 skills"
+KNOWLEDGE_FALLBACK_DIR = "3 No Skills option - upload these as knowledge instead"
 FALLBACK_FILE = "If the instructions get cut short, paste this instead.txt"
 INSTALL_URL = "https://policymemo.ai/install/#{surface}"
+
+# Copilot custom skills (Agent Builder): at most 8 per agent, SKILL.md under
+# 20,000 characters, description at most 1,024. There are 9 capabilities, so one
+# travels inside another as a supporting file, the way story carries writing.md.
+SKILL_LIMIT = 8
+SKILL_CHARS = 20000
+SKILL_DESCRIPTION_CHARS = 1024
+SKILL_NAME = "policymemo-{name}"
+HOSTED = {"trade-offs": "decide"}  # capability -> skill that carries it
+HOSTED_NOTE = {
+    "trade-offs": (
+        "This skill also carries the trade-offs capability. When the job is weighing what "
+        "each serious option gains and gives up, how much, and what the choice turns on, "
+        "read `trade-offs.md` in this folder and follow it.\n\n"
+    ),
+}
+HOSTED_DESCRIPTION = {
+    "trade-offs": (
+        " Also use for trade-offs: comparing serious options by what each gains and gives "
+        "up and how much, finding what the choice turns on, and who loses inside a positive "
+        "total. That method is in trade-offs.md in this skill's folder."
+    ),
+}
 REVIEWED = PORTS / "house-rules.reviewed"
 OUT = ROOT / "dist" / "ports"
 
@@ -57,25 +83,31 @@ SURFACES = {
         "label": "Microsoft 365 Copilot",
         "hard_limit": 8000,   # Agent Builder field and declarative agent manifest
         "max_files": 20,      # embedded files uploaded from a device
+        "skills": True,
+        "knowledge_dir": KNOWLEDGE_FALLBACK_DIR,
         "readme": (
             "1. In Copilot Chat, click Create agent, then the Configure tab.\n"
             "2. Open \"{instructions}\", select everything, copy it, and paste it\n"
             "   into the Instructions box.\n"
-            "3. Under Knowledge, click Upload files and choose all 10 files in the\n"
-            "   \"{knowledge}\" folder. Do not rename them.\n"
+            "3. Under Skills, upload each of the 8 zip files in the \"{skills}\"\n"
+            "   folder, one at a time. Do not unzip them and do not rename them.\n"
+            "   No Skills option? Under Knowledge, upload the 10 files in\n"
+            "   \"{knowledge}\" instead. No upload option at all? Skip this step.\n"
             "4. Click Create.\n"
         ),
         "knowledge_how": (
-            'Your knowledge holds "policymemo 00 house rules", the full version of these '
-            'rules, and 1 file per capability, "policymemo 01 problem" to "policymemo 09 story". '
-            "When the analytical job changes, search your knowledge for that "
-            "capability's file and follow its moves."
+            "Each capability below is a skill named policymemo-<capability>; trade-offs "
+            'sits inside policymemo-decide. Without skills, your knowledge holds "policymemo '
+            '00 house rules", the full rules, and "policymemo 01 problem" to "policymemo 09 '
+            'story". When the job changes, use that capability\'s skill or file and follow its moves.'
         ),
     },
     "gemini": {
         "label": "Google Gemini",
         "hard_limit": None,   # Google publishes no limit for Gem instructions
         "max_files": 10,      # Gem knowledge files
+        "skills": False,
+        "knowledge_dir": KNOWLEDGE_DIR,
         "readme": (
             "1. At gemini.google.com, open Gems, then New Gem.\n"
             "2. Open \"{instructions}\", select everything, copy it, and paste it\n"
@@ -176,7 +208,17 @@ def parse_top_level(lines: list[str]) -> dict[str, str]:
 
 
 def read_skill(name: str) -> tuple[dict[str, str], str, str]:
-    """Return frontmatter, body and a hash covering SKILL.md and its supporting files.
+    """Return frontmatter, body with supporting files appended, and a hash of them all."""
+    fields, body, extras, sha = read_skill_parts(name)
+    for extra_name, text in extras:
+        body = (body.rstrip() + f"\n\n---\n\n# {extra_name}\n"
+                f"Where this file says `{extra_name}` in this folder, it means this section.\n\n"
+                + text + "\n")
+    return fields, body, sha
+
+
+def read_skill_parts(name: str) -> tuple[dict[str, str], str, list[tuple[str, str]], str]:
+    """Return frontmatter, SKILL.md body, supporting files and a hash covering them all.
 
     Supporting files are any other Markdown in the skill's folder, such as
     skills/story/writing.md. Surfaces without folders get them appended to the
@@ -200,34 +242,81 @@ def read_skill(name: str) -> tuple[dict[str, str], str, str]:
     body = "".join(lines[end + 1:])
     if name == "house-rules":
         # The review gate in ports/house-rules.reviewed is keyed to SKILL.md alone.
-        return fields, body, short_hash(raw)
-    extras = sorted(f for f in path.parent.glob("*.md") if f.name != "SKILL.md")
+        return fields, body, [], short_hash(raw)
     digest = raw
-    for extra in extras:
+    extras = []
+    for extra in sorted(f for f in path.parent.glob("*.md") if f.name != "SKILL.md"):
         data = extra.read_bytes()
         digest += data
-        text = data.decode("utf-8").replace("\r\n", "\n").strip()
-        body = (body.rstrip() + f"\n\n---\n\n# {extra.name}\n"
-                f"Where this file says `{extra.name}` in this folder, it means this section.\n\n"
-                + text + "\n")
+        extras.append((extra.name, data.decode("utf-8").replace("\r\n", "\n").strip()))
     for sub in sorted(d for d in path.parent.iterdir() if d.is_dir()):
         raise BuildError(f"skills/{name}/{sub.name}/: subfolders are not ported; "
-                         "update read_skill in this script")
-    return fields, body, short_hash(digest)
+                         "update read_skill_parts in this script")
+    return fields, body, extras, short_hash(digest)
+
+
+def port_body(name: str, body: str) -> str:
+    """A capability's SKILL.md body with provenance stripped and house-rules loading replaced."""
+    body = HTML_COMMENT.sub("", body).strip() + "\n"
+    body, replaced = LOAD_PARAGRAPH.subn(PORT_LOAD_PARAGRAPH, body, count=1)
+    if replaced != 1:
+        raise BuildError(
+            f"skills/{name}/SKILL.md: the house-rules loading paragraph was not found. "
+            "Update LOAD_PARAGRAPH in this script to match the new wording."
+        )
+    return body
+
+
+def copilot_skills() -> tuple[dict[str, bytes], list[dict], list[str]]:
+    """One zip per Copilot skill, each holding a policymemo-<name>/ folder."""
+    zips: dict[str, bytes] = {}
+    report: list[dict] = []
+    problems: list[str] = []
+    hosts: dict[str, list[str]] = {}
+    for guest, host in HOSTED.items():
+        hosts.setdefault(host, []).append(guest)
+    for name in CAPABILITIES:
+        if name in HOSTED:
+            continue
+        fields, body, extras, sha = read_skill_parts(name)
+        skill = SKILL_NAME.format(name=name)
+        description = " ".join(fields.get("description", "").split())
+        body = port_body(name, body)
+        files = {}
+        for guest in hosts.get(name, []):
+            g_fields, g_body, g_extras, g_sha = read_skill_parts(guest)
+            if g_extras:
+                raise BuildError(f"skills/{guest}/ has supporting files; hosting it needs them carried too")
+            body = body.replace(PORT_LOAD_PARAGRAPH, PORT_LOAD_PARAGRAPH + HOSTED_NOTE[guest], 1)
+            description += HOSTED_DESCRIPTION[guest]
+            files[f"{skill}/{guest}.md"] = port_body(guest, g_body)
+            sha = short_hash((sha + g_sha).encode())
+        for extra_name, text in extras:
+            files[f"{skill}/{extra_name}"] = HTML_COMMENT.sub("", text).strip() + "\n"
+        skill_md = (f"---\nname: {skill}\ndescription: {json.dumps(description)}\n---\n\n" + body)
+        files[f"{skill}/SKILL.md"] = skill_md
+        if len(skill_md) >= SKILL_CHARS:
+            problems.append(f"copilot skill {skill}: SKILL.md is {len(skill_md)} characters; "
+                            f"the limit is under {SKILL_CHARS}")
+        if len(description) > SKILL_DESCRIPTION_CHARS:
+            problems.append(f"copilot skill {skill}: description is {len(description)} characters; "
+                            f"the limit is {SKILL_DESCRIPTION_CHARS}")
+        zips[f"{skill}.zip"] = zip_bytes(files)
+        report.append({"skill": skill, "sha": sha, "skill_md_chars": len(skill_md),
+                       "description_chars": len(description),
+                       "files": sorted(f.split("/", 1)[1] for f in files)})
+    if len(zips) > SKILL_LIMIT:
+        problems.append(f"copilot: {len(zips)} skills; the limit is {SKILL_LIMIT}")
+    return zips, report, problems
 
 
 def knowledge_file(name: str, fields: dict[str, str], body: str, sha: str,
                    surface_label: str, build_date: str) -> str:
-    body = HTML_COMMENT.sub("", body).strip() + "\n"
     if name == "house-rules":
+        body = HTML_COMMENT.sub("", body).strip() + "\n"
         use = "Use: always. Your instructions carry the core of these rules; this file holds the full text."
     else:
-        body, replaced = LOAD_PARAGRAPH.subn(PORT_LOAD_PARAGRAPH, body, count=1)
-        if replaced != 1:
-            raise BuildError(
-                f"skills/{name}/SKILL.md: the house-rules loading paragraph was not found. "
-                "Update LOAD_PARAGRAPH in this script to match the new wording."
-            )
+        body = port_body(name, body)
         description = " ".join(fields.get("description", "").split())
         use = description if description.lower().startswith("use when") else "Use when: " + description
     header = (
@@ -261,8 +350,8 @@ def version() -> str:
 
 def readme(surface: str, house_sha: str, build_date: str) -> str:
     spec = SURFACES[surface]
-    steps = spec["readme"].format(instructions=INSTRUCTIONS_FILE, knowledge=KNOWLEDGE_DIR,
-                                  fallback=FALLBACK_FILE)
+    steps = spec["readme"].format(instructions=INSTRUCTIONS_FILE, knowledge=spec["knowledge_dir"],
+                                  skills=SKILLS_DIR, fallback=FALLBACK_FILE)
     return (
         f"policymemo.ai for {spec['label']}, beta {version()}\n\n"
         f"Full steps, with copy buttons and help if something goes wrong:\n"
@@ -306,12 +395,23 @@ def write_text(path: Path, text: str) -> None:
         handle.write(text)
 
 
-def write_zip(path: Path, files: dict[str, str]) -> None:
-    with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+def as_bytes(content: str | bytes) -> bytes:
+    return content if isinstance(content, bytes) else content.encode("utf-8")
+
+
+def zip_bytes(files: dict[str, str | bytes]) -> bytes:
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for arcname in sorted(files):
             info = zipfile.ZipInfo(arcname, date_time=FIXED_ZIP_TIME)
             info.compress_type = zipfile.ZIP_DEFLATED
-            archive.writestr(info, files[arcname].encode("utf-8"))
+            info.external_attr = 0o644 << 16
+            archive.writestr(info, as_bytes(files[arcname]))
+    return buffer.getvalue()
+
+
+def write_zip(path: Path, files: dict[str, str | bytes]) -> None:
+    path.write_bytes(zip_bytes(files))
 
 
 def build(check_only: bool, accept_house_rules: bool) -> int:
@@ -340,12 +440,12 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
 
     problems: list[str] = []
     notes: list[str] = []
-    outputs: dict[str, dict[str, str]] = {}
+    outputs: dict[str, dict[str, str | bytes]] = {}
     manifest = {"built": build_date, "house_rules": house_sha,
                 "surfaces": {}}
 
     for surface, spec in SURFACES.items():
-        files: dict[str, str] = {}
+        files: dict[str, str | bytes] = {}
         text = instructions(core, surface, house_sha, build_date)
         files[README_FILE] = readme(surface, house_sha, build_date)
         files[INSTRUCTIONS_FILE] = text
@@ -366,11 +466,18 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
             title = "house rules" if name == "house-rules" else name
             filename = f"{PREFIX} {index:02d} {title}.txt"
             content = knowledge_file(name, fields, body, sha, spec["label"], build_date)
-            files[f"{KNOWLEDGE_DIR}/{filename}"] = content
+            files[f"{spec['knowledge_dir']}/{filename}"] = content
             knowledge.append({"file": filename, "source": f"skills/{name}/SKILL.md",
                               "sha": sha, "chars": len(content)})
         if len(knowledge) > spec["max_files"]:
             problems.append(f"{surface}: {len(knowledge)} knowledge files; the limit is {spec['max_files']}")
+
+        skill_report = []
+        if spec["skills"]:
+            zips, skill_report, skill_problems = copilot_skills()
+            problems.extend(skill_problems)
+            for zip_name, data in zips.items():
+                files[f"{SKILLS_DIR}/{zip_name}"] = data
 
         outputs[surface] = files
         manifest["surfaces"][surface] = {
@@ -380,6 +487,9 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
             "knowledge_files": knowledge,
             "knowledge_limit": spec["max_files"],
         }
+        if spec["skills"]:
+            manifest["surfaces"][surface]["skills"] = skill_report
+            manifest["surfaces"][surface]["skill_limit"] = SKILL_LIMIT
 
     for line in notes:
         print(f"note: {line}")
@@ -390,8 +500,13 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
 
     for surface, info in manifest["surfaces"].items():
         limit = info["instructions_limit"] or "unpublished"
-        print(f"{surface:8} instructions {info['instructions_chars']:>5} / {limit}   "
-              f"knowledge {len(info['knowledge_files'])} / {info['knowledge_limit']} files")
+        line = (f"{surface:8} instructions {info['instructions_chars']:>5} / {limit}   "
+                f"knowledge {len(info['knowledge_files'])} / {info['knowledge_limit']} files")
+        if "skills" in info:
+            largest = max(s["skill_md_chars"] for s in info["skills"])
+            line += (f"   skills {len(info['skills'])} / {info['skill_limit']}, "
+                     f"largest SKILL.md {largest} / {SKILL_CHARS}")
+        print(line)
     if check_only:
         print("check passed; nothing written")
         return 0
@@ -400,7 +515,12 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
         shutil.rmtree(OUT)
     for surface, files in outputs.items():
         for relative, content in files.items():
-            write_text(OUT / surface / relative, content)
+            if isinstance(content, bytes):
+                target = OUT / surface / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(content)
+            else:
+                write_text(OUT / surface / relative, content)
         write_zip(OUT / ZIP_NAME.format(surface=surface), files)
     write_text(OUT / "manifest.json", json.dumps(manifest, indent=2) + "\n")
     print(f"wrote {OUT.relative_to(ROOT)}")
