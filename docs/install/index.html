@@ -607,7 +607,16 @@
   } else if (tools.indexOf(saved) > -1) start = saved;
   route(r);
   show(start, { hash: false });
-  if (target && tools.indexOf(h) === -1) setTimeout(function () { target.scrollIntoView(); }, 0);
+  // A link to a tool (#copilot, #claude-free) opens that tool at the top of the page.
+  // A link to a heading inside a tool (#copilot-steps) still scrolls to it.
+  var toolLink = tools.indexOf(h) > -1 || h === 'claude-free' || h === 'claude-paid';
+  if (toolLink) {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    var toTop = function () { window.scrollTo(0, 0); };
+    toTop();
+    requestAnimationFrame(toTop);
+    window.addEventListener('load', function () { toTop(); setTimeout(toTop, 0); });
+  } else if (target) setTimeout(function () { target.scrollIntoView(); }, 0);
   window.addEventListener('hashchange', function () {
     var t = location.hash.slice(1);
     if (t === 'claude-free' || t === 'claude-paid') { show('claude', { hash: false }); route(t === 'claude-free' ? 'free' : 'paid'); }
@@ -650,7 +659,7 @@
 </main>
 <footer>
   <div class="wrap row">
-    <span>policymemo.ai · beta 0.1.2</span>
+    <span>policymemo.ai · beta 0.1.2 · by <a href="https://civicworks.substack.com">CIVICWORKS</a></span>
     <nav aria-label="Footer">
       <a href="../">Home</a>
       <a href="../install/">Install</a>
