@@ -465,8 +465,8 @@ Microsoft 365 Copilot and Google Gemini versions are generated from `skills/` in
 `dist/ports/`. Set-up steps for both are on the [install page](https://policymemo.ai/install/):
 [Copilot](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/policymemo-ai-copilot.zip),
 [Gemini](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/policymemo-ai-gemini.zip).
-The Copilot version is designed for the free Copilot Chat tier, and falls back to
-the instructions alone where uploading files isn't allowed. Neither has been tested yet. See `ports/README.md`.
+The Copilot version installs as 8 custom skills where Copilot allows them, and falls
+back to knowledge files, then to the instructions alone. See `ports/README.md`.
 
 ## Licence
 
