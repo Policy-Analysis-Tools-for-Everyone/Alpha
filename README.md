@@ -339,7 +339,7 @@ it whenever a source file changes.
 | `/blog` | Notes. Linked from the footer, not the nav | `blog/posts/` |
 
 Essays and reflection are published on
-[CIVICWORKS](https://civicworks.substack.com), not on policymemo.ai.
+[CIVICWORKS](https://civicworks.substack.com/s/policymemoai), not on policymemo.ai.
 
 Beta access is gated by a person, not by the site. Submitting a form never grants
 access. The repository and `/install` are public, so this controls who is invited

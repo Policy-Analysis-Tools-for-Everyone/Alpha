@@ -67,7 +67,10 @@ SKILLS = [
 ]
 # Where the CIVICWORKS link in the nav goes: the page on CIVICWORKS for writing about policymemo.ai.
 # The build also writes it into the homepage nav, so this is the only place to change it.
-CIVICWORKS_NAV = "https://civicworks.substack.com"
+CIVICWORKS_NAV = "https://civicworks.substack.com/s/policymemoai"
+# Every CIVICWORKS link opens in a new tab, so policymemo.ai stays open behind it.
+CIVICWORKS_NAV_LINK = (f'<a class="plain dot-link" href="{CIVICWORKS_NAV}" target="_blank" rel="noopener" '
+                       'aria-label="CIVICWORKS (opens in a new tab)">CIVICWORKS<span class="new-dot" aria-hidden="true"></span></a>')
 FEEDBACK = "mailto:jack@civicworks.co?subject=policymemo.ai%20feedback"
 SITE = "https://policymemo.ai"
 AUTHOR = ("Jack Strachan", "jack@civicworks.co")
@@ -161,7 +164,7 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
       <a class="plain" href="{home}#what">What it does</a>
       <a class="plain" href="{home}#how">How it behaves</a>
       <a class="plain keep" href="{home}updates/"{cur("updates")}>Updates</a>
-      <a class="plain dot-link" href="{CIVICWORKS_NAV}">CIVICWORKS<span class="new-dot" aria-hidden="true"></span></a>
+      {CIVICWORKS_NAV_LINK}
       <a class="btn primary small" href="{home}beta/">Beta access</a>
     </nav>
   </div>
@@ -171,7 +174,7 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
 </main>
 <footer>
   <div class="wrap row">
-    <span>policymemo.ai · beta 0.1.2 · by <a href="https://civicworks.substack.com">CIVICWORKS</a></span>
+    <span>policymemo.ai · beta 0.1.2 · by <a href="https://civicworks.substack.com" target="_blank" rel="noopener">CIVICWORKS</a></span>
     <nav aria-label="Footer">
       <a href="{home}">Home</a>
       <a href="{home}beta/">Beta</a>
@@ -369,7 +372,7 @@ def build_updates(css, home):
     body = f"""<article class="wrap post">
   <p class="meta">Updates</p>
   <h1>What's changed</h1>
-  <p class="lede">A plain record of what changed in policymemo.ai, newest first. For the thinking behind the changes, read <a href="https://civicworks.substack.com">CIVICWORKS</a>.</p>
+  <p class="lede">A plain record of what changed in policymemo.ai, newest first. For the thinking behind the changes, read <a href="{CIVICWORKS_NAV}" target="_blank" rel="noopener">CIVICWORKS</a>.</p>
   <div class="prose">{markdown.markdown(text, extensions=["extra", "smarty"])}</div>
 </article>"""
     return page("Updates · policymemo.ai", "What changed in policymemo.ai, release by release.", body, css, home, current="updates")
@@ -384,7 +387,7 @@ def update_home(posts):
         if not pat.search(s):
             raise SystemExit(f"docs/index.html is missing the blog:{name} markers")
         s = pat.sub(lambda m: m.group(1) + content + m.group(2), s)
-    fill("civicworks", f'<a class="plain dot-link" href="{CIVICWORKS_NAV}">CIVICWORKS<span class="new-dot" aria-hidden="true"></span></a>')
+    fill("civicworks", CIVICWORKS_NAV_LINK)
     fill("footer", '<a href="blog/">Notes</a>' if live else "")
     fill("head", '<link rel="alternate" type="application/atom+xml" title="Notes · policymemo.ai" href="blog/feed.xml">' if live else "")
     by_skill = {p["skill"]: p for p in posts if p.get("skill")}
