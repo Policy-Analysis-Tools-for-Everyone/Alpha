@@ -177,7 +177,6 @@
   .panel + .panel { margin-top: 72px; }
   .js .panel + .panel { margin-top: 0; }
   .panel > h2 { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  .tag { font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; padding: 5px 8px; border-radius: 999px; background: var(--faint); color: var(--muted); }
   .panel h3 { font: 400 clamp(22px, 2.4vw, 26px)/1.2 var(--serif); font-variation-settings: "SOFT" 50; margin: 44px 0 14px; scroll-margin-top: 150px; }
   .panel p, .panel li { font-size: 16.5px; }
   .panel p { margin: 0 0 14px; }
@@ -372,7 +371,7 @@
 
 <!-- Copilot -->
 <section class="panel" id="copilot" role="tabpanel" aria-labelledby="tab-copilot">
-  <h2>Microsoft 365 Copilot <span class="tag">Alpha</span></h2>
+  <h2>Microsoft 365 Copilot</h2>
   <p class="note">This builds policymemo.ai as an agent in Copilot Chat. It runs on Microsoft’s models with the same written rules as the Claude version. Expect it to drift from them more, especially over a long conversation.</p>
 
   <h3 id="copilot-needs">What you need</h3>
@@ -391,7 +390,7 @@
     <li>Open Copilot Chat and click <b>Create agent</b>.</li>
     <li>Click the <b>Configure</b> tab. Skip the chat-style <b>Describe</b> tab, because it rewrites what you give it.</li>
     <li><b>Name:</b>
-      <span class="val"><code>policymemo.ai (alpha)</code><button type="button" class="copy" data-copy="policymemo.ai (alpha)">Copy</button></span></li>
+      <span class="val"><code>policymemo.ai</code><button type="button" class="copy" data-copy="policymemo.ai">Copy</button></span></li>
     <li><b>Description:</b>
       <span class="val"><code>Works through a public policy problem with you: defines it, tests the evidence, builds and weighs options, decides and writes it up. Challenges weak framing and refuses to invent figures.</code><button type="button" class="copy" data-copy="Works through a public policy problem with you: defines it, tests the evidence, builds and weighs options, decides and writes it up. Challenges weak framing and refuses to invent figures.">Copy</button></span></li>
     <li><b>Instructions:</b> open <code class="inline">1 Paste into Instructions.txt</code>, select everything, copy and paste it into the box. It is about 7,800 characters, and the limit is 8,000.
@@ -442,7 +441,7 @@
 
 <!-- Gemini -->
 <section class="panel" id="gemini" role="tabpanel" aria-labelledby="tab-gemini">
-  <h2>Google Gemini <span class="tag">Alpha</span></h2>
+  <h2>Google Gemini</h2>
   <p class="note">This builds policymemo.ai as a Gem. It runs on Google’s models with the same written rules as the Claude version. Expect it to drift from them more, especially over a long conversation.</p>
 
   <h3 id="gemini-needs">What you need</h3>
@@ -459,7 +458,7 @@
   <ol class="steps">
     <li>Open <a href="https://gemini.google.com">gemini.google.com</a> and go to <b>Gems</b> (sometimes under <b>Explore Gems</b>), then <b>New Gem</b>.</li>
     <li><b>Name:</b>
-      <span class="val"><code>policymemo.ai (alpha)</code><button type="button" class="copy" data-copy="policymemo.ai (alpha)">Copy</button></span></li>
+      <span class="val"><code>policymemo.ai</code><button type="button" class="copy" data-copy="policymemo.ai">Copy</button></span></li>
     <li><b>Instructions:</b> open <code class="inline">1 Paste into Instructions.txt</code>, select everything, copy and paste it into the box. Ignore Gemini’s offer to rewrite it.</li>
     <li><b>Knowledge:</b> open the <code class="inline">2 Upload these 10 files</code> folder, select all 10 and add them. That is Gemini’s limit, so there is no room for anything else. Do not rename them: the instructions find them by name.</li>
     <li>Click <b>Save</b>.</li>

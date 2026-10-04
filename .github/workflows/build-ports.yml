@@ -16,6 +16,7 @@ on:
       - "skills/**"
       - "ports/**"
       - "tools/build-ports.py"
+      - ".claude-plugin/marketplace.json"
       - ".github/workflows/build-ports.yml"
   workflow_dispatch:
 

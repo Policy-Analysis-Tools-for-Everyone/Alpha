@@ -98,7 +98,7 @@ SURFACES = {
 # Short Gem instructions for the case where a Gem will not save the full block.
 # The full house rules then come from knowledge file 00. Keep in step with core.md.
 GEMINI_FALLBACK = (
-    "You are policymemo.ai, an alpha toolkit for working through a public policy problem. "
+    "You are policymemo.ai, a beta toolkit for working through a public policy problem. "
     'Before every reply, apply the knowledge file "policymemo 00 house rules" in full; it '
     "binds everything you do. Its 2 hardest rules: invent nothing, marking each gap as "
     "[NEEDED: what, and where it would come from], and let the user decide between "
@@ -242,6 +242,7 @@ def instructions(core: str, surface: str, house_sha: str, build_date: str) -> st
     text = (core.replace("{{SURFACE}}", spec["label"])
                 .replace("{{BUILD_DATE}}", build_date)
                 .replace("{{HOUSE_RULES_SHA}}", house_sha)
+                .replace("{{VERSION}}", version())
                 .replace("{{KNOWLEDGE_HOW}}", spec["knowledge_how"]))
     leftover = sorted(set(PLACEHOLDER.findall(text)))
     if leftover:
@@ -249,12 +250,21 @@ def instructions(core: str, surface: str, house_sha: str, build_date: str) -> st
     return text.strip() + "\n"
 
 
+def version() -> str:
+    """The Claude plugin's version, so every surface carries the same number."""
+    marketplace = json.loads((ROOT / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8"))
+    for plugin in marketplace["plugins"]:
+        if plugin["name"] == "mdee":
+            return plugin["version"]
+    raise BuildError(".claude-plugin/marketplace.json: no mdee plugin entry")
+
+
 def readme(surface: str, house_sha: str, build_date: str) -> str:
     spec = SURFACES[surface]
     steps = spec["readme"].format(instructions=INSTRUCTIONS_FILE, knowledge=KNOWLEDGE_DIR,
                                   fallback=FALLBACK_FILE)
     return (
-        f"policymemo.ai for {spec['label']} (alpha)\n\n"
+        f"policymemo.ai for {spec['label']}, beta {version()}\n\n"
         f"Full steps, with copy buttons and help if something goes wrong:\n"
         f"{INSTALL_URL.format(surface=surface)}\n\n"
         f"In short:\n{steps}\n"
@@ -280,7 +290,8 @@ def source_date() -> str:
     """Date of the last commit touching any input, so unchanged sources rebuild identically."""
     try:
         result = subprocess.run(
-            ["git", "log", "-1", "--format=%cs", "--", "skills", "ports", "tools/build-ports.py"],
+            ["git", "log", "-1", "--format=%cs", "--", "skills", "ports", "tools/build-ports.py",
+             ".claude-plugin/marketplace.json"],
             cwd=ROOT, capture_output=True, text=True, check=True)
         if result.stdout.strip():
             return result.stdout.strip()

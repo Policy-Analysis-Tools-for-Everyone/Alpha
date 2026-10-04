@@ -12,7 +12,7 @@ plausible-looking document on request.
 Inside it are 10 analytical capabilities that work together as one toolkit. You
 don't pick between them. Claude does.
 
-> **Alpha.** All 11 files are written. 17 real sessions across 4 testers have been
+> **Beta 0.1.2.** All 11 files are written. 17 real sessions across 4 testers have been
 > run against them, and 2 skills were revised from what those sessions found. The
 > revised versions have no sessions of their own yet. Read [Status](#status)
 > before you rely on this for anything that matters.
@@ -216,7 +216,7 @@ Everyone needs code execution switched on. See [Step 0](#step-0-turn-on-code-exe
 
 ## Updating policymemo.ai
 
-policymemo.ai will change, especially while it's in alpha.
+policymemo.ai will change, especially while it's in beta.
 
 **If you installed it in one go**, updates arrive on their own in most cases. To
 pull them in by hand, go to **Customize**, then **Plugins**, find policymemo.ai, and use
@@ -288,7 +288,7 @@ unevenly, and the current text of the two most load-bearing files has none.
 
 ## Telling us when it goes wrong
 
-This is alpha, and the most useful thing you can send is a conversation where it
+This is a beta, and the most useful thing you can send is a conversation where it
 was **confidently wrong.** Those are worth more than the ones where it worked, and
 they're the easier ones to lose.
 
