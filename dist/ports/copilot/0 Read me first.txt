@@ -1,4 +1,4 @@
-policymemo.ai for Microsoft 365 Copilot, beta 0.1.2
+policymemo.ai for Microsoft 365 Copilot, beta 0.2.0
 
 Full steps, with copy buttons and help if something goes wrong:
 https://policymemo.ai/install/#copilot

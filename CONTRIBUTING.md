@@ -48,10 +48,10 @@ If `house-rules` has changed, `build-ports.py` stops on purpose until
 
 ## Releasing a version
 
-The version lives in `.claude-plugin/marketplace.json`, on both entries. Every
-build script reads it from there. The one exception is the line under the
-Download button in `docs/index.html`, which is hand-written. Add an entry to
-`site/updates/changelog.md`, then run all three builds.
+The version lives in `.claude-plugin/marketplace.json`, on both entries, and nowhere
+else. The zips, the ports and every page of the site read it from there. Add an
+entry to `site/updates/changelog.md`, update the banner in `README.md`, then run all
+three builds.
 
 Bump the version for every release. Testers can't report which version they ran
 otherwise, and the evals are split by version.

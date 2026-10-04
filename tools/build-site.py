@@ -51,6 +51,8 @@ CHANGELOG = ROOT / "site" / "updates" / "changelog.md"
 UPDATES_OUT = ROOT / "docs" / "updates"
 ICONS = ROOT / "docs" / "icons"
 MASCOT = ROOT / "docs" / "mascot.svg"
+# The release version, so the site always shows the number that ships.
+VERSION = next(p["version"] for p in json.loads((ROOT / ".claude-plugin" / "marketplace.json").read_text())["plugins"] if p["name"] == "mdee")
 # Categories in use among published posts. Labels and filters show only once there are two,
 # and the updates feed only once there is an updates post.
 USED = []
@@ -174,7 +176,7 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
 </main>
 <footer>
   <div class="wrap row">
-    <span>policymemo.ai · beta 0.1.2 · by <a href="https://civicworks.substack.com" target="_blank" rel="noopener">CIVICWORKS</a></span>
+    <span>policymemo.ai · beta {VERSION} · by <a href="https://civicworks.substack.com" target="_blank" rel="noopener">CIVICWORKS</a></span>
     <nav aria-label="Footer">
       <a href="{home}">Home</a>
       <a href="{home}beta/">Beta</a>
@@ -182,7 +184,7 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
       <a href="{home}blog/">Notes</a>
       <a href="{home}install/">Install</a>
       <a href="{FEEDBACK}">Feedback</a>
-      <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
+      <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo">GitHub</a>
     </nav>
   </div>
 </footer>
@@ -388,6 +390,7 @@ def update_home(posts):
             raise SystemExit(f"docs/index.html is missing the blog:{name} markers")
         s = pat.sub(lambda m: m.group(1) + content + m.group(2), s)
     fill("civicworks", CIVICWORKS_NAV_LINK)
+    fill("version", VERSION)
     fill("footer", '<a href="blog/">Notes</a>' if live else "")
     fill("head", '<link rel="alternate" type="application/atom+xml" title="Notes · policymemo.ai" href="blog/feed.xml">' if live else "")
     by_skill = {p["skill"]: p for p in posts if p.get("skill")}

@@ -238,7 +238,7 @@ Plain text. Replace the `{…}` placeholders with dynamic content in Power Autom
 >
 > The most useful thing you can send us is a conversation where it was
 > confidently wrong. Reply to this email, or use the session report:
-> https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/issues/new?template=session-report.yml
+> https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo/issues/new?template=session-report.yml
 >
 > It's a beta, so expect rough edges. policymemo.ai runs inside your AI tool, under
 > that tool's own terms, so don't put anything into it that you wouldn't put into
