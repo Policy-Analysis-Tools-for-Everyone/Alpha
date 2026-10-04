@@ -125,7 +125,7 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
       <a class="plain" href="{home}#what">What it does</a>
       <a class="plain keep" href="{home}blog/"{notes_current} data-latest="{LATEST}">Notes</a>
       <a class="plain keep" href="{FEEDBACK}">Feedback</a>
-      <a class="btn primary small" href="{home}install/">Install</a>
+      <a class="btn primary small" href="{home}install/">Download</a>
     </nav>
   </div>
 </header>
@@ -220,7 +220,7 @@ def build_post(p, posts, css, home):
         pitch = f"The {name} skill is part of policymemo.ai, which is free."
     else:
         pitch = "Try policymemo.ai on a problem you're stuck on. It's free."
-    skill_note = f'<aside class="try"><p>{pitch}</p><a class="btn primary" href="{home}install/">Install it</a></aside>'
+    skill_note = f'<aside class="try"><p>{pitch}</p><a class="btn primary" href="{home}install/">Download it</a></aside>'
     draft = '<p class="draft-flag">Draft · not published</p>' if p["draft"] else ""
     body = f"""<article class="wrap post">
   {draft}<p class="meta"><a href="./">Notes</a> · <span class="cat">{CATEGORIES[p['category']]}</span> · {nice_date(p['date_obj'])} · {p['minutes']} min read</p>
