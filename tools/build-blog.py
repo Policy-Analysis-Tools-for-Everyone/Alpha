@@ -56,9 +56,6 @@ SKILLS = [
 FEEDBACK = "mailto:jack@civicworks.co?subject=policymemo.ai%20feedback"
 SITE = "https://policymemo.ai"
 AUTHOR = ("Jack Strachan", "jack@civicworks.co")
-# Email sign-up. Set to the Buttondown username once the newsletter exists; the form
-# stays off the site until then. Buttondown sends an email for each new post in feed.xml.
-BUTTONDOWN = ""
 FEEDS = [("feed.xml", "Notes · policymemo.ai", None),
          ("feed-updates.xml", "Product updates · policymemo.ai", "updates")]
 
@@ -197,14 +194,9 @@ def build_index(posts, css, home):
         status = (f'<a class="read" href="{p["slug"]}.html">Read · {nice_date(p["date_obj"])}</a>' if p
                   else '<span class="soon">Coming soon</span>')
         cards += f'<li class="{"live" if p else "planned"}" data-rise>{art}<h3>{title}</h3>{status}</li>'
-    signup = (f'<form class="signup" action="https://buttondown.com/api/emails/embed-subscribe/{BUTTONDOWN}" method="post">'
-              '<label for="signup-email">Get each new post by email</label>'
-              '<div class="field"><input id="signup-email" type="email" name="email" placeholder="you@example.org" autocomplete="email" required>'
-              '<button class="btn primary small" type="submit">Subscribe</button></div>'
-              '<p class="fine">One email per post. Unsubscribe from any of them.</p></form>' if BUTTONDOWN else "")
     follow = f"""<section class="wrap follow" aria-labelledby="follow" data-rise>
   <h2 id="follow">Follow along</h2>
-  {signup}<p class="feeds">Or use a feed reader: <a href="feed.xml">every post</a> or <a href="feed-updates.xml">product updates only</a>.</p>
+  <p class="feeds">In a feed reader: <a href="feed.xml">every post</a>, or <a href="feed-updates.xml">product updates only</a>.</p>
 </section>"""
     filters = "".join(f'<button type="button" data-cat="{k}" aria-pressed="false">{v}</button>' for k, v in CATEGORIES.items())
     body = f"""<section class="wrap blog-hero">

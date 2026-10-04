@@ -92,16 +92,10 @@
   .skill-grid .read:hover { text-decoration: underline; text-underline-offset: 3px; }
   .skill-grid li.planned .icon { opacity: .35; }
 
-  /* Follow: email sign-up and feeds, at the foot of the index */
+  /* Follow: feeds, at the foot of the index */
   .follow { padding-top: 88px; }
   .follow h2 { margin: 0 0 16px; }
-  .signup { margin: 0 0 18px; display: grid; gap: 10px; max-width: 560px; }
-  .signup label { font-weight: 500; }
-  .signup .field { display: flex; flex-wrap: wrap; gap: 8px; }
-  .signup input { flex: 1 1 220px; min-width: 0; font: 16px/1.2 var(--sans); padding: 10px 16px; color: var(--ink);
-    background: var(--surface); border: 1px solid var(--line); border-radius: 999px; }
-  .signup input:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
-  .signup .fine, .feeds { font-size: 14px; color: var(--muted); margin: 0; }
+  .feeds { color: var(--muted); margin: 0; }
   .feeds a { color: var(--accent); text-underline-offset: 3px; }
 
   /* Post */
