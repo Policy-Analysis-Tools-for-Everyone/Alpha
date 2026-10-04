@@ -70,7 +70,7 @@
   .bar nav { display: flex; align-items: center; gap: 22px; font-size: 14px; }
   .bar nav a.plain { text-decoration: none; color: var(--muted); }
   .bar nav a.plain:hover { color: var(--ink); }
-  @media (max-width: 560px) { .bar nav a.plain { display: none; } }
+  @media (max-width: 560px) { .bar nav { gap: 16px; } .bar nav a.plain:not(.keep) { display: none; } }
 
   /* Buttons */
   .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; font: 500 15px/1 var(--sans);
@@ -335,10 +335,10 @@
   <div class="wrap bar">
     <a class="brand" href="#" aria-label="policymemo.ai home"><svg class="mascot" viewBox="0 0 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg></a>
     <nav aria-label="Main">
-      <a class="plain" href="#demo">See it work</a>
       <a class="plain" href="#what">What it does</a>
       <a class="plain" href="#how">How it behaves</a>
-      <!-- blog:nav --><a class="plain" href="blog/">Blog</a><!-- /blog:nav -->
+      <!-- blog:nav --><a class="plain keep" href="blog/">Notes</a><!-- /blog:nav -->
+      <a class="plain" href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">Feedback</a>
       <a class="btn primary small" href="#download">Download</a>
     </nav>
   </div>
@@ -520,7 +520,7 @@
   <div class="wrap row">
     <span>policymemo.ai · beta 0.1.2</span>
     <nav aria-label="Footer">
-      <!-- blog:footer --><a href="blog/">Blog</a><!-- /blog:footer -->
+      <!-- blog:footer --><a href="blog/">Notes</a><!-- /blog:footer -->
       <a href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">Feedback</a>
       <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
       <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha#install-policymemoai-in-claude">Install guide</a>
