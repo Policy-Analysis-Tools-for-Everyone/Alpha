@@ -136,6 +136,13 @@
   .pager .next { text-align: right; }
   .pager a:hover { color: var(--accent); }
 
+  /* The red dot by CIVICWORKS in the nav: a standing cue that the writing lives there. It pings 3 times on load. */
+  .dot-link { position: relative; }
+  .new-dot { position: absolute; top: 1px; right: -9px; width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+  .new-dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--red); opacity: 0; animation: dot-ping 1.3s var(--ease) .6s 3; }
+  @keyframes dot-ping { from { transform: scale(1); opacity: .55; } to { transform: scale(2.6); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .new-dot::after { animation: none; } }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     [data-rise] { transition: none; } [data-rise].pre { opacity: 1; transform: none; filter: none; }
@@ -150,7 +157,7 @@
     <nav aria-label="Main">
       <a class="plain" href="../skills/">Skills</a>
       <a class="plain keep" href="../updates/">Updates</a>
-      <a class="plain" href="https://civicworks.substack.com">CIVICWORKS</a>
+      <a class="plain dot-link" href="https://civicworks.substack.com">CIVICWORKS<span class="new-dot" aria-hidden="true"></span></a>
       <a class="btn primary small" href="../beta/">Beta access</a>
     </nav>
   </div>
