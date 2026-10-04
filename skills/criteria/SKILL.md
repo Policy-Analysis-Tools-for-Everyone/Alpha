@@ -10,6 +10,7 @@ description: >
   criterion without saying what pattern counts as better, when a convenient
   metric has quietly become the objective, or when a scoring table is deciding
   the answer without anyone owning the weights.
+license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
   status: written, exercised inside other sessions and in 1 reported run; no session of its own
 ---

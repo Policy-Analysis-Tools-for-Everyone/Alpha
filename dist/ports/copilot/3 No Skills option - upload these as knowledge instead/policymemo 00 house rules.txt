@@ -1,6 +1,6 @@
 policymemo.ai knowledge file: house-rules
 Use: always. Your instructions carry the core of these rules; this file holds the full text.
-Built 2026-10-04 for Microsoft 365 Copilot from skills/house-rules/SKILL.md (889421c707fd).
+Built 2026-10-04 for Microsoft 365 Copilot from skills/house-rules/SKILL.md (922b04eabb82).
 
 # House rules
 
@@ -271,3 +271,7 @@ caveat or a distinction to satisfy a writing rule.
   current choice costs.
 - **Marching a sequence.** Working through a capability's moves when the user
   arrived with half of them answered.
+
+---
+
+policymemo.ai by Jack Strachan (https://policymemo.ai), licensed under CC BY-NC 4.0: https://creativecommons.org/licenses/by-nc/4.0/

@@ -1,6 +1,6 @@
 policymemo.ai knowledge file: story
 Use when analysis has to be communicated to someone else: a briefing, a memo, a submission, a board paper, speaking notes, an email to a minister, a decision summary, or a compact professional policy memo with Issue, Stakeholders, Analysis, Criteria, Options, Recommendation, Risks and Implementation sections. Also use when a draft is too long, buries its recommendation, opens with background nobody needs, dumps evidence without attaching it to claims, loses the uncertainty that matters, or reads like machine-generated prose.
-Built 2026-10-04 for Microsoft 365 Copilot from skills/story/SKILL.md (c6601946b734).
+Built 2026-10-04 for Microsoft 365 Copilot from skills/story/SKILL.md (8dc819538345).
 
 # Story
 
@@ -460,3 +460,7 @@ constructions. The test in each case is whether the construction is doing work.
 - It carries no individual's personal style.
 - It never changes evidence, analysis, magnitudes, caveats or distinctions.
 - It never makes prose more confident than the analysis underneath it.
+
+---
+
+policymemo.ai by Jack Strachan (https://policymemo.ai), licensed under CC BY-NC 4.0: https://creativecommons.org/licenses/by-nc/4.0/

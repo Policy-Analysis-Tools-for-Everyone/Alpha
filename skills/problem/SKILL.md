@@ -7,6 +7,7 @@ description: >
   working problem statement is vague, solution-shaped, unquantified, rests on
   an unexamined causal claim, or when what the user has called one problem may
   be several. Not for choosing between options already on the table.
+license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
   status: written, behaviourally tested in 4 real sessions; revised twice (see evals/)
 ---

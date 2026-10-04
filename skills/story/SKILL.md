@@ -8,6 +8,7 @@ description: >
   sections. Also use when a draft is too long, buries its recommendation, opens
   with background nobody needs, dumps evidence without attaching it to claims,
   loses the uncertainty that matters, or reads like machine-generated prose.
+license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
   status: written, behaviourally tested in 3 real sessions, one a non-trigger (see evals/)
 ---

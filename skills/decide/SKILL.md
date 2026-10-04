@@ -9,6 +9,7 @@ description: >
   reversible a commitment is or whether it could be staged, and when a
   recommendation needs its strongest contrary case, its accepted trade-off and
   the conditions that should reopen it made explicit.
+license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
   status: written, exercised in 2 reported runs; no session of its own
 ---

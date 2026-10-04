@@ -441,5 +441,6 @@ back to knowledge files, then to the instructions alone. See `ports/README.md`.
 Copyright (c) 2026 Jack Strachan. Code (`tools/`, `.github/`, `.claude-plugin/`)
 is under the [MIT Licence](LICENSE). Everything else written for this project,
 including the skills, methods, docs and evals, is under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Third-party sources are
+[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/): use, share and adapt it for
+non-commercial purposes, with credit. Third-party sources are
 cited, not licensed. See [`LICENSE-CONTENT.md`](LICENSE-CONTENT.md) for the detail.

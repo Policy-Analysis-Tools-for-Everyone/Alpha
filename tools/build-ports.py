@@ -44,6 +44,27 @@ SKILLS_DIR = "2 Upload these 8 skills"
 KNOWLEDGE_FALLBACK_DIR = "3 No Skills option - upload these as knowledge instead"
 GEMINI_SKILLS_DIR = "1 Upload these 10 skills"
 FRONT_DOOR = "policymemo"
+LICENCE_FILE = "Licence.txt"
+LICENCE_ID = "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
+CREDIT = ("\n---\n\npolicymemo.ai by Jack Strachan (https://policymemo.ai), licensed under "
+          "CC BY-NC 4.0: https://creativecommons.org/licenses/by-nc/4.0/\n")
+LICENCE_TEXT = """policymemo.ai by Jack Strachan
+https://policymemo.ai
+
+Licensed under Creative Commons Attribution-NonCommercial 4.0 International
+(CC BY-NC 4.0): https://creativecommons.org/licenses/by-nc/4.0/
+
+You may use, share and adapt these files for non-commercial purposes, with
+credit, a link to the licence, and a note of any changes. Using them in your own
+analysis at work, including in paid employment, is permitted. Selling them,
+selling something built from them, or offering them as part of a paid product or
+service needs permission: jack@civicworks.co
+
+Credit: "policymemo.ai by Jack Strachan (https://policymemo.ai), licensed under
+CC BY-NC 4.0". Every file here carries that line; keep it in anything you share.
+
+Full terms: https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/blob/main/LICENSE-CONTENT.md
+"""
 INSTALL_URL = "https://policymemo.ai/install/#{surface}"
 
 # Copilot custom skills (Agent Builder): at most 8 per agent, SKILL.md under
@@ -112,8 +133,9 @@ SURFACES = {
         "readme": (
             "1. Open Gemini on a computer, at gemini.google.com or in the Mac app, and\n"
             "   go to Skills.\n"
-            "2. Choose to upload a skill, and upload each of the 10 zip files in the\n"
-            "   \"{skills}\" folder, one at a time. Do not unzip them and do not rename them.\n"
+            "2. Choose to upload a skill. In the \"{skills}\" folder, open each of\n"
+            "   the 10 folders and upload the SKILL.md inside, one at a time. Start with\n"
+            "   policymemo. Do not rename them.\n"
             "3. Start a new chat. Type /policymemo to begin, or just describe the\n"
             "   problem you are working on.\n"
         ),
@@ -309,23 +331,33 @@ GEMINI_LOAD = (
 )
 
 
+def skill_md(skill: str, description: str, body: str) -> str:
+    return (f"---\nname: {skill}\ndescription: {json.dumps(description)}\n"
+            f"license: {json.dumps(LICENCE_ID)}\n---\n\n" + body.rstrip() + "\n" + CREDIT)
+
+
 def skill_zip(skill: str, description: str, body: str, extras: dict[str, str]) -> tuple[bytes, str]:
-    """A skill zip with skill/SKILL.md at its main folder, as both Copilot and Gemini expect."""
-    skill_md = f"---\nname: {skill}\ndescription: {json.dumps(description)}\n---\n\n" + body
-    files = {f"{skill}/SKILL.md": skill_md}
-    files.update({f"{skill}/{name}": text for name, text in extras.items()})
-    return zip_bytes(files), skill_md
+    """A skill zip with skill/SKILL.md at its main folder, as Copilot expects."""
+    text = skill_md(skill, description, body)
+    files = {f"{skill}/SKILL.md": text}
+    files.update({f"{skill}/{name}": content.rstrip() + "\n" + CREDIT for name, content in extras.items()})
+    return zip_bytes(files), text
 
 
-def gemini_skills(rules: str) -> tuple[dict[str, bytes], list[dict], list[str]]:
-    """The front door plus 1 skill per capability, each carrying the house rules inline."""
-    zips: dict[str, bytes] = {}
+def gemini_skills(rules: str) -> tuple[dict[str, str], list[dict], list[str]]:
+    """The front door plus 1 skill per capability, each a single SKILL.md in its own folder.
+
+    Gemini uploads one SKILL.md at a time, so supporting files would be lost:
+    they are appended to the skill's own SKILL.md instead. Every skill carries
+    the house rules inline, because Gemini skills have no instructions box.
+    """
+    files: dict[str, str] = {}
     report: list[dict] = []
     problems: list[str] = []
-    data, skill_md = skill_zip(FRONT_DOOR, FRONT_DOOR_DESCRIPTION, rules, {})
-    zips[f"{FRONT_DOOR}.zip"] = data
-    report.append({"skill": FRONT_DOOR, "skill_md_chars": len(skill_md),
-                   "description_chars": len(FRONT_DOOR_DESCRIPTION), "files": ["SKILL.md"]})
+    text = skill_md(FRONT_DOOR, FRONT_DOOR_DESCRIPTION, rules)
+    files[f"{FRONT_DOOR}/SKILL.md"] = text
+    report.append({"skill": FRONT_DOOR, "skill_md_chars": len(text),
+                   "description_chars": len(FRONT_DOOR_DESCRIPTION)})
     start = rules.index("\n## ")
     inline = "## House rules\n" + re.sub(r"^## ", "### ", rules[start:].strip(), flags=re.M)
     for name in CAPABILITIES:
@@ -337,16 +369,18 @@ def gemini_skills(rules: str) -> tuple[dict[str, bytes], list[dict], list[str]]:
             lambda _: GEMINI_LOAD + inline + "\n\n---\n\n", body, count=1)
         if replaced != 1:
             raise BuildError(f"skills/{name}/SKILL.md: the house-rules loading paragraph was not found")
-        files = {n: HTML_COMMENT.sub("", text).strip() + "\n" for n, text in extras}
-        data, skill_md = skill_zip(skill, description, body, files)
-        zips[f"{skill}.zip"] = data
+        for extra_name, extra in extras:
+            body = (body.rstrip() + f"\n\n---\n\n# {extra_name}\n"
+                    f"Where this skill says `{extra_name}` in this folder, it means this section.\n\n"
+                    + HTML_COMMENT.sub("", extra).strip() + "\n")
+        text = skill_md(skill, description, body)
+        files[f"{skill}/SKILL.md"] = text
         if len(description) > SKILL_DESCRIPTION_CHARS:
             problems.append(f"gemini skill {skill}: description is {len(description)} characters; "
                             f"the limit is {SKILL_DESCRIPTION_CHARS}")
-        report.append({"skill": skill, "sha": sha, "skill_md_chars": len(skill_md),
-                       "description_chars": len(description),
-                       "files": ["SKILL.md"] + sorted(files)})
-    return zips, report, problems
+        report.append({"skill": skill, "sha": sha, "skill_md_chars": len(text),
+                       "description_chars": len(description)})
+    return files, report, problems
 
 
 def knowledge_file(name: str, fields: dict[str, str], body: str, sha: str,
@@ -362,7 +396,7 @@ def knowledge_file(name: str, fields: dict[str, str], body: str, sha: str,
         f"policymemo.ai knowledge file: {name}\n{use}\n"
         f"Built {build_date} for {surface_label} from skills/{name}/SKILL.md ({sha}).\n\n"
     )
-    return header + body
+    return header + body.rstrip() + "\n" + CREDIT
 
 
 def instructions(core: str, surface: str, house_sha: str, build_date: str) -> str:
@@ -489,15 +523,17 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
         if spec.get("standalone_skills"):
             notes.extend(lint(f"{surface} house rules", text))
             files[README_FILE] = readme(surface, house_sha, build_date)
-            zips, skill_report, skill_problems = gemini_skills(text)
+            folders, skill_report, skill_problems = gemini_skills(text)
             problems.extend(skill_problems)
-            for zip_name, data in zips.items():
-                files[f"{GEMINI_SKILLS_DIR}/{zip_name}"] = data
+            for path, content in folders.items():
+                files[f"{GEMINI_SKILLS_DIR}/{path}"] = content
+            files[LICENCE_FILE] = LICENCE_TEXT
             outputs[surface] = files
             manifest["surfaces"][surface] = {"label": spec["label"], "skills": skill_report}
             continue
         files[README_FILE] = readme(surface, house_sha, build_date)
         files[INSTRUCTIONS_FILE] = text
+        files[LICENCE_FILE] = LICENCE_TEXT
         limit = spec["hard_limit"]
         if limit and len(text) > limit:
             problems.append(f"{surface}: instructions are {len(text)} characters; the limit is {limit}")

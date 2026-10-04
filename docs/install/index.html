@@ -466,14 +466,14 @@
   </ul>
   <div class="get">
     <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/policymemo-ai-gemini.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download for Gemini</a>
-    <p><b>Unzip it first</b>, unlike the Claude version. On Windows, right-click the zip and choose <b>Extract All</b>: opening it with a double-click is not enough. On a Mac, double-click it. Inside, leave the 10 skill zips zipped: Gemini wants those exactly as they are.</p>
+    <p><b>Unzip it first</b>, unlike the Claude version. On Windows, right-click the zip and choose <b>Extract All</b>: opening it with a double-click is not enough. On a Mac, double-click it. You get a folder with 10 skill folders inside, each holding one <code class="inline">SKILL.md</code>.</p>
   </div>
 
   <h3 id="gemini-steps">Add the skills</h3>
   <ol class="steps">
     <li>Open Gemini and go to <b>Skills</b>.</li>
     <li>Choose to <b>upload</b> a skill. Do not use <b>Create with Gemini</b> or <b>Create manually</b>: the first rewrites the skill, and the second only takes a single file, so supporting files would be lost.</li>
-    <li>Upload each of the 10 zip files in the <code class="inline">1 Upload these 10 skills</code> folder, one at a time. Do not unzip them and do not rename them.
+    <li>In the <code class="inline">1 Upload these 10 skills</code> folder, open each of the 10 folders and upload the <code class="inline">SKILL.md</code> inside, one at a time. Start with <code class="inline">policymemo</code>. Do not rename them.
       <span class="sm"><code class="inline">policymemo</code> is the front door: it holds the house rules and knows which skill does each job. The other 9 are the capabilities, and each carries the house rules too, so they hold whichever one Gemini picks.</span></li>
     <li>Check all 10 are switched on.</li>
   </ol>
@@ -491,7 +491,7 @@
   </details>
   <details>
     <summary>The upload cannot find the files, or will not take them</summary>
-    <div><p>You are probably looking inside the download without having unzipped it. Close the upload window, unzip the download as described above, and upload from the folder that appears.</p><p>Then upload each <code class="inline">policymemo</code> zip file itself. A skill that has been unzipped into a folder may lose its supporting files.</p></div>
+    <div><p>You are probably looking inside the download without having unzipped it. Close the upload window, unzip the download as described above, and upload from the folder that appears.</p><p>Then upload the <code class="inline">SKILL.md</code> file from inside each skill folder, not the folder itself.</p></div>
   </details>
   <details>
     <summary>It answers without the method</summary>
@@ -503,7 +503,7 @@
   </details>
   <details>
     <summary>policymemo.ai has been updated</summary>
-    <div><p>Updates are not automatic. Download the new zip, remove the old policymemo skills and upload the new ones.</p><p><a href="mailto:jack@civicworks.co?subject=Tell%20me%20about%20policymemo.ai%20updates">Email me</a> if you'd like to hear when there's a new version.</p></div>
+    <div><p>Updates are not automatic. Download the new zip, remove the old policymemo skills and upload the new <code class="inline">SKILL.md</code> files.</p><p><a href="mailto:jack@civicworks.co?subject=Tell%20me%20about%20policymemo.ai%20updates">Email me</a> if you'd like to hear when there's a new version.</p></div>
   </details>
 </section>
 
@@ -512,6 +512,10 @@
   <details>
     <summary>Is it free?</summary>
     <div><p>Yes. Policymemo.ai costs nothing. You need access to the AI tool you install it in: a paid Claude plan for the one-step plugin (the free plan works with the skills added one at a time), Copilot Chat on a work or university Microsoft account, or Gemini with skills switched on.</p></div>
+  </details>
+  <details>
+    <summary>Can I share it or change it?</summary>
+    <div><p>Yes, for non-commercial use. Policymemo.ai is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>: you can use, share and adapt it, as long as you credit it, link to the licence and say what you changed. Using it in your own analysis at work is fine. Selling it, or offering it as part of a paid product or service, needs permission: <a href="mailto:jack@civicworks.co">email me</a>.</p><p>Every file in the downloads carries a credit line. Keep it in anything you share. The full terms are in <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/blob/main/LICENSE-CONTENT.md">the licence file</a>.</p></div>
   </details>
   <details>
     <summary>Which tool should I use?</summary>

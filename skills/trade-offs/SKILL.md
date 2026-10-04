@@ -9,6 +9,7 @@ description: >
   when incompatible values are being converted into one score, when a positive
   aggregate is hiding who loses, when a weighted table is producing the answer,
   or when a disagreement about what matters is being treated as an evidence gap.
+license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
   status: written, not behaviourally tested. Has never appeared in a session header
 ---

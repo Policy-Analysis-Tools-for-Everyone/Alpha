@@ -9,6 +9,7 @@ description: >
   than it deserves, when only supporting evidence is being gathered for a
   decision already taken, or when someone is proposing research or a pilot
   without saying what it would settle.
+license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
   status: written, behaviourally tested in 2 real sessions, plus 2 reported (see evals/)
 ---

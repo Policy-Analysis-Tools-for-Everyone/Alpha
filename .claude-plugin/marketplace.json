@@ -16,6 +16,7 @@
         "url": "https://github.com/Policy-Analysis-Tools-for-Everyone"
       },
       "homepage": "https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha",
+      "license": "CC-BY-NC-4.0",
       "repository": "https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha",
       "keywords": ["policy", "analysis", "public-policy", "decision-making", "briefing"],
       "category": "knowledge-work",
@@ -44,6 +45,7 @@
         "url": "https://github.com/Policy-Analysis-Tools-for-Everyone"
       },
       "homepage": "https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha",
+      "license": "CC-BY-NC-4.0",
       "repository": "https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha",
       "keywords": ["evaluation", "agent-testing", "policy"],
       "category": "knowledge-work",
