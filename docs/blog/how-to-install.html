@@ -5,10 +5,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>Why policymemo.ai asks before it writes · policymemo.ai</title>
-<meta name="description" content="A general AI model will write you a problem statement on request. That is the problem policymemo.ai was built to fix.">
-<meta property="og:title" content="Why policymemo.ai asks before it writes · policymemo.ai">
-<meta property="og:description" content="A general AI model will write you a problem statement on request. That is the problem policymemo.ai was built to fix.">
+<title>How to install policymemo.ai in Claude · policymemo.ai</title>
+<meta name="description" content="Two minutes on a paid Claude plan, about ten on the free plan. You do it once, on a computer.">
+<meta property="og:title" content="How to install policymemo.ai in Claude · policymemo.ai">
+<meta property="og:description" content="Two minutes on a paid Claude plan, about ten on the free plan. You do it once, on a computer.">
 <meta property="og:image" content="https://policymemo.ai/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -156,20 +156,42 @@
 </header>
 <main>
 <article class="wrap post">
-  <p class="meta"><a href="./">Notes</a> · <span class="cat">Why it works</span> · 3 October 2026 · 2 min read</p>
-  <h1>Why policymemo.ai asks before it writes</h1>
-  <p class="lede">A general AI model will write you a problem statement on request. That is the problem policymemo.ai was built to fix.</p>
-  <div class="prose"><p>The first time I ran policymemo.ai on real work, I gave it a plan I had written for a service that processes paper renewals. I thought the problem was obvious. Applicants posted their forms, heard nothing, and rang the contact centre to check they had arrived. About 1 call in 6 was someone asking exactly that. So the plan proposed a receipt letter.</p>
-<p>The reply did not start with the letter. It said my problem statement described the missing fix, not the problem, and that defining the problem as &ldquo;no confirmation&rdquo; had quietly ruled out everything else: closing the two-week gap between posting and a case existing, publishing a timescale, telling people whether they could carry on in the meantime. Then it used my own data against me. If a confirmation went out when the case was created, it would land at about the same time as the three-week peak in calls it was meant to prevent.</p>
-<p>It asked one question: if a receipt letter were off the table, what would I still be trying to change?</p>
-<h2>What a general model does instead</h2>
-<p>Ask a general AI model for a problem statement and it will write one. It is built to be helpful, and in practice that means producing the thing you asked for, in the framing you gave it, with plausible material wherever yours runs out. For most tasks that is the right instinct. For policy work it is the expensive one, because a confident memo built on the wrong problem reads exactly like a good one, and the person who signs it off has no way to tell.</p>
-<p>policymemo.ai changes those defaults. It asks before it drafts. Where a figure is missing it leaves a marked gap instead of a number that sounds right. Where the material supports two readings of the problem, it shows both and lets you choose.</p>
-<h2>What I am still unsure about</h2>
-<p>Asking first has a cost. Some people arrive with the thinking done and want a draft, and an agent that interviews them is an obstacle. The skills try to tell the difference, and I don&rsquo;t think they always manage it yet. That is one of the things the beta is for.</p>
-<p>If you try it on something real and it gets in your way, or lets something through that it should have caught, I would like to hear about it.</p></div>
+  <p class="meta"><a href="./">Notes</a> · <span class="cat">Guides</span> · 4 October 2026 · 2 min read</p>
+  <h1>How to install policymemo.ai in Claude</h1>
+  <p class="lede">Two minutes on a paid Claude plan, about ten on the free plan. You do it once, on a computer.</p>
+  <div class="prose"><p>You install policymemo.ai once, in Claude on a computer: in your browser at <a href="https://claude.ai">claude.ai</a> or in the Claude desktop app. On a paid plan it takes about 2 minutes. On the free plan it takes about 10, because the skills go in one at a time.</p>
+<h2>First, check code execution is on</h2>
+<p>Open <strong>Settings</strong>, then <strong>Capabilities</strong>, and make sure code execution is switched on. It is on by default for most people. If it is off, policymemo.ai installs and then appears to do nothing, which is confusing enough that it is worth the 20 seconds now.</p>
+<h2>On a paid plan: upload the zip</h2>
+<p>This works on Pro, Max, Team and Enterprise.</p>
+<ol>
+<li>Download the zip from the <a href="https://policymemo.ai">policymemo.ai homepage</a>. Leave it zipped. Claude wants the file exactly as it arrives.</li>
+<li>In Claude, open <strong>Customize</strong>, then <strong>Plugins</strong>.</li>
+<li>Click <strong>Add</strong>, then <strong>Upload local plugin</strong>.</li>
+<li>Drag the zip in, or browse to it, and click <strong>Upload</strong>.</li>
+<li>Wait for the security scan to finish, then switch it on.</li>
+<li>Start a new chat.</li>
+</ol>
+<p>Claude will warn you that it cannot verify what is inside add-ons made by other people. That warning is correct, and it appears for everything of this kind. Everything policymemo.ai contains is readable in the <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/tree/main/skills">skills folder on GitHub</a> if you want to check first.</p>
+<p>A zip install does not update itself. If you would rather have updates arrive on their own, add policymemo.ai as a marketplace instead: in <strong>Plugins</strong>, click <strong>+</strong> next to <strong>Personal plugins</strong>, choose <strong>Add marketplace</strong>, paste <code>Policy-Analysis-Tools-for-Everyone/Alpha</code>, click <strong>Sync</strong>, then <strong>Install</strong>.</p>
+<h2>On the free plan: add the skills one at a time</h2>
+<p>Plugins need a paid plan, but skills do not, and once all 10 are in, policymemo.ai behaves the same.</p>
+<ol>
+<li>In Claude, open <strong>Customize</strong>, then <strong>Skills</strong>.</li>
+<li>Click <strong>+</strong>, then <strong>Create skill</strong>.</li>
+<li>Upload the first file below. Do not unzip it.</li>
+<li>Check it is switched on, then repeat for the rest.</li>
+</ol>
+<p>Start with <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/house-rules.zip">house-rules.zip</a>. It is the one that makes the others behave. Then add these 9 in any order: <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/problem.zip">problem</a>, <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/stakeholders.zip">stakeholders</a>, <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/evidence.zip">evidence</a>, <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/options.zip">options</a>, <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/criteria.zip">criteria</a>, <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/outcomes.zip">outcomes</a>, <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/trade-offs.zip">trade-offs</a>, <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/decide.zip">decide</a> and <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/story.zip">story</a>.</p>
+<p>If you only ever add 2, add house-rules and problem.</p>
+<h2>How you know it worked</h2>
+<p>On a paid plan, policymemo.ai is listed under <strong>Personal plugins</strong> and switched on. On the free plan, all 10 skills are listed under <strong>Skills</strong>. Nothing appears in your chat window, and nothing is supposed to.</p>
+<h2>Then use it</h2>
+<p>Start a new chat and describe the problem you are working on, the way you would to a colleague. There are no commands to learn. The right skill loads as the conversation needs it.</p>
+<p>It will ask you questions before it writes anything. That is deliberate, and <a href="why-it-asks-first.html">the first post here</a> explains why.</p>
+<p>If something goes wrong, <a href="mailto:jack@civicworks.co?subject=policymemo.ai%20install">tell me</a>.</p></div>
   <aside class="try"><p>Try policymemo.ai on a problem you're stuck on. It's free for Claude.</p><a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/download/policymemo-ai-claude.zip">Download for Claude</a></aside>
-  <nav class="pager" aria-label="More posts"><span></span><a class="next" href="how-to-install.html"><span>Newer</span>How to install policymemo.ai in Claude</a></nav>
+  <nav class="pager" aria-label="More posts"><a class="prev" href="why-it-asks-first.html"><span>Older</span>Why policymemo.ai asks before it writes</a><span></span></nav>
 </article>
 </main>
 <footer>

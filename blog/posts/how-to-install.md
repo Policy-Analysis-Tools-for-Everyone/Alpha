@@ -3,7 +3,6 @@ title: How to install policymemo.ai in Claude
 date: 2026-10-04
 category: guides
 summary: Two minutes on a paid Claude plan, about ten on the free plan. You do it once, on a computer.
-draft: true
 ---
 
 You install policymemo.ai once, in Claude on a computer: in your browser at [claude.ai](https://claude.ai) or in the Claude desktop app. On a paid plan it takes about 2 minutes. On the free plan it takes about 10, because the skills go in one at a time.
