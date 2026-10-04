@@ -7,6 +7,7 @@ description: >
   who has to be brought on board and in what order. Also use when a claim about
   someone's motives, influence or position is being asserted without evidence,
   or when an organisation is being treated as though it had a single mind.
+license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
   status: written, exercised in 1 reported run and 1 tester note; no session of its own
 ---

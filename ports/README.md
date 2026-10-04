@@ -29,7 +29,11 @@ Copilot:
 Gemini:
 
     0 Read me first.txt
-    1 Upload these 10 skills/            policymemo.zip, then policymemo-criteria.zip to policymemo-trade-offs.zip
+    1 Upload these 10 skills/            policymemo/SKILL.md, policymemo-criteria/SKILL.md ... policymemo-trade-offs/SKILL.md
+
+Both also carry `Licence.txt`, and every skill, knowledge file and instructions text
+ends with the CC BY-NC 4.0 credit line (`CREDIT` in the script). Port skills carry a
+`license` field in their frontmatter, as the Claude skills do.
 
 **Copilot skills.** Agent Builder accepts SKILL.md skill zips, the same format as
 the Claude skills. It allows at most 8 skills per agent, each SKILL.md under 20,000
@@ -45,7 +49,8 @@ agent, no instructions box and no knowledge. So every capability skill carries t
 house rules itself, as the compressed text from `core.md`, put where the Claude skill
 says to load `house-rules`. A tenth skill, `policymemo`, is the front door: the same
 house rules and the capability list, for people who type `/policymemo`. Gemini has no
-8-skill limit, so `trade-offs` is its own skill there. Descriptions are capped at 1,024
+8-skill limit, so `trade-offs` is its own skill there. Gemini uploads one `SKILL.md`
+at a time, so each skill is a single file: `story`'s `writing.md` is appended to it. Descriptions are capped at 1,024
 characters; Google publishes no SKILL.md limit.
 
 The zip has no folder inside it. Windows Extract All and the Mac's Archive Utility each

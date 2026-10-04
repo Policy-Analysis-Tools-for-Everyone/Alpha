@@ -9,6 +9,7 @@ description: >
   demand" appears with no magnitude or timescale, when a precise-looking figure
   rests on a guess, when the base case is today frozen in time, or when everyone
   else in the system is assumed to carry on behaving exactly as before.
+license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
   status: written, exercised inside other sessions and in 1 reported run; no session of its own
 ---

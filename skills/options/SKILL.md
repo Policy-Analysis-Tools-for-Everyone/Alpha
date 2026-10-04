@@ -8,6 +8,7 @@ description: >
   preferred answer plus decoys, differ only in scale or delivery body, collapse
   genuinely different mechanisms under one label, try to do everything at once,
   or arrive as a familiar intervention with no explanation of why it fits.
+license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
   status: written, not behaviourally tested. Has never appeared in a session header
 ---

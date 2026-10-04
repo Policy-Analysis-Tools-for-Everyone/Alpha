@@ -7,6 +7,7 @@ description: >
   operational capacity and political support, and how it writes. Always
   applies. Load this alongside any capability skill and treat it as binding on
   all of them.
+license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
   status: written, behaviourally tested across 17 sessions and 4 testers;
     revised from that evidence (see evals/)
