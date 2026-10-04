@@ -4,8 +4,11 @@ Durable explanations of each skill, published at `policymemo.ai/skills/<skill>/`
 These are reference pages, updated as the skill changes. They are not dated posts:
 essays and reflection go to [CIVICWORKS](https://civicworks.substack.com).
 
-Nothing is published until the first page exists. Then `tools/build-blog.py` writes
-`/skills/`, adds Skills to the nav, and points that skill's homepage card at its page.
+`/skills` always lists all 9 skills, using the one-line description from each
+homepage card and marking it "Article coming". When you publish a page here,
+`tools/build-blog.py` replaces that skill's description with your `summary`, links
+the skill to its page, and points its homepage card at the page too. The
+descriptions are the `SKILLS` list in `tools/build-blog.py`.
 
 ## Add a page
 

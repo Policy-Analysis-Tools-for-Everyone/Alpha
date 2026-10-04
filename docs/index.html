@@ -308,17 +308,8 @@
   footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
   footer a { text-decoration: none; } footer a:hover { color: var(--ink); }
 
-  /* A red dot by Notes while a post is under two weeks old and this visitor has not opened Notes since. */
-  .notes-link { position: relative; }
-  .new-dot { display: none; position: absolute; top: 1px; right: -9px; width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
-  .notes-link.is-new .new-dot { display: block; }
-  .new-dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--red); opacity: 0; }
-  .notes-link.pulse .new-dot::after { animation: dot-ping 1.3s var(--ease) .6s 3; }
-  @keyframes dot-ping { from { transform: scale(1); opacity: .55; } to { transform: scale(2.6); opacity: 0; } }
-
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .notes-link.pulse .new-dot::after { animation: none; }
     .w, .step, .hl, .gap, .scene, .window, .msg-agent p.q { transition: none !important; filter: none !important; }
     .js .hero-mascot { animation: none; }
     .play .icon, .play .icon * { animation: none !important; }
@@ -344,12 +335,9 @@
   <div class="wrap bar">
     <a class="brand" href="#" aria-label="policymemo.ai home"><svg class="mascot" viewBox="0 0 566 877" aria-hidden="true"><use href="#pm-mascot"/></svg></a>
     <nav aria-label="Main">
-      <a class="plain" href="#what">What it does</a>
-      <a class="plain" href="#how">How it behaves</a>
-      <!-- blog:skills --><!-- /blog:skills -->
-      <a class="plain" href="updates/">Updates</a>
-      <!-- blog:nav --><a class="plain keep notes-link" href="blog/" data-latest="2026-10-03">Notes<span class="new-dot" aria-hidden="true"></span></a><!-- /blog:nav -->
-      <a class="plain keep" href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">Feedback</a>
+      <a class="plain" href="skills/">Skills</a>
+      <a class="plain keep" href="updates/">Updates</a>
+      <a class="plain" href="https://civicworks.substack.com">CIVICWORKS</a>
       <a class="btn primary small" href="beta/">Beta access</a>
     </nav>
   </div>
@@ -509,6 +497,7 @@
       <a href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">Feedback</a>
       <a href="beta/">Beta</a>
       <a href="updates/">Updates</a>
+      <a href="skills/">Skills</a>
       <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
       <a href="install/">Install</a>
       <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/blob/main/LICENSE-CONTENT.md">Licence</a>
@@ -878,31 +867,6 @@
     io.observe(el);
     el.addEventListener('mouseenter', function () { play(el); });
     el.addEventListener('click', function () { play(el); });
-  });
-})();
-</script>
-<script>
-/* The dot by Notes: shown while the newest post is under 14 days old and this
-   visitor has not opened Notes since it went up. Opening Notes clears it. */
-(function () {
-  var a = document.querySelector('.notes-link[data-latest]');
-  if (!a) return;
-  var latest = a.getAttribute('data-latest'), seen = '';
-  try { seen = localStorage.getItem('pm-notes-seen') || ''; } catch (e) {}
-  if ((Date.now() - Date.parse(latest)) / 864e5 > 14 || seen >= latest) return;
-  a.classList.add('is-new');
-  a.setAttribute('aria-label', 'Notes, new post');
-  /* Three pulses on load, and three more each time the reader comes back to
-     the top of the page. Each round ends inside 5 seconds (WCAG 2.2.2). */
-  function pulse() { a.classList.remove('pulse'); void a.offsetWidth; a.classList.add('pulse'); }
-  pulse();
-  var away = false;
-  window.addEventListener('scroll', function () {
-    if (window.scrollY > 600) away = true;
-    else if (away && window.scrollY < 80) { away = false; pulse(); }
-  }, { passive: true });
-  a.addEventListener('click', function () {
-    try { localStorage.setItem('pm-notes-seen', latest); } catch (e) {}
   });
 })();
 </script>
