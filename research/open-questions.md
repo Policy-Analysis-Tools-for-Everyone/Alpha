@@ -15,11 +15,11 @@ in `design.md`.
 | U3 | Has term started? Dates of weeks 1, 2, 4, 6 and 9 seminars | Tutor | Whether A0 and RM1 are possible this year |
 | U4 | How many students are in the tutor's seminar group, and are PPP small groups pre-assigned and stable all term? | Tutor | The crossover; sample size |
 | U5 | Assessment: which memos are assessed, when, with what weight; is the "draft memo" formative? | Course lead | Which artefacts are assessed; when assessed work could be read |
-| U6 | Does the tutor mark, second-mark or influence marks on PPPs in their group? | Course lead | Blinding the tutor to participation; the whole tutor-researcher design |
+| U6 | Can the module arrange moderation or second marking of this group's PPPs? (Answered: the tutor marks them. See `design.md` 12.3) | Module lead | The marking conflict |
 | U7 | The course's AI-use rules for assessment, and whether students must declare AI use | Course lead, department | Using the final memo; what students can safely share |
 | U8 | Can the course require or encourage AI use in seminars, and what is the non-AI path? | Course lead, department | Whether the agent step can be part of teaching |
 | U9 | Which AI surface students will use (Claude, UCL Copilot, Gemini) and at what cost to them | Tutor, UCL digital services | Surface heterogeneity; equity |
-| U10 | Is the course lead content for the course's readings and memo template to sit behind the agent, and for seminars to include it? | Course lead | Everything |
+| U10 | Written permission exists. Does it cover teaching use of the agent in seminars, the research, or both? Is it filed with the dated log? | Module lead | Whether ethics review is the only remaining gate |
 | U11 | Would the teaching team write or approve 2 matched short vignettes for the anchors, or prefer existing cases (Apple memo, Oyster)? | Tutor, course lead | A0 and A1 |
 | U12 | For RM2: evidence and causal reasoning, or stakeholders? | Tutor | RM2 design |
 

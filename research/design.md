@@ -639,6 +639,8 @@ author of policymemo.ai. The module lead is the course's lead academic.
   role. Ethics review cannot be skipped and justified afterwards: data collected
   without approval is unlikely to be approved retrospectively or accepted by a journal,
   and the risk falls on the module lead as well as the researcher.
+- **The module lead has given written permission** (scope to confirm: see U10 in
+  `open-questions.md`). That is the department's agreement; it is not ethics approval.
 - **Recommended route.** The module lead, or an academic they nominate, acts as PI or
   sponsor, with the PGTA as co-investigator. An IIPP colleague who is not teaching the
   group handles consent, the code key and interviews (E3). The module lead's written
@@ -682,13 +684,29 @@ author of policymemo.ai. The module lead is the course's lead academic.
 
 ### 12.3 The tutor-researcher
 
-- The tutor should not know who has consented until after marks are ratified, if the
-  tutor marks or influences marking of PPPs. Needs confirming.
+**Confirmed 2026-10-04: the tutor marks the PPPs.** So the tutor must not know who has
+consented, donated or withdrawn until marks are ratified. Pseudonymisation alone does
+not achieve that: in a group of about 14, the tutor recognises each student's PPP topic.
+
+The design that follows from it:
+
+- **Collection is teaching; inclusion is research.** Every student completes the
+  in-seminar artefacts and the change note as part of the teaching, so submitting
+  reveals nothing. The third party holds the consent list and, after ratification,
+  removes everything from non-consenters before the research team sees any of it.
+  This needs the ethics committee's agreement.
+- **Transcripts go to the third party, not the tutor,** and stay sealed until
+  ratification.
+- **No research analysis by the tutor before ratification.** Year 1 analysis starts
+  after the final memo is marked. Interviews and any reading of assessed work happen
+  after that too.
+- **Marking work produced with one's own product is a second conflict.** Students may
+  use `story` to draft the memo the tutor marks. Declare it, and ask whether the module
+  can arrange moderation or second marking of this group's PPPs.
 - Participation, non-participation and withdrawal must have no route to assessment.
-  The information sheet should say how this is guaranteed, in operational terms.
+  The information sheet says how this is guaranteed, in operational terms.
 - Research moments must be defensible as teaching for everyone in the room, including
   non-participants and those who opt out of AI use.
-- The tutor's product interest is a conflict to declare.
 
 ### 12.4 Participating without contributing
 
