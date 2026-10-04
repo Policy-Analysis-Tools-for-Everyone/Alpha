@@ -214,9 +214,9 @@ def build_post(p, posts, css, home):
     # Every post ends one click from trying the product.
     if p.get("skill"):
         name = dict((s[0], s[1]) for s in SKILLS)[p["skill"]]
-        pitch = f"The {name} skill is part of policymemo.ai, free for Claude."
+        pitch = f"The {name} skill is part of policymemo.ai, which is free."
     else:
-        pitch = "Try policymemo.ai on a problem you're stuck on. It's free for Claude."
+        pitch = "Try policymemo.ai on a problem you're stuck on. It's free."
     skill_note = f'<aside class="try"><p>{pitch}</p><a class="btn primary" href="{DOWNLOAD}">Download for Claude</a></aside>'
     draft = '<p class="draft-flag">Draft · not published</p>' if p["draft"] else ""
     body = f"""<article class="wrap post">
