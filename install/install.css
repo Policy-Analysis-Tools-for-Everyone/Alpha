@@ -35,7 +35,6 @@
   .panel + .panel { margin-top: 72px; }
   .js .panel + .panel { margin-top: 0; }
   .panel > h2 { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  .tag { font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; padding: 5px 8px; border-radius: 999px; background: var(--faint); color: var(--muted); }
   .panel h3 { font: 400 clamp(22px, 2.4vw, 26px)/1.2 var(--serif); font-variation-settings: "SOFT" 50; margin: 44px 0 14px; scroll-margin-top: 150px; }
   .panel p, .panel li { font-size: 16.5px; }
   .panel p { margin: 0 0 14px; }

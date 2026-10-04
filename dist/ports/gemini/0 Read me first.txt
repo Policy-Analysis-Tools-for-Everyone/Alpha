@@ -1,4 +1,4 @@
-policymemo.ai for Google Gemini (alpha)
+policymemo.ai for Google Gemini, beta 0.1.2
 
 Full steps, with copy buttons and help if something goes wrong:
 https://policymemo.ai/install/#gemini

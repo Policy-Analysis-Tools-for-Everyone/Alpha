@@ -4,7 +4,7 @@
   "surfaces": {
     "copilot": {
       "label": "Microsoft 365 Copilot",
-      "instructions_chars": 7753,
+      "instructions_chars": 7758,
       "instructions_limit": 8000,
       "knowledge_files": [
         {
@@ -72,7 +72,7 @@
     },
     "gemini": {
       "label": "Google Gemini",
-      "instructions_chars": 7731,
+      "instructions_chars": 7736,
       "instructions_limit": null,
       "knowledge_files": [
         {
