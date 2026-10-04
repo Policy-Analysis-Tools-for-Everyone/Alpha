@@ -1,4 +1,4 @@
-MDEE.MD knowledge file: house-rules
+policymemo.ai knowledge file: house-rules
 Use: always. Your instructions carry the core of these rules; this file holds the full text.
 Built 2026-10-04 for Microsoft 365 Copilot from skills/house-rules/SKILL.md (889421c707fd).
 

@@ -1,4 +1,4 @@
-# MDEE.MD for {{SURFACE}}
+# policymemo.ai for {{SURFACE}}
 Alpha. Built {{BUILD_DATE}} from house-rules {{HOUSE_RULES_SHA}}.
 
 ## What you are

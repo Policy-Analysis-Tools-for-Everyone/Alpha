@@ -4,136 +4,136 @@
   "surfaces": {
     "copilot": {
       "label": "Microsoft 365 Copilot",
-      "instructions_chars": 7729,
+      "instructions_chars": 7735,
       "instructions_limit": 8000,
       "knowledge_files": [
         {
           "file": "MDEE 00 house rules.txt",
           "source": "skills/house-rules/SKILL.md",
           "sha": "889421c707fd",
-          "chars": 13716
+          "chars": 13722
         },
         {
           "file": "MDEE 01 problem.txt",
           "source": "skills/problem/SKILL.md",
           "sha": "543537995310",
-          "chars": 14018
+          "chars": 14024
         },
         {
           "file": "MDEE 02 stakeholders.txt",
           "source": "skills/stakeholders/SKILL.md",
           "sha": "4de3225b7298",
-          "chars": 14217
+          "chars": 14223
         },
         {
           "file": "MDEE 03 evidence.txt",
           "source": "skills/evidence/SKILL.md",
           "sha": "4aa9afdc754c",
-          "chars": 15345
+          "chars": 15351
         },
         {
           "file": "MDEE 04 options.txt",
           "source": "skills/options/SKILL.md",
           "sha": "fef559a484ed",
-          "chars": 17152
+          "chars": 17158
         },
         {
           "file": "MDEE 05 criteria.txt",
           "source": "skills/criteria/SKILL.md",
           "sha": "5a9fcf4a8866",
-          "chars": 12676
+          "chars": 12682
         },
         {
           "file": "MDEE 06 outcomes.txt",
           "source": "skills/outcomes/SKILL.md",
           "sha": "e7aed350a253",
-          "chars": 13049
+          "chars": 13055
         },
         {
           "file": "MDEE 07 trade-offs.txt",
           "source": "skills/trade-offs/SKILL.md",
           "sha": "01c3a9031cef",
-          "chars": 11898
+          "chars": 11904
         },
         {
           "file": "MDEE 08 decide.txt",
           "source": "skills/decide/SKILL.md",
           "sha": "1467c4e11c9d",
-          "chars": 17346
+          "chars": 17352
         },
         {
           "file": "MDEE 09 story.txt",
           "source": "skills/story/SKILL.md",
           "sha": "c6601946b734",
-          "chars": 25753
+          "chars": 25759
         }
       ],
       "knowledge_limit": 20
     },
     "gemini": {
       "label": "Google Gemini",
-      "instructions_chars": 7707,
+      "instructions_chars": 7713,
       "instructions_limit": null,
       "knowledge_files": [
         {
           "file": "MDEE 00 house rules.txt",
           "source": "skills/house-rules/SKILL.md",
           "sha": "889421c707fd",
-          "chars": 13708
+          "chars": 13714
         },
         {
           "file": "MDEE 01 problem.txt",
           "source": "skills/problem/SKILL.md",
           "sha": "543537995310",
-          "chars": 14010
+          "chars": 14016
         },
         {
           "file": "MDEE 02 stakeholders.txt",
           "source": "skills/stakeholders/SKILL.md",
           "sha": "4de3225b7298",
-          "chars": 14209
+          "chars": 14215
         },
         {
           "file": "MDEE 03 evidence.txt",
           "source": "skills/evidence/SKILL.md",
           "sha": "4aa9afdc754c",
-          "chars": 15337
+          "chars": 15343
         },
         {
           "file": "MDEE 04 options.txt",
           "source": "skills/options/SKILL.md",
           "sha": "fef559a484ed",
-          "chars": 17144
+          "chars": 17150
         },
         {
           "file": "MDEE 05 criteria.txt",
           "source": "skills/criteria/SKILL.md",
           "sha": "5a9fcf4a8866",
-          "chars": 12668
+          "chars": 12674
         },
         {
           "file": "MDEE 06 outcomes.txt",
           "source": "skills/outcomes/SKILL.md",
           "sha": "e7aed350a253",
-          "chars": 13041
+          "chars": 13047
         },
         {
           "file": "MDEE 07 trade-offs.txt",
           "source": "skills/trade-offs/SKILL.md",
           "sha": "01c3a9031cef",
-          "chars": 11890
+          "chars": 11896
         },
         {
           "file": "MDEE 08 decide.txt",
           "source": "skills/decide/SKILL.md",
           "sha": "1467c4e11c9d",
-          "chars": 17338
+          "chars": 17344
         },
         {
           "file": "MDEE 09 story.txt",
           "source": "skills/story/SKILL.md",
           "sha": "c6601946b734",
-          "chars": 25745
+          "chars": 25751
         }
       ],
       "knowledge_limit": 10

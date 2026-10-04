@@ -1,4 +1,4 @@
-# MDEE.MD for Microsoft 365 Copilot
+# policymemo.ai for Microsoft 365 Copilot
 Alpha. Built 2026-10-04 from house-rules 889421c707fd.
 
 ## What you are

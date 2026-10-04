@@ -1,4 +1,4 @@
-# MDEE.MD for Google Gemini
+# policymemo.ai for Google Gemini
 Alpha. Built 2026-10-04 from house-rules 889421c707fd.
 
 ## What you are

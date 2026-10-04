@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Microsoft 365 Copilot and Google Gemini ports of MDEE.MD.
+"""Build the Microsoft 365 Copilot and Google Gemini ports of policymemo.ai.
 
 The canonical files are skills/<name>/SKILL.md. Everything this script writes is
 generated from them plus ports/core.md, so a port never forks the method.
@@ -32,6 +32,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SKILLS = ROOT / "skills"
 PORTS = ROOT / "ports"
 CORE = PORTS / "core.md"
+SETUP = PORTS / "setup-{surface}.md"  # copied into each port as SETUP.md
 REVIEWED = PORTS / "house-rules.reviewed"
 OUT = ROOT / "dist" / "ports"
 
@@ -70,7 +71,7 @@ SURFACES = {
 # Short Gem instructions for the case where a Gem will not save the full block.
 # The full house rules then come from knowledge file 00. Keep in step with core.md.
 GEMINI_FALLBACK = (
-    "You are MDEE.MD, an alpha toolkit for working through a public policy problem. "
+    "You are policymemo.ai, an alpha toolkit for working through a public policy problem. "
     'Before every reply, apply the knowledge file "MDEE 00 house rules" in full; it '
     "binds everything you do. Its 2 hardest rules: invent nothing, marking each gap as "
     "[NEEDED: what, and where it would come from], and let the user decide between "
@@ -203,7 +204,7 @@ def knowledge_file(name: str, fields: dict[str, str], body: str, sha: str,
         description = " ".join(fields.get("description", "").split())
         use = description if description.lower().startswith("use when") else "Use when: " + description
     header = (
-        f"MDEE.MD knowledge file: {name}\n{use}\n"
+        f"policymemo.ai knowledge file: {name}\n{use}\n"
         f"Built {build_date} for {surface_label} from skills/{name}/SKILL.md ({sha}).\n\n"
     )
     return header + body
@@ -291,6 +292,10 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
 
     for surface, spec in SURFACES.items():
         files: dict[str, str] = {}
+        setup = Path(str(SETUP).format(surface=surface))
+        if not setup.is_file():
+            raise BuildError(f"missing {setup.relative_to(ROOT)}")
+        files["SETUP.md"] = setup.read_text(encoding="utf-8").replace("\r\n", "\n")
         text = instructions(core, surface, house_sha, build_date)
         files["instructions.txt"] = text
         limit = spec["hard_limit"]
