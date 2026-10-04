@@ -13,7 +13,7 @@ Start the file with:
 ---
 title: The post's title
 date: 2026-10-13
-category: skills          # why | skills | updates
+category: skills          # why | skills | guides | updates
 skill: problem            # skill posts only: problem, stakeholders, evidence, options,
                           # criteria, outcomes, trade-offs, decide, story
 summary: One sentence. It appears on the blog index and in link previews.
