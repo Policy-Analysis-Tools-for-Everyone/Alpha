@@ -176,7 +176,9 @@ The UCL Personal Policy Problem format contains:
 
 The UCL instructions say the memo should typically fit around 2 pages. Endnotes sit outside that page total. In the course setting, a 1-page cover letter can add context about the authoriser or drafter. [P]
 
-Treat those as format rules for this mode.
+Treat the 8 sections as a guide for this mode, not a checklist. The same instructions say sections may be longer, shorter or omitted. Strong memos written to this brief differ: one uses all 8, another uses 4 and leaves stakeholders, analysis, criteria and risks implicit, and both are judgements about a particular reader, decision and page. [P] Evidence: `../../memos/wiki/patterns.md` P11, 5 memos.
+
+Whether a section earns its space is the user's decision. The agent's job is to make it an informed one: say what the section would do for this reader, and what leaving it out would cost. A missing stakeholder section, for example, is where an opponent nobody reckoned with goes unseen. That trade-off is the critical-thinking skill the format exists to exercise.
 
 Do not treat the section order as the analytical workflow the user must have followed.
 
@@ -911,6 +913,8 @@ Repeat only for serious options.
 - The writing-quality layer has been applied.
 
 ## PPC mode must also pass
+
+Each line applies where the section is used. A section left out passes if the user chose to leave it out and could see what that cost.
 
 - Issue is concise and suited to what the decision maker already knows.
 - Stakeholders includes motivations, beliefs and resources at a proportionate level.

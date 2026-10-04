@@ -42,7 +42,17 @@ SKILL.md with provenance stripped and house-rules loading replaced, named
 `policymemo-<capability>`, with its supporting files beside it. There are 9
 capabilities, so `trade-offs` travels inside `policymemo-decide` as `trade-offs.md`,
 with a line in decide's body and description pointing to it (`HOSTED` in the
-script). The build fails if any of those limits is broken.
+script). The build fails if any of those limits is broken, and notes any SKILL.md
+within 5% of 20,000.
+
+`story` is the longest skill, so its Copilot SKILL.md moves one section, *PPC
+memo mode, section by section*, into `ppc-memo.md` in the same zip, leaving a
+line that says to read it in PPC mode (`SPLIT` in the script). That section is
+only used when someone asks for that memo format, so loading it on demand loses
+nothing. The source isn't touched: Claude and Gemini carry `story` whole, and the
+Copilot knowledge file keeps the section inline. If the heading changes, the
+build stops until `SPLIT` is updated. Split a section out only if it is used
+conditionally, never a rule that holds on every use.
 
 **Gemini skills.** Gemini replaced Gems with skills, which stand alone: there is no
 agent, no instructions box and no knowledge. So every capability skill carries the
