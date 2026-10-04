@@ -10,7 +10,7 @@
 | Version | `[add]` — not recorded |
 | Cold or warm | **`[confirm]` — possibly the first cold session in this repository.** Nothing in the note suggests prior exposure to the skill files or to `evals/`. If T004 had not read them and had not used MDEE before, their first session was cold. One question settles it and the answer does not keep |
 | Transcript | None. Cite as an uncommitted session |
-| Consent to publish | `[confirm]` |
+| Consent to publish | yes. Confirmed by the maintainer, 2026-10-04 |
 
 Sent as an unstructured note rather than against the five questions. Reproduced in full, minus
 the greeting. Nothing substituted: it names no organisation, person or figure.

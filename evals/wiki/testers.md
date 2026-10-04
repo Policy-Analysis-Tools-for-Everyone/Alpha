@@ -16,10 +16,11 @@ Privacy and counting rules are in `../README.md`, not repeated here.
 |---|---|---|---|---|---|---|---|---|---|
 | T001 | alpha | — | Project owner and author | not recorded | high | authored it | 6 | 2026-08-17 | yes |
 | T002 | alpha | — | not recorded | not recorded | high | yes, familiar before first session | 3 | 2026-08 | yes, anonymised |
-| T003 | alpha | — | not recorded | not recorded | high | yes, wrote runs up against the evaluation method | 6 | 2026-08 | **not confirmed** |
-| T004 | alpha | — | not recorded | not recorded | high | possibly not | 2 | not recorded | **not confirmed** |
+| T003 | alpha | — | not recorded | not recorded | high | yes, wrote runs up against the evaluation method | 6 | 2026-08 | yes |
+| T004 | alpha | — | not recorded | not recorded | high | possibly not | 2 | not recorded | yes |
 
-**The alpha rows are closed.** Fields nobody recorded at the time say so rather than
+**The alpha rows are closed.** Consent was confirmed for every alpha tester on 2026-10-04.
+Fields nobody recorded at the time say so rather than
 being filled in from memory. Beta testers start at **T005**.
 
 ## What each field is for

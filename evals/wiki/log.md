@@ -70,3 +70,12 @@ skills as `0.1.2`.
 
 Alpha files still cite the old paths: `sessions/` is `raw/alpha/`, `testers.md` is
 `wiki/testers.md`, `tests/capability-alpha-pack.md` is `tests/capability-pack.md`.
+
+## 2026-10-04 · lint · alpha consent, and the spec follows the skills
+
+Consent to publish confirmed by the maintainer for all four alpha testers. `testers.md` and
+the `t004-note.md` header record it.
+
+`reference/BEHAVIOUR_SPEC.md` brought into line with `house-rules` and `problem` as they
+stand after round 1 and the writing revision, and now says the skills are canonical.
+`ports/core.md` already matched `house-rules`.

@@ -100,9 +100,10 @@ the method layer cites. `reference/domain/` holds domain-specific material, such
 as the digital public infrastructure synthesis of 2 UCL IIPP papers. No skill
 reads either.
 
-[`reference/BEHAVIOUR_SPEC.md`](reference/BEHAVIOUR_SPEC.md) specifies the core
-behaviour: the rules that hold in every conversation, and how the agent defines a
-problem. Every other capability is specified by its method file.
+**`skills/house-rules/SKILL.md` is the source of truth for how the agent behaves.**
+Everything else follows it: `ports/core.md` compresses it for Copilot and Gemini,
+and [`reference/BEHAVIOUR_SPEC.md`](reference/BEHAVIOUR_SPEC.md) records the
+decisions behind it and `problem`. When `house-rules` changes, bring both into line.
 
 ### Provenance
 
