@@ -10,7 +10,6 @@ For people working on policymemo.ai rather than using it. Users want the
 | `skills/` | The 11 runtime skills. The only copy; everything else is generated from them or points at them | Yes |
 | `reference/` | The method layer, sources, domain material, `AUTHORING.md` and `BEHAVIOUR_SPEC.md` | Yes |
 | `evals/` | What testers actually saw, and the wiki distilled from it. Start at `evals/README.md` | Yes |
-| `research/` | The student research study: design, instruments, codebooks. No participant data. Start at `research/README.md` | Yes |
 | `site/` | Sources for policymemo.ai: `beta/`, `blog/`, `install/`, `updates/` | Yes |
 | `ports/` | The hand-written core of the Copilot and Gemini versions | Yes |
 | `tools/` | Build scripts | Yes |
