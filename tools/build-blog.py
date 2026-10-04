@@ -125,7 +125,7 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
       <a class="plain" href="{home}#what">What it does</a>
       <a class="plain keep" href="{home}blog/"{notes_current} data-latest="{LATEST}">Notes</a>
       <a class="plain keep" href="{FEEDBACK}">Feedback</a>
-      <a class="btn primary small" href="{home}install/">Download</a>
+      <a class="btn primary small" href="{home}install/">Install</a>
     </nav>
   </div>
 </header>
