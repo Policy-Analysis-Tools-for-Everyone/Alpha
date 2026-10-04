@@ -14,10 +14,11 @@ Posts live in blog/posts/*.md, each with a short front matter block:
 
 This writes docs/blog/index.html and one docs/blog/<slug>.html per published
 post (the slug is the file name), plus two Atom feeds: feed.xml (every post)
-and, once an updates post exists, feed-updates.xml (product updates only). It also updates the homepage between its
-blog markers: a Blog link in the nav and footer, and a "Read the post" link on
-each skill card, all of which stay empty until something is published, so the
-site never shows an empty blog.
+and, once an updates post exists, feed-updates.xml (product updates only). The
+feeds are not linked from the page; feed readers find them from the <head>
+tags. It also updates the homepage between its blog markers: a Blog link in the
+nav and footer, and a "Read the post" link on each skill card, all of which
+stay empty until something is published, so the site never shows an empty blog.
 
     python3 tools/build-blog.py              # publish
     python3 tools/build-blog.py --drafts OUT # preview everything, drafts included, into OUT
@@ -162,7 +163,6 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
       <a href="{home}">Home</a>
       <a href="{home}install/">Install</a>
       <a href="{FEEDBACK}">Feedback</a>
-      <a href="{home}blog/feed.xml">RSS</a>
       <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
     </nav>
   </div>
@@ -216,12 +216,6 @@ def build_index(posts, css, home):
   <p class="intro">Each post covers what the skill does, the method behind it, and what it looks like on a real problem.</p>
   <ul class="skill-grid">{cards}</ul>
 </section>""" if by_skill else ""
-    feeds = ('In a feed reader: <a href="feed.xml">every post</a>, or <a href="feed-updates.xml">product updates only</a>.'
-             if "updates" in USED else 'Get new posts in a feed reader: <a href="feed.xml">subscribe to the RSS feed</a>.')
-    follow = f"""<section class="wrap follow" aria-labelledby="follow" data-rise>
-  <h2 id="follow">Follow along</h2>
-  <p class="feeds">{feeds}</p>
-</section>"""
     filters = ""
     if show_cats():
         chips = "".join(f'<button type="button" data-cat="{k}" aria-pressed="false">{CATEGORIES[k]}</button>' for k in USED)
@@ -235,8 +229,7 @@ def build_index(posts, css, home):
   <div class="list-head"><h2 id="latest">Latest</h2>{filters}</div>
   {latest}
 </section>
-{series}
-{follow}"""
+{series}"""
     return page("Notes · policymemo.ai", "Notes from building policymemo.ai: why it works the way it does, a post on each skill, and what changes.", body, css, home)
 
 
@@ -324,7 +317,7 @@ def update_home(posts):
             raise SystemExit(f"docs/index.html is missing the blog:{name} markers")
         s = pat.sub(lambda m: m.group(1) + content + m.group(2), s)
     fill("nav", f'<a class="plain keep notes-link" href="blog/" data-latest="{posts[0]["date_obj"].isoformat()}">Notes<span class="new-dot" aria-hidden="true"></span></a>' if live else "")
-    fill("footer", '<a href="blog/">Notes</a><a href="blog/feed.xml">RSS</a>' if live else "")
+    fill("footer", '<a href="blog/">Notes</a>' if live else "")
     fill("head", '<link rel="alternate" type="application/atom+xml" title="Notes · policymemo.ai" href="blog/feed.xml">' if live else "")
     by_skill = {p["skill"]: p for p in posts if p.get("skill")}
     for slug, _, _ in SKILLS:

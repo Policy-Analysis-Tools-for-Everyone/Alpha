@@ -35,7 +35,8 @@ When a post without `draft: true` reaches `main`, the "Build blog" workflow runs
   homepage, and marks the skill as published in the series on the blog index. The series
   section itself appears once the first skill post is published
 - writes an Atom feed of every post, `docs/blog/feed.xml`, and once an `updates` post is
-  published, `docs/blog/feed-updates.xml` with only those. Feed readers find them from any page.
+  published, `docs/blog/feed-updates.xml` with only those. There is no visible
+  link: feed readers find them when someone pastes `policymemo.ai/blog` into one.
 - shows category labels and the filter on the blog index only once posts in two or more
   categories are published, with a filter button only for categories that have posts
 
