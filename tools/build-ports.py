@@ -40,10 +40,10 @@ PREFIX = "policymemo"                      # knowledge file names; the instructi
 ZIP_NAME = "policymemo-ai-{surface}.zip"  # no folder inside: Extract All and Archive Utility make one
 README_FILE = "0 Read me first.txt"
 INSTRUCTIONS_FILE = "1 Paste into Instructions.txt"
-KNOWLEDGE_DIR = "2 Upload these 10 files"
 SKILLS_DIR = "2 Upload these 8 skills"
 KNOWLEDGE_FALLBACK_DIR = "3 No Skills option - upload these as knowledge instead"
-FALLBACK_FILE = "If the instructions get cut short, paste this instead.txt"
+GEMINI_SKILLS_DIR = "1 Upload these 10 skills"
+FRONT_DOOR = "policymemo"
 INSTALL_URL = "https://policymemo.ai/install/#{surface}"
 
 # Copilot custom skills (Agent Builder): at most 8 per agent, SKILL.md under
@@ -105,40 +105,25 @@ SURFACES = {
     },
     "gemini": {
         "label": "Google Gemini",
-        "hard_limit": None,   # Google publishes no limit for Gem instructions
-        "max_files": 10,      # Gem knowledge files
-        "skills": False,
-        "knowledge_dir": KNOWLEDGE_DIR,
+        # Gemini skills stand alone: no agent, no instructions box, no knowledge.
+        # Every skill carries the house rules itself, and a front-door skill
+        # holds them with the capability list.
+        "standalone_skills": True,
         "readme": (
-            "1. At gemini.google.com, open Gems, then New Gem.\n"
-            "2. Open \"{instructions}\", select everything, copy it, and paste it\n"
-            "   into the Instructions box.\n"
-            "3. Under Knowledge, add all 10 files in the \"{knowledge}\" folder.\n"
-            "   Do not rename them.\n"
-            "4. Click Save. Reopen the Gem and check the instructions end with\n"
-            "   \"is still flagged in any document I produced.\" If they do not, paste\n"
-            "   \"{fallback}\" in their place.\n"
+            "1. Open Gemini on a computer, at gemini.google.com or in the Mac app, and\n"
+            "   go to Skills.\n"
+            "2. Choose to upload a skill, and upload each of the 10 zip files in the\n"
+            "   \"{skills}\" folder, one at a time. Do not unzip them and do not rename them.\n"
+            "3. Start a new chat. Type /policymemo to begin, or just describe the\n"
+            "   problem you are working on.\n"
         ),
         "knowledge_how": (
-            'Your knowledge files are "policymemo 00 house rules", the full version of these '
-            'rules, and 1 file per capability, "policymemo 01 problem" to "policymemo 09 story". '
-            "When the analytical job changes, consult that capability's file and "
+            "Each capability below is its own skill, named policymemo-<capability>, and "
+            "carries these rules too. When the analytical job changes, use that skill and "
             "follow its moves."
         ),
     },
 }
-
-# Short Gem instructions for the case where a Gem will not save the full block.
-# The full house rules then come from knowledge file 00. Keep in step with core.md.
-GEMINI_FALLBACK = (
-    "You are policymemo.ai, a beta toolkit for working through a public policy problem. "
-    'Before every reply, apply the knowledge file "policymemo 00 house rules" in full; it '
-    "binds everything you do. Its 2 hardest rules: invent nothing, marking each gap as "
-    "[NEEDED: what, and where it would come from], and let the user decide between "
-    "real alternatives. Reply in the chat, ask 1 question at a time, and label anything "
-    "you add from your own knowledge. When the analytical job changes, consult that "
-    'capability\'s file, "policymemo 01 problem" to "policymemo 09 story".\n'
-)
 
 LOAD_PARAGRAPH = re.compile(
     r"Load `house-rules` before anything else here.*?\n[ \t]*\n", re.DOTALL
@@ -294,20 +279,73 @@ def copilot_skills() -> tuple[dict[str, bytes], list[dict], list[str]]:
             sha = short_hash((sha + g_sha).encode())
         for extra_name, text in extras:
             files[f"{skill}/{extra_name}"] = HTML_COMMENT.sub("", text).strip() + "\n"
-        skill_md = (f"---\nname: {skill}\ndescription: {json.dumps(description)}\n---\n\n" + body)
-        files[f"{skill}/SKILL.md"] = skill_md
+        data, skill_md = skill_zip(skill, description, body,
+                                   {f.split("/", 1)[1]: v for f, v in files.items()})
         if len(skill_md) >= SKILL_CHARS:
             problems.append(f"copilot skill {skill}: SKILL.md is {len(skill_md)} characters; "
                             f"the limit is under {SKILL_CHARS}")
         if len(description) > SKILL_DESCRIPTION_CHARS:
             problems.append(f"copilot skill {skill}: description is {len(description)} characters; "
                             f"the limit is {SKILL_DESCRIPTION_CHARS}")
-        zips[f"{skill}.zip"] = zip_bytes(files)
+        zips[f"{skill}.zip"] = data
         report.append({"skill": skill, "sha": sha, "skill_md_chars": len(skill_md),
                        "description_chars": len(description),
-                       "files": sorted(f.split("/", 1)[1] for f in files)})
+                       "files": ["SKILL.md"] + sorted(f.split("/", 1)[1] for f in files)})
     if len(zips) > SKILL_LIMIT:
         problems.append(f"copilot: {len(zips)} skills; the limit is {SKILL_LIMIT}")
+    return zips, report, problems
+
+
+FRONT_DOOR_DESCRIPTION = (
+    "Use for any public policy problem: a concern, rough notes, an inherited proposal, a "
+    "draft, options to compare, a decision to make or a memo to write. Holds the house "
+    "rules every policymemo skill follows and says which policymemo skill does each job. "
+    "Start here when it is unclear which applies, or when the user types /policymemo."
+)
+GEMINI_LOAD = (
+    "The house rules below are in force throughout this skill and bind everything in it. "
+    "Their 2 hardest rules hold throughout: invent nothing, and the user decides. "
+    "Where this skill names another capability, it means the policymemo skill of that name.\n\n"
+)
+
+
+def skill_zip(skill: str, description: str, body: str, extras: dict[str, str]) -> tuple[bytes, str]:
+    """A skill zip with skill/SKILL.md at its main folder, as both Copilot and Gemini expect."""
+    skill_md = f"---\nname: {skill}\ndescription: {json.dumps(description)}\n---\n\n" + body
+    files = {f"{skill}/SKILL.md": skill_md}
+    files.update({f"{skill}/{name}": text for name, text in extras.items()})
+    return zip_bytes(files), skill_md
+
+
+def gemini_skills(rules: str) -> tuple[dict[str, bytes], list[dict], list[str]]:
+    """The front door plus 1 skill per capability, each carrying the house rules inline."""
+    zips: dict[str, bytes] = {}
+    report: list[dict] = []
+    problems: list[str] = []
+    data, skill_md = skill_zip(FRONT_DOOR, FRONT_DOOR_DESCRIPTION, rules, {})
+    zips[f"{FRONT_DOOR}.zip"] = data
+    report.append({"skill": FRONT_DOOR, "skill_md_chars": len(skill_md),
+                   "description_chars": len(FRONT_DOOR_DESCRIPTION), "files": ["SKILL.md"]})
+    start = rules.index("\n## ")
+    inline = "## House rules\n" + re.sub(r"^## ", "### ", rules[start:].strip(), flags=re.M)
+    for name in CAPABILITIES:
+        fields, body, extras, sha = read_skill_parts(name)
+        skill = SKILL_NAME.format(name=name)
+        description = " ".join(fields.get("description", "").split())
+        body = HTML_COMMENT.sub("", body).strip() + "\n"
+        body, replaced = LOAD_PARAGRAPH.subn(
+            lambda _: GEMINI_LOAD + inline + "\n\n---\n\n", body, count=1)
+        if replaced != 1:
+            raise BuildError(f"skills/{name}/SKILL.md: the house-rules loading paragraph was not found")
+        files = {n: HTML_COMMENT.sub("", text).strip() + "\n" for n, text in extras}
+        data, skill_md = skill_zip(skill, description, body, files)
+        zips[f"{skill}.zip"] = data
+        if len(description) > SKILL_DESCRIPTION_CHARS:
+            problems.append(f"gemini skill {skill}: description is {len(description)} characters; "
+                            f"the limit is {SKILL_DESCRIPTION_CHARS}")
+        report.append({"skill": skill, "sha": sha, "skill_md_chars": len(skill_md),
+                       "description_chars": len(description),
+                       "files": ["SKILL.md"] + sorted(files)})
     return zips, report, problems
 
 
@@ -351,8 +389,8 @@ def version() -> str:
 
 def readme(surface: str, house_sha: str, build_date: str) -> str:
     spec = SURFACES[surface]
-    steps = spec["readme"].format(instructions=INSTRUCTIONS_FILE, knowledge=spec["knowledge_dir"],
-                                  skills=SKILLS_DIR, fallback=FALLBACK_FILE)
+    steps = spec["readme"].format(instructions=INSTRUCTIONS_FILE, knowledge=spec.get("knowledge_dir", ""),
+                                  skills=GEMINI_SKILLS_DIR if spec.get("standalone_skills") else SKILLS_DIR)
     return (
         f"policymemo.ai for {spec['label']}, beta {version()}\n\n"
         f"Full steps, with copy buttons and help if something goes wrong:\n"
@@ -448,6 +486,16 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
     for surface, spec in SURFACES.items():
         files: dict[str, str | bytes] = {}
         text = instructions(core, surface, house_sha, build_date)
+        if spec.get("standalone_skills"):
+            notes.extend(lint(f"{surface} house rules", text))
+            files[README_FILE] = readme(surface, house_sha, build_date)
+            zips, skill_report, skill_problems = gemini_skills(text)
+            problems.extend(skill_problems)
+            for zip_name, data in zips.items():
+                files[f"{GEMINI_SKILLS_DIR}/{zip_name}"] = data
+            outputs[surface] = files
+            manifest["surfaces"][surface] = {"label": spec["label"], "skills": skill_report}
+            continue
         files[README_FILE] = readme(surface, house_sha, build_date)
         files[INSTRUCTIONS_FILE] = text
         limit = spec["hard_limit"]
@@ -455,10 +503,6 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
             problems.append(f"{surface}: instructions are {len(text)} characters; the limit is {limit}")
         elif limit and len(text) > 0.95 * limit:
             notes.append(f"{surface}: instructions are within 5% of the {limit}-character limit")
-        if limit is None:
-            notes.append(f"{surface}: no published instruction limit; confirm the full "
-                         f"{len(text)} characters save intact, else paste the fallback")
-            files[FALLBACK_FILE] = GEMINI_FALLBACK
         notes.extend(lint(f"{surface} instructions", text))
 
         knowledge = []
@@ -500,13 +544,13 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
         return 1
 
     for surface, info in manifest["surfaces"].items():
-        limit = info["instructions_limit"] or "unpublished"
-        line = (f"{surface:8} instructions {info['instructions_chars']:>5} / {limit}   "
-                f"knowledge {len(info['knowledge_files'])} / {info['knowledge_limit']} files")
-        if "skills" in info:
-            largest = max(s["skill_md_chars"] for s in info["skills"])
-            line += (f"   skills {len(info['skills'])} / {info['skill_limit']}, "
-                     f"largest SKILL.md {largest} / {SKILL_CHARS}")
+        line = f"{surface:8}"
+        if "instructions_chars" in info:
+            line += (f" instructions {info['instructions_chars']:>5} / {info['instructions_limit']}   "
+                     f"knowledge {len(info['knowledge_files'])} / {info['knowledge_limit']} files  ")
+        largest = max(s["skill_md_chars"] for s in info["skills"])
+        limit = f" / {info['skill_limit']}" if "skill_limit" in info else ""
+        line += f" skills {len(info['skills'])}{limit}, largest SKILL.md {largest}"
         print(line)
     if check_only:
         print("check passed; nothing written")
