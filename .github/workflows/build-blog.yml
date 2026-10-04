@@ -1,8 +1,8 @@
 name: Build blog
 
-# docs/blog/, docs/install/, docs/beta/, docs/updates/, docs/skills/ and the
+# docs/blog/, docs/install/, docs/beta/, docs/updates/ and the
 # generated links on the homepage are built from blog/posts/, install/, beta/,
-# updates/ and skill-pages/ by tools/build-blog.py. This rebuilds them whenever a post, the blog styles
+# and updates/ by tools/build-blog.py. This rebuilds them whenever a post, the blog styles
 # or the build script changes, so the published blog never drifts from its source.
 
 on:
@@ -12,7 +12,6 @@ on:
       - "install/**"
       - "beta/**"
       - "updates/**"
-      - "skill-pages/**"
       - "tools/build-blog.py"
       - ".github/workflows/build-blog.yml"
   workflow_dispatch:
