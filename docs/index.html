@@ -224,7 +224,11 @@
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .tour.measuring *, .tour.measuring { transition: none !important; }
   .chat { position: relative; }
-  .chat.follow { overflow-y: auto; scrollbar-width: thin; }
+  /* The tour moves the chat itself; readers scroll the page, never the demo. */
+  /* The tour slides the conversation up itself, so the chat is never a scroll box
+     and scrolling over the demo always moves the page. */
+  .chat.follow { overflow: hidden; overflow: clip; }
+  .chat.follow > .scenes { transform: translateY(var(--follow, 0px)); }
   .hidden { display: none !important; }
 
 
@@ -594,7 +598,14 @@
 
   var FLAGS = ['thinking', 'gap-on', 'hl-on', 'typing-now', 'skill-on', 'skill-story'];
   var current = 0, elapsed = 0, playing = false, inView = false, holding = 0, rafId = null, lastTs = null;
-  var followMode = false, followTarget = 0;
+  var followMode = false, followTarget = 0, followY = 0;
+  var scenesBox = chat.querySelector('.scenes');
+  function setFollow(y) {
+    var pad = parseFloat(getComputedStyle(chat).paddingBottom) || 0;
+    var max = Math.max(0, scenesBox.offsetTop + scenesBox.offsetHeight + pad - chat.clientHeight);
+    followY = Math.max(0, Math.min(max, y));
+    chat.style.setProperty('--follow', (-followY).toFixed(1) + 'px');
+  }
 
   function render(i, t) {
     var sc = SCENES[i];
@@ -638,13 +649,13 @@
     while (el && el !== chat) { bottom += el.offsetTop; el = el.offsetParent; }
     var aim = Math.max(0, bottom - chat.clientHeight);
     // Playing only ever scrolls forward; a seek places the view from scratch.
-    followTarget = absolute ? aim : Math.max(chat.scrollTop, aim);
+    followTarget = absolute ? aim : Math.max(followY, aim);
   }
   function glideFollow(dt) {
     if (!followMode) return;
-    var d = followTarget - chat.scrollTop;
+    var d = followTarget - followY;
     if (Math.abs(d) < 0.5) return;
-    chat.scrollTop += d * Math.min(1, dt / 220);
+    setFollow(followY + d * Math.min(1, dt / 220));
   }
 
   function tick(ts) {
@@ -654,7 +665,7 @@
     lastTs = ts;
     if (holding > 0) {
       holding -= dt;
-      if (holding <= 0) { render(current + 1, 0); followTarget = 0; chat.scrollTop = 0; }
+      if (holding <= 0) { render(current + 1, 0); followTarget = 0; setFollow(0); }
     } else {
       var t = elapsed + dt;
       if (t >= SCENES[current].dur) {
@@ -677,7 +688,7 @@
   function seek(i, t) {
     holding = 0; render(i, t == null ? 0 : t);
     aimFollow(elapsed, true);
-    if (followMode) chat.scrollTop = followTarget;
+    if (followMode) setFollow(followTarget);
   }
   function go(i) {
     holding = 0;
@@ -691,6 +702,7 @@
     root.classList.add('measuring');
     followMode = false;
     chat.classList.remove('follow');
+    setFollow(0);
     chat.style.minHeight = '0px'; chat.style.height = '';
     var max = 0;
     SCENES.forEach(function (sc, i) { render(i, Infinity); max = Math.max(max, chat.getBoundingClientRect().height); });
@@ -703,7 +715,7 @@
     }
     render(keep[0], keep[1]);
     aimFollow(keep[1], true);
-    if (followMode) chat.scrollTop = followTarget;
+    if (followMode) setFollow(followTarget);
     root.classList.remove('measuring');
   }
 
