@@ -198,13 +198,7 @@ There is no single endpoint. The product runs from problem definition through to
 
 ## 17. Designed but not built
 
-These were designed for a web application with a persistence layer, which this repository does not contain. They are recorded because the reasoning may matter if one is ever built.
-
-- **Case record.** A persistent record behind the chat, separate from the transcript, carrying only **accepted** material across sessions. Proposed sections: current purpose; working problem statement; problem system; scope and affected groups; claims and evidence; assumptions and unknowns; public value readout; critical uncertainty; working hypothesis; learning move; open questions; contested framings; change log. Empty sections hidden; no required order.
-- **Update rule.** A normal reply leaves the record unchanged. The agent proposes an update only on a material change: a revised problem statement, a new evidence judgement, an assumption made explicit, a different causal account, a new critical uncertainty, an agreed learning move. The user sees the change before it is saved and can accept, edit or reject it. Contested wording can be recorded as contested rather than accepted.
-- **Orienting questions as a sequence.** Five questions (what is happening; who is affected and why it matters publicly; what do we know, assume or dispute; which uncertainty matters most to the next decision; what is the smallest useful way to learn more) were designed as a single workflow. The product deliberately has no mandatory journey, so they are not implemented as one.
-
-A proposal block emitted into a chat where nothing parses it would just show the user raw JSON, so none of the machine-read proposal contract is carried into the skills.
+A persistent case record behind the chat, with an accept-before-save update rule, was designed for a web application this repository does not contain. Nothing of it is carried into the skills. The full design is in this file's git history, before the 0.2.0 beta.
 
 ## 18. Settled tensions
 

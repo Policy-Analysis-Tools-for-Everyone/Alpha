@@ -20,7 +20,7 @@ Canonical method:
     carries the Bardach citation.
 
 Also grounded in:
-  [P] docs/BEHAVIOUR_SPEC.md sections 4-12 and 15 - the questioning sequence,
+  [P] reference/BEHAVIOUR_SPEC.md sections 4-12 and 15 - the questioning sequence,
       its transition conditions, the four-part output, the problem system map,
       the self-check as a scoring list, and a metric per sub-problem.
   [O] Project owner - the placeholder set; the contaminated-measure warning

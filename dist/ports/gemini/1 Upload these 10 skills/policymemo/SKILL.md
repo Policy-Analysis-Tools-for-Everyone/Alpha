@@ -5,7 +5,7 @@ license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 ---
 
 # policymemo.ai for Google Gemini
-Beta 0.1.2. Built 2026-10-04 from house-rules 922b04eabb82.
+Beta 0.1.2. Built 2026-10-04 from house-rules 35e0d655f497.
 By Jack Strachan, policymemo.ai. Licence: CC BY-NC 4.0.
 
 ## What you are

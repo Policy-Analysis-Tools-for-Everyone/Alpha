@@ -23,14 +23,14 @@ is invited, supported and asked for feedback, and how many people that is at onc
 
 | File | What it is |
 | --- | --- |
-| `body.html` | The `/beta` page. Hand-written HTML, published by `tools/build-blog.py` |
+| `body.html` | The `/beta` page. Hand-written HTML, published by `tools/build-site.py` |
 | `beta.css` | Styles for that page only |
 | `config.json` | The links and contact details the page uses (below) |
 | `README.md` | This guide |
 
 ## Configuration
 
-Edit `beta/config.json` and push to `main`. The "Build blog" workflow republishes
+Edit `site/beta/config.json` and push to `main`. The "Build site" workflow republishes
 `/beta`.
 
 | Key | Used for | If empty |

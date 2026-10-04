@@ -1,4 +1,4 @@
-<!-- Product changelog, published at policymemo.ai/updates by tools/build-blog.py.
+<!-- Product changelog, published at policymemo.ai/updates by tools/build-site.py.
      Newest first. One "## date · version" heading per release, then one line per change.
      Say what changed for the person using it. The reasoning belongs in a CIVICWORKS essay. -->
 

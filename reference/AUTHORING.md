@@ -3,7 +3,7 @@
 How to write or revise one skill, so that 11 separately-authored files read as one
 agent rather than 11 documents.
 
-**Status: alpha.** Revised as skills are tested, which is the point. Anything here
+**Status: beta.** Revised as skills are tested, which is the point. Anything here
 that turns out to be wrong in practice should be changed, not worked around.
 
 ---
@@ -392,7 +392,7 @@ would for a hosted product. Transcripts must always record the model.
 - [ ] All 8 constraints in section 6 satisfied
 - [ ] Nothing restated that belongs to `house-rules`
 - [ ] Listed in the relevant plugin entry in `.claude-plugin/marketplace.json`
-- [ ] `python3 tools/build-skill-zips.py` re-run and the result committed
+- [ ] `python3 tools/build-zips.py` re-run and the result committed
 - [ ] Used on a real problem, not a test case
 - [ ] At least one conversation saved
 - [ ] Tested cold, by someone who did not author it
@@ -445,31 +445,18 @@ version they ran otherwise, and `evaluation` asks them for exactly that.
 entry listing all 11 skills. That is the lower-risk configuration and it costs
 only the `evaluation` separation.
 
-**The zips.** `dist/skills/*.zip` exist for people on the Free plan, who upload
-skills one at a time instead of installing a plugin. They are built by
-`tools/build-skill-zips.py` and must never be edited by hand. Re-run it after any
-change to `skills/` and commit the result. The build is deterministic, so an
-unchanged skill produces a byte-identical zip and does not churn in git.
+**The zips.** `tools/build-zips.py` builds both kinds, and they must never be
+edited by hand. Re-run it after any change to `skills/`, `marketplace.json` or the
+licences, and commit the result. The build is deterministic, so an unchanged
+source produces a byte-identical zip and does not churn in git. CI
+(`.github/workflows/build-zips.yml`) reruns it on the same paths.
 
-**The plugin zips.** `dist/plugin/*.zip` are self-contained plugin packages for
-claude.ai's Upload local plugin dialog, the workaround when a marketplace install
-fails to fetch. Each one carries its own `.claude-plugin/plugin.json`, generated
-from the matching entry in `marketplace.json`, plus a copy of every skill it
-lists. Built by `tools/build-plugin-zips.py`, reading `marketplace.json` as the
-single source, so the two can't drift apart. Re-run it after any change to
-`skills/` or `marketplace.json` and commit the result. Neither is linked from the
-README any more; they are built for parity with the marketplace's 2 entries.
-
-**The download zip.** `dist/download/policymemo-ai-claude.zip` is what the
-Download button on policymemo.ai and the README's file-install route serve. It is
-the `mdee` plugin plus `LICENSE` and `LICENSE-CONTENT.md`, keeping the plugin name
-`mdee` so it is the same plugin whichever route installed it. Built by
-`tools/build-download-zips.py`. A Copilot build gets its own entry in that
-script's `PLATFORMS` when it exists.
-
-Both zip builds run in CI on the same trigger paths
-(`.github/workflows/build-skill-zips.yml`), so a change to either source gets
-both outputs rebuilt and committed automatically.
+- `dist/skills/*.zip`, one per skill, for people on the Free plan who upload
+  skills one at a time instead of installing a plugin.
+- `dist/download/policymemo-ai-claude.zip`, what the Download button on the
+  install page serves, for Upload local plugin when the marketplace install
+  fails. It is the `mdee` plugin plus `LICENSE` and `LICENSE-CONTENT.md`, keeping
+  the plugin name `mdee` so it is the same plugin whichever route installed it.
 
 **Contributors** load the skills without installing anything by running
 `claude --plugin-dir .` from the repository root.

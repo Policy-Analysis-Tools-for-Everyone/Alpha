@@ -15,7 +15,7 @@ a port never forks it.
     python3 tools/build-ports.py           build into dist/ports/
     python3 tools/build-ports.py --check   validate only, write nothing
 
-Set-up steps for people installing a port live on the install page, `install/body.html`,
+Set-up steps for people installing a port live on the install page, `site/install/body.html`,
 which is the only copy. Each zip, `dist/ports/policymemo-ai-<surface>.zip`, opens to files
 named for what to do with them, because many people will not read anything else:
 

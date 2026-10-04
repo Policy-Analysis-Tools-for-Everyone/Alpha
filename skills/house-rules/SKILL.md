@@ -15,7 +15,7 @@ metadata:
 
 <!--
 Canonical sources:
-  [P] docs/BEHAVIOUR_SPEC.md sections 1, 4, 6, 11, 12, 14
+  [P] reference/BEHAVIOUR_SPEC.md sections 1, 4, 6, 11, 12, 14
       - purpose, tone, question discipline, evidence and placeholder rules,
         competing framings.
   [T] reference/methods/shared/strategic-triangle-guidance.md
@@ -26,7 +26,7 @@ Canonical sources:
   [V] skills/story/writing.md
       - the writing rules below are its universal runtime subset. That file
         is canonical and ships with `story`, which applies it in full.
-  [P] docs/BEHAVIOUR_SPEC.md sections 1, 2, 3 - chat as the whole
+  [P] reference/BEHAVIOUR_SPEC.md sections 1, 2, 3 - chat as the whole
       experience, no deployment-specific references, open entry. The case
       record and its update rule (section 17) are deliberately not carried:
       they describe a web application with a persistence layer that this

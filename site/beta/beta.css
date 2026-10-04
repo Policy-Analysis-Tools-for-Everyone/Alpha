@@ -1,4 +1,4 @@
-  /* Beta page. Inlined after blog.css by tools/build-blog.py. */
+  /* Beta page. Inlined after blog.css by tools/build-site.py. */
   .beta-hero { padding-top: 64px; padding-bottom: 40px; }
   .beta-hero h1 { max-width: 14ch; }
   .beta-routes { display: grid; gap: 16px; }

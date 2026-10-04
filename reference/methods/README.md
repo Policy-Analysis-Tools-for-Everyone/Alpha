@@ -7,7 +7,7 @@ These are **not runtime prompts.** They are deliberately rich: provenance,
 distinctions, worked examples, anti-patterns, scaffolds, self-check rubrics and
 boundary statements. A skill needs only the behaviour that changes what the agent
 does in a live conversation, which is a small fraction of what is here. Method
-completeness is not skill completeness. See `docs/AUTHORING.md` for how the
+completeness is not skill completeness. See `reference/AUTHORING.md` for how the
 compression is supposed to work.
 
 Read these when revising a skill, when a real session exposes a method gap, or
