@@ -20,6 +20,12 @@ tags. It also updates the homepage between its blog markers: a Blog link in the
 nav and footer, and a "Read the post" link on each skill card, all of which
 stay empty until something is published, so the site never shows an empty blog.
 
+It also writes the site's other generated pages, all in the same chrome:
+docs/install/ from install/, docs/beta/ from beta/ (form links and contact
+details come from beta/config.json), docs/updates/ from updates/changelog.md,
+and docs/skills/ from skill-pages/*.md once at least one skill page is
+published.
+
     python3 tools/build-blog.py              # publish
     python3 tools/build-blog.py --drafts OUT # preview everything, drafts included, into OUT
 
@@ -27,6 +33,7 @@ Requires the `markdown` package (pip install markdown).
 """
 import datetime
 import html
+import json
 import pathlib
 import re
 import sys
@@ -40,6 +47,13 @@ OUT = ROOT / "docs" / "blog"
 HOME = ROOT / "docs" / "index.html"
 INSTALL = ROOT / "install"
 INSTALL_OUT = ROOT / "docs" / "install"
+BETA = ROOT / "beta"
+BETA_OUT = ROOT / "docs" / "beta"
+CHANGELOG = ROOT / "updates" / "changelog.md"
+UPDATES_OUT = ROOT / "docs" / "updates"
+SKILL_PAGES = ROOT / "skill-pages"
+SKILLS_OUT = ROOT / "docs" / "skills"
+SKILLS_LIVE = False  # true once a skill page is published; adds Skills to the nav
 ICONS = ROOT / "docs" / "icons"
 MASCOT = ROOT / "docs" / "mascot.svg"
 LATEST = ""  # date of the newest published post; drives the "new" dot by Notes on the homepage
@@ -117,7 +131,9 @@ def updates_link(home):
 
 
 def page(title, description, body, css, home, depth_note="", current="notes"):
-    notes_current = ' aria-current="page"' if current == "notes" else ""
+    def cur(name):
+        return ' aria-current="page"' if current == name else ""
+    skills_link = f'<a class="plain" href="{home}skills/"{cur("skills")}>Skills</a>\n      ' if SKILLS_LIVE else ""
     mascot = svg_inline(MASCOT, "logo", "lg-").replace('fill="#1c1b18"', 'fill="currentColor"')
     return f"""<!doctype html>
 {GENERATED}
@@ -147,9 +163,10 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
     <a class="brand" href="{home}" aria-label="policymemo.ai home">{mascot}</a>
     <nav aria-label="Main">
       <a class="plain" href="{home}#what">What it does</a>
-      <a class="plain keep" href="{home}blog/"{notes_current} data-latest="{LATEST}">Notes</a>
+      {skills_link}<a class="plain" href="{home}updates/"{cur("updates")}>Updates</a>
+      <a class="plain keep" href="{home}blog/"{cur("notes")} data-latest="{LATEST}">Notes</a>
       <a class="plain keep" href="{FEEDBACK}">Feedback</a>
-      <a class="btn primary small" href="{home}install/">Download</a>
+      <a class="btn primary small" href="{home}beta/">Beta access</a>
     </nav>
   </div>
 </header>
@@ -161,6 +178,8 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
     <span>policymemo.ai · beta 0.1.2 · by <a href="https://civicworks.substack.com">CIVICWORKS</a></span>
     <nav aria-label="Footer">
       <a href="{home}">Home</a>
+      <a href="{home}beta/">Beta</a>
+      <a href="{home}updates/">Updates</a>
       <a href="{home}install/">Install</a>
       <a href="{FEEDBACK}">Feedback</a>
       <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
@@ -245,10 +264,10 @@ def build_post(p, posts, css, home):
     # Every post ends one click from trying the product.
     if p.get("skill"):
         name = dict((s[0], s[1]) for s in SKILLS)[p["skill"]]
-        pitch = f"The {name} skill is part of policymemo.ai, which is free."
+        pitch = f"The {name} skill is part of policymemo.ai, which is free and in private beta."
     else:
-        pitch = "Try policymemo.ai on a problem you're stuck on. It's free."
-    skill_note = f'<aside class="try"><p>{pitch}</p><a class="btn primary" href="{home}install/">Download it</a></aside>'
+        pitch = "policymemo.ai is free and in private beta. Request access to try it on a problem you're stuck on."
+    skill_note = f'<aside class="try"><p>{pitch}</p><a class="btn primary" href="{home}beta/">Request beta access</a></aside>'
     draft = '<p class="draft-flag">Draft · not published</p>' if p["draft"] else ""
     body = f"""<article class="wrap post">
   {draft}<p class="meta"><a href="./">Notes</a> · {cat_label(p, after=" · ")}{nice_date(p['date_obj'])} · {p['minutes']} min read</p>
@@ -307,7 +326,131 @@ def build_install(css, home):
                 body, css, home, current=None)
 
 
-def update_home(posts):
+def beta_config():
+    cfg = json.loads((BETA / "config.json").read_text(encoding="utf-8"))
+    keys = ("student_form_url", "practitioner_form_url", "access_instructions_url", "support_email", "privacy_url")
+    for k in keys:
+        if not isinstance(cfg.get(k), str):
+            raise SystemExit(f"beta/config.json needs '{k}' (an empty string if not set yet)")
+        v = cfg[k].strip()
+        if k.endswith("_url") and v and not v.startswith("https://"):
+            raise SystemExit(f"beta/config.json: '{k}' must start with https://")
+        if k == "support_email" and v and not re.fullmatch(r"[^@\s\"<>]+@[^@\s\"<>]+\.[^@\s\"<>]+", v):
+            raise SystemExit("beta/config.json: 'support_email' is not an email address")
+        cfg[k] = v
+    if not cfg["access_instructions_url"] or not cfg["support_email"]:
+        raise SystemExit("beta/config.json: 'access_instructions_url' and 'support_email' must be set")
+    return cfg
+
+
+def build_beta(css, home):
+    """The beta page: two access routes. A route whose form URL is not set yet shows 'Opening soon'."""
+    cfg = beta_config()
+    def cta(url, label):
+        if not url:
+            return '<span class="soon">Opening soon</span>'
+        return f'<a class="btn primary" href="{html.escape(url)}">{label}</a>'
+    privacy = "We use your email address to manage your access and contact you about the beta. We only send other updates if you ask us to."
+    if cfg["privacy_url"]:
+        privacy += f' <a href="{html.escape(cfg["privacy_url"])}">How we use your information</a>.'
+    fills = {
+        "student_cta": cta(cfg["student_form_url"], "Student access"),
+        "practitioner_cta": cta(cfg["practitioner_form_url"], "Request beta access"),
+        "privacy_line": privacy,
+        "access_instructions_url": html.escape(cfg["access_instructions_url"]),
+        "support_email": html.escape(cfg["support_email"]),
+    }
+    body = (BETA / "body.html").read_text(encoding="utf-8")
+    body = re.sub(r"\{\{(\w+)\}\}", lambda m: fills[m.group(1)], body)
+    css = css + "\n" + (BETA / "beta.css").read_text(encoding="utf-8")
+    return page("Private beta · policymemo.ai",
+                "policymemo.ai is in private beta, testing with policy students and a small group of practitioners.",
+                body, css, home, current="beta")
+
+
+def build_updates(css, home):
+    """The changelog: one Markdown file, newest first."""
+    text = re.sub(r"<!--.*?-->", "", CHANGELOG.read_text(encoding="utf-8"), flags=re.S)
+    body = f"""<article class="wrap post">
+  <p class="meta">Updates</p>
+  <h1>What's changed</h1>
+  <p class="lede">A plain record of what changed in policymemo.ai, newest first. For the thinking behind the changes, read <a href="https://civicworks.substack.com">CIVICWORKS</a>.</p>
+  <div class="prose">{markdown.markdown(text, extensions=["extra", "smarty"])}</div>
+</article>"""
+    return page("Updates · policymemo.ai", "What changed in policymemo.ai, release by release.", body, css, home, current="updates")
+
+
+def read_skill_pages():
+    """Published skill pages, keyed by skill slug. README.md is the authoring guide, not a page."""
+    known = {s[0] for s in SKILLS}
+    pages = {}
+    for path in sorted(SKILL_PAGES.glob("*.md")):
+        if path.name == "README.md":
+            continue
+        if path.stem not in known:
+            raise SystemExit(f"skill-pages/{path.name}: file name must be one of {', '.join(sorted(known))}")
+        m = re.match(r"---\n(.*?)\n---\n(.*)", path.read_text(encoding="utf-8"), re.S)
+        if not m:
+            raise SystemExit(f"skill-pages/{path.name}: missing front matter")
+        meta = {}
+        for line in m.group(1).splitlines():
+            if ":" in line:
+                k, v = line.split(":", 1)
+                meta[k.strip()] = v.split(" #", 1)[0].strip()
+        for key in ("title", "summary"):
+            if not meta.get(key):
+                raise SystemExit(f"skill-pages/{path.name}: front matter needs '{key}'")
+        if meta.get("draft", "").lower() == "true":
+            continue
+        meta["updated"] = datetime.date.fromisoformat(meta["updated"]) if meta.get("updated") else None
+        meta["body"] = markdown.markdown(m.group(2), extensions=["extra", "smarty"])
+        pages[path.stem] = meta
+    return pages
+
+
+def build_skills(pages, css, home):
+    """Write /skills/ and /skills/<slug>/, or remove them if no page is published."""
+    for f in SKILLS_OUT.glob("**/index.html"):
+        if GENERATED in f.read_text(encoding="utf-8"):
+            f.unlink()
+    for d in sorted(SKILLS_OUT.glob("**/"), reverse=True):
+        if d.is_dir() and not any(d.iterdir()):
+            d.rmdir()
+    if not pages:
+        return
+    rows = ""
+    for slug, title, _ in SKILLS:
+        p = pages.get(slug)
+        if p:
+            rows += (f'<li class="post-row"><a href="{slug}/"><span class="t">{html.escape(p["title"])}</span>'
+                     f'<span class="s">{html.escape(p["summary"])}</span></a></li>')
+        else:
+            rows += f'<li class="post-row"><a aria-disabled="true"><span class="t">{title}</span><span class="s">Page to come.</span></a></li>'
+    body = f"""<section class="wrap blog-hero">
+  <p class="eyebrow">Skills</p>
+  <h1>The skills</h1>
+  <p class="lede">What each skill does, what it looks for and where its method comes from. These pages change as the skills do.</p>
+</section>
+<section class="wrap blog-list"><ul class="posts">{rows}</ul></section>"""
+    SKILLS_OUT.mkdir(parents=True, exist_ok=True)
+    (SKILLS_OUT / "index.html").write_text(
+        page("Skills · policymemo.ai", "What each policymemo.ai skill does and where its method comes from.", body, css, home, current="skills"),
+        encoding="utf-8")
+    for slug, p in pages.items():
+        updated = f' · Updated {nice_date(p["updated"])}' if p["updated"] else ""
+        art = f"""<article class="wrap post">
+  <p class="meta"><a href="../">Skills</a>{updated}</p>
+  <h1>{html.escape(p['title'])}</h1>
+  <p class="lede">{html.escape(p['summary'])}</p>
+  <div class="prose">{p['body']}</div>
+  <aside class="try"><p>The {html.escape(p['title'])} skill is part of policymemo.ai, which is free and in private beta.</p><a class="btn primary" href="../../beta/">Request beta access</a></aside>
+</article>"""
+        (SKILLS_OUT / slug).mkdir(parents=True, exist_ok=True)
+        (SKILLS_OUT / slug / "index.html").write_text(
+            page(f"{p['title']} · policymemo.ai", p["summary"], art, css, "../../", current="skills"), encoding="utf-8")
+
+
+def update_home(posts, skill_pages):
     s = HOME.read_text(encoding="utf-8")
     live = bool(posts)
     def fill(name, content):
@@ -319,10 +462,18 @@ def update_home(posts):
     fill("nav", f'<a class="plain keep notes-link" href="blog/" data-latest="{posts[0]["date_obj"].isoformat()}">Notes<span class="new-dot" aria-hidden="true"></span></a>' if live else "")
     fill("footer", '<a href="blog/">Notes</a>' if live else "")
     fill("head", '<link rel="alternate" type="application/atom+xml" title="Notes · policymemo.ai" href="blog/feed.xml">' if live else "")
+    fill("skills", '<a class="plain" href="skills/">Skills</a>' if skill_pages else "")
+    # A skill's card links to its skill page if it has one, otherwise to its post.
     by_skill = {p["skill"]: p for p in posts if p.get("skill")}
     for slug, _, _ in SKILLS:
         p = by_skill.get(slug)
-        fill("card:" + slug, f'<a class="card-link" href="blog/{p["slug"]}.html">Read the post</a>' if p else "")
+        if slug in skill_pages:
+            link = f'<a class="card-link" href="skills/{slug}/">Read about it</a>'
+        elif p:
+            link = f'<a class="card-link" href="blog/{p["slug"]}.html">Read the post</a>'
+        else:
+            link = ""
+        fill("card:" + slug, link)
     HOME.write_text(s, encoding="utf-8")
 
 
@@ -331,7 +482,7 @@ def categories_in_use(posts):
 
 
 def main():
-    global LATEST, USED
+    global LATEST, USED, SKILLS_LIVE
     drafts_out = None
     if len(sys.argv) == 3 and sys.argv[1] == "--drafts":
         drafts_out = pathlib.Path(sys.argv[2])
@@ -346,6 +497,8 @@ def main():
         print(f"preview with drafts: {len(all_posts)} posts in {drafts_out}")
         return 0
     posts = [p for p in all_posts if not p["draft"]]
+    skill_pages = read_skill_pages()
+    SKILLS_LIVE = bool(skill_pages)
     LATEST = posts[0]["date_obj"].isoformat() if posts else ""
     USED = categories_in_use(posts)
     OUT.mkdir(parents=True, exist_ok=True)
@@ -360,9 +513,14 @@ def main():
             (OUT / name).unlink(missing_ok=True)
             continue
         (OUT / name).write_text(build_feed(posts, title, category), encoding="utf-8")
-    update_home(posts)
+    update_home(posts, skill_pages)
     INSTALL_OUT.mkdir(parents=True, exist_ok=True)
     (INSTALL_OUT / "index.html").write_text(build_install(css, "../"), encoding="utf-8")
+    BETA_OUT.mkdir(parents=True, exist_ok=True)
+    (BETA_OUT / "index.html").write_text(build_beta(css, "../"), encoding="utf-8")
+    UPDATES_OUT.mkdir(parents=True, exist_ok=True)
+    (UPDATES_OUT / "index.html").write_text(build_updates(css, "../"), encoding="utf-8")
+    build_skills(skill_pages, css, "../")
     print(f"{len(posts)} published, {len(all_posts) - len(posts)} draft(s) held back")
     return 0
 
