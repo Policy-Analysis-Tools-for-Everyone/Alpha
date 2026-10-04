@@ -64,8 +64,8 @@
         {
           "file": "policymemo 09 story.txt",
           "source": "skills/story/SKILL.md",
-          "sha": "8916b5bb350f",
-          "chars": 25898
+          "sha": "d92d66c1d691",
+          "chars": 26295
         }
       ],
       "knowledge_limit": 20,
@@ -136,8 +136,8 @@
         },
         {
           "skill": "policymemo-story",
-          "sha": "8916b5bb350f",
-          "skill_md_chars": 19574,
+          "sha": "d92d66c1d691",
+          "skill_md_chars": 19971,
           "description_chars": 530,
           "files": [
             "SKILL.md",
@@ -205,8 +205,8 @@
         },
         {
           "skill": "policymemo-story",
-          "sha": "8916b5bb350f",
-          "skill_md_chars": 33534,
+          "sha": "d92d66c1d691",
+          "skill_md_chars": 33931,
           "description_chars": 530
         }
       ]
