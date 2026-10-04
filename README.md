@@ -12,9 +12,7 @@ plausible-looking document on request.
 Inside it are 10 analytical capabilities that work together as one toolkit. You
 don't pick between them. Claude does.
 
-> **Beta 0.1.2.** All 11 files are written. 17 real sessions across 4 testers have been
-> run against them, and 2 skills were revised from what those sessions found. The
-> revised versions have no sessions of their own yet. Read [Status](#status)
+> **Beta 0.1.2.** The skills change as people use them. Read [Status](#status)
 > before you rely on this for anything that matters.
 
 ---
@@ -249,40 +247,10 @@ a project is yours alone.
 
 ## Status
 
-Written is not tested. Four states worth keeping apart:
-
-- **Written.** The file exists and says what it should do.
-- **Structurally checked.** Frontmatter validates, links resolve, no contradictions
-  found by reading.
-- **Behaviourally tested.** Run on real work in a session that was saved.
-- **Regression-tested.** A saved case re-runs and still passes after changes.
-
-| Skill | Written | Structurally checked | Behaviourally tested |
-|---|---|---|---|
-| `house-rules` | yes | yes | 17 sessions, 4 testers, on `0.1.1`; revised into `0.1.2`, which has none of its own yet |
-| `problem` | yes | yes | 4 real sessions, on `0.1.1`; revised twice into `0.1.2`, which has none of its own yet |
-| `stakeholders` | yes | yes | exercised inside other sessions and in 1 reported run; no session of its own |
-| `evidence` | yes | yes | 2 real sessions, plus 2 reported |
-| `options` | yes | yes | **no.** Never appeared in a session header |
-| `criteria` | yes | yes | exercised inside other sessions and in 1 reported run; no session of its own |
-| `outcomes` | yes | yes | exercised inside other sessions and in 1 reported run; no session of its own |
-| `trade-offs` | yes | yes | **no.** Never appeared in a session header |
-| `decide` | yes | yes | exercised in 2 reported runs; no session of its own |
-| `story` | yes | yes | 3 real sessions, 1 a non-trigger |
-| `evaluation` | yes | yes | produced 3 debriefs and a tester report |
-
-**17 sessions, 4 testers, all in August 2026, all on plugin `0.1.1`.** `0.1.2`
-revised `house-rules` and `problem` from what those sessions found, and has no
-sessions of its own yet. 9 of the 17 are transcripts; the rest are a tester's
-cross-session report and a tester's note. 7 of the 10 capabilities have been
-exercised at all; `options` and `trade-offs` have not.
-
-No session is confirmed cold, and nothing yet tests whether the agent accepts
-sound work rather than something to challenge, since every session so far gave
-it something to push back on. Those are the 2 largest gaps.
-
-The method layer is settled. The runtime has real evidence behind parts of it,
-unevenly, and the current text of the two most load-bearing files has none.
+Written is not tested. What has been run, by whom, on which version, and what it
+showed is recorded in [`evals/`](evals/) and nowhere else. Start with
+[`evals/wiki/findings.md`](evals/wiki/findings.md), which says what the sessions
+show and what they do not yet cover.
 
 ---
 
