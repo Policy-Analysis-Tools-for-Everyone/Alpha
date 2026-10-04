@@ -9,6 +9,7 @@ description: >
   that the agent was unhelpful or confidently wrong and the finding needs
   classifying before anything gets edited. Not for evaluating whether a public
   policy worked.
+license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
   status: written, behaviourally tested: it produced 3 debriefs and a tester report in evals/
 ---

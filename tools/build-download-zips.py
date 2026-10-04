@@ -39,7 +39,7 @@ PLATFORMS = {
 
 MANIFEST_FIELDS = (
     "name", "displayName", "description", "version",
-    "author", "homepage", "repository", "keywords", "skills",
+    "author", "homepage", "repository", "license", "keywords", "skills",
 )
 
 

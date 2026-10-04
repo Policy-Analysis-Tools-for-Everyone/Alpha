@@ -6,8 +6,9 @@ https://policymemo.ai/install/#gemini
 In short:
 1. Open Gemini on a computer, at gemini.google.com or in the Mac app, and
    go to Skills.
-2. Choose to upload a skill, and upload each of the 10 zip files in the
-   "1 Upload these 10 skills" folder, one at a time. Do not unzip them and do not rename them.
+2. Choose to upload a skill. In the "1 Upload these 10 skills" folder, open each of
+   the 10 folders and upload the SKILL.md inside, one at a time. Start with
+   policymemo. Do not rename them.
 3. Start a new chat. Type /policymemo to begin, or just describe the
    problem you are working on.
 
@@ -15,4 +16,4 @@ Cannot upload the files? You may be looking inside the zip without having
 extracted it. Close this. On Windows, right-click the zip and choose
 Extract All. On a Mac, double-click the zip. Then use the folder that appears.
 
-Built 2026-10-04 from house-rules 889421c707fd.
+Built 2026-10-04 from house-rules 922b04eabb82.

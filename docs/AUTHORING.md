@@ -113,6 +113,15 @@ the 6 produces `Unexpected key(s) in SKILL.md frontmatter` on the other surfaces
 so keep per-skill status inside `metadata`, which is a free-form map, rather than
 as a top-level `status:` key.
 
+Every skill carries the same `license` line, so the credit travels with each file
+however it is copied:
+
+```yaml
+license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
+```
+
+Give a new skill the same line. `LICENSE-CONTENT.md` has the terms.
+
 Constraints worth checking mechanically: `name` is at most 64 characters and only
 lowercase letters, digits and hyphens; `description` is non-empty and at most
 1,024 characters; neither may contain XML tags or the words "claude" or

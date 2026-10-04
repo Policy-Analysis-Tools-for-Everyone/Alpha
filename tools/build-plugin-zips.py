@@ -28,7 +28,7 @@ FIXED_TIME = (2026, 1, 1, 0, 0, 0)
 # rather than what the plugin is, so they don't belong in its own manifest.
 MANIFEST_FIELDS = (
     "name", "displayName", "description", "version",
-    "author", "homepage", "repository", "keywords", "skills",
+    "author", "homepage", "repository", "license", "keywords", "skills",
 )
 
 
