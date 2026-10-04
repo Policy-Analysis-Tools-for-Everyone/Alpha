@@ -81,8 +81,6 @@
   .btn.ghost { border-color: var(--line); color: var(--muted); cursor: default; }
   a.btn.ghost { color: var(--ink); cursor: pointer; }
   a.btn.ghost:hover { border-color: var(--ink); }
-  #demo { scroll-margin-top: 76px; }
-  @media (max-width: 440px) { .hero .cta { gap: 8px; } .hero .cta .btn { padding-left: 15px; padding-right: 15px; font-size: 14.5px; gap: 6px; } }
   .btn svg { width: 16px; height: 16px; flex: none; }
   .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
@@ -362,7 +360,6 @@
     <p class="lede">Policymemo.ai is a set of agentic skills that helps policy advisers, analysts and public service teams work through a problem: what it is, what you actually know, which options are real and what each one costs. It asks one question at a time, and where a figure is missing it leaves a marked gap.</p>
     <div class="cta">
       <a class="btn primary" href="install/"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download policymemo.ai</a>
-      <a class="btn ghost" href="#demo" id="see-it"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5v9l7-4.5z"/></svg>See it work</a>
     </div>
     <p class="works">Works in <a href="install/#claude">Claude</a> · <a href="install/#copilot">Copilot</a> · <a href="install/#gemini">Gemini</a></p>
     <p class="fine">Free · Beta · Version 0.1.2</p>
@@ -755,17 +752,6 @@
 
   window.pmTour = { go: go, seek: seek, play: play, pause: pause, scenes: SCENES,
     state: function () { return { scene: current, t: Math.round(elapsed), playing: playing, inView: inView, holding: holding, raf: rafId !== null }; } };
-})();
-
-/* See it work: scroll to the demo and play the tour from the first scene. */
-(function () {
-  var link = document.getElementById('see-it'), demo = document.getElementById('demo');
-  if (!link || !demo) return;
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-    demo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setTimeout(function () { if (window.pmTour) window.pmTour.go(0); }, 600);
-  });
 })();
 
 /* The hero mascot. Its pupil follows the pointer with a soft lag, wanders on
