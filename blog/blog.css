@@ -92,12 +92,6 @@
   .skill-grid .read:hover { text-decoration: underline; text-underline-offset: 3px; }
   .skill-grid li.planned .icon { opacity: .35; }
 
-  /* Follow: feeds, at the foot of the index */
-  .follow { padding-top: 88px; }
-  .follow h2 { margin: 0 0 16px; }
-  .feeds { color: var(--muted); margin: 0; }
-  .feeds a { color: var(--accent); text-underline-offset: 3px; }
-
   /* Post */
   .post { max-width: 760px; padding-top: 56px; }
   .post .meta { font-size: 13px; color: var(--muted); margin: 0 0 18px; }
