@@ -49,7 +49,9 @@ If `house-rules` has changed, `build-ports.py` stops on purpose until
 ## Releasing a version
 
 The version lives in `.claude-plugin/marketplace.json`, on both entries, and nowhere
-else. The zips, the ports and every page of the site read it from there. Add an
+else. The zips, the ports and every page of the site read it from there, and
+`build-zips.py` stamps it into every skill's `metadata.version`, so a loaded skill
+can tell a tester which version it is. Add an
 entry to `site/updates/changelog.md`, update the banner in `README.md`, then run all
 three builds.
 

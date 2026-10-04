@@ -158,6 +158,7 @@ PORT_LOAD_PARAGRAPH = (
 HTML_COMMENT = re.compile(r"<!--.*?-->\s*", re.DOTALL)
 PLACEHOLDER = re.compile(r"\{\{[A-Z_]+\}\}")
 KEY_LINE = re.compile(r"^([A-Za-z_][\w-]*):[ \t]*(.*)$")
+VERSION_LINE = re.compile(rb"^  version: .*\n", re.M)
 FIXED_ZIP_TIME = (1980, 1, 1, 0, 0, 0)  # stable zips, so rebuilds diff cleanly
 
 
@@ -249,8 +250,9 @@ def read_skill_parts(name: str) -> tuple[dict[str, str], str, list[tuple[str, st
         raise BuildError(f"{path.relative_to(ROOT)}: name is {fields.get('name')!r}, expected {name!r}")
     body = "".join(lines[end + 1:])
     if name == "house-rules":
-        # The review gate in ports/house-rules.reviewed is keyed to SKILL.md alone.
-        return fields, body, [], short_hash(raw)
+        # The review gate in ports/house-rules.reviewed is keyed to SKILL.md alone,
+        # less the version line, which changes every release without changing a rule.
+        return fields, body, [], short_hash(VERSION_LINE.sub(b"", raw))
     digest = raw
     extras = []
     for extra in sorted(f for f in path.parent.glob("*.md") if f.name != "SKILL.md"):

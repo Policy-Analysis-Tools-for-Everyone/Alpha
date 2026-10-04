@@ -102,6 +102,7 @@ description: >
   notes, a concern, a complaint, an inherited proposal, a draft problem
   statement, or a solution presented as if it were a problem. ...
 metadata:
+  version: 0.2.0
   status: written, not behaviourally tested
 ---
 ```
@@ -112,6 +113,11 @@ Allowed: `name`, `description`, `license`, `compatibility`, `metadata`,
 the 6 produces `Unexpected key(s) in SKILL.md frontmatter` on the other surfaces,
 so keep per-skill status inside `metadata`, which is a free-form map, rather than
 as a top-level `status:` key.
+
+`metadata.version` is the release version, so a loaded skill can say which
+version it is. Never edit it by hand: `tools/build-zips.py` stamps it into every
+skill from `marketplace.json`. A new skill needs a `metadata:` block for the stamp
+to land in.
 
 Every skill carries the same `license` line, so the credit travels with each file
 however it is copied:

@@ -10,6 +10,7 @@ description: >
   loses the uncertainty that matters, or reads like machine-generated prose.
 license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
+  version: 0.2.0
   status: written, behaviourally tested in 3 real sessions, one a non-trigger (see evals/)
 ---
 

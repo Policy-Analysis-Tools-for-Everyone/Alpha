@@ -11,6 +11,7 @@ description: >
   the conditions that should reopen it made explicit.
 license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
+  version: 0.2.0
   status: written, exercised in 2 reported runs; no session of its own
 ---
 
