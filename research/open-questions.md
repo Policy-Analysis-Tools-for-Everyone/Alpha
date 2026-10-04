@@ -12,7 +12,7 @@ in `design.md`.
 |---|---|---|---|
 | U1 | The 2026-27 seminar sequence: topic, date and activity for each week | Course lead | Placing every research moment |
 | U2 | Which seminar activities are fixed by the course lead and which the tutor can adapt | Course lead, tutor | Whether moments can be designed into seminars at all |
-| U3 | Has term started? Dates of weeks 1, 2, 4, 6 and 9 seminars | Tutor | Whether A0 and RM1 are possible this year |
+| U3 | Term starts Thursday 2026-10-08. Dates of the weeks 4, 6 and 9 seminars | Tutor | Placing RM2, RM3 and A1 |
 | U4 | How many students are in the tutor's seminar group, and are PPP small groups pre-assigned and stable all term? | Tutor | The crossover; sample size |
 | U5 | Assessment: which memos are assessed, when, with what weight; is the "draft memo" formative? | Course lead | Which artefacts are assessed; when assessed work could be read |
 | U6 | Can the module arrange moderation or second marking of this group's PPPs? (Answered: the tutor marks them. See `design.md` 12.3) | Module lead | The marking conflict |
@@ -27,15 +27,15 @@ in `design.md`.
 
 | | Question | Who can answer | Blocks |
 |---|---|---|---|
-| E1 | Which ethics route (UCL REC, departmental, low-risk), and how long it takes | UCL research ethics | Start date |
-| E2 | Can artefacts produced in teaching before approval be used with retrospective consent? | UCL REC | Whether this term's early weeks are usable |
-| E3 | Which IIPP colleague, not teaching the group, acts as the third party for consent, keys and interviews? | Module lead | Tutor blinding |
+| E1 | The IIPP LREC template is for MPA projects. Does the LREC also review research by a PGTA sponsored by the module lead, and how long does it take? | Module lead, IIPP LREC | Start date |
+| E2 | Can weeks 1 and 2 teaching artefacts be included with consent taken after approval? Ask in the application | IIPP LREC | A0 and RM1 this year |
 | E4 | Can assessed work be used at all, and on what terms? | UCL REC, course lead | Persistence evidence |
 | E5 | Where data is held at UCL, and who has access | UCL data protection | Collection |
 | E6 | Are transcript redaction rules set by the study or by the student? | Research team, REC | Transcript donation |
 | E7 | Is any model-assisted analysis of de-identified data permissible? | UCL REC, data protection | Analysis plan |
 | E8 | Withdrawal deadline | Research team, REC | Information sheet |
-| E9 | Will the module lead act as PI or sponsor, or nominate one? The PGTA is co-investigator, with the product-author role declared as a conflict (`design.md` 12.0) | Module lead | Submission |
+| E9 | Information Sheet: is there an IIPP LREC template? The consent form refers to one by version and date | Module lead, IIPP LREC | Submission |
+| E10 | Names and UCL emails for the consent form: the sponsor and the PGTA taking consent | Jack | Submission |
 
 ## The student beta route
 

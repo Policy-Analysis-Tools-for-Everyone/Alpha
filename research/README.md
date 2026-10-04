@@ -35,6 +35,7 @@ The same conversation can be evidence for both. The two are never analysed as on
 | `design.md` | The research design: questions, conceptual model, moments, evidence, analysis, validity, ethics, relation to the product. Draft 1 |
 | `prompt-footprint.md` | What each skill prompts students to do, and the trace it leaves. Separates prompted moves from independent ones |
 | `open-questions.md` | Information and decisions the design is waiting on |
+| `ethics/consent-form-draft.docx` | Draft consent form on the IIPP LREC template. Placeholders in square brackets |
 
 ## Proposed layout, added as each part is needed
 
@@ -71,6 +72,8 @@ research/
 | Questions agreed by the research team | No |
 | UCL 2026-27 seminar sequence known | No: `design.md` uses the 2025-26 draft |
 | Researcher's role | Confirmed: the seminar's PGTA, and the product author. See `design.md` 12.0 |
+| Sponsor and consent holder | Agreed: the module lead; a second PGTA. See `design.md` 12.0 |
+| Term starts | Thursday 2026-10-08 |
 | Ethics submitted | No |
 | Ethics approved | No |
 | Any data collected | No |

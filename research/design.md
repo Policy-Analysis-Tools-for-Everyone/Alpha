@@ -641,11 +641,10 @@ author of policymemo.ai. The module lead is the course's lead academic.
   and the risk falls on the module lead as well as the researcher.
 - **The module lead has given written permission** (scope to confirm: see U10 in
   `open-questions.md`). That is the department's agreement; it is not ethics approval.
-- **Recommended route.** The module lead, or an academic they nominate, acts as PI or
-  sponsor, with the PGTA as co-investigator. An IIPP colleague who is not teaching the
-  group handles consent, the code key and interviews (E3). The module lead's written
-  agreement covers the teaching use of the agent in seminars, separately from the
-  research.
+- **Agreed route.** The module lead is sponsor. A second PGTA, who does not teach or
+  mark this group, takes consent, holds the consent list and the code key, receives
+  donated transcripts and conducts the interviews. The draft consent form, on the IIPP
+  LREC template, is `ethics/consent-form-draft.docx`.
 - **Until approval:** teaching use only, plus product feedback under the `evals/`
   rules. No research data. Decisions and agreements are kept in a dated log
   (`research/log.md`, once created), so the paper trail exists from the start.
@@ -661,12 +660,16 @@ author of policymemo.ai. The module lead is the course's lead academic.
    must be able to get access without consenting to research. Access and consent need
    separate instruments, and access must not wait on consent. **This is a product and
    operations change to make after the design is agreed, not now.**
-2. **Timing.** On 2026-10-04 the UCL autumn term has probably started, and research data
-   cannot be collected before approval. Whether early moments (A0, RM1) can run this
-   year depends on the approval route and term dates. Options to weigh: a teaching-only
-   pilot this year with the full study next year; a study from RM2 onwards without a
-   baseline; or retrospective consent for artefacts produced in teaching, if the
-   committee permits it.
+2. **Timing.** Term starts on Thursday 2026-10-08, so the week 1 seminar is days away
+   and approval will not be in place for it, and probably not for week 2. Neither
+   consent nor research data can be taken before approval. The plan that follows:
+   - **Submit to the LREC this week.**
+   - **Weeks 1 and 2 run as teaching only.** A0 and RM1's drafts are written as normal
+     seminar work and kept as teaching material, unseen by anyone for research.
+   - **Ask the LREC in the application** whether those artefacts can be included with
+     consent taken after approval. If yes, the baseline survives. If no, the study
+     starts at RM2 without A0, and RM1 becomes a pilot of the instruments.
+   - Nothing about the teaching in weeks 1 and 2 depends on the answer.
 
 ### 12.2 Consent
 
