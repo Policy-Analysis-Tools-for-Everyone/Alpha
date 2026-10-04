@@ -297,7 +297,7 @@
   <div class="sub" id="claude-paid" role="tabpanel" aria-labelledby="tab-claude-paid">
     <div class="get">
       <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/download/policymemo-ai-claude.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download for Claude</a>
-      <p>One zip. Leave it zipped: Claude wants the file exactly as it arrives.</p>
+      <p>One zip. Leave it zipped: Claude wants the file exactly as it arrives. If you end up with a folder instead, see <a href="#claude-wrong">If it goes wrong</a>.</p>
     </div>
     <ol class="steps" style="margin-top:26px">
       <li>In Claude, open <b>Customize</b>, then <b>Plugins</b>.</li>
@@ -361,6 +361,10 @@
     <div><p>If this happens in the desktop app, try Claude in a browser first. If the browser fails too, upload the zip instead, as in the paid plan steps above. It installs the same plugin by a different route.</p></div>
   </details>
   <details>
+    <summary>I have a folder, not a zip</summary>
+    <div><p>Safari on a Mac unzips downloads on its own. Claude needs the zip, so put it back: right-click the folder and choose <b>Compress</b>, then upload the new zip. To stop it happening again, open Safari, then <b>Settings</b>, then <b>General</b>, and untick <b>Open “safe” files after downloading</b>. This applies to the free plan files too.</p></div>
+  </details>
+  <details>
     <summary>There is no Upload local plugin option</summary>
     <div><p>That option needs a paid plan, or it may be switched off by your organisation. Use the free plan route: it works on every plan.</p></div>
   </details>
@@ -378,8 +382,8 @@
     <li>No admin rights.</li>
   </ul>
   <div class="get">
-    <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/mdee-copilot-port.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download for Copilot</a>
-    <p>Unzip it. You paste from <code class="inline">instructions.txt</code> and upload the 10 files in <code class="inline">knowledge/</code>.</p>
+    <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/policymemo-ai-copilot.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download for Copilot</a>
+    <p><b>Unzip it first</b>, unlike the Claude version. On Windows, right-click the zip and choose <b>Extract All</b>: opening it with a double-click is not enough, because Copilot cannot upload files from inside a zip. On a Mac, double-click it. You get a folder with the files numbered in the order you use them.</p>
   </div>
 
   <h3 id="copilot-steps">Build the agent</h3>
@@ -390,9 +394,9 @@
       <span class="val"><code>policymemo.ai (alpha)</code><button type="button" class="copy" data-copy="policymemo.ai (alpha)">Copy</button></span></li>
     <li><b>Description:</b>
       <span class="val"><code>Works through a public policy problem with you: defines it, tests the evidence, builds and weighs options, decides and writes it up. Challenges weak framing and refuses to invent figures.</code><button type="button" class="copy" data-copy="Works through a public policy problem with you: defines it, tests the evidence, builds and weighs options, decides and writes it up. Challenges weak framing and refuses to invent figures.">Copy</button></span></li>
-    <li><b>Instructions:</b> open <code class="inline">instructions.txt</code>, select everything, copy and paste it into the box. It is about 7,700 characters, and the limit is 8,000.
+    <li><b>Instructions:</b> open <code class="inline">1 Paste into Instructions.txt</code>, select everything, copy and paste it into the box. It is about 7,800 characters, and the limit is 8,000.
       <span class="sm">Scroll to the end of the box to check it pasted whole. The last words should be “is still flagged in any document I produced.” If they are not, clear the box and paste again.</span></li>
-    <li><b>Knowledge:</b> click <b>Upload files</b> and add all 10 files from <code class="inline">knowledge/</code>. Do not rename them: the instructions find them by name.
+    <li><b>Knowledge:</b> click <b>Upload files</b>, open the <code class="inline">2 Upload these 10 files</code> folder, select all 10 and upload them. Do not rename them: the instructions find them by name.
       <span class="sm">If there is no upload option, or it is greyed out, skip this step. The agent still works from the instructions alone, with less depth.</span></li>
     <li><b>Web search:</b> switch it off for now. The Claude version does not search the web unless asked, and keeping them alike makes reports comparable.</li>
     <li><b>Starter prompts:</b> add these, title then message.
@@ -427,6 +431,10 @@
     <div><p>The core rules are in the instructions and always apply. The method for each part of the analysis is in the knowledge files, and Copilot reads them when it searches, which it may not do every time. Asking it to use the relevant file usually helps.</p></div>
   </details>
   <details>
+    <summary>The upload cannot find the files, or will not take them</summary>
+    <div><p>You are probably looking inside the zip without having unzipped it. Close the upload window, unzip the download as described above, and upload from the folder that appears.</p></div>
+  </details>
+  <details>
     <summary>policymemo.ai has been updated</summary>
     <div><p>Updates are not automatic. Download the new zip, paste the new instructions and replace the knowledge files.</p></div>
   </details>
@@ -443,8 +451,8 @@
     <li>Gemini on a computer, at <a href="https://gemini.google.com">gemini.google.com</a>.</li>
   </ul>
   <div class="get">
-    <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/mdee-gemini-port.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download for Gemini</a>
-    <p>Unzip it. You paste from <code class="inline">instructions.txt</code> and upload the 10 files in <code class="inline">knowledge/</code>.</p>
+    <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/policymemo-ai-gemini.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download for Gemini</a>
+    <p><b>Unzip it first</b>, unlike the Claude version. On Windows, right-click the zip and choose <b>Extract All</b>: opening it with a double-click is not enough, because Gemini cannot upload files from inside a zip. On a Mac, double-click it. You get a folder with the files numbered in the order you use them.</p>
   </div>
 
   <h3 id="gemini-steps">Build the Gem</h3>
@@ -452,8 +460,8 @@
     <li>Open <a href="https://gemini.google.com">gemini.google.com</a> and go to <b>Gems</b> (sometimes under <b>Explore Gems</b>), then <b>New Gem</b>.</li>
     <li><b>Name:</b>
       <span class="val"><code>policymemo.ai (alpha)</code><button type="button" class="copy" data-copy="policymemo.ai (alpha)">Copy</button></span></li>
-    <li><b>Instructions:</b> open <code class="inline">instructions.txt</code>, select everything, copy and paste it into the box. Ignore Gemini’s offer to rewrite it.</li>
-    <li><b>Knowledge:</b> add all 10 files from <code class="inline">knowledge/</code>. That is Gemini’s limit, so there is no room for anything else. Do not rename them: the instructions find them by name.</li>
+    <li><b>Instructions:</b> open <code class="inline">1 Paste into Instructions.txt</code>, select everything, copy and paste it into the box. Ignore Gemini’s offer to rewrite it.</li>
+    <li><b>Knowledge:</b> open the <code class="inline">2 Upload these 10 files</code> folder, select all 10 and add them. That is Gemini’s limit, so there is no room for anything else. Do not rename them: the instructions find them by name.</li>
     <li>Click <b>Save</b>.</li>
     <li>Reopen the Gem’s settings and scroll to the end of the instructions. The last words should be “is still flagged in any document I produced.”
       <span class="sm">If they are cut short, see below.</span></li>
@@ -468,11 +476,15 @@
   <h3 id="gemini-wrong">If it goes wrong</h3>
   <details>
     <summary>The instructions were cut short</summary>
-    <div><p>Google does not publish a length limit for Gem instructions. If yours were cut short, replace them with the contents of <code class="inline">instructions-fallback.txt</code>. That short version tells Gemini to take the full rules from the house rules knowledge file instead.</p></div>
+    <div><p>Google does not publish a length limit for Gem instructions. If yours were cut short, replace them with the contents of <code class="inline">If the instructions get cut short, paste this instead.txt</code>, from the same folder. That short version tells Gemini to take the full rules from the house rules knowledge file instead.</p></div>
   </details>
   <details>
     <summary>There is no Gems option</summary>
     <div><p>On a work or education account, an administrator may have switched Gems off. A personal Google account will usually have them.</p></div>
+  </details>
+  <details>
+    <summary>The upload cannot find the files, or will not take them</summary>
+    <div><p>You are probably looking inside the zip without having unzipped it. Close the upload window, unzip the download as described above, and upload from the folder that appears.</p></div>
   </details>
   <details>
     <summary>policymemo.ai has been updated</summary>

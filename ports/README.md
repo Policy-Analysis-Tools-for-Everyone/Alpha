@@ -8,7 +8,6 @@ a port never forks it.
 |---|---|
 | `core.md` | The only hand-written port text: the house rules compressed to fit Copilot's 8,000-character instructions field, and 1 line per capability. Placeholders in double braces are filled at build time |
 | `house-rules.reviewed` | The house-rules hash that `core.md` was last checked against |
-| `setup-copilot.md`, `setup-gemini.md` | Set-up guides, copied into each port as `SETUP.md` |
 | `testing.md` | The test plan. Nothing has been run on either surface yet |
 
 ## Building
@@ -16,12 +15,22 @@ a port never forks it.
     python3 tools/build-ports.py           build into dist/ports/
     python3 tools/build-ports.py --check   validate only, write nothing
 
-Each surface gets `instructions.txt`, 10 knowledge files and `SETUP.md`, zipped as
-`dist/ports/mdee-<surface>-port.zip`. Each knowledge file is a skill's `SKILL.md`
-with its provenance comments removed and its house-rules loading paragraph replaced,
+Set-up steps for people installing a port live on the install page, `install/body.html`,
+which is the only copy. Each zip, `dist/ports/policymemo-ai-<surface>.zip`, opens to files
+named for what to do with them, because many people will not read anything else:
+
+    0 Read me first.txt                  short steps, and a link to the install page
+    1 Paste into Instructions.txt
+    2 Upload these 10 files/             policymemo 00 house rules.txt to policymemo 09 story.txt
+    If the instructions get cut short, paste this instead.txt     Gemini only
+
+The zip has no folder inside it. Windows Extract All and the Mac's Archive Utility each
+make one named after the zip, so an inner folder would nest a second copy. The knowledge
+file prefix, `policymemo`, is what the instructions search for, so renaming the files
+breaks the link between them.
+
+Each knowledge file is a skill's `SKILL.md` with its provenance comments removed and its house-rules loading paragraph replaced,
 followed by any other Markdown in that skill's folder (today, `story/writing.md`).
-Gemini also gets `instructions-fallback.txt`, for a Gem that won't save the full
-instructions.
 
 The build fails if the Copilot instructions exceed 8,000 characters, or if either
 surface would need more knowledge files than it allows (Copilot 20, Gemini 10).

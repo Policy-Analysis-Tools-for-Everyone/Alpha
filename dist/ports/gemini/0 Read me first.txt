@@ -1,0 +1,20 @@
+policymemo.ai for Google Gemini (alpha)
+
+Full steps, with copy buttons and help if something goes wrong:
+https://policymemo.ai/install/#gemini
+
+In short:
+1. At gemini.google.com, open Gems, then New Gem.
+2. Open "1 Paste into Instructions.txt", select everything, copy it, and paste it
+   into the Instructions box.
+3. Under Knowledge, add all 10 files in the "2 Upload these 10 files" folder.
+   Do not rename them.
+4. Click Save. Reopen the Gem and check the instructions end with
+   "is still flagged in any document I produced." If they do not, paste
+   "If the instructions get cut short, paste this instead.txt" in their place.
+
+Cannot upload the files? You may be looking inside the zip without having
+extracted it. Close this. On Windows, right-click the zip and choose
+Extract All. On a Mac, double-click the zip. Then use the folder that appears.
+
+Built 2026-10-04 from house-rules 889421c707fd.

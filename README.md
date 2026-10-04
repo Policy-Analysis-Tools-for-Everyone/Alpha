@@ -462,9 +462,9 @@ through the Skills API. If you assemble several into one system prompt, put
 `house-rules` first.
 
 Microsoft 365 Copilot and Google Gemini versions are generated from `skills/` into
-`dist/ports/`, each with its own set-up guide:
-[Copilot](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/mdee-copilot-port.zip),
-[Gemini](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/mdee-gemini-port.zip).
+`dist/ports/`. Set-up steps for both are on the [install page](https://policymemo.ai/install/):
+[Copilot](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/policymemo-ai-copilot.zip),
+[Gemini](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/policymemo-ai-gemini.zip).
 The Copilot version is designed for the free Copilot Chat tier, and falls back to
 the instructions alone where uploading files isn't allowed. Neither has been tested yet. See `ports/README.md`.
 
