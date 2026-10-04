@@ -7,8 +7,8 @@ How to test the ports. What has been run, and what it showed, is recorded in
 
 The Claude evidence in `evals/` doesn't transfer. Every session there ran on Claude
 with the skills loaded as skills. A port changes 3 things at once: the model, the
-instructions (compressed into `core.md`), and how capability text arrives (searched
-knowledge files, not loaded skills). A failure on a port can come from any of the 3.
+house rules (compressed into `core.md`), and how capability text arrives (Copilot and
+Gemini skills, or Copilot knowledge files). A failure on a port can come from any of the 3.
 
 ## Order
 
@@ -16,8 +16,8 @@ Run these in order. Each stage is cheap and stops a wasted run at the next.
 
 1. **Install check.** Follow the [install page](https://policymemo.ai/install/) exactly, from the download onwards. Note anything about the download or unzipping that would confuse someone new to it. Record
    whether the instructions saved whole, and on Copilot whether skills, knowledge
-   upload, both or neither were available.
-   On Gemini, record whether the full instructions held or the fallback was needed.
+   upload, both or neither were available. On Gemini, record whether all 10 skills
+   uploaded and are switched on.
 2. **Smoke test.** Open with each of the 3 README openings, in fresh chats. Check the
    things the instructions carry directly: 1 question at a time, no document as a
    routine reply, no invented figure, no framework named, UK spelling, no em dashes.
@@ -34,6 +34,8 @@ Run these in order. Each stage is cheap and stops a wasted run at the next.
    built from the instructions alone. If the runs don't differ, the method isn't
    being reached. On Copilot, also run a trade-offs case: it lives inside
    `policymemo-decide`, so it shows whether a supporting file is read at all.
+   On Gemini, run each once with no slash and once with `/policymemo-<capability>`.
+   If only the slash run reaches the method, Gemini is not picking skills up on its own.
 4. **Regression.** Run `evals/tests/regression-problem-first-session.md` and
    `evals/tests/regression-writing-and-transfer.md` as written, changing only the
    surface.
@@ -43,8 +45,8 @@ Run these in order. Each stage is cheap and stops a wasted run at the next.
 
 Record port runs in `evals/sessions/` like any other session, with these fields added
 to the header: surface (Copilot or Gemini), the build date and house-rules hash from
-the first lines of `1 Paste into Instructions.txt`, whether skills or knowledge files were present, and on
-Gemini whether the fallback instructions were used.
+`0 Read me first.txt`, whether skills or knowledge files were present, and on Gemini
+whether the skill was invoked with `/` or picked up on its own.
 
 A finding that reproduces on Claude belongs to the skills. A finding that appears only
 on a port belongs to `ports/core.md` or the build, and is fixed there, never by

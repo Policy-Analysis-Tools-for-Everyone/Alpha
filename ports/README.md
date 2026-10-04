@@ -19,12 +19,17 @@ Set-up steps for people installing a port live on the install page, `install/bod
 which is the only copy. Each zip, `dist/ports/policymemo-ai-<surface>.zip`, opens to files
 named for what to do with them, because many people will not read anything else:
 
+Copilot:
+
     0 Read me first.txt                  short steps, and a link to the install page
     1 Paste into Instructions.txt
-    2 Upload these 8 skills/             Copilot only: policymemo-problem.zip to policymemo-story.zip
-    3 No Skills option - upload these as knowledge instead/       Copilot's knowledge fallback
-    2 Upload these 10 files/             Gemini: policymemo 00 house rules.txt to policymemo 09 story.txt
-    If the instructions get cut short, paste this instead.txt     Gemini only
+    2 Upload these 8 skills/             policymemo-problem.zip to policymemo-story.zip
+    3 No Skills option - upload these as knowledge instead/       the 10 knowledge files
+
+Gemini:
+
+    0 Read me first.txt
+    1 Upload these 10 skills/            policymemo.zip, then policymemo-criteria.zip to policymemo-trade-offs.zip
 
 **Copilot skills.** Agent Builder accepts SKILL.md skill zips, the same format as
 the Claude skills. It allows at most 8 skills per agent, each SKILL.md under 20,000
@@ -35,16 +40,24 @@ capabilities, so `trade-offs` travels inside `policymemo-decide` as `trade-offs.
 with a line in decide's body and description pointing to it (`HOSTED` in the
 script). The build fails if any of those limits is broken.
 
+**Gemini skills.** Gemini replaced Gems with skills, which stand alone: there is no
+agent, no instructions box and no knowledge. So every capability skill carries the
+house rules itself, as the compressed text from `core.md`, put where the Claude skill
+says to load `house-rules`. A tenth skill, `policymemo`, is the front door: the same
+house rules and the capability list, for people who type `/policymemo`. Gemini has no
+8-skill limit, so `trade-offs` is its own skill there. Descriptions are capped at 1,024
+characters; Google publishes no SKILL.md limit.
+
 The zip has no folder inside it. Windows Extract All and the Mac's Archive Utility each
-make one named after the zip, so an inner folder would nest a second copy. The knowledge
-file prefix, `policymemo`, is what the instructions search for, so renaming the files
-breaks the link between them.
+make one named after the zip, so an inner folder would nest a second copy. The Copilot
+knowledge file prefix, `policymemo`, is what the instructions search for, so renaming
+the files breaks the link between them.
 
 Each knowledge file is a skill's `SKILL.md` with its provenance comments removed and its house-rules loading paragraph replaced,
 followed by any other Markdown in that skill's folder (today, `story/writing.md`).
 
-The build fails if the Copilot instructions exceed 8,000 characters, or if either
-surface would need more knowledge files than it allows (Copilot 20, Gemini 10).
+The build fails if the Copilot instructions exceed 8,000 characters, or Copilot would
+need more than 20 knowledge files.
 Inputs are dated by their last commit, so an unchanged source rebuilds identically.
 
 ## When house-rules changes
