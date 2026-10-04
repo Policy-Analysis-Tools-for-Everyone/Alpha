@@ -336,8 +336,8 @@ it whenever a source file changes.
 | `/beta` | How to join the private beta | `beta/body.html`, with links in `beta/config.json` |
 | `/install` | Set-up instructions, linked from invite emails | `install/` |
 | `/updates` | Plain changelog, newest first | `updates/changelog.md` |
-| `/skills` | One page per skill, kept up to date | `skill-pages/`. Published once the first page exists |
-| `/blog` | Notes | `blog/posts/` |
+| `/skills` | All 9 skills, each linking to its article once written | `skill-pages/` |
+| `/blog` | Notes. Linked from the footer, not the nav | `blog/posts/` |
 
 Essays and reflection are published on
 [CIVICWORKS](https://civicworks.substack.com), not on policymemo.ai.

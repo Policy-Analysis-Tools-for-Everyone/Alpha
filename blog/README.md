@@ -30,7 +30,8 @@ When a post without `draft: true` reaches `main`, the "Build blog" workflow runs
 `tools/build-blog.py`, which:
 
 - writes the post's page and the blog index in `docs/blog/`
-- adds "Blog" to the homepage nav and footer, once at least one post is published
+- adds "Notes" to the homepage footer, once at least one post is published. Notes is
+  not in the nav, which is Skills, Updates, CIVICWORKS and Beta access
 - for a skill post, adds a "Read the post" link to that skill's card on the
   homepage, and marks the skill as published in the series on the blog index. The series
   section itself appears once the first skill post is published
