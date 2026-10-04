@@ -43,7 +43,7 @@ Run these in order. Each stage is cheap and stops a wasted run at the next.
 
 ## Recording
 
-Record port runs in `evals/sessions/` like any other session, with these fields added
+Record port runs in `evals/raw/alpha/` like any other session, with these fields added
 to the header: surface (Copilot or Gemini), the build date and house-rules hash from
 `0 Read me first.txt`, whether skills or knowledge files were present, and on Gemini
 whether the skill was invoked with `/` or picked up on its own.

@@ -225,7 +225,7 @@ discipline.
 **Record user signal and task outcome separately** from both, with the transcript
 evidence: positive, mixed, negative, unknown; and completed, useful partial
 progress, stalled, abandoned, wrong outcome, unknown. Do not combine these
-mechanically into one quality score during the alpha.
+mechanically into one quality score during early testing.
 
 **Use human judgement first for subjective analytical quality.** Was the challenge
 analytically sound? Was the important uncertainty identified? Was the framing
@@ -291,7 +291,7 @@ regression bank. Never report one aggregate score across both.
 **Start from real cases.** Real transcripts, manually discovered defects,
 behaviours the author checks before release, known failure modes in the method or
 the behaviour specification. A small set of high-information real cases guides
-alpha development better than a large synthetic suite that does not resemble
+early development better than a large synthetic suite that does not resemble
 actual use. Never store a synthetic conversation as though it were real
 behavioural evidence.
 

@@ -1,24 +1,60 @@
 # Findings
 
-What recurs across sessions. Mined from `../sessions/`, `../sessions/` and `../sessions/`.
-
-**Mined 2026-09-22, from 17 sessions and 4 testers. Changes made 2026-09-29 — see
-*What round 1 changed* at the foot before reading any finding as open.** Re-mine whenever a session is added —
-`../README.md` has the three questions. An entry that has not been checked against
-the newest evidence is stale, and nothing detects that automatically.
+What recurs across tester reports. Mined from `../raw/`. Re-mine whenever a report is
+added: `../README.md` has the steps. An entry that has not been checked against the newest
+evidence is stale, and nothing detects that automatically.
 
 Working notes. Blunt on purpose: an entry that starts reading like an essay has become a draft
 and stopped being useful.
 
-**Counts are the argument.** Always *n testers / m sessions*, never a rate. T001 authored the
-skills. T002's three sessions may share memory context. T003's six are one tester's, all
-adversarial by design. Nothing here is an independent sample.
+**Counts are the argument.** Always *n testers / m sessions*, never a rate.
 
-**Seven of the seventeen sessions are not in this repository.** T003's six are reviewed in
-`../sessions/t003-scenario-runs-1-6.md`; T004's two exist only as a note in
-`../sessions/t004-note.md`. Rows drawn from either cannot be checked here.
+**Counts are kept per version.** Everything in F1–F13 below is alpha evidence, on plugin
+`0.1.1`: 17 sessions, 4 testers, mined 2026-09-22. The round 1 changes (`log.md`, 2026-09-29)
+shipped in `0.1.2` and are unchanged in `0.2.0`, the beta. **Nothing below is yet evidence
+about what ships now.** When a beta report adds a sighting, add it to the finding with its
+version and update the `0.2.0` column in the table.
 
-Every session is warm. **Nothing has been tested cold.**
+**What the alpha counts can't carry.** T001 authored the skills. T002's three sessions may
+share memory context. T003's six are one tester's, all adversarial by design, and are held as
+a report, not transcripts. T004's two exist only as a note. Every alpha session was warm. None
+is an independent sample.
+
+---
+
+## Where each finding stands
+
+| | Finding | `0.1.1` (alpha) | Changed since | `0.2.0` (beta) |
+|---|---|---|---|---|
+| F1 | Guards what it lacks, not what it believes | 3 testers / 10 sessions | yes, round 1 | — |
+| F2 | Nobody can tell whether the skill loaded | 3 testers | no (packaging, not a skill) | — |
+| F3 | The contaminated measure gets caught | 2 testers / 8 sessions | no | — |
+| F4 | Corrections extend past what was challenged | 1 tester / 2 sessions | no | — |
+| F5 | The vague-term challenge is material-dependent | 2 testers / 3 sessions | no | — |
+| F6 | Assurances about the output are not checked | 2 testers / 3 sessions | yes, 2026-10-03 writing revision | — |
+| F7 | System map does not fire | 2 testers / 3 sessions | yes, round 1 | — |
+| F8 | Routing | mixed, see entry | no | — |
+| F9 | Standing considerations applied without the vocabulary | 1 tester / 6 sessions | no | — |
+| F10 | Behaviours that held under pressure | 2 testers | no | — |
+| F11 | Two rules resolve inconsistently | 1 tester / 4 sessions | yes, 2026-10-03 writing revision | — |
+| F12 | Stakeholder analysis under-fires when it is not the task | 2 testers | no | — |
+| F13 | Nothing stops | 2 testers / 3 sessions | yes, round 1 | — |
+
+`—` means no beta evidence yet. A finding with no beta sighting after the first two waves is a
+candidate to close, not proof it is fixed.
+
+## Beta: run these first
+
+The beta is the first chance to test what round 1 changed, by people who did not write it.
+
+1. **The three gates**, C17–C19 in `../tests/capability-pack.md` Part 3. They check the F1 and
+   F7 changes did not over-correct. Not run on any version.
+2. **A cold session.** None exists. Any tester's first session counts if the report says it
+   was their first. See `prompts/cold-session.md`.
+3. **Sound work.** Nothing tests whether the agent accepts work that holds. See
+   `prompts/sound-work.md`.
+4. **Part 0 of the capability pack**: does `house-rules` load. F2 says nobody can tell.
+5. **The regression files** in `../tests/`. Never re-run.
 
 ---
 
@@ -72,7 +108,7 @@ Direct loading evidence exists in 3 of 15 sessions, all from slash commands or a
 list. `t002-story-2` is the one observed failure: `house-rules` loaded **after** the first artefact
 was written.
 
-**Consequence for the method.** `../tests/capability-alpha-pack.md` Part 0 offers visible invocation
+**Consequence for the method.** `../tests/capability-pack.md` Part 0 offers visible invocation
 as the stronger evidence route. It does not exist in an ordinary chat install, and the natural
 response to not knowing — typing the command — ends the test.
 
@@ -222,7 +258,7 @@ what it drops.** T004 proposes exactly that test; see `prompts/stopping-rule.md`
 
 ---
 
-## What the corpus does not have
+## What the alpha evidence does not have
 
 - **A cold session.** None confirmed, across four testers. **T004 may be the exception** —
   nothing in their note suggests prior exposure to the skill files. Unconfirmed, and the
@@ -240,43 +276,3 @@ what it drops.** T004 proposes exactly that test; see `prompts/stopping-rule.md`
   them depends on.
 - **Anything about a naive user.** All three testers redirect, concede and push for output more
   than most users will.
-
-
----
-
-## What round 1 changed
-
-Skills edited 2026-09-29, plugin `0.1.1` → `0.1.2`. Every session above tested `0.1.1`, so
-**nothing here is evidence about what ships now.**
-
-| Finding | Change | Where |
-|---|---|---|
-| F1 | The one-line rule on background knowledge replaced with four categories and an in-sentence label, plus an explicit over-correction warning | `house-rules`, Evidence discipline |
-| F1 | Self-check line 1 rewritten. It demanded that nothing in a reply came from the agent, which is unachievable, so it was read as "I invented nothing" and could never fail | `house-rules`, Self-check |
-| F13 | Lead with the deliverable; under a constraint, choose and say what you dropped | `house-rules`, Chat is the whole experience |
-| F1, F13 | Two matching entries added so the failure list agrees with the rules | `house-rules`, Failure modes |
-| F7 | System map moved out of move 9 and onto the hierarchy standing instruction, which does fire: *if you say hierarchy, draw it* | `problem` |
-
-**The gate was not run.** T003 named C-9 — useful background, direct answer needed — as
-mandatory before and after the F1 change, and `prompts/sound-work.md` records that nothing in
-the corpus tests whether the agent accepts sound work. The changes were made on the evidence
-without it. The risk is specific and already has a precedent in this repository: a ban on
-naming frameworks, read too broadly, produced evasive answers on the first recorded test. The
-F1 edit carries an explicit over-correction paragraph for that reason, and that paragraph is
-untested.
-
-**Least evidenced change here:** the constraint rule under F13. No session in the corpus was
-run against a deadline or a length limit, so it is written from two reports of the symptom and
-none of the condition.
-
-**What to do next, in order.** The three gates are now written up as **C17**, **C18** and
-**C19** in `../tests/capability-alpha-pack.md` Part 3, and none has been run. They cannot be
-run here: policymemo.ai is not installed in the maintainer's working session, and the author of a
-change cannot behaviourally test it — `../README.md` says a same-session self-test catches
-structure, not behaviour. They need a fresh chat on `0.1.2`, ideally not the author's.
-
-Then replay both `problem` transcripts against the new map trigger, and take a cold session on
-`0.1.2`.
-
-Not changed, and why: F6 has one clear instance still blocked on a lost user turn. F12 has one
-tester and no transcript. F2 is a packaging problem, not a skill one.

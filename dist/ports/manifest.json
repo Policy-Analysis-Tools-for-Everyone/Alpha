@@ -1,6 +1,6 @@
 {
   "built": "2026-10-04",
-  "house_rules": "35e0d655f497",
+  "house_rules": "e59f06f77357",
   "surfaces": {
     "copilot": {
       "label": "Microsoft 365 Copilot",
@@ -10,13 +10,13 @@
         {
           "file": "policymemo 00 house rules.txt",
           "source": "skills/house-rules/SKILL.md",
-          "sha": "35e0d655f497",
+          "sha": "e59f06f77357",
           "chars": 13861
         },
         {
           "file": "policymemo 01 problem.txt",
           "source": "skills/problem/SKILL.md",
-          "sha": "5a4673cb2cb9",
+          "sha": "3807c8d87c57",
           "chars": 14163
         },
         {
@@ -72,7 +72,7 @@
       "skills": [
         {
           "skill": "policymemo-problem",
-          "sha": "5a4673cb2cb9",
+          "sha": "3807c8d87c57",
           "skill_md_chars": 14164,
           "description_chars": 438,
           "files": [
@@ -157,7 +157,7 @@
         },
         {
           "skill": "policymemo-problem",
-          "sha": "5a4673cb2cb9",
+          "sha": "3807c8d87c57",
           "skill_md_chars": 21796,
           "description_chars": 438
         },

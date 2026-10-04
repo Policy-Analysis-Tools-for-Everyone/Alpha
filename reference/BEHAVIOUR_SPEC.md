@@ -2,7 +2,7 @@
 
 This document describes the observable behaviour of the policymemo.ai agent in enough detail for another developer or model to reproduce it.
 
-Its scope is the shared rules (`house-rules`) and problem definition (`problem`). Every other capability, meaning `stakeholders`, `evidence`, `options`, `criteria`, `outcomes`, `trade-offs`, `decide`, `story` and `evaluation`, is specified by its method file under `reference/methods/` and by its own skill. Do not cite this document as grounding for any of them. See `docs/AUTHORING.md` for how skills are sourced, and `reference/methods/README.md` for the method layer.
+Its scope is the shared rules (`house-rules`) and problem definition (`problem`). Every other capability, meaning `stakeholders`, `evidence`, `options`, `criteria`, `outcomes`, `trade-offs`, `decide`, `story` and `evaluation`, is specified by its method file under `reference/methods/` and by its own skill. Do not cite this document as grounding for any of them. See `reference/AUTHORING.md` for how skills are sourced, and `reference/methods/README.md` for the method layer.
 
 It is split into two parts:
 
@@ -17,7 +17,7 @@ It is split into two parts:
 | [T] | `reference/methods/shared/strategic-triangle-guidance.md` | The public value / operational capacity / political support method, written in this project's own words from John D. Donahue, *Strategic Alignment for Policy Analysis and Design*, HKS Case 2090.0 (2017) |
 | [P] | Product decisions recorded in this document | Decisions the project owner made about how the product behaves: the conversational shape, question discipline, output structure and tone. This document is their record |
 | [O] | Project owner, authored directly | Material the owner supplies as their own draft rather than from a source document: device lists, vocabulary, direction on how modules divide. Authored, not unsourced: cite `[O]` rather than leaving it on a module's "not grounded" line, and say what it was |
-| [E] | `evals/sessions/*` | Behavioural evidence from real sessions. There are currently 17, across 4 testers. The only record of what this agent actually says, as opposed to what it was designed to say. Grounds revisions made after testing |
+| [E] | `evals/raw/alpha/*` | Behavioural evidence from real sessions. There are currently 17, across 4 testers. The only record of what this agent actually says, as opposed to what it was designed to say. Grounds revisions made after testing |
 
 ---
 

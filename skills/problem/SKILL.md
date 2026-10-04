@@ -25,7 +25,7 @@ Also grounded in:
       the self-check as a scoring list, and a metric per sub-problem.
   [O] Project owner - the placeholder set; the contaminated-measure warning
       (now in house-rules).
-  [E] evals/sessions/t001-problem-receipt-confirmation.md - first test session.
+  [E] evals/raw/alpha/t001-problem-receipt-confirmation.md - first test session.
       Drove the revision recorded below.
 
 Not grounded:

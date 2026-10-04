@@ -34,7 +34,7 @@ Canonical sources:
   [O] Project owner - the vague-term challenge and its four-part answer; the
       direction that the three considerations are cross-cutting rather than a
       stage; the contaminated-measure warning.
-  [E] evals/sessions/t001-problem-receipt-confirmation.md - the first test ran a
+  [E] evals/raw/alpha/t001-problem-receipt-confirmation.md - the first test ran a
       capability with no shared rules loaded at all. This skill exists so that
       stops being true.
 

@@ -1,135 +1,149 @@
 # Evaluation
 
-Evidence about what this agent actually does, as opposed to what its skills say it should do.
-Method: `reference/methods/capabilities/agent-evaluation-guidance.md`. The runtime skill that
-applies it is `evaluation`.
+Evidence about what policymemo.ai actually does, as opposed to what its skills say it
+should do. Method: `reference/methods/capabilities/agent-evaluation-guidance.md`. The
+runtime skill that applies it is `evaluation`.
+
+This file is the schema. It says how the folder is laid out and how to work in it.
 
 ```text
 evals/
-  sessions/    all evidence, flat. Kind is a field in each file, not a directory
-  wiki/        findings.md and prompts/ — the distillate that drives changes
+  raw/
+    alpha/     17 sessions on 0.1.1, T001–T004. Frozen
+    beta/      one file per beta report, from TEMPLATE.md
+  wiki/
+    index.md     every wiki page, one line each
+    log.md       append-only: what changed in the wiki, and when
+    findings.md  what recurs, counted per version. Read first
+    testers.md   pseudonymous register of who ran what
+    prompts/     open questions the evidence is asking
   tests/       capability and regression cases. Synthetic
-  testers.md   pseudonymous register of who ran which session
 ```
 
-**[`wiki/findings.md`](wiki/findings.md) is the one to read first.** It holds what more than
-one session shows, and the honest count of what the corpus does not have. Everything in
-`sessions/` is a source for it.
+**Raw is evidence and is never rewritten.** If a skill changes afterwards, the wiki
+records it, not the raw file. **The wiki is the distillate**, and it is rewritten as
+often as the evidence demands.
 
-The loop: real use → session → finding → pattern → change hypothesis → skill revision →
+The loop: real use → raw report → finding → change hypothesis → skill revision →
 regression test → cold re-test.
 
-## Current state
+## Three operations
 
-**17 sessions, 4 testers, August 2026, all on plugin `0.1.1`.** `0.1.2` changed
-`house-rules` and `problem` from these findings and has no sessions behind it yet. Nine are transcripts; the rest are a tester's
-cross-session report and a tester's note. Seven of the ten capabilities have been exercised.
-Everything in `tests/` is synthetic and labelled as such.
+### Ingest: a report arrives
 
-**No session is confirmed cold** — T004 may be the exception and has not been asked — and
-**nothing tests whether the agent accepts sound work**, since every session so far offered it
-something to challenge. Those are the two largest gaps. See
-[`wiki/prompts/cold-session.md`](wiki/prompts/cold-session.md) and
-[`wiki/prompts/sound-work.md`](wiki/prompts/sound-work.md).
+Beta reports come in through three channels:
+
+| Channel | Who | What to commit |
+|---|---|---|
+| GitHub issue, *session report* template | Anyone | The report, anonymised. Issues are public, so it should already be |
+| Reply to the invite email | Practitioners | Only with consent to publish. Otherwise the finding and no conversation |
+| Student study feedback form | Students | **Stays within the study.** Commit only what the study's consent allows: usually an anonymised note, or the finding alone |
+
+Then:
+
+1. Give the tester an ID, continuing from the last row in `wiki/testers.md`, and add
+   or update their row. One person keeps one ID across every report.
+2. Copy `raw/beta/TEMPLATE.md` to `raw/beta/YYYY-MM-DD-T0NN-<topic>.md` and fill
+   it in. A field nobody can confirm says so.
+3. Mine it into `wiki/findings.md` with three questions:
+   - **Does it add a sighting to an existing finding?** Add it with its version and
+     update the `0.2.0` column. The count is the argument.
+   - **Does it contradict one?** The valuable case. Record the contradiction rather
+     than smoothing it over. F5 exists because two sessions disagreed.
+   - **Does it leave something with nowhere to go?** That is a new prompt in
+     `wiki/prompts/`, listed in `wiki/index.md`.
+4. Delete any prompt the report answered or killed.
+5. Add a line to `wiki/log.md`, and fill in the report's *Mined into* section.
+
+### Query: what do we know about X?
+
+Start at `wiki/index.md`, then `wiki/findings.md`. Cite the raw file behind any claim,
+and give its version. A finding with only alpha sightings says nothing yet about `0.2.0`.
+
+### Lint: after each beta wave
+
+- Every finding's beta column is current against `raw/beta/`.
+- Every prompt is still open. One nobody has run in six months was probably never a
+  test, so delete it.
+- `testers.md` count matches the raw files.
+- Every page is in `index.md`. Record the lint in `log.md`.
 
 ## Four kinds of evidence, and what each is worth
 
-Every file in `sessions/` names its kind in the header. They are not equivalent.
+Every raw file names its kind in the header. They are not equivalent.
 
 **Transcript.** What the agent actually said. The only behavioural evidence.
 
-**Debrief.** The agent's own account of a session, produced by the `evaluation` skill. A model
-grading itself. **Never cite one where a transcript exists.** Its value is the invocation log:
-the chat surface does not show whether a skill loaded, and a debrief lists the file reads. Two
-findings in the wiki exist only because of that.
+**Debrief.** The agent's own account of a session, produced by the `evaluation` skill. A
+model grading itself. **Never cite one where a transcript exists.** Its value is the
+invocation log, since the chat surface doesn't show whether a skill loaded.
 
-**Synthesis.** One author's cross-session review, at one date. May rest on sessions this
-repository does not hold — it says so at the top when it does. Change proposals in a synthesis
-stay proposals; recording one is not adopting it.
+**Synthesis.** One author's cross-session review. May rest on sessions this repository
+doesn't hold, and says so when it does. Change proposals in it stay proposals.
 
-**Note.** A tester's own words, no transcript. Weaker than a transcript and not nothing: it
-reports what the tester noticed, which is the only route to behaviour nobody thought to look
-for. Never cite a note for what the agent said, and cite the session as uncommitted.
+**Note.** A tester's own words, no transcript. Weaker than a transcript and not nothing:
+it reports what the tester noticed. Never cite a note for what the agent said. Most
+beta reports will be notes.
 
-## Conventions, so no file restates them
+## Conventions
 
-**Figures are substituted.** Every case number in every file is an invented illustration,
-re-derived as a set so the relationships an argument depends on still hold. Never cite one as
-evidence of anything. A file that substitutes something unusually, or deliberately leaves
-something unsubstituted, says so.
+**Figures are substituted.** Every case number in every file is an invented
+illustration, re-derived as a set so the relationships an argument depends on still
+hold. Never cite one as evidence.
 
-**Substitutions are made inside quotations too.** Quotes are otherwise verbatim: wording,
-structure, emphasis and the user's original typos. Nothing is tidied. Where a quote could not
-survive substitution intact it is paraphrased in square brackets, never silently altered.
+**Substitutions are made inside quotations too.** Quotes are otherwise verbatim,
+typos included. Where a quote could not survive substitution it is paraphrased in
+square brackets, never silently altered.
 
-**Organisations are substituted consistently across files.** Whether two sessions concern the
-same real organisation is not recorded.
+**Organisations are substituted consistently across files.**
 
-**Headers carry the metadata a reader needs**: kind, skills used, version, model, date, tester,
-cold or warm, what else was loaded. A field nobody can confirm says so rather than carrying a
-plausible value.
-
-**Never rewrite a session.** If a skill changed afterwards, add an editorial note and leave the
-record alone.
-
-## Adding a session
-
-Write it up, then re-mine [`wiki/findings.md`](wiki/findings.md) against it. Three questions.
-
-**Does it add a sighting to a finding that already exists?** Add the row. A fourth sighting
-matters less than the first, but the count is the argument.
-
-**Does it contradict one?** The valuable case. Record the contradiction rather than smoothing
-it — `F5` exists because two sessions disagreed.
-
-**Does it leave something with nowhere to go?** That is a prompt, and it goes in
-`wiki/prompts/`.
-
-Then update the mined-on date in `findings.md`, add or update the row in `testers.md`, and
-delete any prompt the session has answered or killed.
-
-**What a session needs before it can be written up:** date, model, plugin version, whether the
-tester had read the skill files or used policymemo.ai before, and consent to publish.
-
-## Cold testing, and what must never reach the agent
-
-A session is **cold** when the tester has not read the skill files, has not seen what the evals
-expect, and has not used policymemo.ai before. Their second session is not cold, whatever else is true.
-
-**Nothing about a tester reaches policymemo.ai.** The register and any future learning record are
-evaluation-side artefacts. They go nowhere near a Project, a skill, a system prompt or Claude's
-memory. Break that and every later result measures a personalised build rather than the product
-a new person installs.
-
-**Runtime memory is a separate question.** Never give an evaluation file the name of a file a
-runtime feature loads, and never use auto memory as an evidence source.
-
-## Privacy
-
-1. **Pseudonymous IDs in the repository.** The mapping to real people is held privately by the
-   maintainer and never committed.
-2. **Ask before the session:** *"May I save an anonymised version of this conversation in a
-   public repository?"* Record the answer in `testers.md`.
-3. **Where consent is refused,** or the work is pre-decision, commercially sensitive or
-   politically sensitive, write the finding and do not commit the session.
-4. **Redact before committing, never after.**
-5. **Register fields stay broad categories.** No free text about a person.
+**Headers carry what a reader needs**: kind, version, model, date, tester, cold or warm,
+what loaded. The session report form asks for version, model and first-time use, so the
+beta should have fewer gaps than the alpha.
 
 ## Counting
 
-**n testers / m sessions.** Never a percentage, never "most users". A behaviour seen 4 times in
-one person's sessions is *1 tester (4 sessions)*. That is the whole defence against inventing
-significance from a tiny alpha sample.
+**n testers / m sessions.** Never a percentage, never "most users". A behaviour seen 4
+times in one person's sessions is *1 tester (4 sessions)*.
+
+Keep counts per version. Alpha (`0.1.1`) and beta (`0.2.0`) evidence are never added
+together into one number.
+
+## Cold testing, and what must never reach the agent
+
+A session is **cold** when the tester hasn't read the skill files, hasn't seen what the
+evals expect, and hasn't used policymemo.ai before. Their second session is not cold.
+
+**Nothing about a tester reaches policymemo.ai.** The register and anything in this folder
+go nowhere near a Project, a skill, a system prompt or Claude's memory. Break that and
+every later result measures a personalised build, not the product a new person installs.
+
+Never give an evaluation file the name of a file a runtime feature loads, and never use
+auto memory as an evidence source.
+
+## Privacy
+
+1. **Pseudonymous IDs in the repository.** The mapping to real people is held privately
+   by the maintainer and never committed.
+2. **Consent before committing a conversation.** Record it in the report header and in
+   `testers.md`.
+3. **Where consent is refused,** or the work is pre-decision, commercially sensitive or
+   politically sensitive, write the finding and don't commit the conversation.
+4. **Redact before committing, never after.**
+5. **Register fields stay broad categories.** No free text about a person.
 
 ## `tests/`
 
-**Capability cases** are hard, realistic and possibly unsolved. A meaningful failure rate is the
-point. **Regression cases** protect behaviour already shown to work and should pass almost every
-time. Promote a case when a capability failure is fixed and becomes reliable.
+**Capability cases** (`capability-pack.md`) are hard, realistic and possibly unsolved. A
+meaningful failure rate is the point. **Regression cases** protect behaviour already
+shown to work and should pass almost every time.
 
-Never report one aggregate score across both. For any behaviour that fires conditionally, keep a
-matched pair: a case where it must fire and one where it must not. An agent tested only on
-whether it challenges learns to challenge everything.
+Never report one score across both. For any behaviour that fires conditionally, keep a
+matched pair: a case where it must fire and one where it must not. An agent tested only
+on whether it challenges learns to challenge everything.
+
+Run cases in the configuration you ship: an ordinary Claude chat with the plugin
+installed.
 
 ## Do not overclaim
 
@@ -140,25 +154,5 @@ whether it challenges learns to challenge everything.
 | **Behaviourally tested** | Run on real work, in a session that was saved |
 | **Regression-tested** | A saved case re-runs and still passes after changes |
 
-A same-session self-test catches structure, not behaviour, because the author already knows what
-the file says. Label it warm and expect a cold run to find different things.
-
-## Reporting a problem
-
-The most useful thing anyone can send is a conversation where the agent was **confidently
-wrong**. Worth more than the ones where it worked, and much easier to lose.
-
-**If something went wrong,** open a session report:
-[new issue](https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/issues/new?template=session-report.yml).
-Issues are public — redact first, or send it to the maintainer privately.
-
-**If you are an alpha tester,** you write nothing up. Five questions, about three minutes:
-
-1. What were you trying to do?
-2. Where did you get to?
-3. What surprised or frustrated you?
-4. What did you expect instead?
-5. Was there anything it told you that you think was wrong?
-
-Question 2 asks for the state reached rather than whether you were happy. Question 5 earns its
-place because someone who was confidently misled does not know it yet.
+A self-test in the same session catches structure, not behaviour, because the author
+already knows what the file says.
