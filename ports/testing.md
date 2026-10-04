@@ -1,8 +1,7 @@
 # Testing the ports
 
-Nothing in this folder has been run on either surface yet. Until it has, the ports are
-untested in the strict sense: the rules are the same as the Claude version, and
-there's no evidence about whether either surface follows them.
+How to test the ports. What has been run, and what it showed, is recorded in
+`evals/` and nowhere else.
 
 ## What the ports can't inherit
 

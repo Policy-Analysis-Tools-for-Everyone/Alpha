@@ -8,7 +8,7 @@ a port never forks it.
 |---|---|
 | `core.md` | The only hand-written port text: the house rules compressed to fit Copilot's 8,000-character instructions field, and 1 line per capability. Placeholders in double braces are filled at build time |
 | `house-rules.reviewed` | The house-rules hash that `core.md` was last checked against |
-| `testing.md` | The test plan. Nothing has been run on either surface yet |
+| `testing.md` | The test plan. Results go in `evals/` |
 
 ## Building
 
