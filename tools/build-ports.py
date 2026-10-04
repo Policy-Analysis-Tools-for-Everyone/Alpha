@@ -86,7 +86,8 @@ SURFACES = {
         "skills": True,
         "knowledge_dir": KNOWLEDGE_FALLBACK_DIR,
         "readme": (
-            "1. In Copilot Chat, click Create agent, then the Configure tab.\n"
+            "1. In Copilot Chat, click Create agent. When it opens a chat called\n"
+            "   Message agent builder, press Skip.\n"
             "2. Open \"{instructions}\", select everything, copy it, and paste it\n"
             "   into the Instructions box.\n"
             "3. Under Skills, upload each of the 8 zip files in the \"{skills}\"\n"
