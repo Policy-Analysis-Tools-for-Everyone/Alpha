@@ -383,7 +383,7 @@
 
   <h3 id="copilot-needs">What you need</h3>
   <ul class="needs">
-    <li>A work or university Microsoft account with Copilot Chat. The free tier included with most Microsoft 365 accounts is enough.</li>
+    <li>A work or university Microsoft account with Copilot Chat. The free tier included with most Microsoft 365 accounts is enough. On the free tier you cannot upload the knowledge files, so the agent runs on its instructions alone. That works, with less depth.</li>
     <li>Permission to create agents. Open Copilot Chat and look for <b>Create agent</b> (sometimes <b>New agent</b>) in the left-hand panel. If it is not there, your organisation has switched agent creation off and none of this will work. Ask your IT service.</li>
     <li>No admin rights.</li>
   </ul>
@@ -403,7 +403,7 @@
     <li><b>Instructions:</b> open <code class="inline">1 Paste into Instructions.txt</code>, select everything, copy and paste it into the box. It is about 7,800 characters, and the limit is 8,000.
       <span class="sm">Scroll to the end of the box to check it pasted whole. The last words should be “is still flagged in any document I produced.” If they are not, clear the box and paste again.</span></li>
     <li><b>Knowledge:</b> click <b>Upload files</b>, open the <code class="inline">2 Upload these 10 files</code> folder, select all 10 and upload them. Do not rename them: the instructions find them by name.
-      <span class="sm">If there is no upload option, or it is greyed out, skip this step. The agent still works from the instructions alone, with less depth.</span></li>
+      <span class="sm">No <b>Upload files</b> option? That is normal on the free Copilot Chat tier: uploading files needs a paid Microsoft 365 Copilot licence. Skip this step. The agent works from the instructions alone, with less depth. Do not add web links instead: Copilot searches them through Bing rather than reading them, so they will not carry the method.</span></li>
     <li><b>Web search:</b> switch it off for now. The Claude version does not search the web unless asked, and keeping them alike makes reports comparable.</li>
     <li><b>Starter prompts:</b> add these, title then message.
       <ul class="prompts">
@@ -433,8 +433,12 @@
     <div><p>Clear the box and paste again, then check the last words are “is still flagged in any document I produced.” The full text fits inside Copilot’s 8,000-character limit.</p></div>
   </details>
   <details>
+    <summary>There is no Upload files option under Knowledge</summary>
+    <div><p>Uploading files to an agent needs a paid Microsoft 365 Copilot licence, or an organisation that pays for Copilot by use. Most free Copilot Chat accounts, including most student accounts, only see the option to add web links. You have not done anything wrong. Skip the knowledge step: the instructions carry the core rules, and the agent works from them alone.</p><p>Linking to the knowledge files on GitHub does not work as a substitute. Copilot only searches linked sites through Bing, it accepts at most 4 links, and it gets snippets rather than whole files.</p></div>
+  </details>
+  <details>
     <summary>It ignores the detailed method</summary>
-    <div><p>The core rules are in the instructions and always apply. The method for each part of the analysis is in the knowledge files, and Copilot reads them when it searches, which it may not do every time. Asking it to use the relevant file usually helps.</p></div>
+    <div><p>The core rules are in the instructions and always apply. If you uploaded the knowledge files, the method for each part of the analysis is in them, and Copilot reads them when it searches, which it may not do every time. Asking it to use the relevant file usually helps.</p></div>
   </details>
   <details>
     <summary>The upload cannot find the files, or will not take them</summary>
