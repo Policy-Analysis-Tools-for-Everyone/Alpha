@@ -11,6 +11,7 @@ description: >
   or when a disagreement about what matters is being treated as an evidence gap.
 license: "CC BY-NC 4.0. policymemo.ai by Jack Strachan, https://policymemo.ai"
 metadata:
+  version: 0.2.0
   status: written, not behaviourally tested. Has never appeared in a session header
 ---
 

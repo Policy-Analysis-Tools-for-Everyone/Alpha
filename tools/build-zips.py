@@ -8,7 +8,11 @@
                                           local plugin). Carries both licence files
 
 The download keeps the marketplace's plugin name, mdee, so every install
-route produces the same plugin. Regenerate after any change to skills/,
+route produces the same plugin.
+
+First it stamps the release version from marketplace.json into every
+skill's frontmatter (metadata.version), so a loaded skill can say which
+version it is. That is the only edit this script makes to skills/. Regenerate after any change to skills/,
 marketplace.json or the licences, and commit the result:
 
     python3 tools/build-zips.py
@@ -18,6 +22,7 @@ byte-identical zip and does not churn in git.
 """
 import json
 import pathlib
+import re
 import zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -56,6 +61,25 @@ def add_folder(z: zipfile.ZipFile, prefix: str, folder: pathlib.Path) -> int:
     for f in files:
         add(z, f"{prefix}/{f.relative_to(folder).as_posix()}", f.read_bytes())
     return len(files)
+
+
+VERSION_LINE = re.compile(r"^(metadata:\n)(  version: .*\n)?", re.M)
+
+
+def stamp_versions() -> None:
+    """Write the marketplace version into each SKILL.md's metadata.version."""
+    entries = json.loads(MARKETPLACE.read_text())["plugins"]
+    version = next(p["version"] for p in entries if p["name"] == DOWNLOADS["policymemo-ai-claude"]["source"])
+    for path in sorted(SKILLS.glob("*/SKILL.md")):
+        text = path.read_text(encoding="utf-8")
+        front_end = text.index("\n---", 3)
+        front, rest = text[:front_end + 1], text[front_end + 1:]
+        if not VERSION_LINE.search(front):
+            raise SystemExit(f"{path.relative_to(ROOT)}: frontmatter has no metadata block")
+        stamped = VERSION_LINE.sub(lambda m: f"{m.group(1)}  version: {version}\n", front, count=1)
+        if stamped != front:
+            path.write_text(stamped + rest, encoding="utf-8")
+            print(f"stamped {path.relative_to(ROOT)} with {version}")
 
 
 def remove_stale(out: pathlib.Path, keep: set) -> None:
@@ -99,5 +123,6 @@ def build_downloads() -> None:
 
 
 if __name__ == "__main__":
+    stamp_versions()
     build_skills()
     build_downloads()
