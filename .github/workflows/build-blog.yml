@@ -1,13 +1,14 @@
 name: Build blog
 
-# docs/blog/ and the blog links on the homepage are generated from blog/posts/
-# by tools/build-blog.py. This rebuilds them whenever a post, the blog styles
+# docs/blog/, docs/install/ and the blog links on the homepage are generated from
+# blog/posts/ and install/ by tools/build-blog.py. This rebuilds them whenever a post, the blog styles
 # or the build script changes, so the published blog never drifts from its source.
 
 on:
   push:
     paths:
       - "blog/**"
+      - "install/**"
       - "tools/build-blog.py"
       - ".github/workflows/build-blog.yml"
   workflow_dispatch:
@@ -34,7 +35,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/blog docs/index.html
+          git add docs/blog docs/install docs/index.html
           if git diff --cached --quiet; then
             echo "Blog already matches source. Nothing to do."
           else

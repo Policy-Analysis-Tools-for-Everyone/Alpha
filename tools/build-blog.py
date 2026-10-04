@@ -36,6 +36,8 @@ POSTS = ROOT / "blog" / "posts"
 CSS = ROOT / "blog" / "blog.css"
 OUT = ROOT / "docs" / "blog"
 HOME = ROOT / "docs" / "index.html"
+INSTALL = ROOT / "install"
+INSTALL_OUT = ROOT / "docs" / "install"
 ICONS = ROOT / "docs" / "icons"
 MASCOT = ROOT / "docs" / "mascot.svg"
 LATEST = ""  # date of the newest published post; drives the "new" dot by Notes on the homepage
@@ -50,7 +52,6 @@ SKILLS = [
     ("trade-offs", "Trade-offs", "tradeoffs"), ("decide", "Decide", "decision"),
     ("story", "Story", "story"),
 ]
-DOWNLOAD = "https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/download/policymemo-ai-claude.zip"
 FEEDBACK = "mailto:jack@civicworks.co?subject=policymemo.ai%20feedback"
 
 
@@ -92,7 +93,8 @@ def svg_inline(path, cls, prefix):
     return s.replace("<svg ", f'<svg class="{cls}" aria-hidden="true" ', 1)
 
 
-def page(title, description, body, css, home, depth_note=""):
+def page(title, description, body, css, home, depth_note="", current="notes"):
+    notes_current = ' aria-current="page"' if current == "notes" else ""
     mascot = svg_inline(MASCOT, "logo", "lg-").replace('fill="#1c1b18"', 'fill="currentColor"')
     return f"""<!doctype html>
 {GENERATED}
@@ -121,9 +123,9 @@ def page(title, description, body, css, home, depth_note=""):
     <a class="brand" href="{home}" aria-label="policymemo.ai home">{mascot}</a>
     <nav aria-label="Main">
       <a class="plain" href="{home}#what">What it does</a>
-      <a class="plain keep" href="{home}blog/" aria-current="page" data-latest="{LATEST}">Notes</a>
+      <a class="plain keep" href="{home}blog/"{notes_current} data-latest="{LATEST}">Notes</a>
       <a class="plain keep" href="{FEEDBACK}">Feedback</a>
-      <a class="btn primary small" href="{DOWNLOAD}">Download</a>
+      <a class="btn primary small" href="{home}install/">Download</a>
     </nav>
   </div>
 </header>
@@ -135,6 +137,7 @@ def page(title, description, body, css, home, depth_note=""):
     <span>policymemo.ai · beta 0.1.2</span>
     <nav aria-label="Footer">
       <a href="{home}">Home</a>
+      <a href="{home}install/">Install</a>
       <a href="{FEEDBACK}">Feedback</a>
       <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
     </nav>
@@ -217,7 +220,7 @@ def build_post(p, posts, css, home):
         pitch = f"The {name} skill is part of policymemo.ai, which is free."
     else:
         pitch = "Try policymemo.ai on a problem you're stuck on. It's free."
-    skill_note = f'<aside class="try"><p>{pitch}</p><a class="btn primary" href="{DOWNLOAD}">Download for Claude</a></aside>'
+    skill_note = f'<aside class="try"><p>{pitch}</p><a class="btn primary" href="{home}install/">Install it</a></aside>'
     draft = '<p class="draft-flag">Draft · not published</p>' if p["draft"] else ""
     body = f"""<article class="wrap post">
   {draft}<p class="meta"><a href="./">Notes</a> · <span class="cat">{CATEGORIES[p['category']]}</span> · {nice_date(p['date_obj'])} · {p['minutes']} min read</p>
@@ -228,6 +231,15 @@ def build_post(p, posts, css, home):
   {nav}
 </article>"""
     return page(f"{p['title']} · policymemo.ai", p["summary"], body, css, home)
+
+
+def build_install(css, home):
+    """The install page: one page, one panel per AI tool. Its body is hand-written in install/."""
+    body = (INSTALL / "body.html").read_text(encoding="utf-8")
+    css = css + "\n" + (INSTALL / "install.css").read_text(encoding="utf-8")
+    return page("Install · policymemo.ai",
+                "Install policymemo.ai in Claude, Microsoft 365 Copilot or Google Gemini. You set it up once, on a computer.",
+                body, css, home, current=None)
 
 
 def update_home(posts):
@@ -241,8 +253,6 @@ def update_home(posts):
         s = pat.sub(lambda m: m.group(1) + content + m.group(2), s)
     fill("nav", f'<a class="plain keep notes-link" href="blog/" data-latest="{posts[0]["date_obj"].isoformat()}">Notes<span class="new-dot" aria-hidden="true"></span></a>' if live else "")
     fill("footer", '<a href="blog/">Notes</a>' if live else "")
-    install = any(p["slug"] == "how-to-install" for p in posts)
-    fill("install", ' · <a href="blog/how-to-install.html">How to install</a>' if install else "")
     by_skill = {p["skill"]: p for p in posts if p.get("skill")}
     for slug, _, _ in SKILLS:
         p = by_skill.get(slug)
@@ -274,6 +284,8 @@ def main():
     for p in posts:
         (OUT / f"{p['slug']}.html").write_text(build_post(p, posts, css, "../"), encoding="utf-8")
     update_home(posts)
+    INSTALL_OUT.mkdir(parents=True, exist_ok=True)
+    (INSTALL_OUT / "index.html").write_text(build_install(css, "../"), encoding="utf-8")
     print(f"{len(posts)} published, {len(all_posts) - len(posts)} draft(s) held back")
     return 0
 

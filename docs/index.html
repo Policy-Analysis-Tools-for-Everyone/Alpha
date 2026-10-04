@@ -79,6 +79,8 @@
   .btn.primary:hover { background: var(--red); color: #fff; }
   .btn.small { padding: 9px 14px; font-size: 14px; }
   .btn.ghost { border-color: var(--line); color: var(--muted); cursor: default; }
+  a.btn.ghost { color: var(--ink); cursor: pointer; }
+  a.btn.ghost:hover { border-color: var(--ink); }
   .btn svg { width: 16px; height: 16px; flex: none; }
   .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .soon { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; padding: 3px 7px; border-radius: 999px;
@@ -346,7 +348,7 @@
     <nav aria-label="Main">
       <a class="plain" href="#what">What it does</a>
       <a class="plain" href="#how">How it behaves</a>
-      <!-- blog:nav --><a class="plain keep notes-link" href="blog/" data-latest="2026-10-04">Notes<span class="new-dot" aria-hidden="true"></span></a><!-- /blog:nav -->
+      <!-- blog:nav --><a class="plain keep notes-link" href="blog/" data-latest="2026-10-03">Notes<span class="new-dot" aria-hidden="true"></span></a><!-- /blog:nav -->
       <a class="plain keep" href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">Feedback</a>
       <a class="btn primary small" href="#download">Download</a>
     </nav>
@@ -363,10 +365,10 @@
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>
         Download for Claude
       </a>
-      <span class="btn ghost" aria-disabled="true">Copilot <span class="soon">Soon</span></span>
-      <span class="btn ghost" aria-disabled="true">Gemini <span class="soon">Soon</span></span>
+      <a class="btn ghost" href="install/#copilot">Copilot <span class="soon">Alpha</span></a>
+      <a class="btn ghost" href="install/#gemini">Gemini <span class="soon">Alpha</span></a>
     </div>
-    <p class="fine">Free · Beta · Version 0.1.2<!-- blog:install --> · <a href="blog/how-to-install.html">How to install</a><!-- /blog:install --></p>
+    <p class="fine">Free · Beta · Version 0.1.2 · <a href="install/">How to install</a></p>
   </section>
 
   <section class="demo" id="demo" aria-labelledby="demo-title">
@@ -513,15 +515,15 @@
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>
           Download for Claude
         </a>
-        <span class="btn ghost" aria-disabled="true">Copilot <span class="soon">Soon</span></span>
-        <span class="btn ghost" aria-disabled="true">Gemini <span class="soon">Soon</span></span>
+        <a class="btn ghost" href="install/#copilot">Copilot <span class="soon">Alpha</span></a>
+        <a class="btn ghost" href="install/#gemini">Gemini <span class="soon">Alpha</span></a>
       </div>
       <ol class="install">
         <li><b>Download the zip</b> and leave it zipped. Claude wants the file exactly as it arrives.</li>
         <li>In Claude, open <b>Customize</b>, then <b>Plugins</b>, then <b>Add</b>, and choose <b>Upload local plugin</b>.</li>
         <li><b>Upload the zip</b>, switch it on once the security scan finishes, and start a new chat.</li>
       </ol>
-      <p class="status">Needs Claude Pro, Max, Team or Enterprise with code execution switched on. On the free plan you can add the skills one at a time: the <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha#if-youre-on-the-claude-free-plan">install guide</a> has the steps.</p>
+      <p class="status">These steps are for Claude on a paid plan, with code execution switched on. For the free plan, Copilot or Gemini, follow the <a href="install/">install guide</a>.</p>
       <p class="status">This is a beta. The skills change as people use them, so expect rough edges, and <a href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">tell us when it gets something wrong</a>.</p>
     </div>
   </section>
@@ -534,7 +536,7 @@
       <!-- blog:footer --><a href="blog/">Notes</a><!-- /blog:footer -->
       <a href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">Feedback</a>
       <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
-      <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha#install-policymemoai-in-claude">Install guide</a>
+      <a href="install/">Install</a>
       <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/blob/main/LICENSE-CONTENT.md">Licence</a>
     </nav>
   </div>
