@@ -1,0 +1,344 @@
+<section class="wrap install-hero">
+  <p class="eyebrow">Install</p>
+  <h1>Install policymemo.ai</h1>
+  <p class="lede">Choose the AI tool you use. You set it up once, on a computer, and it takes between 2 and 10 minutes.</p>
+</section>
+
+<div class="picker-bar" id="picker-bar">
+  <div class="wrap">
+    <div class="picker" role="tablist" aria-label="Choose your AI tool">
+      <button type="button" role="tab" id="tab-claude" aria-controls="claude" aria-selected="true"><b>Claude</b><span>Plugin · 2 min</span></button>
+      <button type="button" role="tab" id="tab-copilot" aria-controls="copilot" aria-selected="false"><b>Copilot</b><span>Agent · 10 min</span></button>
+      <button type="button" role="tab" id="tab-gemini" aria-controls="gemini" aria-selected="false"><b>Gemini</b><span>Gem · 10 min</span></button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap install-layout">
+<div>
+
+<!-- Claude -->
+<section class="panel" id="claude" role="tabpanel" aria-labelledby="tab-claude">
+  <h2>Claude</h2>
+  <p>This is the main version of policymemo.ai, and the one with the most testing behind it.</p>
+
+  <h3 id="claude-needs">What you need</h3>
+  <ul class="needs">
+    <li>Claude on a computer: in your browser at <a href="https://claude.ai">claude.ai</a>, or the Claude desktop app.</li>
+    <li>Code execution switched on. Open <b>Settings</b>, then <b>Capabilities</b>. It is on by default for most people. If it is off, policymemo.ai installs and then appears to do nothing.</li>
+    <li>A paid plan (Pro, Max, Team or Enterprise) to install it as one plugin. On the free plan you add the 10 skills one at a time instead.</li>
+  </ul>
+
+  <h3 id="claude-steps">Install it</h3>
+  <div class="route" role="tablist" aria-label="Your Claude plan">
+    <button type="button" role="tab" id="tab-claude-paid" aria-controls="claude-paid" aria-selected="true">Paid plan</button>
+    <button type="button" role="tab" id="tab-claude-free" aria-controls="claude-free" aria-selected="false">Free plan</button>
+  </div>
+
+  <div class="sub" id="claude-paid" role="tabpanel" aria-labelledby="tab-claude-paid">
+    <div class="get">
+      <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/download/policymemo-ai-claude.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download for Claude</a>
+      <p>One zip. Leave it zipped: Claude wants the file exactly as it arrives.</p>
+    </div>
+    <ol class="steps" style="margin-top:26px">
+      <li>In Claude, open <b>Customize</b>, then <b>Plugins</b>.</li>
+      <li>Click <b>Add</b>, then <b>Upload local plugin</b>.</li>
+      <li>Drag the zip in, or browse to it, and click <b>Upload</b>.</li>
+      <li>Wait for the security scan to finish, then switch it on.
+        <span class="sm">Claude warns that it cannot verify add-ons made by other people. That is correct, and it appears for everything of this kind. Everything policymemo.ai contains is readable in the <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/tree/main/skills">skills folder on GitHub</a>.</span></li>
+      <li>Start a new chat.</li>
+    </ol>
+    <details>
+      <summary>Want updates to arrive on their own?</summary>
+      <div>
+        <p>A zip install stays at the version you downloaded. To get updates automatically, add policymemo.ai as a marketplace instead of uploading the zip:</p>
+        <ol class="steps">
+          <li>In <b>Customize</b>, then <b>Plugins</b>, click <b>+</b> next to <b>Personal plugins</b>, then <b>Add marketplace</b>.</li>
+          <li>Paste this and click <b>Sync</b>:
+            <span class="val"><code>Policy-Analysis-Tools-for-Everyone/Alpha</code><button type="button" class="copy" data-copy="Policy-Analysis-Tools-for-Everyone/Alpha">Copy</button></span></li>
+          <li>Click <b>Install</b> next to policymemo.ai, then start a new chat.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <div class="sub" id="claude-free" role="tabpanel" aria-labelledby="tab-claude-free">
+    <p style="margin-top:22px">Plugins need a paid plan, but skills do not. Once all 10 are in, policymemo.ai behaves the same. It takes about 10 minutes.</p>
+    <ol class="steps">
+      <li>In Claude, open <b>Customize</b>, then <b>Skills</b>.</li>
+      <li>Click <b>+</b>, then <b>Create skill</b>, and upload a file from the list below. Do not unzip it.</li>
+      <li>Check it is switched on, then repeat for the rest.
+        <span class="sm">Start with house-rules. It is the one that makes the others behave. The rest can go in any order. If you only ever add 2, add house-rules and problem.</span>
+        <ul class="skill-zips">
+          <li><a class="first" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/house-rules.zip">1. house-rules</a></li>
+          <li><a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/problem.zip">problem</a></li>
+          <li><a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/stakeholders.zip">stakeholders</a></li>
+          <li><a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/evidence.zip">evidence</a></li>
+          <li><a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/options.zip">options</a></li>
+          <li><a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/criteria.zip">criteria</a></li>
+          <li><a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/outcomes.zip">outcomes</a></li>
+          <li><a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/trade-offs.zip">trade-offs</a></li>
+          <li><a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/decide.zip">decide</a></li>
+          <li><a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/skills/story.zip">story</a></li>
+        </ul>
+      </li>
+      <li>Start a new chat.</li>
+    </ol>
+  </div>
+
+  <h3 id="claude-check">Check it worked</h3>
+  <div class="worked">
+    <p>On a paid plan, policymemo.ai is listed under <b>Personal plugins</b> and switched on. On the free plan, all 10 skills are listed under <b>Skills</b>. Nothing appears in your chat window, and nothing is supposed to.</p>
+    <p>Start a new chat and describe a problem you are working on, the way you would to a colleague. It should ask you a question back before it writes anything.</p>
+  </div>
+
+  <h3 id="claude-wrong">If it goes wrong</h3>
+  <details>
+    <summary>It installed but seems to do nothing</summary>
+    <div><p>Check code execution is on, in <b>Settings</b>, then <b>Capabilities</b>, and start a new chat. Skills do not load into a chat that was already open.</p></div>
+  </details>
+  <details>
+    <summary>The marketplace install fails with “Failed to fetch content: 403”</summary>
+    <div><p>If this happens in the desktop app, try Claude in a browser first. If the browser fails too, upload the zip instead, as in the paid plan steps above. It installs the same plugin by a different route.</p></div>
+  </details>
+  <details>
+    <summary>There is no Upload local plugin option</summary>
+    <div><p>That option needs a paid plan, or it may be switched off by your organisation. Use the free plan route: it works on every plan.</p></div>
+  </details>
+</section>
+
+<!-- Copilot -->
+<section class="panel" id="copilot" role="tabpanel" aria-labelledby="tab-copilot">
+  <h2>Microsoft 365 Copilot <span class="tag">Alpha</span></h2>
+  <p class="note">This builds policymemo.ai as an agent in Copilot Chat. It runs on Microsoft’s models with the same written rules as the Claude version. Expect it to drift from them more, especially over a long conversation.</p>
+
+  <h3 id="copilot-needs">What you need</h3>
+  <ul class="needs">
+    <li>A work or university Microsoft account with Copilot Chat. The free tier included with most Microsoft 365 accounts is enough.</li>
+    <li>Permission to create agents. Open Copilot Chat and look for <b>Create agent</b> (sometimes <b>New agent</b>) in the left-hand panel. If it is not there, your organisation has switched agent creation off and none of this will work. Ask your IT service.</li>
+    <li>No admin rights.</li>
+  </ul>
+  <div class="get">
+    <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/mdee-copilot-port.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download for Copilot</a>
+    <p>Unzip it. You paste from <code class="inline">instructions.txt</code> and upload the 10 files in <code class="inline">knowledge/</code>.</p>
+  </div>
+
+  <h3 id="copilot-steps">Build the agent</h3>
+  <ol class="steps">
+    <li>Open Copilot Chat and click <b>Create agent</b>.</li>
+    <li>Click the <b>Configure</b> tab. Skip the chat-style <b>Describe</b> tab, because it rewrites what you give it.</li>
+    <li><b>Name:</b>
+      <span class="val"><code>policymemo.ai (alpha)</code><button type="button" class="copy" data-copy="policymemo.ai (alpha)">Copy</button></span></li>
+    <li><b>Description:</b>
+      <span class="val"><code>Works through a public policy problem with you: defines it, tests the evidence, builds and weighs options, decides and writes it up. Challenges weak framing and refuses to invent figures.</code><button type="button" class="copy" data-copy="Works through a public policy problem with you: defines it, tests the evidence, builds and weighs options, decides and writes it up. Challenges weak framing and refuses to invent figures.">Copy</button></span></li>
+    <li><b>Instructions:</b> open <code class="inline">instructions.txt</code>, select everything, copy and paste it into the box. It is about 7,700 characters, and the limit is 8,000.
+      <span class="sm">Scroll to the end of the box to check it pasted whole. The last words should be “is still flagged in any document I produced.” If they are not, clear the box and paste again.</span></li>
+    <li><b>Knowledge:</b> click <b>Upload files</b> and add all 10 files from <code class="inline">knowledge/</code>. Do not rename them: the instructions find them by name.
+      <span class="sm">If there is no upload option, or it is greyed out, skip this step. The agent still works from the instructions alone, with less depth.</span></li>
+    <li><b>Web search:</b> switch it off for now. The Claude version does not search the web unless asked, and keeping them alike makes reports comparable.</li>
+    <li><b>Starter prompts:</b> add these, title then message.
+      <ul class="prompts">
+        <li><b>Find the real problem</b><span>I think we've already jumped to a solution. Help me work out what the actual problem is.</span><button type="button" class="copy" data-copy="I think we've already jumped to a solution. Help me work out what the actual problem is.">Copy</button></li>
+        <li><b>Weigh the evidence</b><span>We've got evidence from another country that this worked. How much weight should we put on it?</span><button type="button" class="copy" data-copy="We've got evidence from another country that this worked. How much weight should we put on it?">Copy</button></li>
+        <li><b>Compare my options</b><span>I've got 3 options and I'm struggling to decide what should count as better.</span><button type="button" class="copy" data-copy="I've got 3 options and I'm struggling to decide what should count as better.">Copy</button></li>
+        <li><b>Who's affected</b><span>Help me think about who's affected by this and whose support it needs.</span><button type="button" class="copy" data-copy="Help me think about who's affected by this and whose support it needs.">Copy</button></li>
+        <li><b>Test my draft</b><span>Here's my draft problem statement. Tell me what's weak about it.</span><button type="button" class="copy" data-copy="Here's my draft problem statement. Tell me what's weak about it.">Copy</button></li>
+        <li><b>Write it up</b><span>Help me turn this analysis into a one-page memo for a decision-maker.</span><button type="button" class="copy" data-copy="Help me turn this analysis into a one-page memo for a decision-maker.">Copy</button></li>
+      </ul></li>
+    <li>Click <b>Create</b>.</li>
+  </ol>
+
+  <h3 id="copilot-check">Check it worked</h3>
+  <div class="worked">
+    <p>Open the agent and try a starter prompt. It should ask you a question back before it writes anything. That is deliberate, the same as the Claude version.</p>
+    <p>To share it, use <b>Share</b> to send a link to people in your organisation, if your organisation allows it. People outside it need to follow these steps themselves.</p>
+  </div>
+
+  <h3 id="copilot-wrong">If it goes wrong</h3>
+  <details>
+    <summary>There is no Create agent button</summary>
+    <div><p>Your organisation has switched agent creation off. Only your IT service can change that.</p></div>
+  </details>
+  <details>
+    <summary>The instructions were cut short</summary>
+    <div><p>Clear the box and paste again, then check the last words are “is still flagged in any document I produced.” The full text fits inside Copilot’s 8,000-character limit.</p></div>
+  </details>
+  <details>
+    <summary>It ignores the detailed method</summary>
+    <div><p>The core rules are in the instructions and always apply. The method for each part of the analysis is in the knowledge files, and Copilot reads them when it searches, which it may not do every time. Asking it to use the relevant file usually helps.</p></div>
+  </details>
+  <details>
+    <summary>policymemo.ai has been updated</summary>
+    <div><p>Updates are not automatic. Download the new zip, paste the new instructions and replace the knowledge files.</p></div>
+  </details>
+</section>
+
+<!-- Gemini -->
+<section class="panel" id="gemini" role="tabpanel" aria-labelledby="tab-gemini">
+  <h2>Google Gemini <span class="tag">Alpha</span></h2>
+  <p class="note">This builds policymemo.ai as a Gem. It runs on Google’s models with the same written rules as the Claude version. Expect it to drift from them more, especially over a long conversation.</p>
+
+  <h3 id="gemini-needs">What you need</h3>
+  <ul class="needs">
+    <li>A Google account with access to Gems in Gemini. Work and education accounts can have Gems switched off by an administrator.</li>
+    <li>Gemini on a computer, at <a href="https://gemini.google.com">gemini.google.com</a>.</li>
+  </ul>
+  <div class="get">
+    <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/raw/main/dist/ports/mdee-gemini-port.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download for Gemini</a>
+    <p>Unzip it. You paste from <code class="inline">instructions.txt</code> and upload the 10 files in <code class="inline">knowledge/</code>.</p>
+  </div>
+
+  <h3 id="gemini-steps">Build the Gem</h3>
+  <ol class="steps">
+    <li>Open <a href="https://gemini.google.com">gemini.google.com</a> and go to <b>Gems</b> (sometimes under <b>Explore Gems</b>), then <b>New Gem</b>.</li>
+    <li><b>Name:</b>
+      <span class="val"><code>policymemo.ai (alpha)</code><button type="button" class="copy" data-copy="policymemo.ai (alpha)">Copy</button></span></li>
+    <li><b>Instructions:</b> open <code class="inline">instructions.txt</code>, select everything, copy and paste it into the box. Ignore Gemini’s offer to rewrite it.</li>
+    <li><b>Knowledge:</b> add all 10 files from <code class="inline">knowledge/</code>. That is Gemini’s limit, so there is no room for anything else. Do not rename them: the instructions find them by name.</li>
+    <li>Click <b>Save</b>.</li>
+    <li>Reopen the Gem’s settings and scroll to the end of the instructions. The last words should be “is still flagged in any document I produced.”
+      <span class="sm">If they are cut short, see below.</span></li>
+  </ol>
+
+  <h3 id="gemini-check">Check it worked</h3>
+  <div class="worked">
+    <p>Start a chat with the Gem and describe a problem you are working on. It should ask you a question back before it writes anything. That is deliberate, the same as the Claude version.</p>
+    <p>To share it, use the share link in the Gems list, if your account allows it. Anyone you share with uses your copy, including its knowledge files.</p>
+  </div>
+
+  <h3 id="gemini-wrong">If it goes wrong</h3>
+  <details>
+    <summary>The instructions were cut short</summary>
+    <div><p>Google does not publish a length limit for Gem instructions. If yours were cut short, replace them with the contents of <code class="inline">instructions-fallback.txt</code>. That short version tells Gemini to take the full rules from the house rules knowledge file instead.</p></div>
+  </details>
+  <details>
+    <summary>There is no Gems option</summary>
+    <div><p>On a work or education account, an administrator may have switched Gems off. A personal Google account will usually have them.</p></div>
+  </details>
+  <details>
+    <summary>policymemo.ai has been updated</summary>
+    <div><p>Updates are not automatic. Download the new zip, paste the new instructions and replace the knowledge files.</p></div>
+  </details>
+</section>
+
+<section class="report" aria-labelledby="report-title">
+  <h2 id="report-title">Tell me when it goes wrong</h2>
+  <p>Say which tool you used, and for Copilot or Gemini whether the knowledge files went in. The most useful thing is the conversation itself: what you were trying to do, and what felt wrong or missing. Remove anything identifying first.</p>
+  <p><a href="mailto:jack@civicworks.co?subject=policymemo.ai%20install">Email me</a>, or use the <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/issues/new?template=session-report.yml">session report on GitHub</a>.</p>
+</section>
+
+</div>
+<nav class="toc" aria-label="On this page"><p>On this page</p><ol id="toc"></ol></nav>
+</div>
+
+<script>
+(function () {
+  document.documentElement.classList.add('js');
+  var KEY = 'pm-install-tool';
+  var tools = ['claude', 'copilot', 'gemini'];
+  var tabs = {}, panels = {};
+  tools.forEach(function (t) { tabs[t] = document.getElementById('tab-' + t); panels[t] = document.getElementById(t); });
+  var routeTabs = { paid: document.getElementById('tab-claude-paid'), free: document.getElementById('tab-claude-free') };
+  var routes = { paid: document.getElementById('claude-paid'), free: document.getElementById('claude-free') };
+  var toc = document.getElementById('toc');
+
+  function buildToc(t) {
+    toc.innerHTML = '';
+    panels[t].querySelectorAll('h3[id]').forEach(function (h) {
+      var li = document.createElement('li'), a = document.createElement('a');
+      a.href = '#' + h.id; a.textContent = h.textContent; li.appendChild(a); toc.appendChild(li);
+    });
+    watch(t);
+  }
+  function route(r, focus) {
+    Object.keys(routes).forEach(function (k) {
+      var on = k === r;
+      routes[k].hidden = !on;
+      routeTabs[k].setAttribute('aria-selected', on ? 'true' : 'false');
+      routeTabs[k].tabIndex = on ? 0 : -1;
+    });
+    if (focus) routeTabs[r].focus();
+  }
+  function show(t, opts) {
+    opts = opts || {};
+    tools.forEach(function (k) {
+      var on = k === t;
+      panels[k].hidden = !on;
+      tabs[k].setAttribute('aria-selected', on ? 'true' : 'false');
+      tabs[k].tabIndex = on ? 0 : -1;
+    });
+    buildToc(t);
+    try { localStorage.setItem(KEY, t); } catch (e) {}
+    if (opts.hash !== false) history.replaceState(null, '', '#' + t);
+    if (opts.focus) tabs[t].focus();
+  }
+  function keys(list, get, act) {
+    list.forEach(function (k, i) {
+      get(k).addEventListener('keydown', function (e) {
+        var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (!d) return;
+        e.preventDefault();
+        act(list[(i + d + list.length) % list.length]);
+      });
+    });
+  }
+  tools.forEach(function (t) {
+    tabs[t].addEventListener('click', function () {
+      show(t);
+      var bar = document.getElementById('picker-bar');
+      if (bar.getBoundingClientRect().top <= 61) window.scrollTo({ top: window.scrollY + bar.nextElementSibling.getBoundingClientRect().top - 140 });
+    });
+  });
+  keys(tools, function (t) { return tabs[t]; }, function (t) { show(t, { focus: true }); });
+  Object.keys(routeTabs).forEach(function (r) { routeTabs[r].addEventListener('click', function () { route(r); }); });
+  keys(['paid', 'free'], function (r) { return routeTabs[r]; }, function (r) { route(r, true); });
+
+  // Which tool to open: the link (#copilot, #claude-free, or any heading inside a panel), then the last choice, then Claude.
+  var h = location.hash.slice(1), start = 'claude', r = 'paid';
+  var target = h && document.getElementById(h);
+  var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) {}
+  if (target) {
+    var p = target.closest('.panel'); if (p) start = p.id;
+    var s = target.closest('.sub'); if (s) r = s.id === 'claude-free' ? 'free' : 'paid';
+  } else if (tools.indexOf(saved) > -1) start = saved;
+  route(r);
+  show(start, { hash: false });
+  if (target && tools.indexOf(h) === -1) setTimeout(function () { target.scrollIntoView(); }, 0);
+  window.addEventListener('hashchange', function () {
+    var t = location.hash.slice(1);
+    if (t === 'claude-free' || t === 'claude-paid') { show('claude', { hash: false }); route(t === 'claude-free' ? 'free' : 'paid'); }
+    else if (tools.indexOf(t) > -1) show(t, { hash: false });
+  });
+
+  // Copy buttons
+  document.querySelectorAll('.copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.getAttribute('data-copy');
+      function done() { b.textContent = 'Copied'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('done'); }, 1600); }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () {});
+    });
+  });
+
+  // Border under the picker once it sticks
+  var bar = document.getElementById('picker-bar');
+  if ('IntersectionObserver' in window) {
+    var sentinel = document.createElement('div'); bar.parentNode.insertBefore(sentinel, bar);
+    new IntersectionObserver(function (es) { bar.classList.toggle('stuck', !es[es.length - 1].isIntersecting); }, { rootMargin: '-61px 0px 0px 0px' }).observe(sentinel);
+  }
+
+  // Highlight the section being read in "On this page"
+  var io = null;
+  function watch(t) {
+    if (io) io.disconnect();
+    if (!('IntersectionObserver' in window)) return;
+    var links = toc.querySelectorAll('a');
+    io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); });
+      });
+    }, { rootMargin: '-150px 0px -60% 0px' });
+    panels[t].querySelectorAll('h3[id]').forEach(function (h) { io.observe(h); });
+  }
+})();
+</script>
