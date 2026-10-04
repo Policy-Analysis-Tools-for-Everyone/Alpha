@@ -4,7 +4,8 @@ Full steps, with copy buttons and help if something goes wrong:
 https://policymemo.ai/install/#copilot
 
 In short:
-1. In Copilot Chat, click Create agent, then the Configure tab.
+1. In Copilot Chat, click Create agent. When it opens a chat called
+   Message agent builder, press Skip.
 2. Open "1 Paste into Instructions.txt", select everything, copy it, and paste it
    into the Instructions box.
 3. Under Skills, upload each of the 8 zip files in the "2 Upload these 8 skills"
