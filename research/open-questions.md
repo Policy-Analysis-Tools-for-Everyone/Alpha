@@ -29,13 +29,13 @@ in `design.md`.
 |---|---|---|---|
 | E1 | Which ethics route (UCL REC, departmental, low-risk), and how long it takes | UCL research ethics | Start date |
 | E2 | Can artefacts produced in teaching before approval be used with retrospective consent? | UCL REC | Whether this term's early weeks are usable |
-| E3 | Who acts as the third party for consent, keys and interviews? | Research team | Tutor blinding |
+| E3 | Which IIPP colleague, not teaching the group, acts as the third party for consent, keys and interviews? | Module lead | Tutor blinding |
 | E4 | Can assessed work be used at all, and on what terms? | UCL REC, course lead | Persistence evidence |
 | E5 | Where data is held at UCL, and who has access | UCL data protection | Collection |
 | E6 | Are transcript redaction rules set by the study or by the student? | Research team, REC | Transcript donation |
 | E7 | Is any model-assisted analysis of de-identified data permissible? | UCL REC, data protection | Analysis plan |
 | E8 | Withdrawal deadline | Research team, REC | Information sheet |
-| E9 | Who is the PI, and is the tutor's role as product author declared as a conflict? | Research team | Submission |
+| E9 | Will the module lead act as PI or sponsor, or nominate one? The PGTA is co-investigator, with the product-author role declared as a conflict (`design.md` 12.0) | Module lead | Submission |
 
 ## The student beta route
 

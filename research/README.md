@@ -70,6 +70,7 @@ research/
 | Design drafted | Yes, 2026-10-04 |
 | Questions agreed by the research team | No |
 | UCL 2026-27 seminar sequence known | No: `design.md` uses the 2025-26 draft |
+| Researcher's role | Confirmed: the seminar's PGTA, and the product author. See `design.md` 12.0 |
 | Ethics submitted | No |
 | Ethics approved | No |
 | Any data collected | No |

@@ -629,6 +629,27 @@ size. Report agreement on the double-coded subset and how disagreements were res
 Identified here, not solved. Several are decisions for the ethics committee and the
 course leadership, not the research team.
 
+### 12.0 Who the researcher is, and what follows
+
+Confirmed 2026-10-04: the researcher is the PGTA who teaches the seminar, and the
+author of policymemo.ai. The module lead is the course's lead academic.
+
+- **This is UCL research, whatever the researcher's own affiliation.** A UCL employee is
+  collecting data from their own students, in a UCL seminar, through their teaching
+  role. Ethics review cannot be skipped and justified afterwards: data collected
+  without approval is unlikely to be approved retrospectively or accepted by a journal,
+  and the risk falls on the module lead as well as the researcher.
+- **Recommended route.** The module lead, or an academic they nominate, acts as PI or
+  sponsor, with the PGTA as co-investigator. An IIPP colleague who is not teaching the
+  group handles consent, the code key and interviews (E3). The module lead's written
+  agreement covers the teaching use of the agent in seminars, separately from the
+  research.
+- **Until approval:** teaching use only, plus product feedback under the `evals/`
+  rules. No research data. Decisions and agreements are kept in a dated log
+  (`research/log.md`, once created), so the paper trail exists from the start.
+- **Three roles in one person** (tutor, researcher, product author) are the main thing
+  the ethics case has to answer, and they are declared, not managed quietly.
+
 ### 12.1 Found in the repository, needing action first
 
 1. **Beta access is currently coupled to research consent.** `site/beta/body.html` says
