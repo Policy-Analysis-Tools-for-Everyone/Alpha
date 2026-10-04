@@ -336,7 +336,6 @@ it whenever a source file changes.
 | `/beta` | How to join the private beta | `beta/body.html`, with links in `beta/config.json` |
 | `/install` | Set-up instructions, linked from invite emails | `install/` |
 | `/updates` | Plain changelog, newest first | `updates/changelog.md` |
-| `/skills` | All 9 skills, each linking to its article once written | `skill-pages/` |
 | `/blog` | Notes. Linked from the footer, not the nav | `blog/posts/` |
 
 Essays and reflection are published on
