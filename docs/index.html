@@ -313,12 +313,12 @@
   .new-dot { display: none; position: absolute; top: 1px; right: -9px; width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
   .notes-link.is-new .new-dot { display: block; }
   .new-dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--red); opacity: 0; }
-  .notes-link.is-new .new-dot::after { animation: dot-ping 1.4s var(--ease) .9s 2; }
+  .notes-link.pulse .new-dot::after { animation: dot-ping 1.3s var(--ease) .6s 3; }
   @keyframes dot-ping { from { transform: scale(1); opacity: .55; } to { transform: scale(2.6); opacity: 0; } }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .notes-link.is-new .new-dot::after { animation: none; }
+    .notes-link.pulse .new-dot::after { animation: none; }
     .w, .step, .hl, .gap, .scene, .window, .msg-agent p.q { transition: none !important; filter: none !important; }
     .js .hero-mascot { animation: none; }
     .play .icon, .play .icon * { animation: none !important; }
@@ -889,6 +889,15 @@
   if ((Date.now() - Date.parse(latest)) / 864e5 > 14 || seen >= latest) return;
   a.classList.add('is-new');
   a.setAttribute('aria-label', 'Notes, new post');
+  /* Three pulses on load, and three more each time the reader comes back to
+     the top of the page. Each round ends inside 5 seconds (WCAG 2.2.2). */
+  function pulse() { a.classList.remove('pulse'); void a.offsetWidth; a.classList.add('pulse'); }
+  pulse();
+  var away = false;
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 600) away = true;
+    else if (away && window.scrollY < 80) { away = false; pulse(); }
+  }, { passive: true });
   a.addEventListener('click', function () {
     try { localStorage.setItem('pm-notes-seen', latest); } catch (e) {}
   });
