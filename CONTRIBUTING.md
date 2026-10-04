@@ -8,7 +8,7 @@ For people working on policymemo.ai rather than using it. Users want the
 | Folder | What it is | Edit by hand? |
 |---|---|---|
 | `skills/` | The 11 runtime skills. The only copy; everything else is generated from them or points at them | Yes |
-| `reference/` | The method layer, sources, domain material, `AUTHORING.md` and `BEHAVIOUR_SPEC.md` | Yes |
+| `reference/` | The method layer, sources, domain material, the memo corpus, `AUTHORING.md` and `BEHAVIOUR_SPEC.md` | Yes |
 | `evals/` | What testers actually saw, and the wiki distilled from it. Start at `evals/README.md` | Yes |
 | `site/` | Sources for policymemo.ai: `beta/`, `blog/`, `install/`, `updates/` | Yes |
 | `ports/` | The hand-written core of the Copilot and Gemini versions | Yes |
@@ -99,8 +99,11 @@ every reply.
 
 **Sources and domain material.** `reference/sources/README.md` lists every source
 the method layer cites. `reference/domain/` holds domain-specific material, such
-as the digital public infrastructure synthesis of 2 UCL IIPP papers. No skill
-reads either.
+as the digital public infrastructure synthesis of 2 UCL IIPP papers.
+`reference/memos/` is a corpus of real policy memos with their markers' feedback,
+and a wiki that evaluates them, as evidence for `story`. No skill reads any of
+the three. [`reference/memos/README.md`](reference/memos/README.md) says how to
+add a memo.
 
 **`skills/house-rules/SKILL.md` is the source of truth for how the agent behaves.**
 Everything else follows it: `ports/core.md` compresses it for Copilot and Gemini,

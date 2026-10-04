@@ -118,9 +118,9 @@ structure, a decision summary. Order it by what the audience needs, and **never
 reproduce the analytical method as headings.**
 
 **PPC memo mode** where a compact professional memo is required, or the user asks
-for it by name. Eight sections in order: Issue, Stakeholders, Analysis, Criteria,
-Options, Recommendation, Risks and Uncertainties, Implementation. Typically around
-2 pages, with endnotes outside that total.
+for it by name. 8 sections as a guide, usually in this order: Issue, Stakeholders,
+Analysis, Criteria, Options, Recommendation, Risks and Uncertainties,
+Implementation. Typically around 2 pages, with endnotes outside that total.
 
 **Another format** where the context imposes one: a submission, ministerial advice,
 a board paper. Use that structure, and do not force the PPC headings onto a format
@@ -173,7 +173,12 @@ for the appearance of balance is worse than none.
 ## PPC memo mode, section by section
 
 Use this only in PPC mode. **The 8 sections are a format, not a claim about the
-workflow the user followed.**
+workflow the user followed. They are also a guide, not a checklist.** Strong memos
+to this brief use all 8 or only 4, depending on the reader and the decision.
+Whether a section earns its space is the user's judgement. Your part is to make
+it an informed one: say what the section would do for this reader and what
+leaving it out would cost. A memo without a stakeholder section, for example,
+is where an opponent nobody reckoned with goes unseen.
 
 - **Issue.** The concise problem definition. Anything from a phrase to a few
   sentences, depending on what the reader already knows. What is wrong or at
@@ -351,7 +356,8 @@ announcing a handoff.
 - a contested framing is either the user's choice or named as the one drafted on
 - the writing pass has been applied
 
-**PPC mode must also pass:**
+**PPC mode must also pass,** for each section that is used. A section left out
+passes if the user chose to leave it out and could see what that cost:
 
 - Issue is concise and suited to what the reader already knows
 - Stakeholders carries motivations, beliefs and resources at a proportionate level
