@@ -13,7 +13,8 @@ Posts live in blog/posts/*.md, each with a short front matter block:
     ---
 
 This writes docs/blog/index.html and one docs/blog/<slug>.html per published
-post (the slug is the file name). It also updates the homepage between its
+post (the slug is the file name), plus two Atom feeds: feed.xml (every post)
+and feed-updates.xml (product updates only). It also updates the homepage between its
 blog markers: a Blog link in the nav and footer, and a "Read the post" link on
 each skill card, all of which stay empty until something is published, so the
 site never shows an empty blog.
@@ -53,6 +54,13 @@ SKILLS = [
     ("story", "Story", "story"),
 ]
 FEEDBACK = "mailto:jack@civicworks.co?subject=policymemo.ai%20feedback"
+SITE = "https://policymemo.ai"
+AUTHOR = ("Jack Strachan", "jack@civicworks.co")
+# Email sign-up. Set to the Buttondown username once the newsletter exists; the form
+# stays off the site until then. Buttondown sends an email for each new post in feed.xml.
+BUTTONDOWN = ""
+FEEDS = [("feed.xml", "Notes · policymemo.ai", None),
+         ("feed-updates.xml", "Product updates · policymemo.ai", "updates")]
 
 
 def read_post(path):
@@ -110,6 +118,8 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
 <meta property="og:image" content="https://policymemo.ai/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{home}favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/atom+xml" title="Notes · policymemo.ai" href="{home}blog/feed.xml">
+<link rel="alternate" type="application/atom+xml" title="Product updates · policymemo.ai" href="{home}blog/feed-updates.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,0..100&family=Geist:wght@400..600&display=swap" rel="stylesheet">
@@ -139,6 +149,7 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
       <a href="{home}">Home</a>
       <a href="{home}install/">Install</a>
       <a href="{FEEDBACK}">Feedback</a>
+      <a href="{home}blog/feed.xml">RSS</a>
       <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
     </nav>
   </div>
@@ -186,6 +197,15 @@ def build_index(posts, css, home):
         status = (f'<a class="read" href="{p["slug"]}.html">Read · {nice_date(p["date_obj"])}</a>' if p
                   else '<span class="soon">Coming soon</span>')
         cards += f'<li class="{"live" if p else "planned"}" data-rise>{art}<h3>{title}</h3>{status}</li>'
+    signup = (f'<form class="signup" action="https://buttondown.com/api/emails/embed-subscribe/{BUTTONDOWN}" method="post">'
+              '<label for="signup-email">Get each new post by email</label>'
+              '<div class="field"><input id="signup-email" type="email" name="email" placeholder="you@example.org" autocomplete="email" required>'
+              '<button class="btn primary small" type="submit">Subscribe</button></div>'
+              '<p class="fine">One email per post. Unsubscribe from any of them.</p></form>' if BUTTONDOWN else "")
+    follow = f"""<section class="wrap follow" aria-labelledby="follow" data-rise>
+  <h2 id="follow">Follow along</h2>
+  {signup}<p class="feeds">Or use a feed reader: <a href="feed.xml">every post</a> or <a href="feed-updates.xml">product updates only</a>.</p>
+</section>"""
     filters = "".join(f'<button type="button" data-cat="{k}" aria-pressed="false">{v}</button>' for k, v in CATEGORIES.items())
     body = f"""<section class="wrap blog-hero">
   <p class="eyebrow">Notes</p>
@@ -201,7 +221,8 @@ def build_index(posts, css, home):
   <h2 id="series">One post for each skill</h2>
   <p class="intro">Each post covers what the skill does, the method behind it, and what it looks like on a real problem.</p>
   <ul class="skill-grid">{cards}</ul>
-</section>"""
+</section>
+{follow}"""
     return page("Notes · policymemo.ai", "Notes from building policymemo.ai: why it works the way it does, a post on each skill, and what changes.", body, css, home)
 
 
@@ -233,6 +254,43 @@ def build_post(p, posts, css, home):
     return page(f"{p['title']} · policymemo.ai", p["summary"], body, css, home)
 
 
+def build_feed(all_posts, title, category):
+    """An Atom feed of the published posts, newest first, with full post text."""
+    posts = [p for p in all_posts if category is None or p["category"] == category]
+    name = "feed-updates.xml" if category else "feed.xml"
+    def stamp(d):
+        return f"{d.isoformat()}T09:00:00Z"
+    # Dated by its newest post, so rebuilding without new posts changes nothing.
+    newest = (posts or all_posts)
+    updated = stamp(newest[0]["date_obj"] if newest else datetime.date(2026, 10, 1))
+    entries = ""
+    for p in posts:
+        url = f"{SITE}/blog/{p['slug']}.html"
+        entries += f"""  <entry>
+    <title>{html.escape(p['title'])}</title>
+    <link rel="alternate" type="text/html" href="{url}"/>
+    <id>{url}</id>
+    <published>{stamp(p['date_obj'])}</published>
+    <updated>{stamp(p['date_obj'])}</updated>
+    <category term="{p['category']}" label="{CATEGORIES[p['category']]}"/>
+    <summary>{html.escape(p['summary'])}</summary>
+    <content type="html" xml:base="{url}">{html.escape(p['body'])}</content>
+  </entry>
+"""
+    return f"""<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB">
+  <title>{html.escape(title)}</title>
+  <subtitle>Notes from building policymemo.ai.</subtitle>
+  <link rel="self" type="application/atom+xml" href="{SITE}/blog/{name}"/>
+  <link rel="alternate" type="text/html" href="{SITE}/blog/"/>
+  <id>{SITE}/blog/{name}</id>
+  <updated>{updated}</updated>
+  <author><name>{AUTHOR[0]}</name><email>{AUTHOR[1]}</email></author>
+  <icon>{SITE}/favicon.svg</icon>
+{entries}</feed>
+"""
+
+
 def build_install(css, home):
     """The install page: one page, one panel per AI tool. Its body is hand-written in install/."""
     body = (INSTALL / "body.html").read_text(encoding="utf-8")
@@ -252,7 +310,8 @@ def update_home(posts):
             raise SystemExit(f"docs/index.html is missing the blog:{name} markers")
         s = pat.sub(lambda m: m.group(1) + content + m.group(2), s)
     fill("nav", f'<a class="plain keep notes-link" href="blog/" data-latest="{posts[0]["date_obj"].isoformat()}">Notes<span class="new-dot" aria-hidden="true"></span></a>' if live else "")
-    fill("footer", '<a href="blog/">Notes</a>' if live else "")
+    fill("footer", '<a href="blog/">Notes</a><a href="blog/feed.xml">RSS</a>' if live else "")
+    fill("head", '<link rel="alternate" type="application/atom+xml" title="Notes · policymemo.ai" href="blog/feed.xml">' if live else "")
     by_skill = {p["skill"]: p for p in posts if p.get("skill")}
     for slug, _, _ in SKILLS:
         p = by_skill.get(slug)
@@ -283,6 +342,8 @@ def main():
     (OUT / "index.html").write_text(build_index(posts, css, "../"), encoding="utf-8")
     for p in posts:
         (OUT / f"{p['slug']}.html").write_text(build_post(p, posts, css, "../"), encoding="utf-8")
+    for name, title, category in FEEDS:
+        (OUT / name).write_text(build_feed(posts, title, category), encoding="utf-8")
     update_home(posts)
     INSTALL_OUT.mkdir(parents=True, exist_ok=True)
     (INSTALL_OUT / "index.html").write_text(build_install(css, "../"), encoding="utf-8")

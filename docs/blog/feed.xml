@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB">
+  <title>Notes · policymemo.ai</title>
+  <subtitle>Notes from building policymemo.ai.</subtitle>
+  <link rel="self" type="application/atom+xml" href="https://policymemo.ai/blog/feed.xml"/>
+  <link rel="alternate" type="text/html" href="https://policymemo.ai/blog/"/>
+  <id>https://policymemo.ai/blog/feed.xml</id>
+  <updated>2026-10-03T09:00:00Z</updated>
+  <author><name>Jack Strachan</name><email>jack@civicworks.co</email></author>
+  <icon>https://policymemo.ai/favicon.svg</icon>
+  <entry>
+    <title>Why policymemo.ai asks before it writes</title>
+    <link rel="alternate" type="text/html" href="https://policymemo.ai/blog/why-it-asks-first.html"/>
+    <id>https://policymemo.ai/blog/why-it-asks-first.html</id>
+    <published>2026-10-03T09:00:00Z</published>
+    <updated>2026-10-03T09:00:00Z</updated>
+    <category term="why" label="Why it works"/>
+    <summary>A general AI model will write you a problem statement on request. That is the problem policymemo.ai was built to fix.</summary>
+    <content type="html" xml:base="https://policymemo.ai/blog/why-it-asks-first.html">&lt;p&gt;The first time I ran policymemo.ai on real work, I gave it a plan I had written for a service that processes paper renewals. I thought the problem was obvious. Applicants posted their forms, heard nothing, and rang the contact centre to check they had arrived. About 1 call in 6 was someone asking exactly that. So the plan proposed a receipt letter.&lt;/p&gt;
+&lt;p&gt;The reply did not start with the letter. It said my problem statement described the missing fix, not the problem, and that defining the problem as &amp;ldquo;no confirmation&amp;rdquo; had quietly ruled out everything else: closing the two-week gap between posting and a case existing, publishing a timescale, telling people whether they could carry on in the meantime. Then it used my own data against me. If a confirmation went out when the case was created, it would land at about the same time as the three-week peak in calls it was meant to prevent.&lt;/p&gt;
+&lt;p&gt;It asked one question: if a receipt letter were off the table, what would I still be trying to change?&lt;/p&gt;
+&lt;h2&gt;What a general model does instead&lt;/h2&gt;
+&lt;p&gt;Ask a general AI model for a problem statement and it will write one. It is built to be helpful, and in practice that means producing the thing you asked for, in the framing you gave it, with plausible material wherever yours runs out. For most tasks that is the right instinct. For policy work it is the expensive one, because a confident memo built on the wrong problem reads exactly like a good one, and the person who signs it off has no way to tell.&lt;/p&gt;
+&lt;p&gt;policymemo.ai changes those defaults. It asks before it drafts. Where a figure is missing it leaves a marked gap instead of a number that sounds right. Where the material supports two readings of the problem, it shows both and lets you choose.&lt;/p&gt;
+&lt;h2&gt;What I am still unsure about&lt;/h2&gt;
+&lt;p&gt;Asking first has a cost. Some people arrive with the thinking done and want a draft, and an agent that interviews them is an obstacle. The skills try to tell the difference, and I don&amp;rsquo;t think they always manage it yet. That is one of the things the beta is for.&lt;/p&gt;
+&lt;p&gt;If you try it on something real and it gets in your way, or lets something through that it should have caught, I would like to hear about it.&lt;/p&gt;</content>
+  </entry>
+</feed>
