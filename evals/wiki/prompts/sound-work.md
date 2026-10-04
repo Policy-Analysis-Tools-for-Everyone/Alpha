@@ -13,13 +13,13 @@ None, and that is the point. All six of T003's scenarios were adversarial by des
 earlier sessions were live work that had real defects in it, so a challenge was always
 available. **Nothing in the corpus shows the agent being handed something sound.**
 
-`../../tests/capability-alpha-pack.md` already names the risk: an agent tested only on whether it
+`../../tests/capability-pack.md` already names the risk: an agent tested only on whether it
 challenges learns to challenge everything, which for this agent is as unhelpful as challenging
 nothing.
 
 ## What is missing
 
-The cases are written up in `../../tests/capability-alpha-pack.md` Part 3 as **C17** (useful
+The cases are written up in `../../tests/capability-pack.md` Part 3 as **C17** (useful
 background) and **C18** (sound work). T003's own labels for them, C-9 and C-8, collide with
 other cases in that pack and should not be used. Still unwritten:
 

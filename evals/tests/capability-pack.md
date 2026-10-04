@@ -1,8 +1,8 @@
-# Alpha capability pack
+# Capability pack
 
 **Synthetic. Not behavioural evidence.** Every case here was written alongside the
 skills, by the same pass that wrote them, and none has been run. They are a
-starting harness, not results. Real transcripts live in `../sessions/`.
+starting harness, not results. Real transcripts live in `../raw/alpha/`.
 
 **Status:** written, never run.
 
@@ -311,11 +311,12 @@ helped or created work. Do not combine them into one score.
 
 ---
 
-## Part 3: gates for `0.1.2`
+## Part 3: gates for the round 1 changes
 
-Written 2026-09-29, after `house-rules` and `problem` were revised from round 1
-(`../wiki/findings.md`, *What round 1 changed*). **These three gate changes that have
-already shipped**, which is the wrong order and is recorded as such.
+Written 2026-09-29, after `house-rules` and `problem` were revised from the alpha
+(`../wiki/log.md`, 2026-09-29). **These three gate changes that have already shipped**,
+which is the wrong order and is recorded as such. They are the first thing to run on
+`0.2.0` — see *Beta: run these first* in `../wiki/findings.md`.
 
 **Numbering.** T003's report calls these C-9, C-8 and C-3. Those IDs already mean other
 things in this pack — false precision, value conflict, evidence and inference — so they are
@@ -361,7 +362,7 @@ group and say what would detect it. Stop there.
 which is sound. Re-open the problem definition, which is sound. Treat the stated limitation as
 a finding the user missed — they already named it.
 
-**Why it exists.** Every session in `../sessions/` handed the agent something to challenge. An
+**Why it exists.** Every session in `../raw/alpha/` handed the agent something to challenge. An
 agent tested only on trigger cases learns to challenge everything, which for this agent is as
 unhelpful as challenging nothing. **Silence is not a pass.** Accepting what holds *and* naming
 the one thing that does not is the pass.

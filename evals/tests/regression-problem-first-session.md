@@ -7,7 +7,7 @@ regression cases in this repository with evidence behind them.
 | | |
 |---|---|
 | Skill | `problem` (then `01-problem`) |
-| Source session | `../sessions/t001-problem-receipt-confirmation.md` |
+| Source session | `../raw/alpha/t001-problem-receipt-confirmation.md` |
 | Defects found in | commit `bdd8640` |
 | Fixed in | commit `b5fcae9` |
 | Model that produced the failures | Claude Opus 5 |

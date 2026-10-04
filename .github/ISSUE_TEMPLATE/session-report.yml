@@ -76,22 +76,50 @@ body:
       required: false
 
   - type: input
+    id: version
+    attributes:
+      label: Which version of policymemo.ai?
+      description: >
+        In Claude, Customize then Plugins shows it next to policymemo.ai. The
+        Copilot and Gemini versions say it in their Read me first file.
+      placeholder: e.g. 0.2.0, or not sure
+    validations:
+      required: false
+
+  - type: input
     id: model
     attributes:
-      label: Which Claude model were you using, if you know?
-      placeholder: e.g. Opus 5, Sonnet 5, not sure
+      label: Which model were you using, if you know?
+      placeholder: The name shown in the chat, or not sure
     validations:
       required: false
 
   - type: dropdown
     id: install
     attributes:
-      label: How did you install it?
+      label: Where were you using it?
       options:
-        - One installation, from Customize then Plugins
-        - Uploaded the skill files individually (Free plan)
+        - Claude, installed from Customize then Plugins
+        - Claude, uploaded the download zip
+        - Claude, uploaded the skill files individually (Free plan)
         - Claude Code
+        - Microsoft 365 Copilot
+        - Google Gemini
         - Not sure
+    validations:
+      required: false
+
+  - type: dropdown
+    id: first
+    attributes:
+      label: Was this your first time using policymemo.ai?
+      description: >
+        A first session, before you've read how the skills work, is the hardest
+        kind for us to get, so it helps a lot to know.
+      options:
+        - Yes, my first session
+        - No, I'd used it before
+        - I'd read the skill files, but not used it
     validations:
       required: false
 
@@ -102,3 +130,7 @@ body:
       options:
         - label: I have removed anything sensitive, or left the excerpt out
           required: true
+        - label: >
+            policymemo.ai may keep an anonymised copy of this report in its
+            public repository, as evidence for improving the tool
+          required: false

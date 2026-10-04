@@ -20,12 +20,12 @@ Canonical method:
     carries the Bardach citation.
 
 Also grounded in:
-  [P] docs/BEHAVIOUR_SPEC.md sections 4-12 and 15 - the questioning sequence,
+  [P] reference/BEHAVIOUR_SPEC.md sections 4-12 and 15 - the questioning sequence,
       its transition conditions, the four-part output, the problem system map,
       the self-check as a scoring list, and a metric per sub-problem.
   [O] Project owner - the placeholder set; the contaminated-measure warning
       (now in house-rules).
-  [E] evals/sessions/t001-problem-receipt-confirmation.md - first test session.
+  [E] evals/raw/alpha/t001-problem-receipt-confirmation.md - first test session.
       Drove the revision recorded below.
 
 Not grounded:

@@ -26,8 +26,8 @@ Then write the post in Markdown: `## ` for section headings, `[text](url)` for l
 
 ## What publishing does
 
-When a post without `draft: true` reaches `main`, the "Build blog" workflow runs
-`tools/build-blog.py`, which:
+When a post without `draft: true` reaches `main`, the "Build site" workflow runs
+`tools/build-site.py`, which:
 
 - writes the post's page and the blog index in `docs/blog/`
 - adds "Notes" to the homepage footer, once at least one post is published. Notes is
@@ -42,6 +42,6 @@ When a post without `draft: true` reaches `main`, the "Build blog" workflow runs
   categories are published, with a filter button only for categories that have posts
 
 Drafts are never published. To see everything, drafts included, run
-`python3 tools/build-blog.py --drafts /tmp/blog-preview/blog` and open the files.
+`python3 tools/build-site.py --drafts /tmp/blog-preview/blog` and open the files.
 
 The blog's styles are in `blog.css` and are inlined into every page at build time.

@@ -63,7 +63,7 @@ service needs permission: jack@civicworks.co
 Credit: "policymemo.ai by Jack Strachan (https://policymemo.ai), licensed under
 CC BY-NC 4.0". Every file here carries that line; keep it in anything you share.
 
-Full terms: https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/blob/main/LICENSE-CONTENT.md
+Full terms: https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo/blob/main/LICENSE-CONTENT.md
 """
 INSTALL_URL = "https://policymemo.ai/install/#{surface}"
 

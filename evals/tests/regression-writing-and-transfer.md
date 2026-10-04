@@ -9,7 +9,7 @@ against the project's own best output rather than from a failed session.
 |---|---|
 | Skills | `house-rules`, `story` |
 | Findings | `../wiki/findings.md` F6 (W1, W2), F11 (W3) |
-| Source sessions | `../sessions/t002-story-2.md`; T003 scenarios 1, 5 and 6 in `../sessions/t003-scenario-runs-1-6.md` |
+| Source sessions | `../raw/alpha/t002-story-2.md`; T003 scenarios 1, 5 and 6 in `../raw/alpha/t003-scenario-runs-1-6.md` |
 | Changed in | the commit that adds this file |
 | Status | **never run.** Written from the findings, not from a replay |
 

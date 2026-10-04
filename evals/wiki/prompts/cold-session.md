@@ -20,7 +20,7 @@ testing and also the reason a cold session will find *different* things, not few
 ## What is missing
 
 Someone who has not read the skill files, has not seen `evals/`, and has not used policymemo.ai. The
-alpha cohort currently fails all three — `../../testers.md` records familiarity as constant
+alpha cohort currently fails all three — `../testers.md` records familiarity as constant
 during this phase.
 
 ## What would make it fail

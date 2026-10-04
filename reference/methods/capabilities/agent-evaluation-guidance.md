@@ -1,10 +1,10 @@
 # Evaluating and Improving the Agent - Method Guidance
 
-> **Sources and provenance:** This method is designed for the policymemo.ai alpha and is grounded first in the project's own behaviour specification and real evaluation transcripts. It is informed by **[E]** `evals/sessions/*`, which the project already treats as behavioural evidence of what the agent actually did; **[B]** `docs/BEHAVIOUR_SPEC.md`, which specifies the designed behaviour that transcripts are compared against; **[A]** Anthropic, “Demystifying evals for AI agents” (2026), especially its guidance on real failures, multi-turn transcripts, capability versus regression evals, balanced task sets, grader choice, repeated trials, and transcript review; and **[O]** OpenAI, “How evals drive the next chapter in AI for businesses” (2025), especially its feedback-loop model of logging real inputs, outputs and outcomes, reviewing them, adding new failure modes to evals, and using those findings to improve the system. **Purpose:** Operating instructions for an evaluation skill that turns real use of policymemo.ai into evidence for improving its skills. The evaluator studies *how people actually use the agent*, where the agent helps or fails, which patterns recur, and what specific skill changes should be tested next. It does not automatically rewrite the skills.
+> **Sources and provenance:** This method is designed for policymemo.ai during its alpha and beta and is grounded first in the project's own behaviour specification and real evaluation transcripts. It is informed by **[E]** `evals/raw/alpha/*`, which the project already treats as behavioural evidence of what the agent actually did; **[B]** `reference/BEHAVIOUR_SPEC.md`, which specifies the designed behaviour that transcripts are compared against; **[A]** Anthropic, “Demystifying evals for AI agents” (2026), especially its guidance on real failures, multi-turn transcripts, capability versus regression evals, balanced task sets, grader choice, repeated trials, and transcript review; and **[O]** OpenAI, “How evals drive the next chapter in AI for businesses” (2025), especially its feedback-loop model of logging real inputs, outputs and outcomes, reviewing them, adding new failure modes to evals, and using those findings to improve the system. **Purpose:** Operating instructions for an evaluation skill that turns real use of policymemo.ai into evidence for improving its skills. The evaluator studies *how people actually use the agent*, where the agent helps or fails, which patterns recur, and what specific skill changes should be tested next. It does not automatically rewrite the skills.
 
 ## Why this method exists
 
-The alpha is itself a learning system.
+Early testing is itself a learning system.
 
 The skills describe how the agent is intended to behave.
 
@@ -386,7 +386,7 @@ Where it does not, avoid turning one preferred path into a brittle rule.
 
 ### 14. Use human judgment first for subjective policy-analysis quality
 
-Early in the alpha, the most important judgments are likely to be:
+Early in testing, the most important judgments are likely to be:
 
 - Was the challenge analytically sound?
 - Did the agent identify the important uncertainty?
@@ -480,7 +480,7 @@ For each accepted defect, preserve:
 
 A small initial suite of real cases is more useful than a large synthetic suite that does not resemble actual use.
 
-As the alpha grows, expand coverage from observed usage.
+As testing grows, expand coverage from observed usage.
 
 ### 20. Preserve full transcripts alongside condensed eval cases
 
@@ -916,7 +916,7 @@ The first cases should come from:
 
 Do not wait for hundreds of examples.
 
-A small set of high-information cases can guide alpha development.
+A small set of high-information cases can guide early development.
 
 ### Build 2 banks
 
@@ -1016,13 +1016,13 @@ Record separately:
 - wrong outcome
 - unknown
 
-Do not combine these mechanically into one "quality score" during the alpha.
+Do not combine these mechanically into one "quality score" during early testing.
 
 ---
 
 ## What to look for across the whole policymemo.ai system
 
-As the alpha grows, track themes such as:
+As testing grows, track themes such as:
 
 ### Challenge
 
@@ -1215,7 +1215,7 @@ It is not the method for evaluating whether a public policy itself worked after 
 
 That is a different analytical task and may later require its own policy-evaluation or experimentation method.
 
-The `evaluation` skill should therefore be understood as the **agent improvement loop** for the alpha.
+The `evaluation` skill should therefore be understood as the **agent improvement loop** for early testing.
 
 Its primary objects are:
 

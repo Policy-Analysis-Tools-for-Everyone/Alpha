@@ -23,14 +23,14 @@ is invited, supported and asked for feedback, and how many people that is at onc
 
 | File | What it is |
 | --- | --- |
-| `body.html` | The `/beta` page. Hand-written HTML, published by `tools/build-blog.py` |
+| `body.html` | The `/beta` page. Hand-written HTML, published by `tools/build-site.py` |
 | `beta.css` | Styles for that page only |
 | `config.json` | The links and contact details the page uses (below) |
 | `README.md` | This guide |
 
 ## Configuration
 
-Edit `beta/config.json` and push to `main`. The "Build blog" workflow republishes
+Edit `site/beta/config.json` and push to `main`. The "Build site" workflow republishes
 `/beta`.
 
 | Key | Used for | If empty |
@@ -238,7 +238,7 @@ Plain text. Replace the `{…}` placeholders with dynamic content in Power Autom
 >
 > The most useful thing you can send us is a conversation where it was
 > confidently wrong. Reply to this email, or use the session report:
-> https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/issues/new?template=session-report.yml
+> https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo/issues/new?template=session-report.yml
 >
 > It's a beta, so expect rough edges. policymemo.ai runs inside your AI tool, under
 > that tool's own terms, so don't put anything into it that you wouldn't put into
