@@ -14,6 +14,10 @@ don't pick between them. Claude does.
 
 > **Beta 0.1.2.** The skills change as people use them. Read [Status](#status)
 > before you rely on this for anything that matters.
+>
+> **Private beta, autumn 2026.** We're testing with policy students and a small group
+> of practitioners, invited in waves. To take part, request access at
+> [policymemo.ai/beta](https://policymemo.ai/beta/).
 
 ---
 
@@ -319,6 +323,50 @@ doing policy work don't carry a capability aimed at people maintaining the agent
 
 `docs/AUTHORING.md` section 12 has the full detail, including what to do if the
 2-entry layout ever fails to install.
+
+### The website and the private beta
+
+policymemo.ai is a static site served by GitHub Pages from `docs/`.
+`tools/build-blog.py` generates most of it, and the "Build blog" workflow reruns
+it whenever a source file changes.
+
+| Address | What it's for | Source |
+| --- | --- | --- |
+| `/` | Product home | `docs/index.html`, hand-written apart from generated links |
+| `/beta` | How to join the private beta | `beta/body.html`, with links in `beta/config.json` |
+| `/install` | Set-up instructions, linked from invite emails | `install/` |
+| `/updates` | Plain changelog, newest first | `updates/changelog.md` |
+| `/skills` | One page per skill, kept up to date | `skill-pages/`. Published once the first page exists |
+| `/blog` | Notes | `blog/posts/` |
+
+Essays and reflection are published on
+[CIVICWORKS](https://civicworks.substack.com), not on policymemo.ai.
+
+Beta access is gated by a person, not by the site. Submitting a form never grants
+access. The repository and `/install` are public, so this controls who is invited
+and supported, not who can install.
+
+```mermaid
+flowchart LR
+  A["policymemo.ai/beta"] --> B["Microsoft Form<br/>student or practitioner"]
+  B -->|"Flow 1"| C["Microsoft List<br/>Status: Applied"]
+  B -->|"Flow 1"| D["Email: request received"]
+  C --> E{"Jack reviews,<br/>picks a wave"}
+  E -->|"sets Invited"| F["Flow 2: invite email<br/>with set-up link, once"]
+  E -->|"sets Declined / Not now"| G["No automatic email"]
+  F --> H["Active, then Feedback received"]
+```
+
+The statuses are Applied, Review, Invited, Active, Feedback received and
+Declined / Not now. Each row also records a route, Student or Practitioner.
+Agreeing to beta access is not agreeing to marketing: only people who tick the
+optional updates box can be added to a future mailing list. Student research
+consent stays in the student form, not in the list.
+
+[`beta/README.md`](beta/README.md) has the operational detail: the list
+columns, the form questions, both Power Automate flows, the email templates and
+how to run a wave. To add form links once the forms exist, edit
+`beta/config.json`.
 
 ### What sits behind the skills
 

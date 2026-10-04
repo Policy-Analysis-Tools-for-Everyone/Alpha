@@ -300,12 +300,6 @@
   .close { text-align: center; }
   .close h2 { margin-left: auto; margin-right: auto; }
   .close .intro { margin-left: auto; margin-right: auto; margin-bottom: 32px; }
-  .tools { list-style: none; padding: 0; margin: 36px auto 0; max-width: 640px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: left; }
-  .tools a { display: grid; gap: 2px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; transition: border-color .2s; }
-  .tools a:hover { border-color: var(--ink); }
-  .tools b { font: 500 18px/1.2 var(--serif); }
-  .tools span { font-size: 13px; color: var(--muted); }
-  @media (max-width: 520px) { .tools a { padding: 12px 12px; } .tools b { font-size: 16px; } .tools span { font-size: 12px; } }
   .status { max-width: 640px; margin: 40px auto 0; font-size: 14px; color: var(--muted); }
   .status a { color: var(--ink); }
 
@@ -352,9 +346,11 @@
     <nav aria-label="Main">
       <a class="plain" href="#what">What it does</a>
       <a class="plain" href="#how">How it behaves</a>
+      <!-- blog:skills --><!-- /blog:skills -->
+      <a class="plain" href="updates/">Updates</a>
       <!-- blog:nav --><a class="plain keep notes-link" href="blog/" data-latest="2026-10-03">Notes<span class="new-dot" aria-hidden="true"></span></a><!-- /blog:nav -->
       <a class="plain keep" href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">Feedback</a>
-      <a class="btn primary small" href="install/">Download</a>
+      <a class="btn primary small" href="beta/">Beta access</a>
     </nav>
   </div>
 </header>
@@ -365,10 +361,10 @@
     <h1>Policy analysis that questions the problem first.</h1>
     <p class="lede">Policymemo.ai is a set of agentic skills that helps policy advisers, analysts and public service teams work through a problem: what it is, what you actually know, which options are real and what each one costs. It asks one question at a time, and where a figure is missing it leaves a marked gap.</p>
     <div class="cta">
-      <a class="btn primary" href="install/"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download policymemo.ai</a>
+      <a class="btn primary" href="beta/"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg>Request beta access</a>
     </div>
-    <p class="works">Works in <a href="install/#claude">Claude</a> · <a href="install/#copilot">Copilot</a> · <a href="install/#gemini">Gemini</a></p>
-    <p class="fine">Free · Beta · Version 0.1.2</p>
+    <p class="works">Works in Claude · Copilot · Gemini</p>
+    <p class="fine">Free · Private beta · Version 0.1.2</p>
   </section>
 
   <section class="demo" id="demo" aria-labelledby="demo-title">
@@ -498,14 +494,9 @@
       <h2 id="dl-title">Try it on a problem you’re stuck on.</h2>
       <p class="intro">Bring the notes, the inherited proposal or the draft you aren’t sure about. It works best on something real.</p>
       <div class="cta">
-        <a class="btn primary" href="install/"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download policymemo.ai</a>
+        <a class="btn primary" href="beta/"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg>Request beta access</a>
       </div>
-      <ul class="tools" aria-label="Or go straight to your tool">
-        <li><a href="install/#claude"><b>Claude</b><span>Plugin · 2 min</span></a></li>
-        <li><a href="install/#copilot"><b>Copilot</b><span>Agent · 10 min</span></a></li>
-        <li><a href="install/#gemini"><b>Gemini</b><span>Gem · 10 min</span></a></li>
-      </ul>
-      <p class="status">This is a beta. The skills change as people use them, so expect rough edges, and <a href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">tell us when it gets something wrong</a>.</p>
+      <p class="status">policymemo.ai is in private beta, and we're inviting people in small groups this term. The skills change as people use them, so expect rough edges, and <a href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">tell us when it gets something wrong</a>. Already invited? <a href="install/">Set-up instructions</a>.</p>
     </div>
   </section>
 </main>
@@ -516,6 +507,8 @@
     <nav aria-label="Footer">
       <!-- blog:footer --><a href="blog/">Notes</a><!-- /blog:footer -->
       <a href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">Feedback</a>
+      <a href="beta/">Beta</a>
+      <a href="updates/">Updates</a>
       <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
       <a href="install/">Install</a>
       <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha/blob/main/LICENSE-CONTENT.md">Licence</a>

@@ -1,0 +1,23 @@
+  /* Beta page. Inlined after blog.css by tools/build-blog.py. */
+  .beta-hero { padding-top: 64px; padding-bottom: 40px; }
+  .beta-hero h1 { max-width: 14ch; }
+  .beta-routes { display: grid; gap: 16px; }
+  @media (min-width: 760px) { .beta-routes { grid-template-columns: 1fr 1fr; gap: 20px; } }
+  .route-card { display: flex; flex-direction: column; align-items: flex-start; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 18px; padding: 28px 26px; scroll-margin-top: 80px; }
+  .route-card h2 { margin-bottom: 10px; }
+  .route-card p { margin: 0 0 12px; }
+  .route-card .small { color: var(--muted); font-size: 14.5px; }
+  .route-card .btn { margin-top: auto; }
+  .route-card .soon { margin-top: auto; }
+  .route-card .small { margin-bottom: 22px; }
+  .soon { display: inline-flex; border: 1px dashed var(--line); border-radius: 999px; padding: 12px 18px;
+    color: var(--muted); font: 500 14.5px/1 var(--sans); }
+  .beta-next { padding-top: 72px; }
+  .beta-steps { list-style: none; counter-reset: s; padding: 0; margin: 20px 0 28px; max-width: 40em; display: grid; gap: 14px; }
+  .beta-steps li { counter-increment: s; position: relative; padding-left: 40px; color: var(--muted); }
+  .beta-steps li b { color: var(--ink); font-weight: 500; }
+  .beta-steps li::before { content: counter(s); position: absolute; left: 0; top: 1px; width: 26px; height: 26px; border-radius: 50%;
+    border: 1px solid var(--line); display: grid; place-items: center; font-size: 13px; color: var(--ink); }
+  .beta-next .fine { color: var(--muted); font-size: 14.5px; max-width: 40em; margin: 0 0 10px; }
+  .beta-next .fine a { color: var(--accent); text-underline-offset: 3px; }

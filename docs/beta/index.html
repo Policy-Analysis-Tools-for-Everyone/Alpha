@@ -5,10 +5,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>Notes · policymemo.ai</title>
-<meta name="description" content="Notes from building policymemo.ai: why it works the way it does, and what changes when the skills do.">
-<meta property="og:title" content="Notes · policymemo.ai">
-<meta property="og:description" content="Notes from building policymemo.ai: why it works the way it does, and what changes when the skills do.">
+<title>Private beta · policymemo.ai</title>
+<meta name="description" content="policymemo.ai is in private beta, testing with policy students and a small group of practitioners.">
+<meta property="og:title" content="Private beta · policymemo.ai">
+<meta property="og:description" content="policymemo.ai is in private beta, testing with policy students and a small group of practitioners.">
 <meta property="og:image" content="https://policymemo.ai/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -141,6 +141,30 @@
     [data-rise] { transition: none; } [data-rise].pre { opacity: 1; transform: none; filter: none; }
   }
 
+  /* Beta page. Inlined after blog.css by tools/build-blog.py. */
+  .beta-hero { padding-top: 64px; padding-bottom: 40px; }
+  .beta-hero h1 { max-width: 14ch; }
+  .beta-routes { display: grid; gap: 16px; }
+  @media (min-width: 760px) { .beta-routes { grid-template-columns: 1fr 1fr; gap: 20px; } }
+  .route-card { display: flex; flex-direction: column; align-items: flex-start; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 18px; padding: 28px 26px; scroll-margin-top: 80px; }
+  .route-card h2 { margin-bottom: 10px; }
+  .route-card p { margin: 0 0 12px; }
+  .route-card .small { color: var(--muted); font-size: 14.5px; }
+  .route-card .btn { margin-top: auto; }
+  .route-card .soon { margin-top: auto; }
+  .route-card .small { margin-bottom: 22px; }
+  .soon { display: inline-flex; border: 1px dashed var(--line); border-radius: 999px; padding: 12px 18px;
+    color: var(--muted); font: 500 14.5px/1 var(--sans); }
+  .beta-next { padding-top: 72px; }
+  .beta-steps { list-style: none; counter-reset: s; padding: 0; margin: 20px 0 28px; max-width: 40em; display: grid; gap: 14px; }
+  .beta-steps li { counter-increment: s; position: relative; padding-left: 40px; color: var(--muted); }
+  .beta-steps li b { color: var(--ink); font-weight: 500; }
+  .beta-steps li::before { content: counter(s); position: absolute; left: 0; top: 1px; width: 26px; height: 26px; border-radius: 50%;
+    border: 1px solid var(--line); display: grid; place-items: center; font-size: 13px; color: var(--ink); }
+  .beta-next .fine { color: var(--muted); font-size: 14.5px; max-width: 40em; margin: 0 0 10px; }
+  .beta-next .fine a { color: var(--accent); text-underline-offset: 3px; }
+
 </style>
 </head>
 <body>
@@ -150,21 +174,46 @@
     <nav aria-label="Main">
       <a class="plain" href="../#what">What it does</a>
       <a class="plain" href="../updates/">Updates</a>
-      <a class="plain keep" href="../blog/" aria-current="page" data-latest="2026-10-03">Notes</a>
+      <a class="plain keep" href="../blog/" data-latest="2026-10-03">Notes</a>
       <a class="plain keep" href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">Feedback</a>
       <a class="btn primary small" href="../beta/">Beta access</a>
     </nav>
   </div>
 </header>
 <main>
-<section class="wrap blog-hero">
-  <p class="eyebrow">Notes</p>
-  <h1>Notes from building policymemo.ai</h1>
-  <p class="lede">Why policymemo.ai works the way it does, and what changes when the skills do.</p>
+<section class="wrap beta-hero">
+  <p class="eyebrow">Private beta</p>
+  <h1>policymemo.ai is in private beta.</h1>
+  <p class="lede">We are testing it this term with policy students and a small group of practitioners. Access is opening gradually, so that we can learn from how people use it and improve it before opening it more widely.</p>
 </section>
-<section class="wrap blog-list" aria-labelledby="latest">
-  <div class="list-head"><h2 id="latest">Latest</h2></div>
-  <ul class="posts"><li class="post-row" data-cat="why" data-rise><a href="why-it-asks-first.html"><span class="meta">3 October 2026</span><span class="t">Why policymemo.ai asks before it writes</span><span class="s">A general AI model will write you a problem statement on request. That is the problem policymemo.ai was built to fix.</span></a></li></ul>
+
+<section class="wrap beta-routes" aria-label="Ways to join the beta">
+  <article class="route-card" id="students">
+    <p class="eyebrow">Students</p>
+    <h2>Student beta</h2>
+    <p>For students taking part through UCL or another participating university.</p>
+    <p class="small">The form includes the study's information sheet and consent. If you're on a participating course, your course team will point you to it.</p>
+    <span class="soon">Opening soon</span>
+  </article>
+  <article class="route-card" id="practitioners">
+    <p class="eyebrow">Practitioners</p>
+    <h2>Practitioner beta</h2>
+    <p>Use policymemo.ai on a real policy problem and help shape the beta.</p>
+    <p class="small">We invite people in small groups, so requesting access doesn't mean you'll get in straight away. We'll email to say we've received your request, and again if we can invite you.</p>
+    <span class="soon">Opening soon</span>
+  </article>
+</section>
+
+<section class="wrap beta-next" aria-labelledby="next-title">
+  <h2 id="next-title">What happens next</h2>
+  <ol class="beta-steps">
+    <li><b>You send a request.</b> It takes about two minutes.</li>
+    <li><b>We confirm we've received it.</b> You'll get an email.</li>
+    <li><b>We review requests and invite people in waves.</b> Each wave is small, so we can support everyone in it and act on what they tell us.</li>
+    <li><b>If you're invited, you get set-up instructions.</b> Setting it up takes between 2 and 10 minutes, in Claude, Copilot or Gemini.</li>
+  </ol>
+  <p class="fine">We use your email address to manage your access and contact you about the beta. We only send other updates if you ask us to.</p>
+  <p class="fine">Already invited? <a href="https://policymemo.ai/install/">Set-up instructions</a>. Questions? <a href="mailto:jack@civicworks.co">jack@civicworks.co</a>.</p>
 </section>
 
 </main>
