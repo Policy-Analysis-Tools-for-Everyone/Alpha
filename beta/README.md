@@ -200,7 +200,7 @@ Plain text. Replace the `{…}` placeholders with dynamic content in Power Autom
 >
 > Thanks for asking to try policymemo.ai. We've received your request.
 >
-> We're inviting people in small groups this term, so it may be a few weeks before
+> We're inviting people in small groups this autumn, so it may be a few weeks before
 > you hear from us. If we can invite you, we'll email you set-up instructions.
 > You don't need to do anything else.
 >
