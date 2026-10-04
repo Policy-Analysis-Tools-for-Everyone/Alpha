@@ -34,7 +34,7 @@
   .bar nav { display: flex; align-items: center; gap: 22px; font-size: 14px; }
   .bar nav a.plain { text-decoration: none; color: var(--muted); }
   .bar nav a.plain:hover, .bar nav a[aria-current="page"] { color: var(--ink); }
-  @media (max-width: 560px) { .bar nav a.plain:not([aria-current]) { display: none; } }
+  @media (max-width: 560px) { .bar nav { gap: 16px; } .bar nav a.plain:not(.keep) { display: none; } }
   .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; font: 500 15px/1 var(--sans);
     text-decoration: none; padding: 13px 20px; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
   .btn.primary { background: var(--ink); color: var(--bg); }

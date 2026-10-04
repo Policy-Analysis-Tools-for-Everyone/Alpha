@@ -120,7 +120,8 @@ def page(title, description, body, css, home, depth_note=""):
     <a class="brand" href="{home}" aria-label="policymemo.ai home">{mascot}</a>
     <nav aria-label="Main">
       <a class="plain" href="{home}#what">What it does</a>
-      <a class="plain" href="{home}blog/" aria-current="page">Blog</a>
+      <a class="plain keep" href="{home}blog/" aria-current="page">Notes</a>
+      <a class="plain" href="{FEEDBACK}">Feedback</a>
       <a class="btn primary small" href="{DOWNLOAD}">Download</a>
     </nav>
   </div>
@@ -181,7 +182,7 @@ def build_index(posts, css, home):
         cards += f'<li class="{"live" if p else "planned"}" data-rise>{art}<h3>{title}</h3>{status}</li>'
     filters = "".join(f'<button type="button" data-cat="{k}" aria-pressed="false">{v}</button>' for k, v in CATEGORIES.items())
     body = f"""<section class="wrap blog-hero">
-  <p class="eyebrow">Blog</p>
+  <p class="eyebrow">Notes</p>
   <h1>Notes from building policymemo.ai</h1>
   <p class="lede">Why it works the way it does, a post on each skill as the course runs, and what changes when the skills do.</p>
 </section>
@@ -195,7 +196,7 @@ def build_index(posts, css, home):
   <p class="intro">Each post covers what the skill does, the method behind it, and what it looks like on a real problem.</p>
   <ul class="skill-grid">{cards}</ul>
 </section>"""
-    return page("Blog · policymemo.ai", "Notes from building policymemo.ai: why it works the way it does, a post on each skill, and what changes.", body, css, home)
+    return page("Notes · policymemo.ai", "Notes from building policymemo.ai: why it works the way it does, a post on each skill, and what changes.", body, css, home)
 
 
 def build_post(p, posts, css, home):
@@ -216,7 +217,7 @@ def build_post(p, posts, css, home):
     skill_note = f'<aside class="try"><p>{pitch}</p><a class="btn primary" href="{DOWNLOAD}">Download for Claude</a></aside>'
     draft = '<p class="draft-flag">Draft · not published</p>' if p["draft"] else ""
     body = f"""<article class="wrap post">
-  {draft}<p class="meta"><a href="./">Blog</a> · <span class="cat">{CATEGORIES[p['category']]}</span> · {nice_date(p['date_obj'])} · {p['minutes']} min read</p>
+  {draft}<p class="meta"><a href="./">Notes</a> · <span class="cat">{CATEGORIES[p['category']]}</span> · {nice_date(p['date_obj'])} · {p['minutes']} min read</p>
   <h1>{html.escape(p['title'])}</h1>
   <p class="lede">{html.escape(p['summary'])}</p>
   <div class="prose">{p['body']}</div>
@@ -235,8 +236,8 @@ def update_home(posts):
         if not pat.search(s):
             raise SystemExit(f"docs/index.html is missing the blog:{name} markers")
         s = pat.sub(lambda m: m.group(1) + content + m.group(2), s)
-    fill("nav", '<a class="plain" href="blog/">Blog</a>' if live else "")
-    fill("footer", '<a href="blog/">Blog</a>' if live else "")
+    fill("nav", '<a class="plain keep" href="blog/">Notes</a>' if live else "")
+    fill("footer", '<a href="blog/">Notes</a>' if live else "")
     by_skill = {p["skill"]: p for p in posts if p.get("skill")}
     for slug, _, _ in SKILLS:
         p = by_skill.get(slug)
