@@ -86,7 +86,12 @@
   .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
   /* Hero */
-  .hero { padding-top: 28px; padding-bottom: 24px; text-align: center; }
+  /* The hero fills the first screen, leaving a strip of the demo showing below it
+     (--peek), whatever the screen height. 73px is the header plus the gap above the demo. */
+  .hero { --peek: 96px; padding-top: 36px; padding-bottom: 32px; text-align: center;
+    display: flex; flex-direction: column; justify-content: center;
+    min-height: min(calc(100vh - 73px - var(--peek)), 880px); min-height: min(calc(100svh - 73px - var(--peek)), 880px); }
+  @media (max-width: 560px) { .hero { --peek: 72px; } }
   .hero-mascot { width: 46px; height: 71px; margin: 0 auto 14px; }
   .hero h1 { max-width: 23ch; }
   .hero-mascot .mascot { width: 100%; height: 100%; }
