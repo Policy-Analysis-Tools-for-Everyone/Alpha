@@ -210,6 +210,12 @@ def build_index(posts, css, home):
         status = (f'<a class="read" href="{p["slug"]}.html">Read · {nice_date(p["date_obj"])}</a>' if p
                   else '<span class="soon">Coming soon</span>')
         cards += f'<li class="{"live" if p else "planned"}" data-rise>{art}<h3>{title}</h3>{status}</li>'
+    # The series grid appears once the first skill post is published.
+    series = f"""<section class="wrap series" aria-labelledby="series">
+  <h2 id="series">One post for each skill</h2>
+  <p class="intro">Each post covers what the skill does, the method behind it, and what it looks like on a real problem.</p>
+  <ul class="skill-grid">{cards}</ul>
+</section>""" if by_skill else ""
     feeds = ('In a feed reader: <a href="feed.xml">every post</a>, or <a href="feed-updates.xml">product updates only</a>.'
              if "updates" in USED else 'Get new posts in a feed reader: <a href="feed.xml">subscribe to the RSS feed</a>.')
     follow = f"""<section class="wrap follow" aria-labelledby="follow" data-rise>
@@ -229,11 +235,7 @@ def build_index(posts, css, home):
   <div class="list-head"><h2 id="latest">Latest</h2>{filters}</div>
   {latest}
 </section>
-<section class="wrap series" aria-labelledby="series">
-  <h2 id="series">One post for each skill</h2>
-  <p class="intro">Each post covers what the skill does, the method behind it, and what it looks like on a real problem.</p>
-  <ul class="skill-grid">{cards}</ul>
-</section>
+{series}
 {follow}"""
     return page("Notes · policymemo.ai", "Notes from building policymemo.ai: why it works the way it does, a post on each skill, and what changes.", body, css, home)
 

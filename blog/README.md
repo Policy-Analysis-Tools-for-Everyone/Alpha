@@ -32,7 +32,8 @@ When a post without `draft: true` reaches `main`, the "Build blog" workflow runs
 - writes the post's page and the blog index in `docs/blog/`
 - adds "Blog" to the homepage nav and footer, once at least one post is published
 - for a skill post, adds a "Read the post" link to that skill's card on the
-  homepage, and marks the skill as published in the series on the blog index
+  homepage, and marks the skill as published in the series on the blog index. The series
+  section itself appears once the first skill post is published
 - writes an Atom feed of every post, `docs/blog/feed.xml`, and once an `updates` post is
   published, `docs/blog/feed-updates.xml` with only those. Feed readers find them from any page.
 - shows category labels and the filter on the blog index only once posts in two or more
