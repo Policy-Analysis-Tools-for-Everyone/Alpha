@@ -12,6 +12,8 @@
 <meta property="og:image" content="https://policymemo.ai/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/atom+xml" title="Notes · policymemo.ai" href="../blog/feed.xml">
+<link rel="alternate" type="application/atom+xml" title="Product updates · policymemo.ai" href="../blog/feed-updates.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,0..100&family=Geist:wght@400..600&display=swap" rel="stylesheet">
@@ -110,6 +112,12 @@
   .skill-grid .read:hover { text-decoration: underline; text-underline-offset: 3px; }
   .skill-grid li.planned .icon { opacity: .35; }
 
+  /* Follow: feeds, at the foot of the index */
+  .follow { padding-top: 88px; }
+  .follow h2 { margin: 0 0 16px; }
+  .feeds { color: var(--muted); margin: 0; }
+  .feeds a { color: var(--accent); text-underline-offset: 3px; }
+
   /* Post */
   .post { max-width: 760px; padding-top: 56px; }
   .post .meta { font-size: 13px; color: var(--muted); margin: 0 0 18px; }
@@ -179,6 +187,7 @@
       <a href="../">Home</a>
       <a href="../install/">Install</a>
       <a href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">Feedback</a>
+      <a href="../blog/feed.xml">RSS</a>
       <a href="https://github.com/Policy-Analysis-Tools-for-Everyone/Alpha">GitHub</a>
     </nav>
   </div>
