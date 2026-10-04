@@ -1,0 +1,142 @@
+{
+  "built": "2026-10-04",
+  "house_rules": "889421c707fd",
+  "surfaces": {
+    "copilot": {
+      "label": "Microsoft 365 Copilot",
+      "instructions_chars": 7729,
+      "instructions_limit": 8000,
+      "knowledge_files": [
+        {
+          "file": "MDEE 00 house rules.txt",
+          "source": "skills/house-rules/SKILL.md",
+          "sha": "889421c707fd",
+          "chars": 13716
+        },
+        {
+          "file": "MDEE 01 problem.txt",
+          "source": "skills/problem/SKILL.md",
+          "sha": "543537995310",
+          "chars": 14018
+        },
+        {
+          "file": "MDEE 02 stakeholders.txt",
+          "source": "skills/stakeholders/SKILL.md",
+          "sha": "4de3225b7298",
+          "chars": 14217
+        },
+        {
+          "file": "MDEE 03 evidence.txt",
+          "source": "skills/evidence/SKILL.md",
+          "sha": "4aa9afdc754c",
+          "chars": 15345
+        },
+        {
+          "file": "MDEE 04 options.txt",
+          "source": "skills/options/SKILL.md",
+          "sha": "fef559a484ed",
+          "chars": 17152
+        },
+        {
+          "file": "MDEE 05 criteria.txt",
+          "source": "skills/criteria/SKILL.md",
+          "sha": "5a9fcf4a8866",
+          "chars": 12676
+        },
+        {
+          "file": "MDEE 06 outcomes.txt",
+          "source": "skills/outcomes/SKILL.md",
+          "sha": "e7aed350a253",
+          "chars": 13049
+        },
+        {
+          "file": "MDEE 07 trade-offs.txt",
+          "source": "skills/trade-offs/SKILL.md",
+          "sha": "01c3a9031cef",
+          "chars": 11898
+        },
+        {
+          "file": "MDEE 08 decide.txt",
+          "source": "skills/decide/SKILL.md",
+          "sha": "1467c4e11c9d",
+          "chars": 17346
+        },
+        {
+          "file": "MDEE 09 story.txt",
+          "source": "skills/story/SKILL.md",
+          "sha": "c6601946b734",
+          "chars": 25753
+        }
+      ],
+      "knowledge_limit": 20
+    },
+    "gemini": {
+      "label": "Google Gemini",
+      "instructions_chars": 7707,
+      "instructions_limit": null,
+      "knowledge_files": [
+        {
+          "file": "MDEE 00 house rules.txt",
+          "source": "skills/house-rules/SKILL.md",
+          "sha": "889421c707fd",
+          "chars": 13708
+        },
+        {
+          "file": "MDEE 01 problem.txt",
+          "source": "skills/problem/SKILL.md",
+          "sha": "543537995310",
+          "chars": 14010
+        },
+        {
+          "file": "MDEE 02 stakeholders.txt",
+          "source": "skills/stakeholders/SKILL.md",
+          "sha": "4de3225b7298",
+          "chars": 14209
+        },
+        {
+          "file": "MDEE 03 evidence.txt",
+          "source": "skills/evidence/SKILL.md",
+          "sha": "4aa9afdc754c",
+          "chars": 15337
+        },
+        {
+          "file": "MDEE 04 options.txt",
+          "source": "skills/options/SKILL.md",
+          "sha": "fef559a484ed",
+          "chars": 17144
+        },
+        {
+          "file": "MDEE 05 criteria.txt",
+          "source": "skills/criteria/SKILL.md",
+          "sha": "5a9fcf4a8866",
+          "chars": 12668
+        },
+        {
+          "file": "MDEE 06 outcomes.txt",
+          "source": "skills/outcomes/SKILL.md",
+          "sha": "e7aed350a253",
+          "chars": 13041
+        },
+        {
+          "file": "MDEE 07 trade-offs.txt",
+          "source": "skills/trade-offs/SKILL.md",
+          "sha": "01c3a9031cef",
+          "chars": 11890
+        },
+        {
+          "file": "MDEE 08 decide.txt",
+          "source": "skills/decide/SKILL.md",
+          "sha": "1467c4e11c9d",
+          "chars": 17338
+        },
+        {
+          "file": "MDEE 09 story.txt",
+          "source": "skills/story/SKILL.md",
+          "sha": "c6601946b734",
+          "chars": 25745
+        }
+      ],
+      "knowledge_limit": 10
+    }
+  }
+}

@@ -148,6 +148,12 @@ def parse_top_level(lines: list[str]) -> dict[str, str]:
 
 
 def read_skill(name: str) -> tuple[dict[str, str], str, str]:
+    """Return frontmatter, body and a hash covering SKILL.md and its supporting files.
+
+    Supporting files are any other Markdown in the skill's folder, such as
+    skills/story/writing.md. Surfaces without folders get them appended to the
+    capability's knowledge file, so they count towards its hash too.
+    """
     path = SKILLS / name / "SKILL.md"
     if not path.is_file():
         raise BuildError(f"missing {path.relative_to(ROOT)}")
@@ -163,7 +169,23 @@ def read_skill(name: str) -> tuple[dict[str, str], str, str]:
     fields = parse_top_level(lines[1:end])
     if fields.get("name") != name:
         raise BuildError(f"{path.relative_to(ROOT)}: name is {fields.get('name')!r}, expected {name!r}")
-    return fields, "".join(lines[end + 1:]), short_hash(raw)
+    body = "".join(lines[end + 1:])
+    if name == "house-rules":
+        # The review gate in ports/house-rules.reviewed is keyed to SKILL.md alone.
+        return fields, body, short_hash(raw)
+    extras = sorted(f for f in path.parent.glob("*.md") if f.name != "SKILL.md")
+    digest = raw
+    for extra in extras:
+        data = extra.read_bytes()
+        digest += data
+        text = data.decode("utf-8").replace("\r\n", "\n").strip()
+        body = (body.rstrip() + f"\n\n---\n\n# {extra.name}\n"
+                f"Where this file says `{extra.name}` in this folder, it means this section.\n\n"
+                + text + "\n")
+    for sub in sorted(d for d in path.parent.iterdir() if d.is_dir()):
+        raise BuildError(f"skills/{name}/{sub.name}/: subfolders are not ported; "
+                         "update read_skill in this script")
+    return fields, body, short_hash(digest)
 
 
 def knowledge_file(name: str, fields: dict[str, str], body: str, sha: str,
@@ -210,13 +232,17 @@ def lint(label: str, text: str) -> list[str]:
     return notes
 
 
-def git_commit() -> str | None:
+def source_date() -> str:
+    """Date of the last commit touching any input, so unchanged sources rebuild identically."""
     try:
-        result = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT,
-                                capture_output=True, text=True, check=True)
-        return result.stdout.strip() or None
+        result = subprocess.run(
+            ["git", "log", "-1", "--format=%cs", "--", "skills", "ports", "tools/build-ports.py"],
+            cwd=ROOT, capture_output=True, text=True, check=True)
+        if result.stdout.strip():
+            return result.stdout.strip()
     except (OSError, subprocess.CalledProcessError):
-        return None
+        pass
+    return dt.date.today().isoformat()
 
 
 def write_text(path: Path, text: str) -> None:
@@ -252,7 +278,7 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
     if not CORE.is_file():
         raise BuildError("missing ports/core.md")
     core = CORE.read_text(encoding="utf-8").replace("\r\n", "\n")
-    build_date = dt.date.today().isoformat()
+    build_date = source_date()
     skills = {"house-rules": (house_fields, house_body, house_sha)}
     for name in CAPABILITIES:
         skills[name] = read_skill(name)
@@ -260,7 +286,7 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
     problems: list[str] = []
     notes: list[str] = []
     outputs: dict[str, dict[str, str]] = {}
-    manifest = {"built": build_date, "commit": git_commit(), "house_rules": house_sha,
+    manifest = {"built": build_date, "house_rules": house_sha,
                 "surfaces": {}}
 
     for surface, spec in SURFACES.items():
