@@ -223,14 +223,14 @@ def build_index(posts, css, home):
     body = f"""<section class="wrap blog-hero">
   <p class="eyebrow">Notes</p>
   <h1>Notes from building policymemo.ai</h1>
-  <p class="lede">Why it works the way it does, a post on each skill as the course runs, and what changes when the skills do.</p>
+  <p class="lede">Why policymemo.ai works the way it does, and what changes when the skills do.</p>
 </section>
 <section class="wrap blog-list" aria-labelledby="latest">
   <div class="list-head"><h2 id="latest">Latest</h2>{filters}</div>
   {latest}
 </section>
 {series}"""
-    return page("Notes · policymemo.ai", "Notes from building policymemo.ai: why it works the way it does, a post on each skill, and what changes.", body, css, home)
+    return page("Notes · policymemo.ai", "Notes from building policymemo.ai: why it works the way it does, and what changes when the skills do.", body, css, home)
 
 
 def build_post(p, posts, css, home):
