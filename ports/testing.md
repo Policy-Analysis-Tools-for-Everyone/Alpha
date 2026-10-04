@@ -15,7 +15,7 @@ knowledge files, not loaded skills). A failure on a port can come from any of th
 
 Run these in order. Each stage is cheap and stops a wasted run at the next.
 
-1. **Install check.** Follow `setup-copilot.md` or `setup-gemini.md` exactly. Record
+1. **Install check.** Follow the [install page](https://policymemo.ai/install/) exactly, from the download onwards. Note anything about the download or unzipping that would confuse someone new to it. Record
    whether the instructions saved whole, and whether knowledge upload was available.
    On Gemini, record whether the full instructions held or the fallback was needed.
 2. **Smoke test.** Open with each of the 3 README openings, in fresh chats. Check the
@@ -43,7 +43,7 @@ Run these in order. Each stage is cheap and stops a wasted run at the next.
 
 Record port runs in `evals/sessions/` like any other session, with these fields added
 to the header: surface (Copilot or Gemini), the build date and house-rules hash from
-the first lines of `instructions.txt`, whether knowledge files were present, and on
+the first lines of `1 Paste into Instructions.txt`, whether knowledge files were present, and on
 Gemini whether the fallback instructions were used.
 
 A finding that reproduces on Claude belongs to the skills. A finding that appears only

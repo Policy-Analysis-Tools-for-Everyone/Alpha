@@ -32,7 +32,16 @@ ROOT = Path(__file__).resolve().parent.parent
 SKILLS = ROOT / "skills"
 PORTS = ROOT / "ports"
 CORE = PORTS / "core.md"
-SETUP = PORTS / "setup-{surface}.md"  # copied into each port as SETUP.md
+
+# What a person sees after unzipping. Names say what to do, because many
+# people will open the folder without reading anything else.
+PREFIX = "policymemo"                      # knowledge file names; the instructions search by it
+ZIP_NAME = "policymemo-ai-{surface}.zip"  # no folder inside: Extract All and Archive Utility make one
+README_FILE = "0 Read me first.txt"
+INSTRUCTIONS_FILE = "1 Paste into Instructions.txt"
+KNOWLEDGE_DIR = "2 Upload these 10 files"
+FALLBACK_FILE = "If the instructions get cut short, paste this instead.txt"
+INSTALL_URL = "https://policymemo.ai/install/#{surface}"
 REVIEWED = PORTS / "house-rules.reviewed"
 OUT = ROOT / "dist" / "ports"
 
@@ -48,9 +57,17 @@ SURFACES = {
         "label": "Microsoft 365 Copilot",
         "hard_limit": 8000,   # Agent Builder field and declarative agent manifest
         "max_files": 20,      # embedded files uploaded from a device
+        "readme": (
+            "1. In Copilot Chat, click Create agent, then the Configure tab.\n"
+            "2. Open \"{instructions}\", select everything, copy it, and paste it\n"
+            "   into the Instructions box.\n"
+            "3. Under Knowledge, click Upload files and choose all 10 files in the\n"
+            "   \"{knowledge}\" folder. Do not rename them.\n"
+            "4. Click Create.\n"
+        ),
         "knowledge_how": (
-            'Your knowledge holds "MDEE 00 house rules", the full version of these '
-            'rules, and 1 file per capability, "MDEE 01 problem" to "MDEE 09 story". '
+            'Your knowledge holds "policymemo 00 house rules", the full version of these '
+            'rules, and 1 file per capability, "policymemo 01 problem" to "policymemo 09 story". '
             "When the analytical job changes, search your knowledge for that "
             "capability's file and follow its moves."
         ),
@@ -59,9 +76,19 @@ SURFACES = {
         "label": "Google Gemini",
         "hard_limit": None,   # Google publishes no limit for Gem instructions
         "max_files": 10,      # Gem knowledge files
+        "readme": (
+            "1. At gemini.google.com, open Gems, then New Gem.\n"
+            "2. Open \"{instructions}\", select everything, copy it, and paste it\n"
+            "   into the Instructions box.\n"
+            "3. Under Knowledge, add all 10 files in the \"{knowledge}\" folder.\n"
+            "   Do not rename them.\n"
+            "4. Click Save. Reopen the Gem and check the instructions end with\n"
+            "   \"is still flagged in any document I produced.\" If they do not, paste\n"
+            "   \"{fallback}\" in their place.\n"
+        ),
         "knowledge_how": (
-            'Your knowledge files are "MDEE 00 house rules", the full version of these '
-            'rules, and 1 file per capability, "MDEE 01 problem" to "MDEE 09 story". '
+            'Your knowledge files are "policymemo 00 house rules", the full version of these '
+            'rules, and 1 file per capability, "policymemo 01 problem" to "policymemo 09 story". '
             "When the analytical job changes, consult that capability's file and "
             "follow its moves."
         ),
@@ -72,12 +99,12 @@ SURFACES = {
 # The full house rules then come from knowledge file 00. Keep in step with core.md.
 GEMINI_FALLBACK = (
     "You are policymemo.ai, an alpha toolkit for working through a public policy problem. "
-    'Before every reply, apply the knowledge file "MDEE 00 house rules" in full; it '
+    'Before every reply, apply the knowledge file "policymemo 00 house rules" in full; it '
     "binds everything you do. Its 2 hardest rules: invent nothing, marking each gap as "
     "[NEEDED: what, and where it would come from], and let the user decide between "
     "real alternatives. Reply in the chat, ask 1 question at a time, and label anything "
     "you add from your own knowledge. When the analytical job changes, consult that "
-    'capability\'s file, "MDEE 01 problem" to "MDEE 09 story".\n'
+    'capability\'s file, "policymemo 01 problem" to "policymemo 09 story".\n'
 )
 
 LOAD_PARAGRAPH = re.compile(
@@ -222,6 +249,22 @@ def instructions(core: str, surface: str, house_sha: str, build_date: str) -> st
     return text.strip() + "\n"
 
 
+def readme(surface: str, house_sha: str, build_date: str) -> str:
+    spec = SURFACES[surface]
+    steps = spec["readme"].format(instructions=INSTRUCTIONS_FILE, knowledge=KNOWLEDGE_DIR,
+                                  fallback=FALLBACK_FILE)
+    return (
+        f"policymemo.ai for {spec['label']} (alpha)\n\n"
+        f"Full steps, with copy buttons and help if something goes wrong:\n"
+        f"{INSTALL_URL.format(surface=surface)}\n\n"
+        f"In short:\n{steps}\n"
+        "Cannot upload the files? You may be looking inside the zip without having\n"
+        "extracted it. Close this. On Windows, right-click the zip and choose\n"
+        "Extract All. On a Mac, double-click the zip. Then use the folder that appears.\n\n"
+        f"Built {build_date} from house-rules {house_sha}.\n"
+    )
+
+
 def lint(label: str, text: str) -> list[str]:
     """Style checks that would otherwise only surface in a tester's transcript."""
     notes = []
@@ -292,12 +335,9 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
 
     for surface, spec in SURFACES.items():
         files: dict[str, str] = {}
-        setup = Path(str(SETUP).format(surface=surface))
-        if not setup.is_file():
-            raise BuildError(f"missing {setup.relative_to(ROOT)}")
-        files["SETUP.md"] = setup.read_text(encoding="utf-8").replace("\r\n", "\n")
         text = instructions(core, surface, house_sha, build_date)
-        files["instructions.txt"] = text
+        files[README_FILE] = readme(surface, house_sha, build_date)
+        files[INSTRUCTIONS_FILE] = text
         limit = spec["hard_limit"]
         if limit and len(text) > limit:
             problems.append(f"{surface}: instructions are {len(text)} characters; the limit is {limit}")
@@ -305,17 +345,17 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
             notes.append(f"{surface}: instructions are within 5% of the {limit}-character limit")
         if limit is None:
             notes.append(f"{surface}: no published instruction limit; confirm the full "
-                         f"{len(text)} characters save intact, else paste instructions-fallback.txt")
-            files["instructions-fallback.txt"] = GEMINI_FALLBACK
+                         f"{len(text)} characters save intact, else paste the fallback")
+            files[FALLBACK_FILE] = GEMINI_FALLBACK
         notes.extend(lint(f"{surface} instructions", text))
 
         knowledge = []
         for index, name in enumerate(["house-rules"] + CAPABILITIES):
             fields, body, sha = skills[name]
             title = "house rules" if name == "house-rules" else name
-            filename = f"MDEE {index:02d} {title}.txt"
+            filename = f"{PREFIX} {index:02d} {title}.txt"
             content = knowledge_file(name, fields, body, sha, spec["label"], build_date)
-            files[f"knowledge/{filename}"] = content
+            files[f"{KNOWLEDGE_DIR}/{filename}"] = content
             knowledge.append({"file": filename, "source": f"skills/{name}/SKILL.md",
                               "sha": sha, "chars": len(content)})
         if len(knowledge) > spec["max_files"]:
@@ -350,7 +390,7 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
     for surface, files in outputs.items():
         for relative, content in files.items():
             write_text(OUT / surface / relative, content)
-        write_zip(OUT / f"mdee-{surface}-port.zip", files)
+        write_zip(OUT / ZIP_NAME.format(surface=surface), files)
     write_text(OUT / "manifest.json", json.dumps(manifest, indent=2) + "\n")
     print(f"wrote {OUT.relative_to(ROOT)}")
     return 0
