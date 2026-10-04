@@ -73,6 +73,9 @@ SKILLS = [
     ("decide", "Decide", "decision", "Reaches a recommendation with its strongest counter-argument attached, and the conditions that should reopen it."),
     ("story", "Story", "story", "Writes it up for the person who has to read it: a submission, a board paper, an email to a minister. The recommendation goes first."),
 ]
+# Where the CIVICWORKS link in the nav goes: the page on CIVICWORKS for writing about policymemo.ai.
+# The build also writes it into the homepage nav, so this is the only place to change it.
+CIVICWORKS_NAV = "https://civicworks.substack.com"
 FEEDBACK = "mailto:jack@civicworks.co?subject=policymemo.ai%20feedback"
 SITE = "https://policymemo.ai"
 AUTHOR = ("Jack Strachan", "jack@civicworks.co")
@@ -165,7 +168,7 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
     <nav aria-label="Main">
       <a class="plain" href="{home}skills/"{cur("skills")}>Skills</a>
       <a class="plain keep" href="{home}updates/"{cur("updates")}>Updates</a>
-      <a class="plain" href="https://civicworks.substack.com">CIVICWORKS</a>
+      <a class="plain dot-link" href="{CIVICWORKS_NAV}">CIVICWORKS<span class="new-dot" aria-hidden="true"></span></a>
       <a class="btn primary small" href="{home}beta/">Beta access</a>
     </nav>
   </div>
@@ -464,6 +467,7 @@ def update_home(posts, skill_pages):
         if not pat.search(s):
             raise SystemExit(f"docs/index.html is missing the blog:{name} markers")
         s = pat.sub(lambda m: m.group(1) + content + m.group(2), s)
+    fill("civicworks", f'<a class="plain dot-link" href="{CIVICWORKS_NAV}">CIVICWORKS<span class="new-dot" aria-hidden="true"></span></a>')
     fill("footer", '<a href="blog/">Notes</a>' if live else "")
     fill("head", '<link rel="alternate" type="application/atom+xml" title="Notes · policymemo.ai" href="blog/feed.xml">' if live else "")
     # A skill's card links to its skill page if it has one, otherwise to its post.
