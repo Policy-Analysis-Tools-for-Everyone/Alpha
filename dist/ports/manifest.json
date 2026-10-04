@@ -4,7 +4,7 @@
   "surfaces": {
     "copilot": {
       "label": "Microsoft 365 Copilot",
-      "instructions_chars": 7758,
+      "instructions_chars": 7816,
       "instructions_limit": 8000,
       "knowledge_files": [
         {
@@ -68,7 +68,84 @@
           "chars": 25759
         }
       ],
-      "knowledge_limit": 20
+      "knowledge_limit": 20,
+      "skills": [
+        {
+          "skill": "policymemo-problem",
+          "sha": "543537995310",
+          "skill_md_chars": 13946,
+          "description_chars": 438,
+          "files": [
+            "SKILL.md"
+          ]
+        },
+        {
+          "skill": "policymemo-stakeholders",
+          "sha": "4de3225b7298",
+          "skill_md_chars": 14140,
+          "description_chars": 447,
+          "files": [
+            "SKILL.md"
+          ]
+        },
+        {
+          "skill": "policymemo-evidence",
+          "sha": "4aa9afdc754c",
+          "skill_md_chars": 15272,
+          "description_chars": 557,
+          "files": [
+            "SKILL.md"
+          ]
+        },
+        {
+          "skill": "policymemo-options",
+          "sha": "fef559a484ed",
+          "skill_md_chars": 17080,
+          "description_chars": 534,
+          "files": [
+            "SKILL.md"
+          ]
+        },
+        {
+          "skill": "policymemo-criteria",
+          "sha": "5a9fcf4a8866",
+          "skill_md_chars": 12609,
+          "description_chars": 639,
+          "files": [
+            "SKILL.md"
+          ]
+        },
+        {
+          "skill": "policymemo-outcomes",
+          "sha": "e7aed350a253",
+          "skill_md_chars": 12978,
+          "description_chars": 603,
+          "files": [
+            "SKILL.md"
+          ]
+        },
+        {
+          "skill": "policymemo-decide",
+          "sha": "9f96061e69aa",
+          "skill_md_chars": 17714,
+          "description_chars": 807,
+          "files": [
+            "SKILL.md",
+            "trade-offs.md"
+          ]
+        },
+        {
+          "skill": "policymemo-story",
+          "sha": "c6601946b734",
+          "skill_md_chars": 19356,
+          "description_chars": 530,
+          "files": [
+            "SKILL.md",
+            "writing.md"
+          ]
+        }
+      ],
+      "skill_limit": 8
     },
     "gemini": {
       "label": "Google Gemini",

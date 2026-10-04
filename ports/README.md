@@ -21,8 +21,19 @@ named for what to do with them, because many people will not read anything else:
 
     0 Read me first.txt                  short steps, and a link to the install page
     1 Paste into Instructions.txt
-    2 Upload these 10 files/             policymemo 00 house rules.txt to policymemo 09 story.txt
+    2 Upload these 8 skills/             Copilot only: policymemo-problem.zip to policymemo-story.zip
+    3 No Skills option - upload these as knowledge instead/       Copilot's knowledge fallback
+    2 Upload these 10 files/             Gemini: policymemo 00 house rules.txt to policymemo 09 story.txt
     If the instructions get cut short, paste this instead.txt     Gemini only
+
+**Copilot skills.** Agent Builder accepts SKILL.md skill zips, the same format as
+the Claude skills. It allows at most 8 skills per agent, each SKILL.md under 20,000
+characters with a description of at most 1,024. Each skill is the capability's
+SKILL.md with provenance stripped and house-rules loading replaced, named
+`policymemo-<capability>`, with its supporting files beside it. There are 9
+capabilities, so `trade-offs` travels inside `policymemo-decide` as `trade-offs.md`,
+with a line in decide's body and description pointing to it (`HOSTED` in the
+script). The build fails if any of those limits is broken.
 
 The zip has no folder inside it. Windows Extract All and the Mac's Archive Utility each
 make one named after the zip, so an inner folder would nest a second copy. The knowledge
