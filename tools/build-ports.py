@@ -89,6 +89,20 @@ HOSTED_DESCRIPTION = {
         "total. That method is in trade-offs.md in this skill's folder."
     ),
 }
+# Copilot only: sections moved out of a skill's SKILL.md into a supporting file in
+# the same zip, to keep SKILL.md well under SKILL_CHARS. Move only a section the
+# skill uses conditionally, so loading it on demand loses nothing. Claude and
+# Gemini carry the skill whole. capability -> [(heading, file, pointer)]
+SPLIT = {
+    "story": [(
+        "PPC memo mode, section by section",
+        "ppc-memo.md",
+        "In PPC memo mode, read `ppc-memo.md` in this folder before drafting or "
+        "reviewing, and follow it. It says what each of the 8 sections does, and that "
+        "they are a guide, not a checklist.",
+    )],
+}
+SKILL_HEADROOM = 0.95  # note any Copilot SKILL.md above this share of SKILL_CHARS
 REVIEWED = PORTS / "house-rules.reviewed"
 OUT = ROOT / "dist" / "ports"
 
@@ -277,11 +291,28 @@ def port_body(name: str, body: str) -> str:
     return body
 
 
-def copilot_skills() -> tuple[dict[str, bytes], list[dict], list[str]]:
+def split_sections(name: str, body: str) -> tuple[str, dict[str, str]]:
+    """Move each SPLIT section of a port body into its own file, leaving a pointer."""
+    files = {}
+    for heading, file_name, pointer in SPLIT.get(name, []):
+        start = body.find(f"\n## {heading}\n")
+        if start < 0:
+            raise BuildError(f"skills/{name}/SKILL.md: no '## {heading}' section to split out. "
+                             "Update SPLIT in this script to match the new heading.")
+        end = body.find("\n## ", start + 1)
+        end = len(body) if end < 0 else end
+        section = body[start:end].strip()
+        files[file_name] = f"# {heading}\n" + section.split("\n", 1)[1] + "\n"
+        body = body[:start] + f"\n## {heading}\n\n{pointer}\n" + body[end:]
+    return body, files
+
+
+def copilot_skills() -> tuple[dict[str, bytes], list[dict], list[str], list[str]]:
     """One zip per Copilot skill, each holding a policymemo-<name>/ folder."""
     zips: dict[str, bytes] = {}
     report: list[dict] = []
     problems: list[str] = []
+    notes: list[str] = []
     hosts: dict[str, list[str]] = {}
     for guest, host in HOSTED.items():
         hosts.setdefault(host, []).append(guest)
@@ -291,8 +322,8 @@ def copilot_skills() -> tuple[dict[str, bytes], list[dict], list[str]]:
         fields, body, extras, sha = read_skill_parts(name)
         skill = SKILL_NAME.format(name=name)
         description = " ".join(fields.get("description", "").split())
-        body = port_body(name, body)
-        files = {}
+        body, split = split_sections(name, port_body(name, body))
+        files = {f"{skill}/{f}": text for f, text in split.items()}
         for guest in hosts.get(name, []):
             g_fields, g_body, g_extras, g_sha = read_skill_parts(guest)
             if g_extras:
@@ -308,6 +339,9 @@ def copilot_skills() -> tuple[dict[str, bytes], list[dict], list[str]]:
         if len(skill_md) >= SKILL_CHARS:
             problems.append(f"copilot skill {skill}: SKILL.md is {len(skill_md)} characters; "
                             f"the limit is under {SKILL_CHARS}")
+        elif len(skill_md) >= SKILL_CHARS * SKILL_HEADROOM:
+            notes.append(f"copilot skill {skill}: SKILL.md is {len(skill_md)} characters, "
+                         f"within {100 - round(SKILL_HEADROOM * 100)}% of the {SKILL_CHARS} limit")
         if len(description) > SKILL_DESCRIPTION_CHARS:
             problems.append(f"copilot skill {skill}: description is {len(description)} characters; "
                             f"the limit is {SKILL_DESCRIPTION_CHARS}")
@@ -317,7 +351,7 @@ def copilot_skills() -> tuple[dict[str, bytes], list[dict], list[str]]:
                        "files": ["SKILL.md"] + sorted(f.split("/", 1)[1] for f in files)})
     if len(zips) > SKILL_LIMIT:
         problems.append(f"copilot: {len(zips)} skills; the limit is {SKILL_LIMIT}")
-    return zips, report, problems
+    return zips, report, problems, notes
 
 
 FRONT_DOOR_DESCRIPTION = (
@@ -557,8 +591,9 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
 
         skill_report = []
         if spec["skills"]:
-            zips, skill_report, skill_problems = copilot_skills()
+            zips, skill_report, skill_problems, skill_notes = copilot_skills()
             problems.extend(skill_problems)
+            notes.extend(skill_notes)
             for zip_name, data in zips.items():
                 files[f"{SKILLS_DIR}/{zip_name}"] = data
 
