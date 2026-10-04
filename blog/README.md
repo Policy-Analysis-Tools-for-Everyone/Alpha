@@ -33,8 +33,10 @@ When a post without `draft: true` reaches `main`, the "Build blog" workflow runs
 - adds "Blog" to the homepage nav and footer, once at least one post is published
 - for a skill post, adds a "Read the post" link to that skill's card on the
   homepage, and marks the skill as published in the series on the blog index
-- writes two Atom feeds: `docs/blog/feed.xml` (every post) and `docs/blog/feed-updates.xml`
-  (`updates` posts only). Feed readers find them from any page, and the footer links to them.
+- writes an Atom feed of every post, `docs/blog/feed.xml`, and once an `updates` post is
+  published, `docs/blog/feed-updates.xml` with only those. Feed readers find them from any page.
+- shows category labels and the filter on the blog index only once posts in two or more
+  categories are published, with a filter button only for categories that have posts
 
 Drafts are never published. To see everything, drafts included, run
 `python3 tools/build-blog.py --drafts /tmp/blog-preview/blog` and open the files.
