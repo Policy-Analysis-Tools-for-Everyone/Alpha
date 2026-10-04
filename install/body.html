@@ -140,6 +140,8 @@
     <li><b>Knowledge:</b> click <b>Upload files</b>, open the <code class="inline">2 Upload these 10 files</code> folder, select all 10 and upload them. Do not rename them: the instructions find them by name.
       <span class="sm">No <b>Upload files</b> option? That is normal on the free Copilot Chat tier: uploading files needs a paid Microsoft 365 Copilot licence. Skip this step. The agent works from the instructions alone, with less depth. Do not add web links instead: Copilot searches them through Bing rather than reading them, so they will not carry the method.</span></li>
     <li><b>Web search:</b> switch it off for now. The Claude version does not search the web unless asked, and keeping them alike makes reports comparable.</li>
+    <li><b>Other settings:</b> switch off <b>Create documents, charts and code</b>, <b>Create images</b> and <b>Discourage model knowledge</b>.
+      <span class="sm">policymemo.ai writes memos as text in the chat, so it needs neither of the first 2. Discourage model knowledge would limit the agent to the knowledge files, which hold the method but nothing about your policy area, so it would have nothing to apply the method to. The instructions handle the risk this setting guards against: the agent must label anything it adds from its own knowledge and must never invent a figure.</span></li>
     <li><b>Starter prompts:</b> add these, title then message.
       <ul class="prompts">
         <li><b>Find the real problem</b><span>I think we've already jumped to a solution. Help me work out what the actual problem is.</span><button type="button" class="copy" data-copy="I think we've already jumped to a solution. Help me work out what the actual problem is.">Copy</button></li>
