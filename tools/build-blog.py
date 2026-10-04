@@ -144,7 +144,7 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
 </main>
 <footer>
   <div class="wrap row">
-    <span>policymemo.ai · beta 0.1.2</span>
+    <span>policymemo.ai · beta 0.1.2 · by <a href="https://civicworks.substack.com">CIVICWORKS</a></span>
     <nav aria-label="Footer">
       <a href="{home}">Home</a>
       <a href="{home}install/">Install</a>
