@@ -25,6 +25,10 @@ Everything else written for this project is licensed under the
 - `evals/`
 - `README.md` and the other Markdown files
 
+Not included: `reference/memos/raw/`, which holds policy memos and marker
+feedback written by other people, held with their consent and under their
+own terms. The analysis of them in `reference/memos/wiki/` is covered.
+
 You may use, share and adapt this content for non-commercial purposes, provided
 you give appropriate credit, link to the licence, and indicate if you made
 changes. As the author, I also permit using it in your own analysis at work,
