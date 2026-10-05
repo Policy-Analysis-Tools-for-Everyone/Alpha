@@ -11,7 +11,7 @@ For people working on policymemo.ai rather than using it. Users want the
 | `reference/` | The method layer, sources, domain material, the memo corpus, `AUTHORING.md` and `BEHAVIOUR_SPEC.md` | Yes |
 | `evals/` | What testers actually saw, and the wiki distilled from it. Start at `evals/README.md` | Yes |
 | `site/` | Sources for policymemo.ai: `beta/`, `blog/`, `install/`, `updates/` | Yes |
-| `ports/` | The hand-written core of the Copilot and Gemini versions | Yes |
+| `ports/` | The hand-written core of the Copilot, Gemini and ChatGPT versions | Yes |
 | `tools/` | Build scripts | Yes |
 | `docs/` | The published website (GitHub Pages). Mostly generated from `site/` | Only `index.html`, icons, images |
 | `dist/` | Downloads: zips and ports | **Never** |
@@ -71,7 +71,7 @@ Each skill is a `SKILL.md` with spec-compliant frontmatter, so they also work
 through the Skills API. If you put several into one system prompt, put
 `house-rules` first.
 
-The Microsoft 365 Copilot and Google Gemini versions are generated into
+The Microsoft 365 Copilot, Google Gemini and ChatGPT versions are generated into
 `dist/ports/`. See [`ports/README.md`](ports/README.md).
 
 ## How house-rules reaches the other capabilities

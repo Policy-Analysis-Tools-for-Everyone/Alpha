@@ -1,0 +1,16 @@
+policymemo.ai by Jack Strachan
+https://policymemo.ai
+
+Licensed under Creative Commons Attribution-NonCommercial 4.0 International
+(CC BY-NC 4.0): https://creativecommons.org/licenses/by-nc/4.0/
+
+You may use, share and adapt these files for non-commercial purposes, with
+credit, a link to the licence, and a note of any changes. Using them in your own
+analysis at work, including in paid employment, is permitted. Selling them,
+selling something built from them, or offering them as part of a paid product or
+service needs permission: jack@civicworks.co
+
+Credit: "policymemo.ai by Jack Strachan (https://policymemo.ai), licensed under
+CC BY-NC 4.0". Every file here carries that line; keep it in anything you share.
+
+Full terms: https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo/blob/main/LICENSE-CONTENT.md

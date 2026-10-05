@@ -1,5 +1,5 @@
 {
-  "built": "2026-10-04",
+  "built": "2026-10-05",
   "house_rules": "e59f06f77357",
   "surfaces": {
     "copilot": {
@@ -153,8 +153,8 @@
       "skills": [
         {
           "skill": "policymemo",
-          "skill_md_chars": 8302,
-          "description_chars": 330
+          "skill_md_chars": 8312,
+          "description_chars": 340
         },
         {
           "skill": "policymemo-problem",
@@ -208,6 +208,70 @@
           "skill": "policymemo-story",
           "sha": "c0ccf139f49c",
           "skill_md_chars": 34094,
+          "description_chars": 530
+        }
+      ]
+    },
+    "chatgpt": {
+      "label": "ChatGPT",
+      "skills": [
+        {
+          "skill": "policymemo",
+          "skill_md_chars": 8321,
+          "description_chars": 340
+        },
+        {
+          "skill": "policymemo-problem",
+          "sha": "0ec99460a746",
+          "skill_md_chars": 21811,
+          "description_chars": 438
+        },
+        {
+          "skill": "policymemo-stakeholders",
+          "sha": "512b584dd58d",
+          "skill_md_chars": 22005,
+          "description_chars": 447
+        },
+        {
+          "skill": "policymemo-evidence",
+          "sha": "bf44daf469a4",
+          "skill_md_chars": 23137,
+          "description_chars": 557
+        },
+        {
+          "skill": "policymemo-options",
+          "sha": "a52f7924a80e",
+          "skill_md_chars": 24945,
+          "description_chars": 534
+        },
+        {
+          "skill": "policymemo-criteria",
+          "sha": "e084dd3c778f",
+          "skill_md_chars": 20474,
+          "description_chars": 639
+        },
+        {
+          "skill": "policymemo-outcomes",
+          "sha": "d337cacd083a",
+          "skill_md_chars": 20843,
+          "description_chars": 603
+        },
+        {
+          "skill": "policymemo-trade-offs",
+          "sha": "f27ace4dabd9",
+          "skill_md_chars": 19688,
+          "description_chars": 614
+        },
+        {
+          "skill": "policymemo-decide",
+          "sha": "5f2ce8b62ac5",
+          "skill_md_chars": 25140,
+          "description_chars": 581
+        },
+        {
+          "skill": "policymemo-story",
+          "sha": "c0ccf139f49c",
+          "skill_md_chars": 27781,
           "description_chars": 530
         }
       ]

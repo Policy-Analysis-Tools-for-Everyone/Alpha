@@ -1,0 +1,36 @@
+{
+  "name": "policymemo",
+  "version": "0.2.0",
+  "description": "A policy-analysis agent. Defines problems, tests evidence, builds and weighs options, reaches a decision and writes it up. Challenges weak framing and refuses to invent figures.",
+  "author": {
+    "name": "Jack Strachan",
+    "url": "https://policymemo.ai"
+  },
+  "homepage": "https://policymemo.ai",
+  "repository": "https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo",
+  "license": "CC-BY-NC-4.0",
+  "keywords": [
+    "policy",
+    "analysis",
+    "public-policy",
+    "decision-making",
+    "briefing"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "policymemo.ai",
+    "shortDescription": "Work through a public policy problem properly",
+    "longDescription": "A policy-analysis agent. Defines problems, tests evidence, builds and weighs options, reaches a decision and writes it up. Challenges weak framing and refuses to invent figures.",
+    "developerName": "Jack Strachan",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive"
+    ],
+    "websiteURL": "https://policymemo.ai",
+    "defaultPrompt": [
+      "I think we've already jumped to a solution. Help me work out what the actual problem is.",
+      "We've got evidence from another country that this worked. How much weight should we put on it?",
+      "I've got 3 options and I'm struggling to decide what should count as better."
+    ]
+  }
+}

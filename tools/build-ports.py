@@ -159,6 +159,18 @@ SURFACES = {
             "follow its moves."
         ),
     },
+    "chatgpt": {
+        "label": "ChatGPT",
+        # A ChatGPT plugin: .codex-plugin/plugin.json plus skills/, uploaded as
+        # one zip. Like Gemini, no instructions box, so every skill carries the
+        # house rules; unlike Gemini, supporting files stay separate.
+        "plugin": True,
+        "knowledge_how": (
+            "Each capability below is its own skill in this plugin, named "
+            "policymemo-<capability>, and carries these rules too. When the analytical "
+            "job changes, use that skill and follow its moves."
+        ),
+    },
 }
 
 LOAD_PARAGRAPH = re.compile(
@@ -358,7 +370,7 @@ FRONT_DOOR_DESCRIPTION = (
     "Use for any public policy problem: a concern, rough notes, an inherited proposal, a "
     "draft, options to compare, a decision to make or a memo to write. Holds the house "
     "rules every policymemo skill follows and says which policymemo skill does each job. "
-    "Start here when it is unclear which applies, or when the user types /policymemo."
+    "Start here when it is unclear which applies, or when the user asks for policymemo by name."
 )
 GEMINI_LOAD = (
     "The house rules below are in force throughout this skill and bind everything in it. "
@@ -380,12 +392,13 @@ def skill_zip(skill: str, description: str, body: str, extras: dict[str, str]) -
     return zip_bytes(files), text
 
 
-def gemini_skills(rules: str) -> tuple[dict[str, str], list[dict], list[str]]:
-    """The front door plus 1 skill per capability, each a single SKILL.md in its own folder.
+def standalone_skills(rules: str, surface: str, fold_extras: bool) -> tuple[dict[str, str], list[dict], list[str]]:
+    """The front door plus 1 skill per capability, each in its own folder.
 
-    Gemini uploads one SKILL.md at a time, so supporting files would be lost:
-    they are appended to the skill's own SKILL.md instead. Every skill carries
-    the house rules inline, because Gemini skills have no instructions box.
+    Every skill carries the house rules inline, because Gemini and ChatGPT
+    skills have no instructions box. Gemini uploads one SKILL.md at a time, so
+    there (fold_extras) supporting files are appended to the skill's own
+    SKILL.md; ChatGPT keeps them as files beside it.
     """
     files: dict[str, str] = {}
     report: list[dict] = []
@@ -406,13 +419,17 @@ def gemini_skills(rules: str) -> tuple[dict[str, str], list[dict], list[str]]:
         if replaced != 1:
             raise BuildError(f"skills/{name}/SKILL.md: the house-rules loading paragraph was not found")
         for extra_name, extra in extras:
-            body = (body.rstrip() + f"\n\n---\n\n# {extra_name}\n"
-                    f"Where this skill says `{extra_name}` in this folder, it means this section.\n\n"
-                    + HTML_COMMENT.sub("", extra).strip() + "\n")
+            extra = HTML_COMMENT.sub("", extra).strip() + "\n"
+            if fold_extras:
+                body = (body.rstrip() + f"\n\n---\n\n# {extra_name}\n"
+                        f"Where this skill says `{extra_name}` in this folder, it means this section.\n\n"
+                        + extra)
+            else:
+                files[f"{skill}/{extra_name}"] = extra.rstrip() + "\n" + CREDIT
         text = skill_md(skill, description, body)
         files[f"{skill}/SKILL.md"] = text
         if len(description) > SKILL_DESCRIPTION_CHARS:
-            problems.append(f"gemini skill {skill}: description is {len(description)} characters; "
+            problems.append(f"{surface} skill {skill}: description is {len(description)} characters; "
                             f"the limit is {SKILL_DESCRIPTION_CHARS}")
         report.append({"skill": skill, "sha": sha, "skill_md_chars": len(text),
                        "description_chars": len(description)})
@@ -455,6 +472,37 @@ def version() -> str:
         if plugin["name"] == "mdee":
             return plugin["version"]
     raise BuildError(".claude-plugin/marketplace.json: no mdee plugin entry")
+
+
+def chatgpt_manifest() -> dict:
+    """plugin.json for ChatGPT, from the same marketplace entry as the Claude plugin."""
+    marketplace = json.loads((ROOT / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8"))
+    entry = next(p for p in marketplace["plugins"] if p["name"] == "mdee")
+    return {
+        "name": "policymemo",
+        "version": entry["version"],
+        "description": entry["description"],
+        "author": {"name": "Jack Strachan", "url": "https://policymemo.ai"},
+        "homepage": "https://policymemo.ai",
+        "repository": entry["repository"],
+        "license": entry["license"],
+        "keywords": entry["keywords"],
+        "skills": "./skills/",
+        "interface": {
+            "displayName": "policymemo.ai",
+            "shortDescription": "Work through a public policy problem properly",
+            "longDescription": entry["description"],
+            "developerName": "Jack Strachan",
+            "category": "Productivity",
+            "capabilities": ["Interactive"],
+            "websiteURL": "https://policymemo.ai",
+            "defaultPrompt": [
+                "I think we've already jumped to a solution. Help me work out what the actual problem is.",
+                "We've got evidence from another country that this worked. How much weight should we put on it?",
+                "I've got 3 options and I'm struggling to decide what should count as better.",
+            ],
+        },
+    }
 
 
 def readme(surface: str, house_sha: str, build_date: str) -> str:
@@ -559,10 +607,21 @@ def build(check_only: bool, accept_house_rules: bool) -> int:
         if spec.get("standalone_skills"):
             notes.extend(lint(f"{surface} house rules", text))
             files[README_FILE] = readme(surface, house_sha, build_date)
-            folders, skill_report, skill_problems = gemini_skills(text)
+            folders, skill_report, skill_problems = standalone_skills(text, surface, fold_extras=True)
             problems.extend(skill_problems)
             for path, content in folders.items():
                 files[f"{GEMINI_SKILLS_DIR}/{path}"] = content
+            files[LICENCE_FILE] = LICENCE_TEXT
+            outputs[surface] = files
+            manifest["surfaces"][surface] = {"label": spec["label"], "skills": skill_report}
+            continue
+        if spec.get("plugin"):
+            notes.extend(lint(f"{surface} house rules", text))
+            folders, skill_report, skill_problems = standalone_skills(text, surface, fold_extras=False)
+            problems.extend(skill_problems)
+            files[".codex-plugin/plugin.json"] = json.dumps(chatgpt_manifest(), indent=2) + "\n"
+            for path, content in folders.items():
+                files[f"skills/{path}"] = content
             files[LICENCE_FILE] = LICENCE_TEXT
             outputs[surface] = files
             manifest["surfaces"][surface] = {"label": spec["label"], "skills": skill_report}
