@@ -31,7 +31,13 @@ Gemini:
     0 Read me first.txt
     1 Upload these 10 skills/            policymemo/SKILL.md, policymemo-criteria/SKILL.md ... policymemo-trade-offs/SKILL.md
 
-Both also carry `Licence.txt`, and every skill, knowledge file and instructions text
+ChatGPT, uploaded as one zip without unzipping it:
+
+    .codex-plugin/plugin.json            the plugin manifest, from marketplace.json's mdee entry
+    skills/                              policymemo/, then policymemo-criteria/ to policymemo-trade-offs/
+    Licence.txt
+
+All 3 also carry `Licence.txt`, and every skill, knowledge file and instructions text
 ends with the CC BY-NC 4.0 credit line (`CREDIT` in the script). Port skills carry a
 `license` field in their frontmatter, as the Claude skills do.
 
@@ -53,6 +59,13 @@ nothing. The source isn't touched: Claude and Gemini carry `story` whole, and th
 Copilot knowledge file keeps the section inline. If the heading changes, the
 build stops until `SPLIT` is updated. Split a section out only if it is used
 conditionally, never a rule that holds on every use.
+
+**ChatGPT plugin.** A ChatGPT plugin is `.codex-plugin/plugin.json` plus a `skills/`
+folder of ordinary skill folders. ChatGPT skills have no instructions box either, so
+the skills are the Gemini set: the front door plus 9 capability skills, each carrying
+the house rules inline. Unlike Gemini, a plugin keeps supporting files, so `story`'s
+`writing.md` stays a separate file. Free accounts have no Skills option but can upload
+a plugin; paid accounts can do either.
 
 **Gemini skills.** Gemini replaced Gems with skills, which stand alone: there is no
 agent, no instructions box and no knowledge. So every capability skill carries the
