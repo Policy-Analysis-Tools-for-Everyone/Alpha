@@ -267,7 +267,7 @@ def build_post(p, posts, css, home):
         pitch = f"The {name} skill is part of policymemo.ai, which is free and in private beta."
     else:
         pitch = "policymemo.ai is free and in private beta. Request access to try it on a problem you're stuck on."
-    skill_note = f'<aside class="try"><p>{pitch}</p><a class="btn primary" href="{home}beta/">Request beta access</a></aside>'
+    skill_note = f'<aside class="try"><p>{pitch}</p><a class="btn primary" href="{home}beta/">Request beta access<span class="ico ico-go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg></span></a></aside>'
     draft = '<p class="draft-flag">Draft · not published</p>' if p["draft"] else ""
     body = f"""<article class="wrap post">
   {draft}<p class="meta"><a href="./">Notes</a> · {cat_label(p, after=" · ")}{nice_date(p['date_obj'])} · {p['minutes']} min read</p>
@@ -349,7 +349,7 @@ def build_beta(css, home):
     def cta(url, label):
         if not url:
             return '<span class="soon">Opening soon</span>'
-        return f'<a class="btn primary" href="{html.escape(url)}">{label}</a>'
+        return f'<a class="btn primary" href="{html.escape(url)}">{label}<span class="ico ico-go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg></span></a>'
     privacy = "We use your email address to manage your access and contact you about the beta. We only send other updates if you ask us to."
     if cfg["privacy_url"]:
         privacy += f' <a href="{html.escape(cfg["privacy_url"])}">How we use your information</a>.'

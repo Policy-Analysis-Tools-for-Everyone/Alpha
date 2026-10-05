@@ -58,6 +58,16 @@
     text-decoration: none; padding: 13px 20px; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
   .btn.primary { background: var(--ink); color: var(--bg); }
   .btn.primary:hover { background: var(--red); color: #fff; }
+  /* Primary buttons: an arrow scrolls through when the button goes somewhere,
+     a download arrow drops through when it downloads a file. */
+  .btn .ico { position: relative; display: inline-flex; width: 16px; height: 16px; flex: none; overflow: hidden; }
+  .btn .ico svg { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform .45s cubic-bezier(.65, 0, .35, 1); }
+  .btn .ico-go svg + svg { transform: translateX(-130%); }
+  .btn:hover .ico-go svg, .btn:focus-visible .ico-go svg { transform: translateX(130%); }
+  .btn .ico-dl svg + svg { transform: translateY(-130%); }
+  .btn:hover .ico-dl svg, .btn:focus-visible .ico-dl svg { transform: translateY(130%); }
+  .btn:hover .ico svg + svg, .btn:focus-visible .ico svg + svg { transform: none; }
+  @media (prefers-reduced-motion: reduce) { .btn .ico svg { transition: none; } }
   .btn.small { padding: 9px 14px; font-size: 14px; }
   .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   footer { border-top: 1px solid var(--line); margin-top: 96px; padding: 28px 0 40px; font-size: 13px; color: var(--muted); }
@@ -310,7 +320,7 @@
 
   <div class="sub" id="claude-paid" role="tabpanel" aria-labelledby="tab-claude-paid">
     <div class="get">
-      <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo/raw/main/dist/download/policymemo-ai-claude.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download for Claude</a>
+      <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo/raw/main/dist/download/policymemo-ai-claude.zip">Download for Claude<span class="ico ico-dl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg></span></a>
       <p>One zip. Leave it zipped: Claude wants the file exactly as it arrives. If you end up with a folder instead, see <a href="#claude-wrong">If it goes wrong</a>.</p>
     </div>
     <ol class="steps" style="margin-top:26px">
@@ -396,7 +406,7 @@
     <li>No admin rights.</li>
   </ul>
   <div class="get">
-    <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo/raw/main/dist/ports/policymemo-ai-copilot.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download for Copilot</a>
+    <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo/raw/main/dist/ports/policymemo-ai-copilot.zip">Download for Copilot<span class="ico ico-dl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg></span></a>
     <p><b>Unzip it first</b>, unlike the Claude version. On Windows, right-click the zip and choose <b>Extract All</b>: opening it with a double-click is not enough, because Copilot cannot upload files from inside a zip. On a Mac, double-click it. You get a folder with the files numbered in the order you use them. Inside it, leave the 8 skill zips zipped: Copilot wants those exactly as they are.</p>
   </div>
 
@@ -473,7 +483,7 @@
     <li>Gemini on a computer, at <a href="https://gemini.google.com">gemini.google.com</a> or in the Mac app. Skills cannot be uploaded from a phone.</li>
   </ul>
   <div class="get">
-    <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo/raw/main/dist/ports/policymemo-ai-gemini.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg>Download for Gemini</a>
+    <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo/raw/main/dist/ports/policymemo-ai-gemini.zip">Download for Gemini<span class="ico ico-dl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg></span></a>
     <p><b>Unzip it first</b>, unlike the Claude version. On Windows, right-click the zip and choose <b>Extract All</b>: opening it with a double-click is not enough. On a Mac, double-click it. You get a folder with 10 skill folders inside, each holding one <code class="inline">SKILL.md</code>.</p>
   </div>
 

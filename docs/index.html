@@ -83,6 +83,16 @@
   a.btn.ghost { color: var(--ink); cursor: pointer; }
   a.btn.ghost:hover { border-color: var(--ink); }
   .btn svg { width: 16px; height: 16px; flex: none; }
+  /* Primary buttons: an arrow scrolls through when the button goes somewhere,
+     a download arrow drops through when it downloads a file. */
+  .btn .ico { position: relative; display: inline-flex; width: 16px; height: 16px; flex: none; overflow: hidden; }
+  .btn .ico svg { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform .45s cubic-bezier(.65, 0, .35, 1); }
+  .btn .ico-go svg + svg { transform: translateX(-130%); }
+  .btn:hover .ico-go svg, .btn:focus-visible .ico-go svg { transform: translateX(130%); }
+  .btn .ico-dl svg + svg { transform: translateY(-130%); }
+  .btn:hover .ico-dl svg, .btn:focus-visible .ico-dl svg { transform: translateY(130%); }
+  .btn:hover .ico svg + svg, .btn:focus-visible .ico svg + svg { transform: none; }
+  @media (prefers-reduced-motion: reduce) { .btn .ico svg { transition: none; } }
   .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
   /* Hero */
@@ -361,7 +371,7 @@
     <h1>Policy analysis that questions the problem first.</h1>
     <p class="lede">Policymemo.ai is a set of agentic skills that helps policy advisers, analysts and public service teams work through a problem: what it is, what you actually know, which options are real and what each one costs. It asks one question at a time, and where a figure is missing it leaves a marked gap.</p>
     <div class="cta">
-      <a class="btn primary" href="beta/"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg>Request beta access</a>
+      <a class="btn primary" href="beta/">Request beta access<span class="ico ico-go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg></span></a>
     </div>
     <p class="works">Works in Claude · Copilot · Gemini</p>
     <p class="fine">Free · Private beta · Version <!-- blog:version -->0.2.0<!-- /blog:version --></p>
@@ -494,7 +504,7 @@
       <h2 id="dl-title">Try it on a problem you’re stuck on.</h2>
       <p class="intro">Bring the notes, the inherited proposal or the draft you aren’t sure about. It works best on something real.</p>
       <div class="cta">
-        <a class="btn primary" href="beta/"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg>Request beta access</a>
+        <a class="btn primary" href="beta/">Request beta access<span class="ico ico-go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9.5M8.5 4 12.5 8 8.5 12"/></svg></span></a>
       </div>
       <p class="status">policymemo.ai is in private beta, and we're inviting people in small groups this autumn. The skills change as people use them, so expect rough edges, and <a href="mailto:jack@civicworks.co?subject=policymemo.ai%20feedback">tell us when it gets something wrong</a>. Already invited? <a href="install/">Set-up instructions</a>.</p>
     </div>
