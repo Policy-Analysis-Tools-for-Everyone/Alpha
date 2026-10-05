@@ -322,7 +322,7 @@ def build_install(css, home):
     body = (INSTALL / "body.html").read_text(encoding="utf-8")
     css = css + "\n" + (INSTALL / "install.css").read_text(encoding="utf-8")
     return page("Install · policymemo.ai",
-                "Install policymemo.ai in Claude, Microsoft 365 Copilot, Google Gemini or ChatGPT. You set it up once, on a computer.",
+                "Install policymemo.ai in Claude, ChatGPT, Microsoft 365 Copilot or Google Gemini. You set it up once, on a computer.",
                 body, css, home, current=None)
 
 

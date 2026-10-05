@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>Install · policymemo.ai</title>
-<meta name="description" content="Install policymemo.ai in Claude, Microsoft 365 Copilot, Google Gemini or ChatGPT. You set it up once, on a computer.">
+<meta name="description" content="Install policymemo.ai in Claude, ChatGPT, Microsoft 365 Copilot or Google Gemini. You set it up once, on a computer.">
 <meta property="og:title" content="Install · policymemo.ai">
-<meta property="og:description" content="Install policymemo.ai in Claude, Microsoft 365 Copilot, Google Gemini or ChatGPT. You set it up once, on a computer.">
+<meta property="og:description" content="Install policymemo.ai in Claude, ChatGPT, Microsoft 365 Copilot or Google Gemini. You set it up once, on a computer.">
 <meta property="og:image" content="https://policymemo.ai/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -300,9 +300,9 @@
   <div class="wrap">
     <div class="picker" role="tablist" aria-label="Choose your AI tool">
       <button type="button" role="tab" id="tab-claude" aria-controls="claude" aria-selected="true"><b>Claude</b><span>Plugin · 2 min</span></button>
+      <button type="button" role="tab" id="tab-chatgpt" aria-controls="chatgpt" aria-selected="false"><b>ChatGPT</b><span>Plugin · 2 min</span></button>
       <button type="button" role="tab" id="tab-copilot" aria-controls="copilot" aria-selected="false"><b>Copilot</b><span>Agent · 10 min</span></button>
       <button type="button" role="tab" id="tab-gemini" aria-controls="gemini" aria-selected="false"><b>Gemini</b><span>Skills · 5 min</span></button>
-      <button type="button" role="tab" id="tab-chatgpt" aria-controls="chatgpt" aria-selected="false"><b>ChatGPT</b><span>Plugin · 2 min</span></button>
     </div>
   </div>
 </div>
@@ -401,6 +401,54 @@
   <details>
     <summary>There is no Upload local plugin option</summary>
     <div><p>That option needs a paid plan, or it may be switched off by your organisation. Use the free plan route: it works on every plan.</p></div>
+  </details>
+</section>
+
+<!-- ChatGPT -->
+<section class="panel" id="chatgpt" role="tabpanel" aria-labelledby="tab-chatgpt">
+  <h2>ChatGPT</h2>
+  <p class="note">This adds policymemo.ai to ChatGPT as a plugin holding 10 skills. It runs on OpenAI’s models with the same written rules as the Claude version. Expect it to drift from them more, especially over a long conversation.</p>
+
+  <h3 id="chatgpt-needs">What you need</h3>
+  <ul class="needs">
+    <li>A ChatGPT account where you can add plugins. Look for <b>Plugins</b> in ChatGPT. On a work or education account, an administrator decides.</li>
+    <li>ChatGPT on a computer, at <a href="https://chatgpt.com">chatgpt.com</a> or in the desktop app.</li>
+  </ul>
+  <div class="get">
+    <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo/raw/main/dist/ports/policymemo-ai-chatgpt.zip">Download for ChatGPT<span class="ico ico-dl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg></span></a>
+    <p>One zip. <b>Leave it zipped</b>, as for Claude: ChatGPT wants the file exactly as it arrives. If you end up with a folder instead, see <a href="#chatgpt-wrong">If it goes wrong</a>.</p>
+  </div>
+
+  <h3 id="chatgpt-steps">Add the plugin</h3>
+  <ol class="steps">
+    <li>Open ChatGPT and go to <b>Plugins</b>.</li>
+    <li>Choose to upload a plugin, and upload <code class="inline">policymemo-ai-chatgpt.zip</code>.
+      <span class="sm">ChatGPT may warn that it cannot check plugins made by other people. Everything policymemo.ai contains is readable in the skills folder on GitHub.</span></li>
+    <li>Check the plugin is switched on.
+      <span class="sm">It holds 10 skills. <code class="inline">policymemo</code> is the front door: it holds the house rules and knows which skill does each job. The other 9 are the capabilities, and each carries the house rules too, so they hold whichever one ChatGPT picks.</span></li>
+  </ol>
+
+  <h3 id="chatgpt-check">Check it worked</h3>
+  <div class="worked">
+    <p>Start a new chat and describe a problem you are working on, or type <code class="inline">@policymemo</code> first. It should ask you a question back before it writes anything. That is deliberate, the same as the Claude version.</p>
+  </div>
+
+  <h3 id="chatgpt-wrong">If it goes wrong</h3>
+  <details>
+    <summary>There is no Plugins option, or no way to upload one</summary>
+    <div><p>On a paid personal plan, you can also add the skills one at a time under <b>Plugins</b>, then <b>Skills</b>: unzip the download and upload each folder inside <code class="inline">skills</code> as its own zip. On a work or education account, an administrator may have switched plugins off.</p></div>
+  </details>
+  <details>
+    <summary>I have a folder, not a zip</summary>
+    <div><p>Safari on a Mac unzips downloads on its own. ChatGPT needs the zip as it was, and compressing the folder again will not rebuild it, because part of it is hidden on a Mac. Download it again in another browser, or open Safari, then <b>Settings</b>, then <b>General</b>, untick <b>Open “safe” files after downloading</b>, and download it again.</p></div>
+  </details>
+  <details>
+    <summary>It answers without the method</summary>
+    <div><p>ChatGPT decides for itself when a skill applies. Type <code class="inline">@policymemo</code>, or the skill for the job, such as <code class="inline">@policymemo-evidence</code>, to make sure it is used.</p></div>
+  </details>
+  <details>
+    <summary>policymemo.ai has been updated</summary>
+    <div><p>Updates are not automatic. Download the new zip, remove the old plugin and upload the new one.</p><p><a href="mailto:jack@civicworks.co?subject=Tell%20me%20about%20policymemo.ai%20updates">Email me</a> if you'd like to hear when there's a new version.</p></div>
   </details>
 </section>
 
@@ -535,59 +583,11 @@
   </details>
 </section>
 
-<!-- ChatGPT -->
-<section class="panel" id="chatgpt" role="tabpanel" aria-labelledby="tab-chatgpt">
-  <h2>ChatGPT</h2>
-  <p class="note">This adds policymemo.ai to ChatGPT as a plugin holding 10 skills. It runs on OpenAI’s models with the same written rules as the Claude version. Expect it to drift from them more, especially over a long conversation.</p>
-
-  <h3 id="chatgpt-needs">What you need</h3>
-  <ul class="needs">
-    <li>A ChatGPT account where you can add plugins. Look for <b>Plugins</b> in ChatGPT. On a work or education account, an administrator decides.</li>
-    <li>ChatGPT on a computer, at <a href="https://chatgpt.com">chatgpt.com</a> or in the desktop app.</li>
-  </ul>
-  <div class="get">
-    <a class="btn primary" href="https://github.com/Policy-Analysis-Tools-for-Everyone/policymemo/raw/main/dist/ports/policymemo-ai-chatgpt.zip">Download for ChatGPT<span class="ico ico-dl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M2.5 13.5h11"/></svg></span></a>
-    <p>One zip. <b>Leave it zipped</b>, as for Claude: ChatGPT wants the file exactly as it arrives. If you end up with a folder instead, see <a href="#chatgpt-wrong">If it goes wrong</a>.</p>
-  </div>
-
-  <h3 id="chatgpt-steps">Add the plugin</h3>
-  <ol class="steps">
-    <li>Open ChatGPT and go to <b>Plugins</b>.</li>
-    <li>Choose to upload a plugin, and upload <code class="inline">policymemo-ai-chatgpt.zip</code>.
-      <span class="sm">ChatGPT may warn that it cannot check plugins made by other people. Everything policymemo.ai contains is readable in the skills folder on GitHub.</span></li>
-    <li>Check the plugin is switched on.
-      <span class="sm">It holds 10 skills. <code class="inline">policymemo</code> is the front door: it holds the house rules and knows which skill does each job. The other 9 are the capabilities, and each carries the house rules too, so they hold whichever one ChatGPT picks.</span></li>
-  </ol>
-
-  <h3 id="chatgpt-check">Check it worked</h3>
-  <div class="worked">
-    <p>Start a new chat and describe a problem you are working on, or type <code class="inline">@policymemo</code> first. It should ask you a question back before it writes anything. That is deliberate, the same as the Claude version.</p>
-  </div>
-
-  <h3 id="chatgpt-wrong">If it goes wrong</h3>
-  <details>
-    <summary>There is no Plugins option, or no way to upload one</summary>
-    <div><p>On a paid personal plan, you can also add the skills one at a time under <b>Plugins</b>, then <b>Skills</b>: unzip the download and upload each folder inside <code class="inline">skills</code> as its own zip. On a work or education account, an administrator may have switched plugins off.</p></div>
-  </details>
-  <details>
-    <summary>I have a folder, not a zip</summary>
-    <div><p>Safari on a Mac unzips downloads on its own. ChatGPT needs the zip as it was, and compressing the folder again will not rebuild it, because part of it is hidden on a Mac. Download it again in another browser, or open Safari, then <b>Settings</b>, then <b>General</b>, untick <b>Open “safe” files after downloading</b>, and download it again.</p></div>
-  </details>
-  <details>
-    <summary>It answers without the method</summary>
-    <div><p>ChatGPT decides for itself when a skill applies. Type <code class="inline">@policymemo</code>, or the skill for the job, such as <code class="inline">@policymemo-evidence</code>, to make sure it is used.</p></div>
-  </details>
-  <details>
-    <summary>policymemo.ai has been updated</summary>
-    <div><p>Updates are not automatic. Download the new zip, remove the old plugin and upload the new one.</p><p><a href="mailto:jack@civicworks.co?subject=Tell%20me%20about%20policymemo.ai%20updates">Email me</a> if you'd like to hear when there's a new version.</p></div>
-  </details>
-</section>
-
 <section class="faq" aria-labelledby="faq-title">
   <h2 id="faq-title">Questions</h2>
   <details>
     <summary>Is it free?</summary>
-    <div><p>Yes. Policymemo.ai costs nothing. You need access to the AI tool you install it in: a paid Claude plan for the one-step plugin (the free plan works with the skills added one at a time), Copilot Chat on a work or university Microsoft account, Gemini with skills switched on, or ChatGPT with plugins.</p></div>
+    <div><p>Yes. Policymemo.ai costs nothing. You need access to the AI tool you install it in: a paid Claude plan for the one-step plugin (the free plan works with the skills added one at a time), ChatGPT with plugins, Copilot Chat on a work or university Microsoft account, or Gemini with skills switched on.</p></div>
   </details>
   <details>
     <summary>Can I share it or change it?</summary>
@@ -595,15 +595,15 @@
   </details>
   <details>
     <summary>Which tool should I use?</summary>
-    <div><p>If you have a choice, Claude. It is the main version and has had the most testing. If your organisation has approved Copilot, Gemini or ChatGPT and not Claude, use the one you are allowed to use. They follow the same rules, and drift from them more over a long conversation.</p></div>
+    <div><p>If you have a choice, Claude. It is the main version and has had the most testing. If your organisation has approved ChatGPT, Copilot or Gemini and not Claude, use the one you are allowed to use. They follow the same rules, and drift from them more over a long conversation.</p></div>
   </details>
   <details>
     <summary>Will my organisation allow it?</summary>
-    <div><p>None of the routes needs admin rights, but each depends on a setting your organisation controls. Copilot needs agent creation switched on, Gemini skills and ChatGPT plugins can be switched off on work and education accounts, and some organisations limit Claude plugins. Whatever tool you use, your organisation’s rules on sensitive and personal data still apply.</p></div>
+    <div><p>None of the routes needs admin rights, but each depends on a setting your organisation controls. Some organisations limit Claude plugins, ChatGPT plugins can be switched off on work and education accounts, Copilot needs agent creation switched on, and Gemini skills can be switched off too. Whatever tool you use, your organisation’s rules on sensitive and personal data still apply.</p></div>
   </details>
   <details>
     <summary>Does anything I paste get sent to you?</summary>
-    <div><p>No. The skills are written instructions with no code in them. There is no policymemo.ai server and no policymemo.ai account, so nothing you paste into a conversation is sent to us or stored by us.</p><p>Your conversations are handled by the company behind the tool you use, under the same terms as any other conversation on your plan or your organisation’s agreement. In Copilot, Gemini and ChatGPT, the files you upload when you set it up are kept with the agent, skills or plugin in your account.</p><p>Your organisation’s rules still apply. If you work with sensitive or personal data, check what your organisation allows in your AI tool before you paste it in.</p></div>
+    <div><p>No. The skills are written instructions with no code in them. There is no policymemo.ai server and no policymemo.ai account, so nothing you paste into a conversation is sent to us or stored by us.</p><p>Your conversations are handled by the company behind the tool you use, under the same terms as any other conversation on your plan or your organisation’s agreement. In ChatGPT, Copilot and Gemini, the files you upload when you set it up are kept with the plugin, agent or skills in your account.</p><p>Your organisation’s rules still apply. If you work with sensitive or personal data, check what your organisation allows in your AI tool before you paste it in.</p></div>
   </details>
   <details>
     <summary>Will it write the memo for me?</summary>
@@ -629,7 +629,7 @@
 (function () {
   document.documentElement.classList.add('js');
   var KEY = 'pm-install-tool';
-  var tools = ['claude', 'copilot', 'gemini', 'chatgpt'];
+  var tools = ['claude', 'chatgpt', 'copilot', 'gemini'];
   var tabs = {}, panels = {};
   tools.forEach(function (t) { tabs[t] = document.getElementById('tab-' + t); panels[t] = document.getElementById(t); });
   var routeTabs = { paid: document.getElementById('tab-claude-paid'), free: document.getElementById('tab-claude-free') };
