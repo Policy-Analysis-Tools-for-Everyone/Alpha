@@ -2,6 +2,11 @@
      Newest first. One "## date · version" heading per release, then one line per change.
      Say what changed for the person using it. The reasoning belongs in a CIVICWORKS essay. -->
 
+## 5 October 2026 · 0.2.0
+
+- New: policymemo.ai for ChatGPT, as a plugin holding 10 skills.
+- The install page now covers Claude, Copilot, Gemini and ChatGPT.
+
 ## 4 October 2026 · 0.2.0
 
 - The private beta opens. This is the version beta testers install.
