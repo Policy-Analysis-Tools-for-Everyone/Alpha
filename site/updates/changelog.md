@@ -5,7 +5,7 @@
 ## 5 October 2026 · 0.2.0
 
 - New: policymemo.ai for ChatGPT, as a plugin holding 10 skills.
-- The install page now covers Claude, Copilot, Gemini and ChatGPT.
+- The install page now covers Claude, ChatGPT, Copilot and Gemini, in that order.
 
 ## 4 October 2026 · 0.2.0
 
