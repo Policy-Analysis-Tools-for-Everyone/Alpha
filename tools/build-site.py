@@ -167,7 +167,7 @@ def page(title, description, body, css, home, depth_note="", current="notes"):
       <a class="plain" href="{home}#how">How it behaves</a>
       <a class="plain keep" href="{home}updates/"{cur("updates")}>Updates</a>
       {CIVICWORKS_NAV_LINK}
-      <a class="btn primary small" href="{home}beta/">Beta access<span class="ico ico-go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path class="stem" d="M2.5 8h10"/><path class="head" d="M8.5 4 12.5 8 8.5 12"/></svg></span></a>
+      <a class="btn primary small" href="{home}beta/">Beta access</a>
     </nav>
   </div>
 </header>
